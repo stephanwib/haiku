@@ -1,3 +1,3 @@
-SUBDIR=	lib
+SUBDIR=	libs
 
 .include <bsd.subdir.mk>
