@@ -6,11 +6,11 @@ LIB=	be
 
 LIBDPLIBS+=	root /lib
 
-#INCS=		
-#INCSDIR=	
-
 CFLAGS= -Wno-multichar
 
 WARNS=		5
+
+
+.include "${.CURDIR}/../../kits/app/Makefile.inc"
 
 .include <bsd.lib.mk>
