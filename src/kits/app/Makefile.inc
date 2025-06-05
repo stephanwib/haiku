@@ -2,6 +2,8 @@
 LIBRARY_HEADERS= icon
 PRIVATE_HEADERS= shared app interface kernel libroot locale notification
 
+.PATH: ${.CURDIR}/../../kits/app
+
 SRCS=	AppDefs.cpp
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
