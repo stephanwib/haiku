@@ -5,7 +5,7 @@ OS_HEADERS= app
 
 .PATH: ${.CURDIR}/../../kits/app
 
-SRCS=	AppDefs.cpp
+SRCS=	AppDefs.cpp AppMisc.cpp
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
