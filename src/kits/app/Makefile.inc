@@ -1,7 +1,7 @@
 
 LIBRARY_HEADERS= icon
 PRIVATE_HEADERS= shared app interface kernel libroot locale notification
-OS_HEADERS= app
+OS_HEADERS= app support
 
 .PATH: ${.CURDIR}/../../kits/app
 
