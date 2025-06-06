@@ -4,9 +4,10 @@
 
 LIB=	be
 
-LIBDPLIBS+=	root /lib
+#LIBDPLIBS+=	root /lib
 
-CFLAGS= -Wno-multichar
+CXXFLAGS+= -Wno-multichar
+CXXFLAGS+= -lroot
 
 WARNS=		5
 
