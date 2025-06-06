@@ -7,8 +7,9 @@ OS_HEADERS= app
 
 SRCS=	AppDefs.cpp
 
+CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
-CPPFLAGS+= "-I${.CURDIR}/../../../headers/config"
+
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
