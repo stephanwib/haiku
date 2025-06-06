@@ -7,6 +7,7 @@ LIB=	be
 #LIBDPLIBS+=	root /lib
 
 CXXFLAGS+= -Wno-multichar
+CXXFLAGS+= -Wno-old-style-cast
 CXXFLAGS+= -lroot
 
 WARNS=		5
