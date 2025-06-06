@@ -7,7 +7,7 @@ OS_HEADERS= app support storage interface
 
 SRCS=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp Clipboard.cpp Cursor.cpp \
       DesktopLink.cpp DirectMessageTarget.cpp Handler.cpp Invoker.cpp \
-      Key.cpp KeyStore.cpp LaunchRoster.cpp
+      Key.cpp KeyStore.cpp LaunchRoster.cpp LinkReceiver.cpp LinkSender.cpp Looper.cpp
 
 # Issues:
 # InitTerminateLibBe.cpp - missing atfork()
