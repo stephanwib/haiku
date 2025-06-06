@@ -6,6 +6,8 @@
 #define _CONFIG_HAIKU_CONFIG_H
 
 
+#ifndef _SUPPORT_DEFS_H
+
 /* Determine the architecture and define macros for some fundamental
    properties:
    __HAIKU_ARCH					- short name of the architecture (used in paths)
@@ -147,5 +149,6 @@
 #	define __HAIKU_BEOS_COMPATIBLE_TYPES	1
 #endif
 
+#endif /* SUPPORT_DEFS_H */
 
 #endif	/* _CONFIG_HAIKU_CONFIG_H */
