@@ -8,6 +8,7 @@ LIB=	be
 
 CXXFLAGS+= -Wno-multichar
 CXXFLAGS+= -Wno-old-style-cast
+CXXFLAGS+= -Wno-shadow
 CXXFLAGS+= -lroot
 
 WARNS=		5
