@@ -5,7 +5,7 @@ OS_HEADERS= app support storage interface
 
 .PATH: ${.CURDIR}/../../kits/app
 
-SRCS=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp
+SRCS=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp Clipboard.cpp
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
