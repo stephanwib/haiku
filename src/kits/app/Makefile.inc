@@ -7,11 +7,12 @@ OS_HEADERS= app support storage interface
 
 SRCS=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp Clipboard.cpp Cursor.cpp \
       DesktopLink.cpp DirectMessageTarget.cpp Handler.cpp Invoker.cpp \
-      Key.cpp KeyStore.cpp LaunchRoster.cpp  LinkSender.cpp Looper.cpp
+      Key.cpp KeyStore.cpp LaunchRoster.cpp Looper.cpp
 
 # Issues:
 # InitTerminateLibBe.cpp - missing atfork()
 # LinkReceiver.cpp -- EOVERFLOW unknown
+# LinkSender.cpp -- missing syscalls.h
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
