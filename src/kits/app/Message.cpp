@@ -36,7 +36,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "tracing_config.h"
+// #include "tracing_config.h"
 	// kernel tracing configuration
 
 //#define VERBOSE_DEBUG_OUTPUT
