@@ -13,6 +13,7 @@
 /*! Class for low-overhead port-based messaging */
 
 
+#include <Errors.h> /* XXX defines B_BUFFER_OVERFLOW */
 #include <LinkReceiver.h>
 
 #include <stdlib.h>

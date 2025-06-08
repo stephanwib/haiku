@@ -13,6 +13,7 @@
 // BLooper class spawns a thread that runs a message loop.
 
 
+#include <SupportDefs.h> /* XXX: addr_t is here for now */
 #include <Looper.h>
 
 #include <new>

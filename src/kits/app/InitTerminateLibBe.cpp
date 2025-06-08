@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <pthread.h>
 
 #include <AppMisc.h>
 #include <LooperList.h>
@@ -50,7 +51,7 @@ initialize_before(image_id)
 	BMessage::Private::StaticInit();
 	BRoster::Private::InitBeRoster();
 
-	atfork(initialize_forked_child);
+	pthread_atfork(NULL, NULL, initialize_forked_child);
 
 	DBG(OUT("initialize_before() done\n"));
 }
