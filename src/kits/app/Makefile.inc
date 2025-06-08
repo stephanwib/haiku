@@ -8,7 +8,8 @@ OS_HEADERS= app support storage interface
 SRCS=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp Clipboard.cpp Cursor.cpp \
       DesktopLink.cpp DirectMessageTarget.cpp Handler.cpp InitTerminateLibBe.cpp Invoker.cpp \
       Key.cpp KeyStore.cpp LaunchRoster.cpp LinkReceiver.cpp Looper.cpp LooperList.cpp \
-      Message.cpp MessageAdapter.cpp MessageFilter.cpp MessageQueue.cpp MessageRunner.cpp
+      Message.cpp MessageAdapter.cpp MessageFilter.cpp MessageQueue.cpp MessageRunner.cpp \
+      MessageUtils.cpp Messenger.cpp
 
 # Issues:
 # LinkSender.cpp -- missing syscalls.h, kern_transfer_area()
