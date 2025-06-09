@@ -11,7 +11,7 @@ SRCS=	AboutWindow.cpp
 
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
-#CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/add-ons/graphics"
+CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/add-ons/graphics"
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
