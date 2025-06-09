@@ -1,6 +1,6 @@
 
 #LIBRARY_HEADERS= icon
-PRIVATE_HEADERS= binary_compatibility
+#PRIVATE_HEADERS=
 OS_HEADERS= locale
 
 .PATH: ${.CURDIR}/../../kits/interface
@@ -10,8 +10,7 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
 
 # Issues:
 
-#CPPFLAGS+= "-I${.CURDIR}/../../../headers"
-#CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
+CPPFLAGS+= "-I${.CURDIR}/../../../headers/private"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/add-ons/graphics"
 
 
