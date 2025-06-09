@@ -1,6 +1,6 @@
 
 #LIBRARY_HEADERS= icon
-#PRIVATE_HEADERS= shared app interface kernel libroot locale notification
+PRIVATE_HEADERS+= binary_compatibility
 OS_HEADERS= locale
 
 .PATH: ${.CURDIR}/../../kits/interface
@@ -13,6 +13,7 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/add-ons/graphics"
+
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
