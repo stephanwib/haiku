@@ -1,6 +1,6 @@
 
 #LIBRARY_HEADERS= icon
-PRIVATE_HEADERS+= binary_compatibility
+PRIVATE_HEADERS= binary_compatibility
 OS_HEADERS= locale
 
 .PATH: ${.CURDIR}/../../kits/interface
@@ -16,7 +16,7 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/add-ons/graphics"
 
 
 .for HEADER in ${PRIVATE_HEADERS}
-CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
+CPPFLAGS+= -I${.CURDIR}/../../../headers/private/${HEADER}
 .endfor
 
 .for HEADER in ${OS_HEADERS}
