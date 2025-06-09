@@ -48,6 +48,7 @@
 #include <RosterPrivate.h>
 #include <ServerProtocol.h>
 
+extern char **environ;
 
 using namespace std;
 using namespace BPrivate;
