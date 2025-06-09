@@ -14,14 +14,11 @@
 	take care for yourself!
 */
 
+#define HAIKU_TARGET_PLATFORM_LIBBE_TEST 1
 
 #include "ServerMemoryAllocator.h"
 
 #include <new>
-
-#ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-#	include <syscalls.h>
-#endif
 
 
 static const size_t kReservedSize = 128 * 1024 * 1024;
