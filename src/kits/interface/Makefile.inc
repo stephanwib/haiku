@@ -6,7 +6,9 @@ OS_HEADERS= locale
 .PATH: ${.CURDIR}/../../kits/interface
 
 SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpinner.cpp \
-          AffineTransform.cpp Alert.cpp Alignment.cpp BMCPrivate.cpp Bitmap.cpp Box.cpp
+          AffineTransform.cpp Alert.cpp Alignment.cpp BMCPrivate.cpp Bitmap.cpp Box.cpp \
+          Button.cpp CardLayout.cpp CardView.cpp ChannelControl.cpp ChannelSlider.cpp \
+          CheckBox.cpp
 
 # Issues:
 
