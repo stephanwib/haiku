@@ -5,7 +5,7 @@ OS_HEADERS= locale
 
 .PATH: ${.CURDIR}/../../kits/interface
 
-SRCS=	AboutWindow.cpp
+SRCS=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpinner.cpp
 
 # Issues:
 
