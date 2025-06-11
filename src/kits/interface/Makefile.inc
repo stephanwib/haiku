@@ -18,7 +18,9 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
           GroupLayoutBuilder.cpp GroupView.cpp HaikuControlLook.cpp Icon.cpp Input.cpp \
           InterfaceDefs.cpp Layout.cpp LayoutContext.cpp LayoutItem.cpp LayoutUtils.cpp \
           ListItem.cpp ListView.cpp Menu.cpp MenuBar.cpp MenuField.cpp MenuItem.cpp MenuItemPrivate.cpp \
-          MenuPrivate.cpp MenuWindow.cpp OptionControl.cpp OptionPopUp.cpp OutlineListView.cpp
+          MenuPrivate.cpp MenuWindow.cpp OptionControl.cpp OptionPopUp.cpp OutlineListView.cpp \
+          Picture.cpp PictureButton.cpp PictureDataWriter.cpp PicturePlayer.cpp Point.cpp Polygon.cpp \
+          PopUpMenu.cpp PrintJob.cpp PrivateScreen.cpp RadioButton.cpp Rect.cpp Region.cpp RegionSupport.cpp
 
 # Issues:
 
