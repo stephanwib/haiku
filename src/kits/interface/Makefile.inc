@@ -3,7 +3,9 @@
 #PRIVATE_HEADERS=
 OS_HEADERS= locale
 
-.PATH: ${.CURDIR}/../../kits/interface
+.PATH: ${.CURDIR}/../../kits/interface \
+       ${.CURDIR}/../../kits/interface/layouter \
+       ${.CURDIR}/../../kits/interface/textview_support
 
 SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpinner.cpp \
           AffineTransform.cpp Alert.cpp Alignment.cpp BMCPrivate.cpp Bitmap.cpp Box.cpp \
