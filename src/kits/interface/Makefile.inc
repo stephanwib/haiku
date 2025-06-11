@@ -32,6 +32,7 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/add-ons/graphics"
 CPPFLAGS+= -I${.CURDIR}/../../kits/interface/layouter
+CPPFLAGS+= -I${.CURDIR}/../../kits/interface/textview_support
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= -I${.CURDIR}/../../../headers/private/${HEADER}
