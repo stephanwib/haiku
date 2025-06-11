@@ -1,7 +1,7 @@
 
 #LIBRARY_HEADERS= icon
 PRIVATE_HEADERS= support input print
-OS_HEADERS= locale
+OS_HEADERS= locale support
 
 .PATH: ${.CURDIR}/../../kits/interface \
        ${.CURDIR}/../../kits/interface/layouter \
