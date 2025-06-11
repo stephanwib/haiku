@@ -15,7 +15,10 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
           DecorInfo.cpp Deskbar.cpp Dragger.cpp Font.cpp Gradient.cpp GradientConic.cpp \
           GradientDiamond.cpp GradientLinear.cpp GradientRadial.cpp GradientRadialFocus.cpp \
           GraphicsDefs.cpp GridLayout.cpp GridLayoutBuilder.cpp GridView.cpp GroupLayout.cpp \
-          GroupLayoutBuilder.cpp GroupView.cpp HaikuControlLook.cpp Icon.cpp Input.cpp
+          GroupLayoutBuilder.cpp GroupView.cpp HaikuControlLook.cpp Icon.cpp Input.cpp \
+          InterfaceDefs.cpp Layout.cpp LayoutContext.cpp LayoutItem.cpp LayoutUtils.cpp \
+          ListItem.cpp ListView.cpp Menu.cpp MenuBar.cpp MenuField.cpp MenuItem.cpp MenuItemPrivate.cpp \
+          MenuPrivate.cpp MenuWindow.cpp OptionControl.cpp OptionPopUp.cpp OutlineListView.cpp
 
 # Issues:
 
