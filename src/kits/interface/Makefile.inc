@@ -8,7 +8,12 @@ OS_HEADERS= locale
 SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpinner.cpp \
           AffineTransform.cpp Alert.cpp Alignment.cpp BMCPrivate.cpp Bitmap.cpp Box.cpp \
           Button.cpp CardLayout.cpp CardView.cpp ChannelControl.cpp ChannelSlider.cpp \
-          CheckBox.cpp
+          CheckBox.cpp ColorControl.cpp ColorConversion.cpp ColorMenuItem.cpp \
+          ColumnListView.cpp ColumnTypes.cpp Control.cpp ControlLook.cpp DecimalSpinner.cpp \
+          DecorInfo.cpp Deskbar.cpp Dragger.cpp Font.cpp Gradient.cpp GradientConic.cpp \
+          GradientDiamond.cpp GradientLinear.cpp GradientRadial.cpp GradientRadialFocus.cpp \
+          GraphicsDefs.cpp GridLayout.cpp GridLayoutBuilder.cpp GridView.cpp GroupLayout.cpp \
+          GroupLayoutBuilder.cpp GroupView.cpp HaikuControlLook.cpp Icon.cpp Input.cpp
 
 # Issues:
 
