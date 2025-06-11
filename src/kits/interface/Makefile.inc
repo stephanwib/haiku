@@ -1,6 +1,6 @@
 
 #LIBRARY_HEADERS= icon
-PRIVATE_HEADERS= support
+PRIVATE_HEADERS= support input
 OS_HEADERS= locale
 
 .PATH: ${.CURDIR}/../../kits/interface \
