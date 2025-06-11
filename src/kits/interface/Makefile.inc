@@ -20,7 +20,12 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
           ListItem.cpp ListView.cpp Menu.cpp MenuBar.cpp MenuField.cpp MenuItem.cpp MenuItemPrivate.cpp \
           MenuPrivate.cpp MenuWindow.cpp OptionControl.cpp OptionPopUp.cpp OutlineListView.cpp \
           Picture.cpp PictureButton.cpp PictureDataWriter.cpp PicturePlayer.cpp Point.cpp Polygon.cpp \
-          PopUpMenu.cpp PrintJob.cpp PrivateScreen.cpp RadioButton.cpp Rect.cpp Region.cpp RegionSupport.cpp
+          PopUpMenu.cpp PrintJob.cpp PrivateScreen.cpp RadioButton.cpp Rect.cpp Region.cpp RegionSupport.cpp \
+          Screen.cpp ScrollBar.cpp ScrollView.cpp SeparatorItem.cpp SeparatorView.cpp Shape.cpp Shelf.cpp \
+          Size.cpp Slider.cpp SpaceLayoutItem.cpp Spinner.cpp SplitLayout.cpp SplitLayoutBuilder.cpp \
+          SplitView.cpp StatusBar.cpp StringItem.cpp StringView.cpp TabView.cpp TextControl.cpp \
+          TextInput.cpp TextView.cpp ToolTip.cpp ToolTipManager.cpp TwoDimensionalLayout.cpp \
+          View.cpp ViewLayoutItem.cpp ViewPort.cpp Window.cpp WindowStack.cpp ZombieReplicantView.cpp
 
 # Issues:
 
