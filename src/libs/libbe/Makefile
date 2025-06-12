@@ -13,5 +13,5 @@ WARNS=		5
 
 .include "${.CURDIR}/../../kits/app/Makefile.inc"
 .include "${.CURDIR}/../../kits/interface/Makefile.inc"
-
+# .include "${.CURDIR}/../../kits/support/Makefile.inc"
 .include <bsd.lib.mk>
