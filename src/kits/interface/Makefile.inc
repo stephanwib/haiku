@@ -27,6 +27,13 @@ SRCS+=    AboutWindow.cpp AbstractLayout.cpp AbstractLayoutItem.cpp AbstractSpin
           TextInput.cpp TextView.cpp ToolTip.cpp ToolTipManager.cpp TwoDimensionalLayout.cpp \
           View.cpp ViewLayoutItem.cpp ViewPort.cpp Window.cpp WindowStack.cpp ZombieReplicantView.cpp
 
+# layouter
+SRCS+=    CollapsingLayouter.cpp ComplexLayouter.cpp LayoutOptimizer.cpp Layouter.cpp \
+          OneElementLayouter.cpp SimpleLayouter.cpp
+
+# textview_support
+SRCS+=    InlineInput.cpp LineBuffer.cpp StyleBuffer.cpp TextGapBuffer.cpp UndoBuffer.cpp WidthBuffer.cpp
+
 # Issues:
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private"
