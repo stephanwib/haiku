@@ -4,7 +4,7 @@
 
 .PATH: ${.CURDIR}/../../kits/support
       
-SRCS+=    Architecture.cpp Archivable.cpp ArchivingManagers.cpp
+SRCS+=    Architecture.cpp Archivable.cpp ArchivingManagers.cpp Base64.cpp Beep.cpp
 
 
 # Issues:
