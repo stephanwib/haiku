@@ -1,6 +1,6 @@
 #LIBRARY_HEADERS= 
 PRIVATE_HEADERS= media
-OS_HEADERS= mail
+OS_HEADERS= mail media
 
 .PATH: ${.CURDIR}/../../kits/support
       
