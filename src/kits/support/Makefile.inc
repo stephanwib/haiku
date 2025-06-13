@@ -6,7 +6,8 @@ OS_HEADERS= mail media
       
 SRCS+=    Architecture.cpp Archivable.cpp ArchivingManagers.cpp Base64.cpp Beep.cpp \
           BlockCache.cpp BufferIO.cpp BufferedDataIO.cpp ByteOrder.cpp CompressionAlgorithm.cpp \
-          DataIO.cpp DataPositionIOWrapper.cpp
+          DataIO.cpp DataPositionIOWrapper.cpp DateTime.cpp Flattenable.cpp Job.cpp JobQueue.cpp \
+          List.cpp Locker.cpp PointerList.cpp
 
 
 # Issues:
