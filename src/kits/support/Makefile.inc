@@ -4,7 +4,8 @@ OS_HEADERS= mail media
 
 .PATH: ${.CURDIR}/../../kits/support
       
-SRCS+=    Architecture.cpp Archivable.cpp ArchivingManagers.cpp Base64.cpp Beep.cpp
+SRCS+=    Architecture.cpp Archivable.cpp ArchivingManagers.cpp Base64.cpp Beep.cpp \
+          BlockCache.cpp BufferIO.cpp BufferedDataIO.cpp
 
 
 # Issues:
