@@ -9,7 +9,7 @@ SRCS+=    Catalog.cpp CatalogData.cpp CatalogStub.cpp Collator.cpp Country.cpp \
 
 # Issues:
 
-CPPFLAGS+= -I$/usr/pkg/include
+CPPFLAGS+= -I/usr/pkg/include
 #CPPFLAGS+= -I${.CURDIR}/../../../headers/private
 #CPPFLAGS+= -I${.CURDIR}/../../kits/support
 
