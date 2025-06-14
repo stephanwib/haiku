@@ -4,13 +4,12 @@
 
 .PATH: ${.CURDIR}/../../kits/locale
 
-SRCS+=    Catalog.cpp CatalogData.cpp CatalogStub.cpp   \
+SRCS+=    Catalog.cpp CatalogData.cpp CatalogStub.cpp Collator.cpp Country.cpp \
           DateFormat.cpp DateTimeFormat.cpp DefaultCatalog.cpp DurationFormat.cpp
 
 # Issues:
 
-# Country.cpp Collator.cpp -- unicode includes
-
+CPPFLAGS+= -I$/usr/pkg/include
 #CPPFLAGS+= -I${.CURDIR}/../../../headers/private
 #CPPFLAGS+= -I${.CURDIR}/../../kits/support
 
