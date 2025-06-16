@@ -132,6 +132,7 @@ BTranslatorRoster::Private::Private()
 	fLazyScanning(true),
 	fSafeMode(false)
 {
+/*
 	char parameter[32];
 	size_t parameterLength = sizeof(parameter);
 
@@ -150,7 +151,8 @@ BTranslatorRoster::Private::Private()
 			|| !strcasecmp(parameter, "enable") || !strcmp(parameter, "1"))
 			fSafeMode = true;
 	}
-
+*/
+	
 	// We might run in compatibility mode on a system with a different ABI. The
 	// translators matching our ABI can usually be found in respective
 	// subdirectories of the translator directories.
