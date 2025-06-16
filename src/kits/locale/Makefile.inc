@@ -5,7 +5,11 @@
 .PATH: ${.CURDIR}/../../kits/locale
 
 SRCS+=    Catalog.cpp CatalogData.cpp CatalogStub.cpp Collator.cpp Country.cpp \
-          DateFormat.cpp DateTimeFormat.cpp DefaultCatalog.cpp DurationFormat.cpp
+          DateFormat.cpp DateTimeFormat.cpp DefaultCatalog.cpp DurationFormat.cpp \
+          EditableCatalog.cpp Format.cpp FormattingConventions.cpp HashMapCatalog.cpp \
+          InitLocaleKit.cpp Language.cpp Locale.cpp LocaleRoster.cpp LocaleRosterData.cpp \
+          MutableLocaleRoster.cpp NumberFormat.cpp RelativeDateTimeFormat.cpp StringFormat.cpp \
+          TextEncoding.cpp TimeFormat.cpp TimeUnitFormat.cpp TimeZone.cpp UnicodeChar.cpp
 
 # Issues:
 
