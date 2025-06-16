@@ -1,5 +1,5 @@
 LIBRARY_HEADERS=
-PRIVATE_HEADERS= system
+PRIVATE_HEADERS= system system/arch/x86_64
 OS_HEADERS= translation drivers
 
 .PATH: ${.CURDIR}/../../kits/translation
