@@ -8,6 +8,7 @@ SRCS=      CharacterSet.cpp CharacterSetRoster.cpp character_sets.cpp utf8_conve
 
 # Issues:
 
+CPPFLAGS+= -I${.CURDIR}/../../kits/textencoding
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
 
