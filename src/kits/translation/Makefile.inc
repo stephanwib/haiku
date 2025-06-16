@@ -1,6 +1,6 @@
 LIBRARY_HEADERS=
 PRIVATE_HEADERS=
-OS_HEADERS= translation
+OS_HEADERS= translation drivers
 
 .PATH: ${.CURDIR}/../../kits/translation
 
