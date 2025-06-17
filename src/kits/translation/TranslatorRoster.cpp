@@ -233,7 +233,7 @@ BTranslatorRoster::Private::MessageReceived(BMessage* message)
 				{
 					const char* name;
 					node_ref nodeRef;
-					if (message->FindInt32("device", &nodeRef.device) != B_OK
+					if (message->FindInt32("device", (int32*)&nodeRef.device) != B_OK
 						|| message->FindInt64("directory", &nodeRef.node)
 							!= B_OK
 						|| message->FindString("name", &name) != B_OK)
