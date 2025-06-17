@@ -1,5 +1,5 @@
 #LIBRARY_HEADERS=
-PRIVATE_HEADERS=
+PRIVATE_HEADERS= shared
 OS_HEADERS=
 
 .PATH: ${.CURDIR}/../../kits/shared
