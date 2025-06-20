@@ -6,7 +6,7 @@ LIB=	be
 
 #LIBDPLIBS+=	root /lib
 
-CXXFLAGS= -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -std=gnu99 -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
 LDFLAGS= -lroot
 
