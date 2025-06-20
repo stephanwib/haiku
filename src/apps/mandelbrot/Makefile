@@ -7,7 +7,7 @@ SRCS+=      Mandelbrot.cpp FractalEngine.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LIBDPLIBS+=	be {.CURDIR}/../../libs/libbe
+LDADD+=	-lbe
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
