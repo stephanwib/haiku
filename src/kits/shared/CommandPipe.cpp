@@ -19,6 +19,7 @@
 #include <Messenger.h>
 #include <String.h>
 
+extern char **environ;
 
 BCommandPipe::BCommandPipe()
 	:
