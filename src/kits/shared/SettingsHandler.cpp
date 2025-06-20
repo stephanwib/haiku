@@ -40,7 +40,7 @@ All rights reserved.
 #include <Path.h>
 #include <StopWatch.h>
 
-#include <alloca.h>
+// #include <alloca.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
