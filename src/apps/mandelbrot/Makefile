@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface
-OS_HEADERS=         interface support app storage translation
+OS_HEADERS=         interface support app storage translation locale
 
 PROG=	mandelbrot
 
