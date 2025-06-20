@@ -5,7 +5,7 @@ OS_HEADERS=
 .PATH: ${.CURDIR}/../../kits/shared
 
 SRCS+=    AboutMenuItem.cpp ArgumentVector.cpp AttributeUtilities.cpp BarberPole.cpp BitmapButton.cpp \
-          CalendarView.cpp ColorItem.cpp ColorListView.cpp ColorPreview.cpp ColorQuantizer.cppC ommandPipe.cpp \
+          CalendarView.cpp ColorItem.cpp ColorListView.cpp ColorPreview.cpp ColorQuantizer.cpp CommandPipe.cpp \
           DateTimeEdit.cpp DragTrackingFilter.cpp DriverSettingsMessageAdapter.cpp ExpressionParser.cpp \
           HSL.cpp HashString.cpp IconButton.cpp IconView.cpp Json.cpp JsonEvent.cpp JsonEventListener.cpp \
           JsonMessageWriter.cpp JsonTextWriter.cpp JsonWriter.cpp Keymap.cpp LongAndDragTrackingFilter.cpp \
