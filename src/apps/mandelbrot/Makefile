@@ -6,6 +6,7 @@ PROG=	mandelbrot
 SRCS+=      Mandelbrot.cpp FractalEngine.cpp	
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../../headers
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
