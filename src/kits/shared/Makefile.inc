@@ -4,7 +4,7 @@ PRIVATE_HEADERS= shared
 
 .PATH: ${.CURDIR}/../../kits/shared
 
-CPPFLAGS+= -I${.CURDIR}/../../kits/tracker
+CPPFLAGS+= -I${.CURDIR}/../../../src/kits/tracker
 
 SRCS+=    AboutMenuItem.cpp ArgumentVector.cpp AttributeUtilities.cpp BarberPole.cpp BitmapButton.cpp \
           CalendarView.cpp ColorItem.cpp ColorListView.cpp ColorPreview.cpp ColorQuantizer.cpp CommandPipe.cpp \
