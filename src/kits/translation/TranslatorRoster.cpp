@@ -31,8 +31,8 @@
 
 #include <driver_settings.h>
 #include <image.h>
-#include <safemode_defs.h>
-#include <syscalls.h>
+// #include <safemode_defs.h>
+// #include <syscalls.h>
 
 #include "FuncTranslator.h"
 #include "TranslatorRosterPrivate.h"
