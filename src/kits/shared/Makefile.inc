@@ -1,8 +1,10 @@
 #LIBRARY_HEADERS=
 PRIVATE_HEADERS= shared
-OS_HEADERS=
+#OS_HEADERS=
 
 .PATH: ${.CURDIR}/../../kits/shared
+
+CPPFLAGS+= -I${.CURDIR}/../../kits/tracker
 
 SRCS+=    AboutMenuItem.cpp ArgumentVector.cpp AttributeUtilities.cpp BarberPole.cpp BitmapButton.cpp \
           CalendarView.cpp ColorItem.cpp ColorListView.cpp ColorPreview.cpp ColorQuantizer.cpp CommandPipe.cpp \
@@ -17,7 +19,7 @@ SRCS+=    AboutMenuItem.cpp ArgumentVector.cpp AttributeUtilities.cpp BarberPole
 # Issues:
 
 #CPPFLAGS+= -I${.CURDIR}/../../../headers/private
-CPPFLAGS+= "-I${.CURDIR}/../../kits/tracker"
+
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= -I${.CURDIR}/../../../headers/private/${HEADER}
