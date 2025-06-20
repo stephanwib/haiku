@@ -19,5 +19,6 @@ WARNS=		5
 .include "${.CURDIR}/../../kits/locale/Makefile.inc"
 .include "${.CURDIR}/../../kits/textencoding/Makefile.inc"
 .include "${.CURDIR}/../../kits/translation/Makefile.inc"
+.include "${.CURDIR}/../../kits/shared/Makefile.inc"
 
 .include <bsd.lib.mk>
