@@ -4,7 +4,7 @@ OS_HEADERS=
 
 .PATH: ${.CURDIR}/../../kits/textencoding
 
-SRCS=      CharacterSet.cpp CharacterSetRoster.cpp character_sets.cpp utf8_conversions.cpp
+SRCS+=      CharacterSet.cpp CharacterSetRoster.cpp character_sets.cpp utf8_conversions.cpp
 
 # Issues:
 
