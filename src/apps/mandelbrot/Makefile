@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface
-OS_HEADERS=         interface support app
+OS_HEADERS=         interface support app storage
 
 PROG=	mandelbrot
 
