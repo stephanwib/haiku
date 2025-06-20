@@ -257,8 +257,8 @@ BTranslatorRoster::Private::MessageReceived(BMessage* message)
 					node_ref fromNodeRef;
 					node_ref nodeRef;
 
-					if (message->FindInt32("device", &nodeRef.device) != B_OK
-						|| message->FindInt64("to directory", &toNodeRef.node)
+					if (message->FindInt32("device", (int32*)&nodeRef.device) != B_OK
+						|| message->FindInt64("to directory", (int64*)&toNodeRef.node)
 							!= B_OK
 						|| message->FindInt64("from directory",
 							(int64*)&fromNodeRef.node) != B_OK
