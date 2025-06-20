@@ -303,10 +303,10 @@ BTranslatorRoster::Private::MessageReceived(BMessage* message)
 				{
 					node_ref nodeRef;
 					uint64 directoryNode;
-					if (message->FindInt32("device", &nodeRef.device) != B_OK
+					if (message->FindInt32("device", (int32*)&nodeRef.device) != B_OK
 						|| message->FindInt64("directory",
 							(int64*)&directoryNode) != B_OK
-						|| message->FindInt64("node", &nodeRef.node) != B_OK)
+						|| message->FindInt64("node", (int64*)&nodeRef.node) != B_OK)
 						break;
 
 					translator_item* item = _FindTranslator(nodeRef);
