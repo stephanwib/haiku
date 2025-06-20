@@ -5,6 +5,9 @@ PROG=	mandelbrot
 
 SRCS+=      Mandelbrot.cpp FractalEngine.cpp	
 
+CXXFLAGS=   -Wno-multichar -Wno-old-style-cast -Wno-shadow
+
+
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
 
