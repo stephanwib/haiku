@@ -1,4 +1,5 @@
 PRIVATE_HEADERS=    interface
+OS_HEADERS=         interface
 
 PROG=	mandelbrot
 
