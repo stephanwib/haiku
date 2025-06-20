@@ -17,7 +17,7 @@ SRCS+=    AboutMenuItem.cpp ArgumentVector.cpp AttributeUtilities.cpp BarberPole
 # Issues:
 
 #CPPFLAGS+= -I${.CURDIR}/../../../headers/private
-#CPPFLAGS+= -I${.CURDIR}/../../kits/support
+CPPFLAGS+= -I${.CURDIR}/../../kits/tracker
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= -I${.CURDIR}/../../../headers/private/${HEADER}
