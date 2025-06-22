@@ -4,7 +4,7 @@ OS_HEADERS= translation drivers
 
 .PATH: ${.CURDIR}/../../kits/translation
 
-SRCS=      BitmapStream.cpp FuncTranslator.cpp TranslationUtils.cpp Translator.cpp TranslatorRoster.cpp
+SRCS+=      BitmapStream.cpp FuncTranslator.cpp TranslationUtils.cpp Translator.cpp TranslatorRoster.cpp
 
 # Issues:
 
