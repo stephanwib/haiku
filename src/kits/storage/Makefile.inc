@@ -1,5 +1,5 @@
 #LIBRARY_HEADERS=
-PRIVATE_HEADERS=
+PRIVATE_HEADERS= storage
 OS_HEADERS=
 
 .PATH: ${.CURDIR}/../../kits/storage \
