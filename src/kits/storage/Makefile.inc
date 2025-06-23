@@ -8,7 +8,9 @@ OS_HEADERS=
        ${.CURDIR}/../../kits/storage/sniffer
 
 SRCS+=    AddOnImage.cpp AddOnMonitor.cpp AddOnMonitorHandler.cpp AppFileInfo.cpp \
-          CopyEngine.cpp Directory.cpp DriverSettings.cpp Entry.cpp EntryList.cpp
+          CopyEngine.cpp  DriverSettings.cpp Entry.cpp EntryList.cpp
+
+# Issues: Directory.cpp
 
 # disk_device
 SRCS+=    
