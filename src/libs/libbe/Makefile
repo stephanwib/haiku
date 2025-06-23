@@ -6,9 +6,11 @@ LIB=	be
 
 #LIBDPLIBS+=	root /lib
 
-CXXFLAGS= -std=gnu99 -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDFLAGS= -lroot
+# XXX Compiler suggests -std=gnu99 due to alloca usage
+
+LDFLAGS= -lroot -licudata
 
 WARNS=		5
 
