@@ -83,6 +83,7 @@ class BDirectory : public BNode, public BEntryList {
 	private:
 		uint32 _reservedData[7];
 		int fDirFd;
+		DIR* fDir;	// Cosmoe
 };
 
 status_t create_directory(const char *path, mode_t mode);
