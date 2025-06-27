@@ -24,6 +24,7 @@ SRCS+=
 # Issues:
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/posix
+CPPFLAGS+= -I${.CURDIR}/../../../headers/build/os/storage
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= -I${.CURDIR}/../../../headers/private/${HEADER}
