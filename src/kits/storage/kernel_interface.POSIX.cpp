@@ -31,6 +31,8 @@
 // when all is said and done.
 #include <iostream>
 
+#define O_RWMASK		O_ACCMODE
+
 using namespace std;
 
 // For convenience:
