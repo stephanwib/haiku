@@ -26,7 +26,6 @@
 #include "storage_support.h"
 
 #include <limits.h>
-#include <StorageDefs.h>
 
 
 using namespace std;
