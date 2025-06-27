@@ -1,5 +1,5 @@
 #LIBRARY_HEADERS=
-PRIVATE_HEADERS= storage
+PRIVATE_HEADERS= storage userlandfs/legacy
 OS_HEADERS=
 
 .PATH: ${.CURDIR}/../../kits/storage \
