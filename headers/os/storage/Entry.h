@@ -104,6 +104,7 @@ private:
 	virtual status_t			_GetStat(struct stat_beos* stat) const;
 
 private:
+			DIR*				fDir;   // Cosmoe
 			int					fDirFd;
 			char*				fName;
 			status_t			fCStatus;
