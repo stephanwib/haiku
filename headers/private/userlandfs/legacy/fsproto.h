@@ -6,7 +6,8 @@
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <unistd.h>
-#include <iovec.h>
+//#include <iovec.h>
+#include <sys/uio.h>
 
 #include <OS.h>
 
