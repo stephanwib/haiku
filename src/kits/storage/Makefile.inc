@@ -9,7 +9,11 @@ OS_HEADERS=
 
 SRCS+=    kernel_interface.POSIX.cpp AddOnImage.cpp AddOnMonitor.cpp AddOnMonitorHandler.cpp AppFileInfo.cpp \
           CopyEngine.cpp Directory.cpp DriverSettings.cpp Entry.cpp EntryList.cpp EntryOperationEngineBase.cpp \
-          FdIO.cpp
+          FdIO.cpp File.cpp FileDescriptorIO.cpp FileIO.cpp FindDirectory.cpp MergedDirectory.cpp Mime.cpp \
+          MimeType.cpp Node.cpp NodeInfo.cpp NodeMonitor.cpp NodeMonitorHandler.cpp OffsetFile.cpp Path.cpp \
+          PathFinder.cpp PathMonitor.cpp Query.cpp QueryPredicate.cpp RemoveEngine.cpp ResourceFile.cpp \
+          ResourceItem.cpp ResourceStrings.cpp Resources.cpp ResourcesContainer.cpp Statable.cpp SymLink.cpp \
+          Volume.cpp VolumeRoster.cpp storage_support.cpp
 
 # Issues: 
 
