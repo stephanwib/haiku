@@ -11,11 +11,9 @@
 #include <ctype.h>
 #include <string.h>
 
+#include <OS.h>
 #include <StorageDefs.h>
 #include <SupportDefs.h>
-
-#include <syscalls.h>
-
 #include "storage_support.h"
 
 using std::nothrow;
@@ -501,7 +499,7 @@ void
 FDCloser::Close()
 {
 	if (fFD >= 0)
-		_kern_close(fFD);
+		close(fFD);
 	fFD = -1;
 }
 

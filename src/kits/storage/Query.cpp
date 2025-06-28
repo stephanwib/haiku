@@ -21,7 +21,7 @@
 #include <Volume.h>
 
 #include <MessengerPrivate.h>
-#include <syscalls.h>
+#include "kernel_interface.h"
 #include <query_private.h>
 
 #include "QueryPredicate.h"
@@ -61,7 +61,7 @@ BQuery::Clear()
 	// close the currently open query
 	status_t error = B_OK;
 	if (fQueryFd >= 0) {
-		error = _kern_close(fQueryFd);
+		error = close_query(fQueryFd);
 		fQueryFd = -1;
 	}
 	// delete the predicate stack and the predicate
@@ -316,14 +316,11 @@ BQuery::Fetch()
 
 	if (!fPredicate || fDevice < 0)
 		return B_NO_INIT;
-
-	BString parsedPredicate;
-	_ParseDates(parsedPredicate);
-
-	fQueryFd = _kern_open_query(fDevice,
-		parsedPredicate.String(), parsedPredicate.Length(),
-		fFlags | ((fPort >= 0) ? B_LIVE_QUERY : 0),
-		fPort, fToken);
+	if (IsLive()) {
+		fQueryFd = open_live_query(fDevice, fPredicate, B_LIVE_QUERY, fPort,
+								fToken, fQueryFd);
+	} else
+		fQueryFd = open_query(fDevice, fPredicate, 0, fQueryFd);
 	if (fQueryFd < 0)
 		return fQueryFd;
 
@@ -370,8 +367,8 @@ BQuery::GetNextRef(entry_ref* ref)
 			}
 		}
 		if (error == B_OK) {
-			ref->device = entry->d_pdev;
-			ref->directory = entry->d_pino;
+			ref->device = 0;
+			ref->directory = entry->d_ino;
 			error = ref->set_name(entry->d_name);
 		}
 	}
@@ -388,7 +385,7 @@ BQuery::GetNextDirents(struct dirent* buffer, size_t length, int32 count)
 		return B_BAD_VALUE;
 	if (!_HasFetched())
 		return B_FILE_ERROR;
-	return _kern_read_dir(fQueryFd, buffer, length, count);
+	return read_query(fQueryFd, buffer, length, count);
 }
 
 
@@ -398,7 +395,8 @@ BQuery::Rewind()
 {
 	if (!_HasFetched())
 		return B_FILE_ERROR;
-	return _kern_rewind_dir(fQueryFd);
+
+	return B_ERROR;
 }
 
 

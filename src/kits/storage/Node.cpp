@@ -24,8 +24,8 @@
 #include <String.h>
 #include <TypeConstants.h>
 
-#include <syscalls.h>
 
+#include "kernel_interface.h"
 #include "storage_support.h"
 
 
@@ -222,7 +222,13 @@ BNode::Lock()
 	if (fCStatus != B_OK)
 		return fCStatus;
 
-	return _kern_lock_node(fFd);
+	// This will have to wait for the new kenel
+	return B_FILE_ERROR;
+
+	// We'll need to keep lock around if the kernel function
+	// doesn't just work on file descriptors
+//	BPrivate::Storage::FileLock lock;
+//	return BPrivate::Storage::lock(fFd, BPrivate::Storage::READ_WRITE, &lock);
 }
 
 
@@ -231,15 +237,15 @@ BNode::Unlock()
 {
 	if (fCStatus != B_OK)
 		return fCStatus;
-
-	return _kern_unlock_node(fFd);
+	// This will have to wait for the new kenel
+	return B_FILE_ERROR;
 }
 
 
 status_t
 BNode::Sync()
 {
-	return (fCStatus != B_OK) ? B_FILE_ERROR : _kern_fsync(fFd);
+	return (fCStatus != B_OK) ? B_FILE_ERROR : BPrivate::Storage::sync(fFd) ;
 }
 
 
@@ -253,7 +259,7 @@ BNode::WriteAttr(const char* attr, type_code type, off_t offset,
 	if (attr == NULL || buffer == NULL)
 		return B_BAD_VALUE;
 
-	ssize_t result = fs_write_attr(fFd, attr, type, offset, buffer, length);
+	ssize_t result = BPrivate::Storage::write_attr(fFd, attr, type, offset, buffer, length);
 
 	return result < 0 ? errno : result;
 }
@@ -268,8 +274,7 @@ BNode::ReadAttr(const char* attr, type_code type, off_t offset,
 
 	if (attr == NULL || buffer == NULL)
 		return B_BAD_VALUE;
-
-	ssize_t result = fs_read_attr(fFd, attr, type, offset, buffer, length);
+	ssize_t result = BPrivate::Storage::read_attr(fFd, attr, type, offset, buffer, length);
 
 	return result == -1 ? errno : result;
 }
@@ -278,7 +283,7 @@ BNode::ReadAttr(const char* attr, type_code type, off_t offset,
 status_t
 BNode::RemoveAttr(const char* name)
 {
-	return fCStatus != B_OK ? B_FILE_ERROR : _kern_remove_attr(fFd, name);
+	return (fCStatus != B_OK) ? B_FILE_ERROR : BPrivate::Storage::remove_attr(fFd, name);
 }
 
 
@@ -287,8 +292,7 @@ BNode::RenameAttr(const char* oldName, const char* newName)
 {
 	if (fCStatus != B_OK)
 		return B_FILE_ERROR;
-
-	return _kern_rename_attr(fFd, oldName, fFd, newName);
+	return BPrivate::Storage::rename_attr(fFd, oldName, newName);
 }
 
 
@@ -300,8 +304,7 @@ BNode::GetAttrInfo(const char* name, struct attr_info* info) const
 
 	if (name == NULL || info == NULL)
 		return B_BAD_VALUE;
-
-	return fs_stat_attr(fFd, name, info) < 0 ? errno : B_OK ;
+	return BPrivate::Storage::stat_attr(fFd, name, info);
 }
 
 
@@ -318,19 +321,15 @@ BNode::GetNextAttrName(char* buffer)
 
 	if (InitAttrDir() != B_OK)
 		return B_FILE_ERROR;
-
+		
 	BPrivate::Storage::LongDirEntry longEntry;
 	struct dirent* entry = longEntry.dirent();
-	ssize_t result = _kern_read_dir(fAttrFd, entry, sizeof(longEntry), 1);
-	if (result < 0)
-		return result;
-
-	if (result == 0)
-		return B_ENTRY_NOT_FOUND;
-
-	strlcpy(buffer, entry->d_name, B_ATTR_NAME_LENGTH);
-
-	return B_OK;
+	status_t error = BPrivate::Storage::read_attr_dir(fAttrFd, *entry);
+	if (error == B_OK) {
+		strlcpy(buffer, entry->d_name, B_ATTR_NAME_LENGTH);
+		return B_OK;
+	}
+	return error;
 }
 
 
@@ -340,7 +339,8 @@ BNode::RewindAttrs()
 	if (InitAttrDir() != B_OK)
 		return B_FILE_ERROR;
 
-	return _kern_rewind_dir(fAttrFd);
+	BPrivate::Storage::rewind_attr_dir(fAttrFd);
+	return B_OK;
 }
 
 
@@ -408,7 +408,7 @@ BNode::operator=(const BNode& node)
 	Unset();
 	// We have to manually dup the node, because R5::BNode::Dup()
 	// is not declared to be const (which IMO is retarded).
-	fFd = _kern_dup(node.fFd);
+	fFd = BPrivate::Storage::dup(node.fFd);
 	fCStatus = (fFd < 0) ? B_NO_INIT : B_OK ;
 
 	return *this;
@@ -422,15 +422,13 @@ BNode::operator==(const BNode& node) const
 		return true;
 
 	if (fCStatus == B_OK && node.InitCheck() == B_OK) {
-		// compare the node_refs
-		node_ref ref1, ref2;
-		if (GetNodeRef(&ref1) != B_OK)
+		// Check if they're identical
+		BPrivate::Storage::Stat s1, s2;
+		if (GetStat(&s1) != B_OK)
 			return false;
-
-		if (node.GetNodeRef(&ref2) != B_OK)
+		if (node.GetStat(&s2) != B_OK)
 			return false;
-
-		return (ref1 == ref2);
+		return (s1.st_dev == s2.st_dev && s1.st_ino == s2.st_ino);
 	}
 
 	return false;
@@ -447,7 +445,7 @@ BNode::operator!=(const BNode& node) const
 int
 BNode::Dup()
 {
-	int fd = _kern_dup(fFd);
+	int fd = BPrivate::Storage::dup(fFd);
 
 	return (fd >= 0 ? fd : -1);
 		// comply with R5 return value
@@ -501,11 +499,11 @@ void
 BNode::close_fd()
 {
 	if (fAttrFd >= 0) {
-		_kern_close(fAttrFd);
+		BPrivate::Storage::close_attr_dir(fAttrFd);
 		fAttrFd = -1;
 	}
 	if (fFd >= 0) {
-		_kern_close(fFd);
+		close(fFd);
 		fFd = -1;
 	}
 }
@@ -557,17 +555,10 @@ BNode::_SetTo(int fd, const char* path, bool traverse)
 
 	status_t error = (fd >= 0 || path ? B_OK : B_BAD_VALUE);
 	if (error == B_OK) {
-		int traverseFlag = (traverse ? 0 : O_NOTRAVERSE);
-		fFd = _kern_open(fd, path, O_RDWR | O_CLOEXEC | traverseFlag, 0);
-		if (fFd < B_OK && fFd != B_ENTRY_NOT_FOUND) {
-			// opening read-write failed, re-try read-only
-			fFd = _kern_open(fd, path, O_RDONLY | O_CLOEXEC | traverseFlag, 0);
-		}
-		if (fFd < 0)
-			error = fFd;
+//FIXME
 	}
 
-	return fCStatus = error;
+	return error;
 }
 
 
@@ -593,19 +584,9 @@ BNode::_SetTo(const entry_ref* ref, bool traverse)
 
 	status_t result = (ref ? B_OK : B_BAD_VALUE);
 	if (result == B_OK) {
-		int traverseFlag = (traverse ? 0 : O_NOTRAVERSE);
-		fFd = _kern_open_entry_ref(ref->device, ref->directory, ref->name,
-			O_RDWR | O_CLOEXEC | traverseFlag, 0);
-		if (fFd < B_OK && fFd != B_ENTRY_NOT_FOUND) {
-			// opening read-write failed, re-try read-only
-			fFd = _kern_open_entry_ref(ref->device, ref->directory, ref->name,
-				O_RDONLY | O_CLOEXEC | traverseFlag, 0);
-		}
-		if (fFd < 0)
-			result = fFd;
+		//FIXME
 	}
-
-	return fCStatus = result;
+	return result;
 }
 
 
@@ -625,8 +606,7 @@ BNode::set_stat(struct stat& stat, uint32 what)
 	if (fCStatus != B_OK)
 		return B_FILE_ERROR;
 
-	return _kern_write_stat(fFd, NULL, false, &stat, sizeof(struct stat),
-		what);
+	return BPrivate::Storage::set_stat(fFd, stat, what);
 }
 
 
@@ -641,12 +621,7 @@ status_t
 BNode::InitAttrDir()
 {
 	if (fCStatus == B_OK && fAttrFd < 0) {
-		fAttrFd = _kern_open_attr_dir(fFd, NULL, false);
-		if (fAttrFd < 0)
-			return fAttrFd;
-
-		// set close on exec flag
-		fcntl(fAttrFd, F_SETFD, FD_CLOEXEC);
+		return BPrivate::Storage::open_attr_dir(fFd, fAttrFd);
 	}
 
 	return fCStatus;
@@ -654,11 +629,13 @@ BNode::InitAttrDir()
 
 
 status_t
-BNode::_GetStat(struct stat* stat) const
+BNode::GetStat(struct stat* stat) const
 {
-	return fCStatus != B_OK
+
+
+	return (fCStatus != B_OK)
 		? fCStatus
-		: _kern_read_stat(fFd, NULL, false, stat, sizeof(struct stat));
+		: BPrivate::Storage::get_stat(fFd, stat);
 }
 
 
@@ -666,7 +643,7 @@ status_t
 BNode::_GetStat(struct stat_beos* stat) const
 {
 	struct stat newStat;
-	status_t error = _GetStat(&newStat);
+	status_t error = GetStat(&newStat);
 	if (error != B_OK)
 		return error;
 
@@ -679,38 +656,4 @@ BNode::_GetStat(struct stat_beos* stat) const
 //	#pragma mark - symbol versions
 
 
-#ifdef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-#	if __GNUC__ == 2	// gcc 2
 
-	B_DEFINE_SYMBOL_VERSION("_GetStat__C5BNodeP4stat",
-		"GetStat__C5BNodeP4stat@@LIBBE_TEST");
-
-#	else	// gcc 4
-
-	B_DEFINE_SYMBOL_VERSION("_ZNK5BNode8_GetStatEP4stat",
-		"_ZNK5BNode7GetStatEP4stat@@LIBBE_TEST");
-
-#	endif	// gcc 4
-#else	// !HAIKU_TARGET_PLATFORM_LIBBE_TEST
-#	if __GNUC__ == 2	// gcc 2
-
-	// BeOS compatible GetStat()
-	B_DEFINE_SYMBOL_VERSION("_GetStat__C5BNodeP9stat_beos",
-		"GetStat__C5BNodeP4stat@LIBBE_BASE");
-
-	// Haiku GetStat()
-	B_DEFINE_SYMBOL_VERSION("_GetStat__C5BNodeP4stat",
-		"GetStat__C5BNodeP4stat@@LIBBE_1_ALPHA1");
-
-#	else	// gcc 4
-
-	// BeOS compatible GetStat()
-	B_DEFINE_SYMBOL_VERSION("_ZNK5BNode8_GetStatEP9stat_beos",
-		"_ZNK5BNode7GetStatEP4stat@LIBBE_BASE");
-
-	// Haiku GetStat()
-	B_DEFINE_SYMBOL_VERSION("_ZNK5BNode8_GetStatEP4stat",
-		"_ZNK5BNode7GetStatEP4stat@@LIBBE_1_ALPHA1");
-
-#	endif	// gcc 4
-#endif	// !HAIKU_TARGET_PLATFORM_LIBBE_TEST
