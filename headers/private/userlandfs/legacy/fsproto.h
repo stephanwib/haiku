@@ -65,6 +65,9 @@ typedef ino_t		vnode_id;
 
 struct attr_info;
 struct index_info;
+
+/*
+
 typedef struct selectsync selectsync;
 
 typedef int	op_read_vnode(void *ns, vnode_id vnid, char r, void **node);
@@ -258,5 +261,8 @@ extern _EXPORT int32		api_version;
 #ifdef __cplusplus
 	}	// extern "C"
 #endif
+
+
+*/
 
 #endif
