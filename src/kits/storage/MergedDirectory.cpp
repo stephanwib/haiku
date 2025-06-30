@@ -215,6 +215,7 @@ BMergedDirectory::ShallPreferFirstEntry(const entry_ref& entry1, int32 index1,
 void
 BMergedDirectory::_FindBestEntry(dirent* direntBuffer)
 {
+	/*
 	entry_ref bestEntry(direntBuffer->d_pdev, direntBuffer->d_pino,
 		direntBuffer->d_name);
 	if (bestEntry.name == NULL)
@@ -237,4 +238,5 @@ BMergedDirectory::_FindBestEntry(dirent* direntBuffer)
 			bestIndex = i;
 		}
 	}
+	*/
 }
