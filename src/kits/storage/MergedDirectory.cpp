@@ -119,8 +119,8 @@ BMergedDirectory::GetNextRef(entry_ref* ref)
 	if (result == 0)
 		return B_ENTRY_NOT_FOUND;
 
-	ref->device = entry->d_pdev;
-	ref->directory = entry->d_pino;
+	//ref->device = entry->d_pdev;
+	//ref->directory = entry->d_pino;
 	return ref->set_name(entry->d_name);
 }
 
