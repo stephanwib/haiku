@@ -190,11 +190,11 @@ NodeMonitorHandler::HandleEntryMoved(BMessage * msg)
 	dev_t deviceNode;
 	if ((msg->FindString("name", &name) != B_OK) ||
 		(msg->FindString("from name", &fromName) != B_OK) ||
-		(msg->FindInt64("from directory", &fromDirectory) != B_OK) ||
-		(msg->FindInt64("to directory", &toDirectory) != B_OK) ||
-		(msg->FindInt32("device", &device) != B_OK) ||
+		(msg->FindInt64("from directory", (int64*)&fromDirectory) != B_OK) ||
+		(msg->FindInt64("to directory", (int64*)&toDirectory) != B_OK) ||
+		(msg->FindInt32("device", (int32*)&device) != B_OK) ||
 		(msg->FindInt32("node device", &deviceNode) != B_OK) ||
-		(msg->FindInt64("node", &node) != B_OK)) {
+		(msg->FindInt64("node", (int64*)&node) != B_OK)) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
 	EntryMoved(name, fromName, fromDirectory, toDirectory, device, node,
@@ -224,8 +224,8 @@ NodeMonitorHandler::HandleAttrChanged(BMessage * msg)
 {
 	ino_t node;
 	dev_t device;
-	if ((msg->FindInt64("node", &node) != B_OK) ||
-		(msg->FindInt32("device", &device) != B_OK)) {
+	if ((msg->FindInt64("node", (int64*)&node) != B_OK) ||
+		(msg->FindInt32("device", (int32*)&device) != B_OK)) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
 	AttrChanged(node, device);
@@ -239,9 +239,9 @@ NodeMonitorHandler::HandleDeviceMounted(BMessage * msg)
 	dev_t new_device;
 	dev_t device;
 	ino_t directory;
-	if ((msg->FindInt32("new device", &new_device) != B_OK) ||
-		(msg->FindInt32("device", &device) != B_OK) ||
-		(msg->FindInt64("directory", &directory) != B_OK)) {
+	if ((msg->FindInt32("new device", (int32*)&new_device) != B_OK) ||
+		(msg->FindInt32("device", (int32*)&device) != B_OK) ||
+		(msg->FindInt64("directory", (int64*)&directory) != B_OK)) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
 	DeviceMounted(new_device, device, directory);
@@ -253,7 +253,7 @@ status_t
 NodeMonitorHandler::HandleDeviceUnmounted(BMessage * msg)
 {
 	dev_t new_device;
-	if (msg->FindInt32("new device", &new_device) != B_OK) {
+	if (msg->FindInt32("new device", (int32*)&new_device) != B_OK) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
 	DeviceUnmounted(new_device);
