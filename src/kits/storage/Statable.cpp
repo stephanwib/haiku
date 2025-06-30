@@ -253,10 +253,14 @@ BStatable::GetCreationTime(time_t* ctime) const
 status_t
 BStatable::SetCreationTime(time_t ctime)
 {
+	return B_ERROR;
+
+	/* XXX fixme
 	struct stat stat = {};
 	stat.st_crtime = ctime;
 
 	return set_stat(stat, B_STAT_CREATION_TIME);
+	*/
 }
 
 
