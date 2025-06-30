@@ -193,7 +193,7 @@ NodeMonitorHandler::HandleEntryMoved(BMessage * msg)
 		(msg->FindInt64("from directory", (int64*)&fromDirectory) != B_OK) ||
 		(msg->FindInt64("to directory", (int64*)&toDirectory) != B_OK) ||
 		(msg->FindInt32("device", (int32*)&device) != B_OK) ||
-		(msg->FindInt32("node device", &deviceNode) != B_OK) ||
+		(msg->FindInt32("node device", (int32*)&deviceNode) != B_OK) ||
 		(msg->FindInt64("node", (int64*)&node) != B_OK)) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
