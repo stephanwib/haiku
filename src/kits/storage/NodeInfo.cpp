@@ -28,6 +28,11 @@
 using namespace std;
 
 
+#define	B_DIRECTORY_MIME_TYPE	"application/x-vnd.Be-directory"
+#define	B_VOLUME_MIME_TYPE		"application/x-vnd.Be-volume"
+#define	B_SYMLINK_MIME_TYPE		"application/x-vnd.Be-symlink"
+#define	B_ROOT_MIME_TYPE		"application/x-vnd.Be-root"
+
 // attribute names
 #define NI_BEOS "BEOS"
 static const char* kNITypeAttribute			= NI_BEOS ":TYPE";
