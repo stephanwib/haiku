@@ -229,8 +229,8 @@ BMergedDirectory::_FindBestEntry(dirent* direntBuffer)
 		if (entry.GetStat(&st) == B_OK && entry.GetRef(&ref) == B_OK
 			&& !ShallPreferFirstEntry(bestEntry, bestIndex, ref, i)) {
 			direntBuffer->d_pdev = ref.device;
-			direntBuffer->d_pino = ref.directory;
-			direntBuffer->d_dev = st.st_dev;
+			//direntBuffer->d_pino = ref.directory;
+			//direntBuffer->d_dev = st.st_dev;
 			direntBuffer->d_ino = st.st_ino;
 			bestEntry.device = ref.device;
 			bestEntry.directory = ref.directory;
