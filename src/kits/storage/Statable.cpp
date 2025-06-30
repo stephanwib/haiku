@@ -234,7 +234,9 @@ BStatable::SetModificationTime(time_t mtime)
 status_t
 BStatable::GetCreationTime(time_t* ctime) const
 {
-	status_t result = (ctime ? B_OK : B_BAD_VALUE);
+	status_t result = (ctime ? B_ERROR : B_BAD_VALUE);
+	/* XXX convert to birthtime
+    status_t result = (ctime ? B_OK : B_BAD_VALUE);
 	struct stat stat = {};
 
 	if (result == B_OK)
@@ -242,7 +244,7 @@ BStatable::GetCreationTime(time_t* ctime) const
 
 	if (result == B_OK)
 		*ctime = stat.st_crtime;
-
+    */
 	return result;
 }
 
