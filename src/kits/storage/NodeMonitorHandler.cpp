@@ -209,8 +209,8 @@ NodeMonitorHandler::HandleStatChanged(BMessage * msg)
 	ino_t node;
 	dev_t device;
 	int32 statFields;
-	if ((msg->FindInt64("node", &node) != B_OK) ||
-		(msg->FindInt32("device", &device) != B_OK) ||
+	if ((msg->FindInt64("node", (int64*)&node) != B_OK) ||
+		(msg->FindInt32("device", (int32*)&device) != B_OK) ||
 		(msg->FindInt32("fields", &statFields) != B_OK)) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
