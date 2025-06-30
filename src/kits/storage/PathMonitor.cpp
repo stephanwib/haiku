@@ -1060,9 +1060,9 @@ PathHandler::_EntryCreated(BMessage* message)
 	NotOwningEntryRef entryRef;
 	node_ref nodeRef;
 
-	if (message->FindInt32("device", &nodeRef.device) != B_OK
-		|| message->FindInt64("node", &nodeRef.node) != B_OK
-		|| message->FindInt64("directory", &entryRef.directory) != B_OK
+	if (message->FindInt32("device", (int32*)&nodeRef.device) != B_OK
+		|| message->FindInt64("node", (int64*)&nodeRef.node) != B_OK
+		|| message->FindInt64("directory", (int64*)&entryRef.directory) != B_OK
 		|| message->FindString("name", (const char**)&entryRef.name) != B_OK) {
 		return;
 	}
