@@ -7,11 +7,17 @@
 
 
 #include <sys/types.h>
+#include <string>
 
 #include <fs_info.h>
 #include <Mime.h>
 #include <StorageDefs.h>
 #include <SupportDefs.h>
+#include <Path.h>
+
+#ifndef __APPLE__
+#include <mntent.h>
+#endif
 
 
 class BDirectory;
@@ -57,6 +63,8 @@ public:
 			BVolume&		operator=(const BVolume& volume);
 
 private:
+	friend class BVolumeRoster;
+
 	virtual void			_TurnUpTheVolume1();
 	virtual void			_TurnUpTheVolume2();
 	virtual void			_TurnUpTheVolume3();
@@ -66,12 +74,30 @@ private:
 	virtual void			_TurnUpTheVolume7();
 	virtual void			_TurnUpTheVolume8();
 
+					BVolume(struct mntent* inMountEntry);
+
+	void			_LoadVolumeProperties() const;
+
 			dev_t			fDevice;
 								// The device ID of the volume.
 			status_t		fCStatus;
 								// The initialization status of the object.
 			int32			_reserved[8];
 								// FBC
+
+// These are mutable so we can do lazy loading from const members
+// Worthwhile?  Skanky?  You decide.
+
+	mutable	bool		mPropertiesLoaded;
+	mutable bool		mIsShared;
+	mutable bool		mIsRemovable;
+	mutable bool		mIsReadOnly;
+	mutable bool		mIsPersistent;
+	mutable off_t		mCapacity;
+	mutable off_t		mFreeBytes;
+	mutable std::string	mName;
+	mutable BPath		mDevicePath;
+	mutable BPath		mMountPath;
 };
 
 
