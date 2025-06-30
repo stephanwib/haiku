@@ -168,9 +168,9 @@ NodeMonitorHandler::HandleEntryRemoved(BMessage * msg)
 	dev_t device;
 	ino_t node;
 	if ((msg->FindString("name", &name) != B_OK) ||
-		(msg->FindInt64("directory", &directory) != B_OK) ||
-		(msg->FindInt32("device", &device) != B_OK) ||
-		(msg->FindInt64("node", &node) != B_OK)) {
+		(msg->FindInt64("directory", (int64*)&directory) != B_OK) ||
+		(msg->FindInt32("device", (int32*)&device) != B_OK) ||
+		(msg->FindInt64("node", (int64*)&node) != B_OK)) {
 		return B_MESSAGE_NOT_UNDERSTOOD;
 	}
 	EntryRemoved(name, directory, device, node);
