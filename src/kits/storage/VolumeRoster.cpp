@@ -7,7 +7,8 @@
 //	Description:	BVolumeRoster class
 // ----------------------------------------------------------------------
 
-
+#include <sys/types.h>
+#include <sys/statvfs.h>
 #include <errno.h>
 #include <new>
 
@@ -35,6 +36,29 @@ BVolumeRoster::BVolumeRoster()
 	: fCookie(0),
 	  fTarget(NULL)
 {
+	struct statvfs* mountInfos;
+	int numMounts = getmntinfo(&mountInfos, MNT_NOWAIT);
+
+	if (numMounts == 0) {
+		_DeallocateMountList();
+		return;
+	}
+
+	for (int i = 0; i < numMounts; ++i) {
+		const char* mountPoint = mountInfos[i].f_mntonname;
+
+		if (mountPoint != NULL &&
+			(strcmp(mountPoint, "/") == 0 || strncmp(mountPoint, "/media", 6) == 0)) {
+			mMountList.AddItem(new BVolume(&mountInfos[i]));
+		}
+	}
+}
+
+/*
+BVolumeRoster::BVolumeRoster()
+	: fCookie(0),
+	  fTarget(NULL)
+{
 	struct mntent*	aMountEntry;
 	FILE*			fstab;
 
@@ -58,6 +82,8 @@ BVolumeRoster::BVolumeRoster()
 		errno = saved_errno;
 	}
 }
+
+*/
 
 
 // Deletes the volume roster and frees all associated resources.
