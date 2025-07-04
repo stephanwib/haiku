@@ -1,6 +1,6 @@
 #LIBRARY_HEADERS=
 PRIVATE_HEADERS= storage userlandfs/legacy
-OS_HEADERS=
+OS_HEADERS= add-ons/registrar
 
 .PATH: ${.CURDIR}/../../kits/storage \
        ${.CURDIR}/../../kits/storage/disk_device \
