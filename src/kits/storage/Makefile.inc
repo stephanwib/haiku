@@ -18,7 +18,8 @@ SRCS+=    kernel_interface.POSIX.cpp AddOnImage.cpp AddOnMonitor.cpp AddOnMonito
 # Issues: 
 
 # disk_device
-SRCS+=    
+SRCS+=    CharStream.cpp DisjList.cpp Err.cpp Parser.cpp Pattern.cpp PatternList.cpp RPattern.cpp \
+          RPatternList.cpp Range.cpp Rule.cpp
 
 # mime
 SRCS+=    AppMetaMimeCreator.cpp AssociatedTypes.cpp Database.cpp DatabaseDirectory.cpp DatabaseLocation.cpp \
