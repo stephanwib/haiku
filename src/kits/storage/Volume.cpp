@@ -10,6 +10,8 @@
 
 #include <errno.h>
 #include <string.h>
+#include <sys/statvfs.h>
+#include <sys/stat.h>
 
 #include <Bitmap.h>
 #include <Directory.h>
@@ -70,6 +72,54 @@ BVolume::BVolume(const BVolume &volume)
 {
 }
 
+BVolume::BVolume(struct statvfs* inMountEntry)
+{
+	struct stat st;
+	const char* mountPoint = inMountEntry->f_mntonname;
+	const char* devicePath = inMountEntry->f_mntfromname;
+
+	// Device number (dev_t) via stat()
+	if (stat(devicePath, &st) == 0) {
+		fDevice = st.st_rdev;
+	} else if (stat(mountPoint, &st) == 0) {
+		fDevice = st.st_dev;
+	} else {
+		fDevice = (dev_t)-1;
+	}
+
+	// Mount flags
+	mIsReadOnly = (inMountEntry->f_flag & MNT_RDONLY);
+
+	// Removable?
+	mIsRemovable = strstr(devicePath, "sd") != NULL || strstr(devicePath, "cd") != NULL;
+
+	// Shared?
+	mIsShared = strncmp(inMountEntry->f_fstypename, "nfs", 3) == 0 ||
+	            (inMountEntry->f_flag & MNT_EXPORTED);
+
+	// Persistent
+	mIsPersistent = strncmp(inMountEntry->f_fstypename, "tmpfs", 5) != 0;
+
+	// Space
+	mCapacity = inMountEntry->f_blocks * inMountEntry->f_frsize;
+	mFreeBytes = inMountEntry->f_bavail * inMountEntry->f_frsize;
+
+	// Name
+	char nameBuf[PATH_MAX];
+	strlcpy(nameBuf, mountPoint, sizeof(nameBuf));
+	mName = basename(nameBuf);
+
+	// Path
+	mDevicePath.SetTo(devicePath);
+	mMountPath.SetTo(mountPoint);
+
+	fCStatus = (fDevice == -1) ? -1 : 0;
+
+	mPropertiesLoaded = true;
+}
+
+/*
+
 BVolume::BVolume(struct mntent* inMountEntry)
 {
 	char* deviceOptionsList;
@@ -106,6 +156,9 @@ BVolume::BVolume(struct mntent* inMountEntry)
 
 	fCStatus = (fDevice == -1) ? -1 : 0;
 }
+
+*/
+
 
 // Destroys the object and frees all associated resources.
 BVolume::~BVolume()
