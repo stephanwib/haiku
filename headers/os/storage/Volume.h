@@ -15,10 +15,6 @@
 #include <SupportDefs.h>
 #include <Path.h>
 
-#ifndef __APPLE__
-#include <mntent.h>
-#endif
-
 
 class BDirectory;
 class BBitmap;
@@ -74,7 +70,7 @@ private:
 	virtual void			_TurnUpTheVolume7();
 	virtual void			_TurnUpTheVolume8();
 
-					BVolume(struct mntent* inMountEntry);
+					BVolume(struct statvfs* inMountEntry);
 
 	void			_LoadVolumeProperties() const;
 
