@@ -12,6 +12,7 @@
 #include <string.h>
 #include <sys/statvfs.h>
 #include <sys/stat.h>
+#include <libgen.h>
 
 #include <Bitmap.h>
 #include <Directory.h>
