@@ -21,7 +21,10 @@ SRCS+=    kernel_interface.POSIX.cpp AddOnImage.cpp AddOnMonitor.cpp AddOnMonito
 SRCS+=    
 
 # mime
-SRCS+=    
+SRCS+=    AppMetaMimeCreator.cpp AssociatedTypes.cpp Database.cpp DatabaseDirectory.cpp DatabaseLocation.cpp \
+          InstalledTypes.cpp MimeEntryProcessor.cpp MimeInfoUpdater.cpp MimeSniffer.cpp MimeSnifferAddon.cpp \
+          MimeSnifferAddonManager.cpp SnifferRules.cpp Supertype.cpp SupportingApps.cpp TextSnifferAddon.cpp \
+          TextSnifferAddon.cpp database_support.cpp
 
 # sniffer
 SRCS+=  
