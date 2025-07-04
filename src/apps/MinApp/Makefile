@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface
-OS_HEADERS=         interface app # support storage translation locale add-ons/graphics
+OS_HEADERS=         interface app support #storage translation locale add-ons/graphics
 
 PROG=	MinApp
 
