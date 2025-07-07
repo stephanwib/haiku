@@ -12,7 +12,10 @@ CXXFLAGS= -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
 # XXX Compiler suggests -std=gnu99 due to alloca usage
 
-LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd -lmapm
+LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
+
+LIBDPLIBS+= mapm /usr/pkg/lib
+LIBDO.mapm = _external
 
 WARNS=		5
 
