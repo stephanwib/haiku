@@ -2,6 +2,14 @@
 
 LIB=	icon
 
+.PATH: ${.CURDIR}/flat_icon \
+       ${.CURDIR}/generic \
+       ${.CURDIR}/message \
+       ${.CURDIR}/shape \
+       ${.CURDIR}/style \
+       ${.CURDIR}/transformable \
+       ${.CURDIR}/transformer
+
 SRCS+=     Icon.cpp IconRenderer.cpp IconUtils.cpp
 
 # flat_icon
