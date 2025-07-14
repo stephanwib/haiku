@@ -25,13 +25,15 @@ SRCS+=     Defines.cpp MessageImporter.cpp
 SRCS+=     PathSourceShape.cpp ReferenceImage.cpp Shape.cpp VectorPath.cpp
 
 # style
-SRCS+=     
+SRCS+=     GradientTransformable.cpp Style.cpp
 
 # transformable
-SRCS+=     
+SRCS+=     Transformable.cpp
 
 # transformer
-SRCS+=     
+SRCS+=     AffineTransformer.cpp CompoundStyleTransformer.cpp ContourTransformer.cpp PathSource.cpp \
+           PerspectiveTransformer.cpp StrokeTransformer.cpp StyleTransformer.cpp TransformerFactory.cpp
+
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
 CPPFLAGS+= -I${.CURDIR}
