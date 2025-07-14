@@ -16,16 +16,13 @@ LIB=	icon
 SRCS+=     Icon.cpp IconRenderer.cpp IconUtils.cpp
 
 # flat_icon
-SRCS+=     
-
-# generic
-SRCS+=     
-
+SRCS+=     FlatIconFormat.cpp FlatIconImporter.cpp LittleEndianBuffer.cpp PathCommandQueue.cpp
+ 
 # message
-SRCS+=     
+SRCS+=     Defines.cpp MessageImporter.cpp
 
 # shape
-SRCS+=     
+SRCS+=     PathSourceShape.cpp ReferenceImage.cpp Shape.cpp VectorPath.cpp
 
 # style
 SRCS+=     
