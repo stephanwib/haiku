@@ -40,6 +40,7 @@ CPPFLAGS+= -I${.CURDIR}
 CPPFLAGS+= -I${.CURDIR}/generic
 CPPFLAGS+= -I${.CURDIR}/flat_icon
 CPPFLAGS+= -I${.CURDIR}/shape
+CPPFLAGS+= -I${.CURDIR}/style
 CPPFLAGS+= -I${.CURDIR}/message
 CPPFLAGS+= -I${.CURDIR}/transformable
 CPPFLAGS+= -I${.CURDIR}/transformer
