@@ -12,7 +12,8 @@ SRCS+=     agg_arc.cpp agg_arrowhead.cpp agg_bezier_arc.cpp agg_bspline.cpp agg_
 
 # flat_icon
 #SRCS+=     FlatIconFormat.cpp FlatIconImporter.cpp LittleEndianBuffer.cpp PathCommandQueue.cpp
- 
+
+CPPFLAGS+= -I${.CURDIR}/../../../headers/libs/agg
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
 #CPPFLAGS+= -I${.CURDIR}
