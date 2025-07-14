@@ -43,6 +43,7 @@ CPPFLAGS+= -I${.CURDIR}/shape
 CPPFLAGS+= -I${.CURDIR}/message
 CPPFLAGS+= -I${.CURDIR}/transformable
 CPPFLAGS+= -I${.CURDIR}/transformer
+CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
