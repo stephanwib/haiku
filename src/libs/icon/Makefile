@@ -1,5 +1,7 @@
 .include <bsd.own.mk>
 
+OS_HEADERS= support
+
 LIB=	icon
 
 .PATH: ${.CURDIR}/flat_icon \
@@ -41,6 +43,10 @@ CPPFLAGS+= -I${.CURDIR}/shape
 CPPFLAGS+= -I${.CURDIR}/message
 CPPFLAGS+= -I${.CURDIR}/transformable
 CPPFLAGS+= -I${.CURDIR}/transformer
+
+.for HEADER in ${OS_HEADERS}
+CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
+.endfor
 
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
 
