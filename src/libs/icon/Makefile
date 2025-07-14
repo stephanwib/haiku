@@ -1,6 +1,6 @@
 .include <bsd.own.mk>
 
-OS_HEADERS= app support
+OS_HEADERS= app support storage
 
 LIB=	icon
 
