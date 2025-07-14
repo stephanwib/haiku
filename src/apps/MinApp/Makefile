@@ -7,8 +7,8 @@ SRCS+=      MinApp.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDADD+=	-lbe -licon
-LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L/usr/pkg/lib
+LDADD+=	-lbe -licon -lagg
+LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg -L/usr/pkg/lib
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
