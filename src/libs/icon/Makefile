@@ -45,6 +45,7 @@ CPPFLAGS+= -I${.CURDIR}/transformable
 CPPFLAGS+= -I${.CURDIR}/transformer
 CPPFLAGS+= -I${.CURDIR}/../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../../headers/libs/agg
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
