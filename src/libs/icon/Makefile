@@ -1,6 +1,7 @@
 .include <bsd.own.mk>
 
 OS_HEADERS= app interface support storage
+PRIVATE_HEADERS= shared
 
 LIB=	icon
 
@@ -50,6 +51,10 @@ CPPFLAGS+= -I${.CURDIR}/../../../headers/libs/agg
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
+.endfor
+
+.for HEADER in ${PRIVATE_HEADERS}
+CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 .endfor
 
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
