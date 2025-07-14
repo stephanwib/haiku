@@ -35,6 +35,12 @@ SRCS+=
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
 CPPFLAGS+= -I${.CURDIR}
+CPPFLAGS+= -I${.CURDIR}/generic
+CPPFLAGS+= -I${.CURDIR}/flat_icon
+CPPFLAGS+= -I${.CURDIR}/shape
+CPPFLAGS+= -I${.CURDIR}/message
+CPPFLAGS+= -I${.CURDIR}/transformable
+CPPFLAGS+= -I${.CURDIR}/transformer
 
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
 
