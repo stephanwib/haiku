@@ -34,6 +34,7 @@ SRCS+=
 SRCS+=     
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CPPFLAGS+= -I${.CURDIR}
 
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
 
