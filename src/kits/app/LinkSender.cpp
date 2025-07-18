@@ -18,7 +18,7 @@
 #include <LinkSender.h>
 
 #include "link_message.h"
-// #include "syscalls.h"
+#include "syscalls.h"
 
 //#define DEBUG_BPORTLINK
 #ifdef DEBUG_BPORTLINK
