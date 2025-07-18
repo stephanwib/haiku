@@ -20,10 +20,14 @@ OS_HEADERS= app support storage interface kernel
 SRCS+=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp Clipboard.cpp Cursor.cpp \
       DesktopLink.cpp DirectMessageTarget.cpp Handler.cpp InitTerminateLibBe.cpp Invoker.cpp \
       Key.cpp KeyStore.cpp LaunchRoster.cpp LinkReceiver.cpp LinkSender.cpp Looper.cpp LooperList.cpp \
-      Message.cpp MessageAdapter.cpp MessageFilter.cpp MessageQueue.cpp MessageRunner.cpp \
+      Message.cpp  MessageFilter.cpp MessageQueue.cpp MessageRunner.cpp \
       MessageUtils.cpp Messenger.cpp Notification.cpp PortLink.cpp PropertyInfo.cpp RegistrarDefs.cpp \
       Roster.cpp RosterPrivate.cpp Server.cpp ServerLink.cpp ServerMemoryAllocator.cpp TokenSpace.cpp \
       TypeConstants.cpp
+
+# Issues:
+# MessageAdapter.cpp - missing deps (from libroot?)
+
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
