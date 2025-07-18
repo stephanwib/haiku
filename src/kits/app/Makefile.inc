@@ -25,9 +25,6 @@ SRCS+=	AppDefs.cpp AppMisc.cpp AppServerLink.cpp Application.cpp Clipboard.cpp C
       Roster.cpp RosterPrivate.cpp Server.cpp ServerLink.cpp ServerMemoryAllocator.cpp TokenSpace.cpp \
       TypeConstants.cpp
 
-# Issues:
-# Notification.cpp -- kernel realted? Not included in Cosmoe as well
-
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
 
