@@ -277,7 +277,7 @@ MessageAdapter::ConvertToKMessage(const BMessage* from, KMessage& to)
 }
 
 
-/*static*/ status_t
+status_t
 MessageAdapter::_ConvertFromKMessage(const KMessage *fromMessage,
 	BMessage *toMessage)
 {
@@ -338,7 +338,7 @@ MessageAdapter::_ConvertFromKMessage(const KMessage *fromMessage,
 }
 */
 
-/*static*/ ssize_t
+ssize_t
 MessageAdapter::_R5FlattenedSize(const BMessage *from)
 {
 	BMessage::Private messagePrivate((BMessage *)from);
