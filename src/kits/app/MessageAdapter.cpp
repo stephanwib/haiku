@@ -164,8 +164,8 @@ MessageAdapter::Flatten(uint32 format, const BMessage *from, BDataIO *stream,
 	return B_ERROR;
 }
 
-
-/*static*/ status_t
+/*
+status_t
 MessageAdapter::Unflatten(uint32 format, BMessage *into, const char *buffer)
 {
 	if (format == KMessage::kMessageHeaderMagic) {
@@ -215,7 +215,7 @@ MessageAdapter::Unflatten(uint32 format, BMessage *into, const char *buffer)
 
 	return B_NOT_A_MESSAGE;
 }
-
+*/
 
 /*static*/ status_t
 MessageAdapter::Unflatten(uint32 format, BMessage *into, BDataIO *stream)
@@ -238,8 +238,8 @@ MessageAdapter::Unflatten(uint32 format, BMessage *into, BDataIO *stream)
 	return B_NOT_A_MESSAGE;
 }
 
-
-/*static*/ status_t
+/*
+status_t
 MessageAdapter::ConvertToKMessage(const BMessage* from, KMessage& to)
 {
 	if (from == NULL)
@@ -336,7 +336,7 @@ MessageAdapter::_ConvertFromKMessage(const KMessage *fromMessage,
 
 	return B_OK;
 }
-
+*/
 
 /*static*/ ssize_t
 MessageAdapter::_R5FlattenedSize(const BMessage *from)
