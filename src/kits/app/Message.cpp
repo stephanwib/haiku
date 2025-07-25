@@ -15,7 +15,7 @@
 #include <DirectMessageTarget.h>
 #include <MessengerPrivate.h>
 #include <TokenSpace.h>
-#include <util/KMessage.h>
+// #include <util/KMessage.h>
 
 #include <Alignment.h>
 #include <Application.h>
@@ -930,9 +930,12 @@ BMessage::SendReply(BMessage* reply, BMessenger replyTo, bigtime_t timeout)
 	BMessenger::Private messengerPrivate(messenger);
 	messengerPrivate.SetTo(fHeader->reply_team, fHeader->reply_port,
 		fHeader->reply_target);
+
+	/*
 	if ((fHeader->flags & MESSAGE_FLAG_REPLY_AS_KMESSAGE) != 0)
 		reply->fHeader->flags |= MESSAGE_FLAG_REPLY_AS_KMESSAGE;
-
+    */
+	
 	if ((fHeader->flags & MESSAGE_FLAG_REPLY_REQUIRED) != 0) {
 		if ((fHeader->flags & MESSAGE_FLAG_REPLY_DONE) != 0)
 			return B_DUPLICATE_REPLY;
@@ -1010,8 +1013,8 @@ BMessage::SendReply(BMessage* reply, BMessage* replyToReply,
 		return B_BAD_REPLY;
 
 	reply->AddMessage("_previous_", this);
-	reply->fHeader->flags |= MESSAGE_FLAG_IS_REPLY
-		| (fHeader->flags & MESSAGE_FLAG_REPLY_AS_KMESSAGE);
+	reply->fHeader->flags |= MESSAGE_FLAG_IS_REPLY;
+	//	| (fHeader->flags & MESSAGE_FLAG_REPLY_AS_KMESSAGE);
 	status_t result = messenger.SendMessage(reply, replyToReply, sendTimeout,
 		replyTimeout);
 	reply->fHeader->flags &= ~MESSAGE_FLAG_IS_REPLY;
@@ -2157,14 +2160,16 @@ BMessage::_SendMessage(port_id port, team_id portOwner, int32 token,
 			return B_NO_MEMORY;
 		}
 #ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-	} else if ((fHeader->flags & MESSAGE_FLAG_REPLY_AS_KMESSAGE) != 0) {
+	} 
+	/* else if ((fHeader->flags & MESSAGE_FLAG_REPLY_AS_KMESSAGE) != 0) {
 		KMessage toMessage;
 		result = BPrivate::MessageAdapter::ConvertToKMessage(this, toMessage);
 		if (result != B_OK)
 			return result;
 
 		return toMessage.SendTo(port, token);
-	} else if (fHeader->data_size > B_PAGE_SIZE * 10) {
+	} */
+	else if (fHeader->data_size > B_PAGE_SIZE * 10) {
 		// ToDo: bind the above size to the max port message size
 		// use message passing by area for such a large message
 		result = _FlattenToArea(&header);
@@ -2418,11 +2423,13 @@ BMessage::_SendFlattenedMessage(void* data, int32 size, port_id port,
 			+ sizeof(ssize_t) /* flattenedSize */ + sizeof(int32) /* what */
 			+ sizeof(uint8) /* flags */;
 		*(int32*)header = token;
-	} else if (((KMessage::Header*)data)->magic
+	} 
+	/* else if (((KMessage::Header*)data)->magic
 			== KMessage::kMessageHeaderMagic) {
 		KMessage::Header* header = (KMessage::Header*)data;
 		header->targetToken = token;
-	} else {
+	} */
+	else {
 		return B_NOT_A_MESSAGE;
 	}
 
