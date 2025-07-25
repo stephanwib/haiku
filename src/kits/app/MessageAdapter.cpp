@@ -164,20 +164,10 @@ MessageAdapter::Flatten(uint32 format, const BMessage *from, BDataIO *stream,
 	return B_ERROR;
 }
 
-/*
+
 status_t
 MessageAdapter::Unflatten(uint32 format, BMessage *into, const char *buffer)
 {
-	if (format == KMessage::kMessageHeaderMagic) {
-		KMessage message;
-		status_t result = message.SetTo(buffer,
-			((KMessage::Header *)buffer)->size);
-		if (result != B_OK)
-			return result;
-
-		return _ConvertFromKMessage(&message, into);
-	}
-
 	try {
 		switch (format) {
 			case MESSAGE_FORMAT_R5:
@@ -215,7 +205,7 @@ MessageAdapter::Unflatten(uint32 format, BMessage *into, const char *buffer)
 
 	return B_NOT_A_MESSAGE;
 }
-*/
+
 
 /*static*/ status_t
 MessageAdapter::Unflatten(uint32 format, BMessage *into, BDataIO *stream)
