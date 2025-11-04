@@ -74,8 +74,9 @@ BPathFinder::FindPath(const char* architecture,
 		? NULL : fDependency.String();
 
 	char pathBuffer[B_PATH_NAME_LENGTH];
-	status_t error;
+	status_t error = B_ERROR;
 
+#if 0
 	if (!fPath.IsEmpty()) {
 		error = find_path_for_path_etc(fPath, dependency, architecture,
 			baseDirectory, subPath, flags, pathBuffer, sizeof(pathBuffer));
@@ -83,6 +84,7 @@ BPathFinder::FindPath(const char* architecture,
 		error = find_path_etc(fCodePointer, dependency, architecture,
 			baseDirectory, subPath, flags, pathBuffer, sizeof(pathBuffer));
 	}
+#endif
 
 	if (error != B_OK)
 		return error;
@@ -124,8 +126,12 @@ BPathFinder::FindPaths(const char* architecture,
 	// get the paths
 	char** pathArray;
 	size_t pathCount;
+#if 0
 	status_t error = find_paths_etc(architecture, baseDirectory, subPath, flags,
 		&pathArray, &pathCount);
+#else
+    status_t error = B_ERROR;
+#endif
 	if (error != B_OK)
 		return error;
 
