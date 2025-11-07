@@ -519,10 +519,12 @@ BApplication::_InitData(const char* signature, bool initGUI, status_t* _error)
 		SetName(ref.name);
 
 		// create meta MIME
+#ifndef RUN_WITHOUT_REGISTRAR
 		BPath path;
 		if (registerApp && path.SetTo(&ref) == B_OK)
 			create_app_meta_mime(path.Path(), false, true, false);
-
+#endif
+		
 #ifndef RUN_WITHOUT_APP_SERVER
 		// app server connection and IK initialization
 		if (initGUI)
