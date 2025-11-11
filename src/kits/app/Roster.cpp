@@ -2689,6 +2689,8 @@ BRoster::_InitMessenger()
 	// find the registrar port
 
 #ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
+
+	/* XXX No registrar support at the moment
 	BMessage data;
 	if (BLaunchRoster().GetData(B_REGISTRAR_SIGNATURE, data) == B_OK) {
 		port_id port = data.GetInt32("port", -1);
@@ -2703,6 +2705,7 @@ BRoster::_InitMessenger()
 				B_PREFERRED_TOKEN);
 		}
 	}
+	*/
 #else
 	port_id rosterPort = find_port(B_REGISTRAR_PORT_NAME);
 	port_info info;
