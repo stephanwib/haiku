@@ -6,7 +6,13 @@ PROG=	appserver
 SRCS+=      Angle.cpp AppServer.cpp BitmapManager.cpp ClientMemoryAllocator.cpp CursorData.cpp \
             CursorManager.cpp CursorSet.cpp Canvas.cpp DrawState.cpp DelayedMessage.cpp Desktop.cpp \
             DesktopSettings.cpp DesktopListener.cpp DirectWindowInfo.cpp EventDispatcher.cpp \
-            EventStream.cpp InputManager.cpp IntPoint.cpp IntRect.cpp Layer.cpp MessageLooper.cpp
+            EventStream.cpp InputManager.cpp IntPoint.cpp IntRect.cpp Layer.cpp MessageLooper.cpp \
+            MultiLocker.cpp OffscreenWindow.cpp OffscreenServerWindow.cpp ProfileMessageSupport.cpp \
+            PictureBoundingBoxPlayer.cpp RegionPool.cpp RGBColor.cpp ScreenManager.cpp ServerApp.cpp \
+            ServerBitmap.cpp ServerCursor.cpp ServerFont.cpp ServerPicture.cpp Screen.cpp ServerWindow.cpp \
+            SystemPalette.cpp ScreenConfigurations.cpp View.cpp VirtualScreen.cpp Window.cpp \
+            WindowList.cpp Workspace.cpp WorkspacesView.cpp
+
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
