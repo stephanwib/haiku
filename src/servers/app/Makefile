@@ -1,6 +1,8 @@
 PRIVATE_HEADERS=    
 OS_HEADERS=         
 
+.PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile
+
 PROG=	appserver
 
 SRCS+=      Angle.cpp AppServer.cpp BitmapManager.cpp ClientMemoryAllocator.cpp CursorData.cpp \
@@ -17,7 +19,7 @@ SRCS+=      Angle.cpp AppServer.cpp BitmapManager.cpp ClientMemoryAllocator.cpp 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
 LDADD+=	-lbe
-LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg -L/usr/pkg/lib
+LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L/usr/pkg/lib
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
