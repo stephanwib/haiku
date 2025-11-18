@@ -15,6 +15,17 @@ SRCS+=      Angle.cpp AppServer.cpp BitmapManager.cpp ClientMemoryAllocator.cpp 
             SystemPalette.cpp ScreenConfigurations.cpp View.cpp VirtualScreen.cpp Window.cpp \
             WindowList.cpp Workspace.cpp WorkspacesView.cpp
 
+# decorator
+SRCS+=      Decorator.cpp DecorManager.cpp DefaultDecorator.cpp DefaultWindowBehaviour.cpp MagneticBorder.cpp \
+            TabDecorator.cpp WindowBehaviour.cpp
+
+# drawing
+SRCS+=      AlphaMask.cpp AlphaMaskCache.cpp BitmapDrawingEngine.cpp BitmapBuffer.cpp BBitmapBuffer.cpp \
+            BitmapHWInterface.cpp DrawingEngine.cpp drawing_support.cpp HWInterface.cpp Overlay.cpp \
+            PatternHandler.cpp UpdateQueue.cpp
+
+
+
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
