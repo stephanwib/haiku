@@ -3,7 +3,7 @@ OS_HEADERS=
 
 .PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
             ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/BitmapPainter ${.CURDIR}/drawing/Painter/drawing_modes
-
+            
 PROG=	appserver
 
 SRCS+=      Angle.cpp AppServer.cpp BitmapManager.cpp ClientMemoryAllocator.cpp CursorData.cpp \
@@ -33,6 +33,10 @@ SRCS+=      PixelFormat.cpp
 
 # drawing/Painter/drawing_modes/bitmap_painter
 SRCS+=      BitmapPainter.cpp
+
+# font
+SRCS+=      AppFontManager.cpp FontCache.cpp FontManager.cpp FontFamily.cpp FontStyle.cpp \
+            FontCacheEntry.cpp FontEngine.cpp GlobalFontManager.cpp
 
 # stackandtile
 SRCS+=      SATDecorator.cpp SATGroup.cpp SATWindow.cpp StackAndTile.cpp Stacking.cpp Tiling.cpp
