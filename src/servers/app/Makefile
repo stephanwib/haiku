@@ -25,6 +25,14 @@ SRCS+=      AlphaMask.cpp AlphaMaskCache.cpp BitmapDrawingEngine.cpp BitmapBuffe
             BitmapHWInterface.cpp DrawingEngine.cpp drawing_support.cpp HWInterface.cpp Overlay.cpp \
             PatternHandler.cpp UpdateQueue.cpp
 
+# drawing/Painter
+SRCS+=      AGGTextRenderer.cpp GlobalSubpixelSettings.cpp Painter.cpp Transformable.cpp
+
+# drawing/Painter/drawing_modes
+SRCS+=      PixelFormat.cpp
+
+# drawing/Painter/drawing_modes/bitmap_painter
+SRCS+=      BitmapPainter.cpp
 
 
 
