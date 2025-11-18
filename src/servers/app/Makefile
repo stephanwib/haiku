@@ -1,7 +1,8 @@
 PRIVATE_HEADERS=    
 OS_HEADERS=         
 
-.PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile
+.PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
+            ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/BitmapPainter ${.CURDIR}/drawing/Painter/drawing_modes
 
 PROG=	appserver
 
