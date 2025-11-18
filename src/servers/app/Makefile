@@ -34,6 +34,9 @@ SRCS+=      PixelFormat.cpp
 # drawing/Painter/drawing_modes/bitmap_painter
 SRCS+=      BitmapPainter.cpp
 
+# stackandtile
+SRCS+=      SATDecorator.cpp SATGroup.cpp SATWindow.cpp StackAndTile.cpp Stacking.cpp Tiling.cpp
+
 
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
