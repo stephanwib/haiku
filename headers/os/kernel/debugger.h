@@ -689,8 +689,9 @@ extern void get_debug_exception_string(debug_exception_type exception,
 #ifdef __cplusplus
 
 
-*/
+
 }	// extern "C"
 #endif
 
+*/
 #endif	// _DEBUGGER_H
