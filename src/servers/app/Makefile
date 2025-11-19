@@ -53,6 +53,7 @@ CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/decorator -I${.CURDIR}/drawing -I${.CURDIR}
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
+CPPFLAGS+= -I/usr/pkg/include/freetype2
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
