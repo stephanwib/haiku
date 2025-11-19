@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    app graphics input interface kernel shared storage support
-OS_HEADERS=         interface app
+OS_HEADERS=         interface app support
 
 .PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
             ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/BitmapPainter ${.CURDIR}/drawing/Painter/drawing_modes
