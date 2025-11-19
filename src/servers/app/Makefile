@@ -61,6 +61,7 @@ CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/decorator -I${.CURDIR}/drawing -I${.CURDIR}
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
+CPPFLAGS+= -I${.CURDIR}/../../../headers/libs/agg
 CPPFLAGS+= -I/usr/pkg/include/freetype2
 
 .include <bsd.prog.mk>
