@@ -3680,7 +3680,7 @@ Desktop::_SetCurrentWorkspaceConfiguration()
 		syslog(LOG_ERR, "Team %" B_PRId32 " did not give up its direct screen "
 			"lock.\n", fDirectScreenTeam);
 
-		debug_thread(fDirectScreenTeam);
+		//debug_thread(fDirectScreenTeam);
 		fDirectScreenTeam = -1;
 	} else
 		fDirectScreenLock.Unlock();
