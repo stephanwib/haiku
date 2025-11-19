@@ -52,7 +52,7 @@ CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/decorator -I${.CURDIR}/drawing -I${.CURDIR}
            -I${.CURDIR}/drawing/Painter/drawing_modes -I${.CURDIR}/stackandtile -I${.CURDIR}/font
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
-#CPPFLAGS+= -I${.CURDIR}/../../../headers
+CPPFLAGS+= -I${.CURDIR}/../../../headers
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
