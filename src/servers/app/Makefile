@@ -48,13 +48,6 @@ CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 LDADD+=	-lbe -lagg
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L/usr/pkg/lib
 
-CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/decorator -I${.CURDIR}/drawing -I${.CURDIR}/drawing/Painter \
-           -I${.CURDIR}/drawing/Painter/drawing_modes -I${.CURDIR}/stackandtile -I${.CURDIR}/font
-
-CPPFLAGS+= -I${.CURDIR}/../../../headers/os
-CPPFLAGS+= -I${.CURDIR}/../../../headers
-CPPFLAGS+= -I/usr/pkg/include/freetype2
-
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 .endfor
@@ -62,5 +55,12 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
+
+CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/decorator -I${.CURDIR}/drawing -I${.CURDIR}/drawing/Painter \
+           -I${.CURDIR}/drawing/Painter/drawing_modes -I${.CURDIR}/stackandtile -I${.CURDIR}/font
+
+CPPFLAGS+= -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../../headers
+CPPFLAGS+= -I/usr/pkg/include/freetype2
 
 .include <bsd.prog.mk>
