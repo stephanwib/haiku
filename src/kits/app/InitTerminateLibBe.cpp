@@ -43,7 +43,7 @@ initialize_forked_child()
 }
 
 
-extern "C" void
+void __attribute__ ((constructor))
 initialize_before(image_id)
 {
 	DBG(OUT("initialize_before()\n"));
@@ -68,7 +68,7 @@ initialize_after(image_id)
 }
 
 
-extern "C" void
+void __attribute__ ((destructor))
 terminate_after(image_id)
 {
 	DBG(OUT("terminate_after()\n"));
