@@ -271,7 +271,7 @@ GlobalFontManager::MessageReceived(BMessage* message)
 					uint64 directoryNode;
 					if (message->FindInt32("device", &nodeRef.device) != B_OK
 						|| message->FindInt64("directory", (int64 *)&directoryNode) != B_OK
-						|| message->FindInt64("node", &nodeRef.node) != B_OK)
+						|| message->FindInt64("node", (int64*)&nodeRef.node) != B_OK)
 						break;
 
 					font_directory* directory = _FindDirectory(nodeRef);
