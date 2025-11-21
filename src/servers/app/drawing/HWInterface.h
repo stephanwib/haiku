@@ -32,6 +32,14 @@ class EventStream;
 class Overlay;
 class RenderingBuffer;
 class ServerBitmap;
+class UpdateQueue;
+
+
+enum {
+	HW_ACC_COPY_REGION					= 0x00000001,
+	HW_ACC_FILL_REGION					= 0x00000002,
+	HW_ACC_INVERT_REGION				= 0x00000004,
+};
 
 
 class HWInterfaceListener {
@@ -109,6 +117,20 @@ public:
 	virtual status_t			GetAccelerantPath(BString& path);
 	virtual status_t			GetDriverPath(BString& path);
 
+	// query for available hardware accleration and perform it
+	// (Initialize() must have been called already)
+	virtual	uint32				AvailableHWAcceleration() const
+									{ return 0; }
+
+	virtual	void				CopyRegion(const clipping_rect* sortedRectList,
+									uint32 count, int32 xOffset, int32 yOffset)
+									{}
+	virtual	void				FillRegion(/*const*/ BRegion& region,
+									const rgb_color& color, bool autoSync) {}
+	virtual	void				InvertRegion(/*const*/ BRegion& region) {}
+
+	virtual	void				Sync() {}
+
 	// cursor handling (these do their own Read/Write locking)
 			ServerCursorReference Cursor() const;
 			ServerCursorReference CursorAndDragBitmap() const;
@@ -141,12 +163,14 @@ public:
 			RenderingBuffer*	DrawingBuffer() const;
 	virtual	RenderingBuffer*	FrontBuffer() const = 0;
 	virtual	RenderingBuffer*	BackBuffer() const = 0;
+			void				SetAsyncDoubleBuffered(bool doubleBuffered);
 	virtual	bool				IsDoubleBuffered() const = 0;
 
 	// Invalidate is used for scheduling an area for updating
 	virtual	status_t			InvalidateRegion(const BRegion& region);
 	virtual	status_t			Invalidate(const BRect& frame);
-	// while CopyBackToFront() actually performs the operation
+	// while as CopyBackToFront() actually performs the operation
+	// either directly or asynchronously by the UpdateQueue thread
 	virtual	status_t			CopyBackToFront(const BRect& frame);
 
 protected:
@@ -246,6 +270,9 @@ protected:
 			int					fVGADevice;
 
 private:
+			ObjectDeleter<UpdateQueue>
+								fUpdateExecutor;
+
 			BList				fListeners;
 };
 
