@@ -2,7 +2,7 @@ PRIVATE_HEADERS=    app graphics graphics/common input interface kernel shared s
 OS_HEADERS=         interface app support storage add-ons/graphics kernel game drivers
 
 .PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
-            ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/BitmapPainter ${.CURDIR}/drawing/Painter/drawing_modes
+            ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/bitmap_painter ${.CURDIR}/drawing/Painter/drawing_modes
             
 PROG=	appserver
 
