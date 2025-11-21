@@ -9,7 +9,7 @@
 
 #include "ShapePrivate.h"
 #include <Locker.h>
-#include <kernel/OS.h>
+#include <OS.h>
 
 
 class AlphaMask;
