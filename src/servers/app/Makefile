@@ -45,7 +45,7 @@ SRCS+=      SATDecorator.cpp SATGroup.cpp SATWindow.cpp StackAndTile.cpp Stackin
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDADD+=	-lbe -lagg -licon
+LDADD+=	-lbe -lagg -licon -lfreetype
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/agg -L${.CURDIR}/../../libs/icon -L/usr/pkg/lib
 
 .for HEADER in ${PRIVATE_HEADERS}
