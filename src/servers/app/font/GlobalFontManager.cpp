@@ -195,8 +195,8 @@ GlobalFontManager::MessageReceived(BMessage* message)
 					node_ref nodeRef;
 					uint64 fromNode;
 					uint64 node;
-					if (message->FindInt32("device", &nodeRef.device) != B_OK
-						|| message->FindInt64("to directory", &nodeRef.node) != B_OK
+					if (message->FindInt32("device", (int32*)&nodeRef.device) != B_OK
+						|| message->FindInt64("to directory", (int64*)&nodeRef.node) != B_OK
 						|| message->FindInt64("from directory", (int64 *)&fromNode) != B_OK
 						|| message->FindInt64("node", (int64 *)&node) != B_OK
 						|| message->FindString("name", &name) != B_OK)
