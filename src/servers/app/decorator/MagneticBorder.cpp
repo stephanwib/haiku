@@ -12,7 +12,7 @@
 #include "MagneticBorder.h"
 
 #include "Decorator.h"
-#include "Window.h"
+#include "Window2.h"
 #include "Screen.h"
 
 
