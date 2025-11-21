@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    app graphics input interface kernel shared storage support
+PRIVATE_HEADERS=    app graphics graphics/common input interface kernel shared storage support
 OS_HEADERS=         interface app support storage add-ons/graphics kernel game drivers
 
 .PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
