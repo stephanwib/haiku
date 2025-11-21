@@ -14,7 +14,7 @@
 #include <string.h>
 #include <unistd.h>
 
-#include <vesa/vesa_info.h>
+// #include <vesa/vesa_info.h>
 
 #include "drawing_support.h"
 
