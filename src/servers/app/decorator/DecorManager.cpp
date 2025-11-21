@@ -109,7 +109,7 @@ DecorAddOn::_AllocateDecorator(DesktopSettings& settings, BRect rect,
 
 DecorManager::DecorManager()
 	:
-	fDefaultDecor(-1, "Default"),
+	fDefaultDecor(NULL, "Default"),
 	fCurrentDecor(&fDefaultDecor),
 	fPreviewDecor(NULL),
 	fPreviewWindow(NULL),
