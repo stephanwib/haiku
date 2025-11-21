@@ -134,7 +134,7 @@ FontCacheEntry::FontCacheEntry()
 	MultiLocker("FontCacheEntry lock"),
 	fGlyphCache(new(std::nothrow) GlyphCachePool()),
 	fEngine(),
-	fLastUsedTime(LONGLONG_MIN),
+	fLastUsedTime(LONG_LONG_MIN),
 	fUseCounter(0)
 {
 }
