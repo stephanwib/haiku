@@ -1,6 +1,6 @@
 
 PRIVATE_HEADERS= app net shared storage support
-OS_HEADERS= net
+OS_HEADERS= net support
 
 .PATH: ${.CURDIR}/../../kits/network/libnetapi
 
