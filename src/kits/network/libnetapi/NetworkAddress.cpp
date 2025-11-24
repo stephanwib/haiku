@@ -15,6 +15,7 @@
 #include <netinet/in.h>
 #include <stdio.h>
 #include <sys/sockio.h>
+#include <unistd.h>
 
 
 /* The GCC builtin below only exists in > GCC 3.4
