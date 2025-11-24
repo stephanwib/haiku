@@ -13,6 +13,7 @@
 #include <netinet/in.h>
 #include <sys/poll.h>
 #include <sys/time.h>
+#include <unistd.h>
 
 
 //#define TRACE_SOCKET
