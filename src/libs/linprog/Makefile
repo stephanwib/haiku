@@ -1,7 +1,7 @@
 .include <bsd.own.mk>
 
 OS_HEADERS= support interface
-PRIVATE_HEADERS=
+PRIVATE_HEADERS= shared
 
 LIB=	linprog
 
