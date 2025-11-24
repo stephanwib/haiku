@@ -11,7 +11,7 @@ SRCS+=     ActiveSetSolver.cpp Constraint.cpp LayoutOptimizer.cpp LinearSpec.cpp
            Summand.cpp Variable.cpp
 
 
-CPPFLAGS+= -I${.CURDIR}
+CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/../../../headers/libs/linprog
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
 
