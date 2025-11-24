@@ -2,7 +2,8 @@ PRIVATE_HEADERS=    app graphics graphics/common input interface kernel shared s
 OS_HEADERS=         interface app support storage add-ons/graphics kernel game drivers
 
 .PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
-            ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/bitmap_painter ${.CURDIR}/drawing/Painter/drawing_modes
+            ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/bitmap_painter \
+            ${.CURDIR}/drawing/Painter/drawing_modes ${.CURDIR}/drawing/interface/remote
             
 PROG=	appserver
 
@@ -26,13 +27,17 @@ SRCS+=      AlphaMask.cpp AlphaMaskCache.cpp BitmapDrawingEngine.cpp BitmapBuffe
             PatternHandler.cpp UpdateQueue.cpp
 
 # drawing/Painter
-SRCS+=      AGGTextRenderer.cpp GlobalSubpixelSettings.cpp Painter.cpp Transformable.cpp
+SRCS+=      AGGTextRenderer.cpp GlobalSubpixelSettings.cpp Painter.cpp Transformable.cpp 
 
 # drawing/Painter/drawing_modes
 SRCS+=      PixelFormat.cpp
 
 # drawing/Painter/bitmap_painter
 SRCS+=      BitmapPainter.cpp
+
+# drawing/interface/remote
+SRCS+=      NetReceiver.cpp NetSender.cpp RemoteDrawingEngine.cpp RemoteEventStream.cpp \
+            RemoteHWInterface.cpp RemoteMessage.cpp StreamingRingBuffer.cpp
 
 # font
 SRCS+=      AppFontManager.cpp FontCache.cpp FontManager.cpp FontFamily.cpp FontStyle.cpp \
