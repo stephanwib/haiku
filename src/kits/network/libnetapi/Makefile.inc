@@ -1,16 +1,13 @@
 
-
-#
-# Includes
-#
-
 PRIVATE_HEADERS= app net shared storage support
 OS_HEADERS= 
 
 .PATH: ${.CURDIR}/../../kits/network/libnetapi
 
-SRCS+=	
-
+SRCS+=	DynamicBuffer.cpp NetEndpoint.cpp NetAddress.cpp NetBuffer.cpp NetDebug.cpp Certificate.cpp \
+        NetworkAddress.cpp NetworkAddressResolver.cpp NetworkDevice.cpp NetworkInterface.cpp \
+        NetworkRoster.cpp NetworkRoute.cpp NetworkSettings.cpp AbstractSocket.cpp DatagramSocket.cpp \
+			  ProxySecureSocket.cpp SecureSocket.cpp Socket.cpp SocketMessenger.cpp notifications.cpp
 
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
