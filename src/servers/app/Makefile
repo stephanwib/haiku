@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    app graphics graphics/common input interface kernel shared storage support
-OS_HEADERS=         interface app support storage add-ons/graphics kernel game drivers
+OS_HEADERS=         interface app support storage add-ons/graphics kernel game drivers net
 
 .PATH:      ${.CURDIR}/decorator ${.CURDIR}/drawing ${.CURDIR}/font ${.CURDIR}/stackandtile \
             ${.CURDIR}/drawing/Painter ${.CURDIR}/drawing/Painter/bitmap_painter \
