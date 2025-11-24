@@ -1,6 +1,6 @@
 .include <bsd.own.mk>
 
-OS_HEADERS=
+OS_HEADERS= support
 PRIVATE_HEADERS=
 
 LIB=	linprog
