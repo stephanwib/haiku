@@ -26,13 +26,7 @@ using std::nothrow;
 
 #include "../../../config.h"
 
-#if defined(COSMOE_XWINDOWS)
-#include "X11Interface.h"
-#elif defined(COSMOE_SDL)
 #include "SDLInterface.h"
-#else
-#include "VesaInterface.h"
-#endif
 
 
 ScreenManager* gScreenManager;
@@ -173,13 +167,7 @@ ScreenManager::_ScanDrivers()
 	bool initDrivers = true;
 	while (initDrivers) {
 
-#if defined(COSMOE_XWINDOWS)
-		interface = new X11Interface();
-#elif defined(COSMOE_SDL)
 		interface = new SDLInterface();
-#else
-		interface = new VesaInterface();
-#endif
 
 		_AddHWInterface(interface);
 		initDrivers = false;
