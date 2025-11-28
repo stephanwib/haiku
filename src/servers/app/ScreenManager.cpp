@@ -14,22 +14,24 @@
 #include "Screen.h"
 #include "ServerConfig.h"
 
-#include "RemoteHWInterface.h"
-
 #include <Autolock.h>
 #include <Entry.h>
 #include <NodeMonitor.h>
 
 #include <new>
+#include <stdio.h>
 
 using std::nothrow;
 
 
-#ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-#	include "AccelerantHWInterface.h"
+#include "../../../config.h"
+
+#if defined(COSMOE_XWINDOWS)
+#include "X11Interface.h"
+#elif defined(COSMOE_SDL)
+#include "SDLInterface.h"
 #else
-#	include "ViewHWInterface.h"
-#	include "DWindowHWInterface.h"
+#include "VesaInterface.h"
 #endif
 
 
@@ -70,21 +72,7 @@ ScreenManager::ScreenManager()
 	BLooper("screen manager"),
 	fScreenList(4)
 {
-#ifdef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-#	if defined(USE_DIRECT_WINDOW_TEST_MODE)
-	_AddHWInterface(new DWindowHWInterface());
-#	else
-	_AddHWInterface(new ViewHWInterface());
-#	endif
-#else
 	_ScanDrivers();
-
-	// turn on node monitoring the graphics driver directory
-	BEntry entry("/dev/graphics");
-	node_ref nodeRef;
-	if (entry.InitCheck() == B_OK && entry.GetNodeRef(&nodeRef) == B_OK)
-		watch_node(&nodeRef, B_WATCH_DIRECTORY, this);
-#endif
 }
 
 
@@ -135,25 +123,6 @@ ScreenManager::AcquireScreens(ScreenOwner* owner, int32* wishList,
 		}
 	}
 
-	if (added == 0 && target != NULL) {
-		// there's a specific target screen we want to initialize
-		// TODO: right now we only support remote screens, but we could
-		// also target specific accelerants to support other graphics cards
-		HWInterface* interface;
-#ifdef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-		interface = new(nothrow) ViewHWInterface();
-#else
-		interface = new(nothrow) RemoteHWInterface(target);
-#endif
-		if (interface != NULL) {
-			screen_item* item = _AddHWInterface(interface);
-			if (item != NULL && list.AddItem(item->screen.Get())) {
-				item->owner = owner;
-				added++;
-			}
-		}
-	}
-
 	return added > 0 ? B_OK : B_ENTRY_NOT_FOUND;
 }
 
@@ -201,15 +170,20 @@ ScreenManager::_ScanDrivers()
 	// ToDo: to make monitoring the driver directory useful, we need more
 	//	power and data here, and should do the scanning on our own
 
-#ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
 	bool initDrivers = true;
 	while (initDrivers) {
-		interface = new AccelerantHWInterface();
+
+#if defined(COSMOE_XWINDOWS)
+		interface = new X11Interface();
+#elif defined(COSMOE_SDL)
+		interface = new SDLInterface();
+#else
+		interface = new VesaInterface();
+#endif
 
 		_AddHWInterface(interface);
 		initDrivers = false;
 	}
-#endif
 }
 
 
