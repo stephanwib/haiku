@@ -61,7 +61,7 @@ public:
 	virtual	RenderingBuffer*	BackBuffer() const;
 	virtual	bool				IsDoubleBuffered() const;
 
-private:
+protected:
 			ObjectDeleter<BBitmapBuffer>
 								fBackBuffer;
 			ObjectDeleter<BitmapBuffer>
