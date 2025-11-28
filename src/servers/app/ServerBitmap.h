@@ -83,6 +83,7 @@ public:
 
 protected:
 	friend class BitmapManager;
+	friend class SDLInterface;
 
 							ServerBitmap(BRect rect, color_space space,
 								uint32 flags, int32 bytesPerRow = -1,
@@ -93,6 +94,9 @@ protected:
 			void			AllocateBuffer();
 
 protected:
+			//! Internal function used by the BitmapManager.
+			void _SetBuffer(void *ptr) { fBuffer=(uint8*)ptr; }
+
 			ClientMemory	fClientMemory;
 			AreaMemory*		fMemory;
 			ObjectDeleter< ::Overlay>
