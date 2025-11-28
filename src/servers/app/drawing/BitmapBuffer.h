@@ -23,7 +23,7 @@ class BitmapBuffer : public RenderingBuffer {
 								// BitmapBuffer
 			const ServerBitmap*	Bitmap() const
 									{ return fBitmap; }
- private:
+ //private:
 
 			ServerBitmap*		fBitmap;
 };
