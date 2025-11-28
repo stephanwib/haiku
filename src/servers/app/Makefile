@@ -24,7 +24,7 @@ SRCS+=      Decorator.cpp DecorManager.cpp DefaultDecorator.cpp DefaultWindowBeh
 # drawing
 SRCS+=      AlphaMask.cpp AlphaMaskCache.cpp BitmapDrawingEngine.cpp BitmapBuffer.cpp BBitmapBuffer.cpp \
             BitmapHWInterface.cpp DrawingEngine.cpp drawing_support.cpp HWInterface.cpp Overlay.cpp \
-            PatternHandler.cpp UpdateQueue.cpp
+            PatternHandler.cpp UpdateQueue.cpp SDLInterface.c
 
 # drawing/Painter
 SRCS+=      AGGTextRenderer.cpp GlobalSubpixelSettings.cpp Painter.cpp Transformable.cpp 
@@ -36,8 +36,8 @@ SRCS+=      PixelFormat.cpp
 SRCS+=      BitmapPainter.cpp
 
 # drawing/interface/remote
-SRCS+=      NetReceiver.cpp NetSender.cpp RemoteDrawingEngine.cpp RemoteEventStream.cpp \
-            RemoteHWInterface.cpp RemoteMessage.cpp StreamingRingBuffer.cpp
+#SRCS+=      NetReceiver.cpp NetSender.cpp RemoteDrawingEngine.cpp RemoteEventStream.cpp \
+#            RemoteHWInterface.cpp RemoteMessage.cpp StreamingRingBuffer.cpp
 
 # font
 SRCS+=      AppFontManager.cpp FontCache.cpp FontManager.cpp FontFamily.cpp FontStyle.cpp \
