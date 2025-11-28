@@ -47,7 +47,7 @@ SRCS+=      AppFontManager.cpp FontCache.cpp FontManager.cpp FontFamily.cpp Font
 SRCS+=      SATDecorator.cpp SATGroup.cpp SATWindow.cpp StackAndTile.cpp Stacking.cpp Tiling.cpp
 
 
-
+CPPFLAGS+= -DHAIKU_TARGET_PLATFORM_LIBBE_TEST -DTEST_MODE
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
 LDADD+=	-lbe -lagg -licon -lfreetype -llinprog
