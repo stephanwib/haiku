@@ -65,7 +65,8 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/decorator -I${.CURDIR}/drawing -I${.CURDIR}/drawing/Painter \
            -I${.CURDIR}/drawing/Painter/drawing_modes -I${.CURDIR}/drawing/Painter/bitmap_painter \
            -I${.CURDIR}/drawing/interface/remote -I${.CURDIR}/drawing/interface/local \
-           -I${.CURDIR}/stackandtile -I${.CURDIR}/font -I${.CURDIR}/../../../headers/libs/linprog
+           -I${.CURDIR}/stackandtile -I${.CURDIR}/font -I${.CURDIR}/../../../headers/libs/linprog \
+           -I/usr/pkg/include
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
