@@ -24,7 +24,7 @@ SRCS+=      Decorator.cpp DecorManager.cpp DefaultDecorator.cpp DefaultWindowBeh
 # drawing
 SRCS+=      AlphaMask.cpp AlphaMaskCache.cpp BitmapDrawingEngine.cpp BitmapBuffer.cpp BBitmapBuffer.cpp \
             BitmapHWInterface.cpp DrawingEngine.cpp drawing_support.cpp HWInterface.cpp Overlay.cpp \
-            PatternHandler.cpp UpdateQueue.cpp SDLInterface.c
+            PatternHandler.cpp UpdateQueue.cpp SDLInterface.cpp
 
 # drawing/Painter
 SRCS+=      AGGTextRenderer.cpp GlobalSubpixelSettings.cpp Painter.cpp Transformable.cpp 
