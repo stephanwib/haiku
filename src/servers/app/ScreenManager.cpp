@@ -24,7 +24,7 @@
 using std::nothrow;
 
 
-#include "../../../config.h"
+//#include "../../../config.h"
 
 #include "SDLInterface.h"
 
