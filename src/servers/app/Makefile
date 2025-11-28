@@ -50,7 +50,7 @@ SRCS+=      SATDecorator.cpp SATGroup.cpp SATWindow.cpp StackAndTile.cpp Stackin
 CPPFLAGS+= -DHAIKU_TARGET_PLATFORM_LIBBE_TEST -DTEST_MODE
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDADD+=	-lbe -lagg -licon -lfreetype -llinprog
+LDADD+=	-lbe -lagg -licon -lfreetype -llinprog -lSDL2
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/agg -L${.CURDIR}/../../libs/icon \
           -L${.CURDIR}/../../libs/linprog -L/usr/pkg/lib
 
