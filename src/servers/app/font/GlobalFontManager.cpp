@@ -418,6 +418,7 @@ GlobalFontManager::_GetDefaultStyle(const char* familyName, const char* styleNam
 	// try to find a matching font
 	FontStyle* style = GetStyle(familyName, styleName);
 	if (style == NULL) {
+		printf("GetDefaultStyle: GetStyle failed\n");
 		style = GetStyle(fallbackFamily, fallbackStyle);
 		if (style == NULL) {
 			style = FindStyleMatchingFace(fallbackFace);
