@@ -121,6 +121,7 @@ GlobalFontManager::GlobalFontManager()
 		_LoadRecentFontMappings();
 
 		fInitStatus = _SetDefaultFonts();
+		printf("Font init status: %d\n", fInitStatus);
 
 		if (fInitStatus == B_OK) {
 			printf("SetDefaultFonts() OK\n");
@@ -441,8 +442,10 @@ GlobalFontManager::_SetDefaultFonts()
 	// plain font
 	style = _GetDefaultStyle(DEFAULT_PLAIN_FONT_FAMILY, DEFAULT_PLAIN_FONT_STYLE,
 		FALLBACK_PLAIN_FONT_FAMILY, FALLBACK_PLAIN_FONT_STYLE, B_REGULAR_FACE);
-	if (style == NULL)
+	if (style == NULL) {
+		printf("SetDefaultFonts: Error GetDefaultStyle\n");
 		return B_ERROR;
+	}
 
 	fDefaultPlainFont.SetTo(new (std::nothrow) ServerFont(*style,
 		DEFAULT_FONT_SIZE));
