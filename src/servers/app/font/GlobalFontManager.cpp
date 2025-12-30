@@ -26,7 +26,7 @@
 #include <Path.h>
 #include <String.h>
 
-#include <stdio.h>
+//#include <stdio.h>
 
 #include <ft2build.h>
 #include FT_FREETYPE_H
