@@ -26,6 +26,8 @@
 #include <Path.h>
 #include <String.h>
 
+#include <stdio.h>
+
 #include <ft2build.h>
 #include FT_FREETYPE_H
 
@@ -110,8 +112,10 @@ GlobalFontManager::GlobalFontManager()
 
 	fScanned(false)
 {
+	printf("FreeType init begin\n");
 	fInitStatus = FT_Init_FreeType(&gFreeTypeLibrary) == 0 ? B_OK : B_ERROR;
 	if (fInitStatus == B_OK) {
+		printf("FreeType init OK\n");
 		_AddSystemPaths();
 		_AddUserPaths();
 		_LoadRecentFontMappings();
@@ -119,6 +123,7 @@ GlobalFontManager::GlobalFontManager()
 		fInitStatus = _SetDefaultFonts();
 
 		if (fInitStatus == B_OK) {
+			printf("SetDefaultFonts() OK\n");
 			// Precache the plain and bold fonts
 			_PrecacheFontFile(fDefaultPlainFont.Get());
 			_PrecacheFontFile(fDefaultBoldFont.Get());
