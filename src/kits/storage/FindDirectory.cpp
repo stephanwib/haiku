@@ -32,7 +32,7 @@ enum {
 	\param device the volume on which the directory is located
 	\return \c B_OK if everything went fine, an error code otherwise.
 */
-static
+
 status_t
 find_directory(directory_which which, BPath &path, bool createIt, dev_t device)
 {
