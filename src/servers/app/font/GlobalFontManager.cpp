@@ -604,23 +604,26 @@ printf("GFM::GetStyle called, family %s, style: %s\n", familyName, styleName);
 	else
 		family = GetFamily(familyID);
 
-	if (family == NULL)
+	if (family == NULL) {
+		printf("GFM::GetStyle Error finding family\n");
 		return NULL;
 
+		printf("GFM::GetStyle Family OK\n");
 	// find style
 
 	if (styleName != NULL && styleName[0]) {
 		FontStyle* fontStyle = family->GetStyle(styleName);
 		if (fontStyle != NULL)
 			return fontStyle;
-
+printf("GFM::GetStyle FontStyle 1st attempt failed\n");
+		
 		// before we fail, we try the mappings for a match
 		if (_AddMappedFont(family->Name(), styleName) == B_OK) {
 			fontStyle = family->GetStyle(styleName);
 			if (fontStyle != NULL)
 				return fontStyle;
 		}
-
+printf("GFM::GetStyle FontStyle 2nd attempt failed\n");
 		_ScanFonts();
 		return family->GetStyle(styleName);
 	}
