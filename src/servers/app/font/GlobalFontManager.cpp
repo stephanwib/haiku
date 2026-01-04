@@ -607,7 +607,7 @@ printf("GFM::GetStyle called, family %s, style: %s\n", familyName, styleName);
 	if (family == NULL) {
 		printf("GFM::GetStyle Error finding family\n");
 		return NULL;
-
+	}
 		printf("GFM::GetStyle Family OK\n");
 	// find style
 
