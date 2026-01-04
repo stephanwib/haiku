@@ -583,6 +583,8 @@ GlobalFontManager::GetStyle(const char* familyName, const char* styleName,
 {
 	ASSERT(IsLocked());
 
+printf("GFM::GetStyle called, family %s, style: %s\n", familyName, styleName);
+	
 	if (styleID != 0xffff && (familyName == NULL || !familyName[0])
 		&& (styleName == NULL || !styleName[0])) {
 		return GetStyle(familyID, styleID);
