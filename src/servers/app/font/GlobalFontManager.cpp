@@ -325,6 +325,8 @@ void
 GlobalFontManager::_AddDefaultMapping(const char* family, const char* style,
 	const char* path)
 {
+
+printf("GFM::_AddDefaultMapping called, family %s, style: %s, path: %s\n", family, style, path);
 	font_mapping* mapping = new (std::nothrow) font_mapping;
 	if (mapping == NULL)
 		return;
@@ -335,8 +337,12 @@ GlobalFontManager::_AddDefaultMapping(const char* family, const char* style,
 
 	if (entry.GetRef(&mapping->ref) != B_OK
 		|| !entry.Exists()
-		|| !fMappings.AddItem(mapping))
+		|| !fMappings.AddItem(mapping)) {
+		printf("GFM::_AddDefaultMapping failed\n");
 		delete mapping;
+	}
+
+	printf("GFM::_AddDefaultMapping success\n");
 }
 
 
