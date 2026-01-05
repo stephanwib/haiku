@@ -20,7 +20,7 @@
 #include "FontFamily.h"
 
 
-//#define TRACE_FONT_MANAGER
+#define TRACE_FONT_MANAGER
 #ifdef TRACE_FONT_MANAGER
 #	define FTRACE(x) printf x
 #else
@@ -307,7 +307,8 @@ FontManager::_AddFont(FT_Face face, node_ref nodeRef, const char* path,
 	uint16& familyID, uint16& styleID)
 {
 	ASSERT(IsLocked());
-
+printf("FM _AddFont called.\n");
+	
 	BReference<FontFamily> family(_FindFamily(face->family_name));
 	bool isNewFontFamily = !family.IsSet();
 
