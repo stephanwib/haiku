@@ -932,6 +932,7 @@ GlobalFontManager::_CreateDirectories(const char* path)
 status_t
 GlobalFontManager::_ScanFontDirectory(font_directory& fontDirectory)
 {
+	printf("GFM::_ScanFontDirectory called\n");
 	// This bad boy does all the real work. It loads each entry in the
 	// directory. If a valid font file, it adds both the family and the style.
 
@@ -945,6 +946,7 @@ GlobalFontManager::_ScanFontDirectory(font_directory& fontDirectory)
 
 	BEntry entry;
 	while (directory.GetNextEntry(&entry) == B_OK) {
+		printf("GFM::_ScanFontDirectory loop\n");
 		if (entry.IsDirectory()) {
 			// scan this directory recursively
 			font_directory* newDirectory;
