@@ -36,7 +36,7 @@
 #include "ServerFont.h"
 
 
-//#define TRACE_GLOBAL_FONT_MANAGER
+#define TRACE_GLOBAL_FONT_MANAGER
 #ifdef TRACE_GLOBAL_FONT_MANAGER
 #	define FTRACE(x) debug_printf x
 #else
@@ -726,6 +726,7 @@ GlobalFontManager::_ScanFonts()
 status_t
 GlobalFontManager::_AddFont(font_directory& directory, BEntry& entry)
 {
+printf("GFM::_AddFont called\n");
 	node_ref nodeRef;
 	status_t status = entry.GetNodeRef(&nodeRef);
 	if (status < B_OK)
@@ -770,7 +771,7 @@ GlobalFontManager::_AddFont(font_directory& directory, BEntry& entry)
 			j++;
 		} while (j <= variableCount);
 	}
-
+printf("GFM::_AddFont success\n");
 	return B_OK;
 }
 
