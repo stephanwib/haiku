@@ -1,5 +1,5 @@
 # Programme, die gebaut werden sollen
-PROGS = prog1 prog2 prog3
+PROGS = listsem listport listarea ps
 
 # Compiler und Flags
 CC ?= cc
