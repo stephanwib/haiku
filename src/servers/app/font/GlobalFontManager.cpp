@@ -726,7 +726,7 @@ GlobalFontManager::_ScanFonts()
 status_t
 GlobalFontManager::_AddFont(font_directory& directory, BEntry& entry)
 {
-printf("GFM::_AddFont called\n");
+
 	node_ref nodeRef;
 	status_t status = entry.GetNodeRef(&nodeRef);
 	if (status < B_OK)
@@ -771,7 +771,7 @@ printf("GFM::_AddFont called\n");
 			j++;
 		} while (j <= variableCount);
 	}
-printf("GFM::_AddFont success\n");
+	
 	return B_OK;
 }
 
@@ -946,7 +946,7 @@ GlobalFontManager::_ScanFontDirectory(font_directory& fontDirectory)
 
 	BEntry entry;
 	while (directory.GetNextEntry(&entry) == B_OK) {
-		printf("GFM::_ScanFontDirectory loop\n");
+
 		if (entry.IsDirectory()) {
 			// scan this directory recursively
 			font_directory* newDirectory;
