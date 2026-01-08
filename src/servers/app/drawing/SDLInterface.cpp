@@ -531,7 +531,7 @@ SDLInterface::SetMode(const display_mode& mode)
 
 void SDLInterface::GetMode(display_mode* mode)
 {
-	
+	STRACE( "Driver::GetMode()\n" );
 	mode->virtual_height = HEIGHT;
 	mode->virtual_width = WIDTH;
 	mode->space = B_RGB32;
@@ -546,6 +546,7 @@ void SDLInterface::GetMode(display_mode* mode)
 status_t
 SDLInterface::GetModeList(display_mode** _modes, uint32 *_count)
 {
+	STRACE( "Driver::GetModeList()\n" );
 	AutoReadLocker _(this);
 
 	if (_count == NULL || _modes == NULL)
@@ -573,6 +574,7 @@ SDLInterface::GetModeList(display_mode** _modes, uint32 *_count)
 status_t
 SDLInterface::GetPreferredMode(display_mode* mode)
 {
+	STRACE( "Driver::GetPreferredMode()\n" );
 	status_t status = B_OK;
 
 	if (mode == NULL)
@@ -590,6 +592,7 @@ SDLInterface::GetPreferredMode(display_mode* mode)
 status_t
 SDLInterface::_UpdateModeList()
 {
+	STRACE( "Driver::_UpdateModeList()\n" );
 	fModeCount = 2;
 
 	delete[] fModeList;
