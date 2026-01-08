@@ -176,6 +176,9 @@ void SendModifiersEvent(port_id port, uint32 modifiers, uint32 oldModifiers)
 void SDLEventTranslator(void *arg)
 {
 	//SDLInterface *driver= (SDLInterface*)arg;
+
+    STRACE( "SDLEventTranslator starting...\n" );
+	
 	SDL_Event event;
 	int quit = 0;
 	float x, y;
@@ -351,6 +354,7 @@ void SDLEventTranslator(void *arg)
 status_t
 SDLInterface::Initialize(void)
 {
+	STRACE( "SDLInterface::Initialize entered...\n" );
 	if (SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("Couldn't initialize SDL: %s\n", SDL_GetError());
@@ -385,6 +389,7 @@ SDLInterface::Initialize(void)
 	SDL_ShowCursor(0);
 
 	status_t result = BitmapHWInterface::Initialize();
+	fprintf(stderr, "SDLInterface::Initialize BitmapHWInterface::Initialize result: %d\n", result);
 
 	fprintf(stderr, "SDLInterface::Initialize thread id = %lu\n", pthread_self());
 
@@ -419,7 +424,7 @@ SDLInterface::CopyRegion(const clipping_rect* sortedRectList,
 	SDL_Rect destination[count];
 	bool success = false;
 
-	//STRACE("SDLInterface::CopyRegion()\n");
+	STRACE("SDLInterface::CopyRegion()\n");
 
 	for (uint32 i = 0; i < count; i++)
 	{
@@ -441,7 +446,7 @@ SDLInterface::FillRegion(/*const*/ BRegion& region, const rgb_color& col, bool a
 {
 	Uint32	aColor = SDL_MapRGB(mScreen->format, col.red, col.green, col.blue);
 
-	//STRACE("SDLInterface::FillRegion()\n");
+	STRACE("SDLInterface::FillRegion()\n");
 
 	int32 count = region.CountRects();
 
@@ -463,6 +468,7 @@ SDLInterface::FillRegion(/*const*/ BRegion& region, const rgb_color& col, bool a
 status_t
 SDLInterface::Invalidate(const BRect& frame)
 {
+	STRACE("SDLInterface::Invalidate()\n");
 	SDL_Rect aRect;
 	RectToSDLRect(frame, aRect);
 	SDL_UpdateWindowSurfaceRects(mWindow, &aRect, 1);
@@ -480,7 +486,7 @@ void SDLInterface::_CopyBackToFront(/*const*/ BRegion& region)
 	//region.PrintToStream();
 
 	//fprintf(stderr, "Driver::_CopyBackToFront thread id = %lu\n", pthread_self());
-
+    STRACE("SDLInterface::_CopyBackToFront()\n");
 	int32 count = region.CountRects();
 
 	SDL_Rect rects[count];
@@ -525,6 +531,7 @@ SDLInterface::SetMode(const display_mode& mode)
 
 void SDLInterface::GetMode(display_mode* mode)
 {
+	
 	mode->virtual_height = HEIGHT;
 	mode->virtual_width = WIDTH;
 	mode->space = B_RGB32;
