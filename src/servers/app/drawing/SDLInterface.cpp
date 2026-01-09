@@ -384,7 +384,9 @@ SDLInterface::Initialize(void)
 					NULL,
 					(void *(*) (void *))&SDLEventTranslator,
 					(void *) this);
-	pthread_setname_np(input_thread, "%s", "SDL Input thread");
+
+	char *thread_name = "SDL Input thread";
+	pthread_setname_np(input_thread, "%s", (void*)thread_name);
 
 	SDL_ShowCursor(0);
 
