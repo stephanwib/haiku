@@ -106,7 +106,7 @@ void
 AppServer::RunLooper()
 {
 	thread_id tid = find_thread(NULL);
-	printf("My thread id: %d\n");
+	printf("My thread id: %ld\n");
 	rename_thread(find_thread(NULL), "picasso");
 	_message_thread((void*)this);
 }
