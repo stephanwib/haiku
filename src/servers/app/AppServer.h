@@ -21,30 +21,22 @@
 #include "MessageLooper.h"
 #include "ServerConfig.h"
 
-
-#ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-#	include <Server.h>
-#	define SERVER_BASE BServer
-#else
-#	include "TestServerLoopAdapter.h"
-#	define SERVER_BASE TestServerLoopAdapter
-#endif
-
-
 class ServerApp;
 class BitmapManager;
 class Desktop;
 
 
-class AppServer : public SERVER_BASE {
+class AppServer : public MessageLooper  {
 public:
 								AppServer(status_t* status);
 	virtual						~AppServer();
 
-	virtual	void				MessageReceived(BMessage* message);
-	virtual	bool				QuitRequested();
+		void			RunLooper();
+		virtual port_id	MessagePort() const { return fMessagePort; }
 
 private:
+		virtual void	_DispatchMessage(int32 code, BPrivate::LinkReceiver& link);
+
 			Desktop*			_CreateDesktop(uid_t userID,
 									const char* targetScreen);
 	virtual	Desktop*			_FindDesktop(uid_t userID,
@@ -53,6 +45,8 @@ private:
 			void				_LaunchInputServer();
 
 private:
+		port_id			fMessagePort;
+
 			BObjectList<Desktop> fDesktops;
 			BLocker				fDesktopLock;
 };
