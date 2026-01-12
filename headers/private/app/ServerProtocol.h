@@ -15,14 +15,23 @@
 
 #include <SupportDefs.h>
 
+#ifndef TEST_MODE
+#define TEST_MODE 1
+#endif
 
-#ifdef HAIKU_TARGET_PLATFORM_LIBBE_TEST
+// Server port names. The input port is the port which is used to receive
+// input messages from the Input Server. The other is the "main" port for
+// the server and is utilized mostly by BApplication objects.
+#ifdef HAIKU_TARGET_PLATFORM_HAIKU
+#	define SERVER_PORT_NAME "system:app_server"
+#else
 #	define SERVER_PORT_NAME "haiku-test:app_server"
 #endif
 
 #if TEST_MODE
 #	define SERVER_INPUT_PORT "haiku-test:input port"
 #endif
+
 
 #define AS_PROTOCOL_VERSION	1
 
