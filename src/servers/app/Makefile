@@ -48,6 +48,7 @@ SRCS+=      SATDecorator.cpp SATGroup.cpp SATWindow.cpp StackAndTile.cpp Stackin
 
 
 #  CPPFLAGS+= -DHAIKU_TARGET_PLATFORM_LIBBE_TEST -DTEST_MODE
+CPPFLAGS+=  -DTEST_MODE
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
 LDADD+=	-lbe -lagg -licon -lfreetype -llinprog -lSDL2
