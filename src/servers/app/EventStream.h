@@ -13,6 +13,7 @@
 #include <MessageQueue.h>
 #include <Messenger.h>
 
+#define TEST_MODE 1
 
 struct shared_cursor;
 
