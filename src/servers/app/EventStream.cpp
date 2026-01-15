@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <string.h>
 
+#define TEST_MODE 1
 
 EventStream::EventStream()
 {
