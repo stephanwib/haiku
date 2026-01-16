@@ -65,7 +65,7 @@
 #include "ServerTokenSpace.h"
 #include "ServerWindow.h"
 #include "SystemPalette.h"
-#include "window.h"
+#include "Window2.h"
 
 #include <interface/Window.h>
 
