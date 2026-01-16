@@ -446,7 +446,7 @@ Desktop::Desktop(uid_t userID, const char* targetScreen)
 	fFront(NULL),
 	fBack(NULL)
 {
-	STRACE("Desktop::Desktop entry\n");
+	printf("Desktop::Desktop entry\n");
 	memset(fLastWorkspaceFocus, 0, sizeof(fLastWorkspaceFocus));
 
 	char name[B_OS_NAME_LENGTH];
