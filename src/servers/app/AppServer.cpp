@@ -120,7 +120,7 @@ AppServer::RunLooper()
 void
 AppServer::_DispatchMessage(int32 code, BPrivate::LinkReceiver& msg)
 {
-	STRACE(("AppServer::_DispatchMessage entry\n");
+	STRACE("AppServer::_DispatchMessage entry\n");
 	switch (code) {
 		case AS_GET_DESKTOP:
 		{
