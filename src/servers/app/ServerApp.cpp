@@ -26,7 +26,6 @@
 #include <new>
 #include <stdio.h>
 #include <string.h>
-#include <syslog.h>
 
 #include <AppDefs.h>
 #include <Autolock.h>
@@ -65,19 +64,22 @@
 #include "ServerPicture.h"
 #include "ServerTokenSpace.h"
 #include "ServerWindow.h"
-#include "Window.h"
+#include "SystemPalette.h"
+#include "window.h"
+
+#include <interface/Window.h>
 
 
 //#define DEBUG_SERVERAPP
 #ifdef DEBUG_SERVERAPP
-#	define STRACE(x) debug_printf x
+#	define STRACE(x) printf x
 #else
 #	define STRACE(x) ;
 #endif
 
 //#define DEBUG_SERVERAPP_FONT
 #ifdef DEBUG_SERVERAPP_FONT
-#	define FTRACE(x) debug_printf x
+#	define FTRACE(x) printf x
 #else
 #	define FTRACE(x) ;
 #endif
@@ -187,12 +189,7 @@ ServerApp::~ServerApp()
 		// time, but killing it might have desastrous effects
 		if (MessageLooper::WaitForQuit(deathSemaphore, 3000000) != B_OK) {
 			// This really shouldn't happen, as it shows we're buggy
-#ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-			syslog(LOG_ERR, "ServerApp %s: ServerWindow doesn't respond!\n",
-				Signature());
-#else
 			debugger("ServerWindow doesn't respond!\n");
-#endif
 		}
 		fWindowListLock.Lock();
 	}
@@ -497,8 +494,7 @@ ServerApp::SendMessageToClient(BMessage* message) const
 	status_t status = fHandlerMessenger.SendMessage(message, (BHandler*)NULL,
 		100000);
 	if (status != B_OK) {
-		syslog(LOG_ERR, "app %s send to client failed: %s\n", Signature(),
-			strerror(status));
+		printf("app %s send to client failed: %s\n", Signature(), strerror(status));
 	}
 }
 
@@ -525,48 +521,6 @@ void
 ServerApp::_DispatchMessage(int32 code, BPrivate::LinkReceiver& link)
 {
 	switch (code) {
-		case AS_REGISTER_INPUT_SERVER:
-		{
-			EventStream* stream
-				= new(std::nothrow) InputServerStream(fHandlerMessenger);
-			if (stream != NULL
-				&& (!stream->IsValid() || !gInputManager->AddStream(stream))) {
-				delete stream;
-				break;
-			}
-
-			// TODO: this should be done using notifications (so that an
-			// abandoned stream will get noticed directly)
-			if (fDesktop->EventDispatcher().InitCheck() != B_OK)
-				fDesktop->EventDispatcher().SetTo(gInputManager->GetStream());
-			break;
-		}
-
-		case AS_APP_CRASHED:
-			// Allow the debugger to show its window: if needed, remove any
-			// kWindowScreenFeels from the windows of this application
-			if (fDesktop->LockAllWindows()) {
-				if (fWindowListLock.Lock()) {
-					for (int32 i = fWindowList.CountItems(); i-- > 0;) {
-						ServerWindow* serverWindow = fWindowList.ItemAt(i);
-
-						Window* window = serverWindow->Window();
-						if (window == NULL || window->IsOffscreenWindow())
-							continue;
-
-						if (window->Feel() == kWindowScreenFeel)
-							fDesktop->SetWindowFeel(window, B_NORMAL_WINDOW_FEEL);
-					}
-
-					fWindowListLock.Unlock();
-				}
-				fDesktop->UnlockAllWindows();
-			}
-			break;
-
-		case AS_DUMP_ALLOCATOR:
-			fMemoryAllocator->Dump();
-			break;
 		case AS_DUMP_BITMAPS:
 		{
 			fMapLocker.Lock();
@@ -3760,7 +3714,7 @@ ServerApp::_CreateWindow(int32 code, BPrivate::LinkReceiver& link,
 		if (status == B_OK) {
 			status = window->Run();
 			if (status != B_OK) {
-				syslog(LOG_ERR, "ServerApp::_CreateWindow() - failed to run "
+				fprintf(stderr, "ServerApp::_CreateWindow() - failed to run "
 					"the window thread\n");
 			}
 		}
