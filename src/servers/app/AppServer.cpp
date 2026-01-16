@@ -120,11 +120,11 @@ AppServer::RunLooper()
 void
 AppServer::_DispatchMessage(int32 code, BPrivate::LinkReceiver& msg)
 {
-	STRACE("AppServer::_DispatchMessage entry\n");
+	printf("AppServer::_DispatchMessage entry\n");
 	switch (code) {
 		case AS_GET_DESKTOP:
 		{
-			STRACE("AppServer::_DispatchMessage AS_GET_DESKTOP\n");
+			printf("AppServer::_DispatchMessage AS_GET_DESKTOP\n");
 			Desktop* desktop = NULL;
 
 			port_id replyPort;
