@@ -1407,11 +1407,13 @@ BApplication::_InitGUIContext()
 status_t
 BApplication::_ConnectToServer()
 {
+	printf("BApplication::_ConnectToServer entry\n");
 	status_t status
 		= create_desktop_connection(fServerLink, "a<app_server", 100);
-	if (status != B_OK)
+	if (status != B_OK) {
+	    printf("BApplication::_ConnectToServer create_desktop_connection failed\n");
 		return status;
-
+	}
 	// AS_CREATE_APP:
 	//
 	// Attach data:
