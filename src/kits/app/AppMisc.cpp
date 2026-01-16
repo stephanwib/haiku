@@ -202,44 +202,6 @@ is_app_showing_modal_window(team_id team)
 }
 
 
-#ifndef HAIKU_TARGET_PLATFORM_LIBBE_TEST
-
-
-/*!	Creates a connection with the desktop.
-*/
-status_t
-create_desktop_connection(ServerLink* link, const char* name, int32 capacity)
-{
-	// Create the port so that the app_server knows where to send messages
-	port_id clientPort = create_port(capacity, name);
-	if (clientPort < 0)
-		return clientPort;
-
-	link->SetReceiverPort(clientPort);
-
-	BMessage request(AS_GET_DESKTOP);
-	request.AddInt32("user", getuid());
-	request.AddInt32("version", AS_PROTOCOL_VERSION);
-	request.AddString("target", getenv("TARGET_SCREEN"));
-
-	BMessenger server("application/x-vnd.Haiku-app_server");
-	BMessage reply;
-	status_t status = server.SendMessage(&request, &reply);
-	if (status != B_OK)
-		return status;
-
-	port_id desktopPort = reply.GetInt32("port", B_ERROR);
-	if (desktopPort < 0)
-		return desktopPort;
-
-	link->SetSenderPort(desktopPort);
-	return B_OK;
-}
-
-
-#else // HAIKU_TARGET_PLATFORM_LIBBE_TEST
-
-
 static port_id sServerPort = -1;
 
 
@@ -251,7 +213,7 @@ get_app_server_port()
 		// find_port() twice.
 		sServerPort = find_port(SERVER_PORT_NAME);
 	}
-
+    printf("get_app_server_port got port %d\n", sServerPort);
 	return sServerPort;
 }
 
@@ -290,8 +252,6 @@ create_desktop_connection(ServerLink* link, const char* name, int32 capacity)
 	return B_OK;
 }
 
-
-#endif // HAIKU_TARGET_PLATFORM_LIBBE_TEST
 
 
 } // namespace BPrivate
