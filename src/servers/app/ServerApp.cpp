@@ -70,7 +70,7 @@
 #include <interface/Window.h>
 
 
-//#define DEBUG_SERVERAPP
+#define DEBUG_SERVERAPP
 #ifdef DEBUG_SERVERAPP
 #	define STRACE(x) printf x
 #else
