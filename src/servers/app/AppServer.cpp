@@ -22,8 +22,9 @@
 #include "ScreenManager.h"
 #include "ServerProtocol.h"
 
+#	include <stdio.h>
 
-#define DEBUG_SERVER
+//#define DEBUG_SERVER
 #ifdef DEBUG_SERVER
 #	include <stdio.h>
 #	define STRACE(x) printf x
