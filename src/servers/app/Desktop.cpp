@@ -23,7 +23,6 @@
 
 #include <stdio.h>
 #include <string.h>
-#include <syslog.h>
 
 #include <Debug.h>
 #include <debugger.h>
@@ -58,14 +57,17 @@
 #include "ServerWindow.h"
 #include "SystemPalette.h"
 #include "WindowPrivate.h"
-#include "Window.h"
+#include "window.h"
 #include "Workspace.h"
 #include "WorkspacesView.h"
+
+#include <interface/Window.h>
+
+#define TEST_MODE 1
 
 #if TEST_MODE
 #	include "EventStream.h"
 #endif
-
 
 #define DEBUG_DESKTOP
 #ifdef DEBUG_DESKTOP
@@ -446,7 +448,6 @@ Desktop::Desktop(uid_t userID, const char* targetScreen)
 	fFront(NULL),
 	fBack(NULL)
 {
-	printf("Desktop::Desktop entry\n");
 	memset(fLastWorkspaceFocus, 0, sizeof(fLastWorkspaceFocus));
 
 	char name[B_OS_NAME_LENGTH];
@@ -489,6 +490,7 @@ Desktop::RegisterListener(DesktopListener* listener)
 status_t
 Desktop::Init()
 {
+	printf("XXXX Desktop Init, fMessagePort is %d\n", fMessagePort);
 	if (fMessagePort < B_OK)
 		return fMessagePort;
 
@@ -654,6 +656,7 @@ Desktop::GetAllAppTargets(DelayedMessage& message)
 filter_result
 Desktop::KeyEvent(uint32 what, int32 key, int32 modifiers)
 {
+	printf("Dispatching a key message: %d\n", key);
 	filter_result result = B_DISPATCH_MESSAGE;
 	if (LockAllWindows()) {
 		Window* window = MouseEventWindow();
@@ -2536,6 +2539,8 @@ Desktop::WriteApplicationOrder(int32 workspace, BPrivate::LinkSender& sender)
 void
 Desktop::_LaunchInputServer()
 {
+// Cosmoe handles input through SDL for now
+#if 0
 	BRoster roster;
 	status_t status = roster.Launch("application/x-vnd.Be-input_server");
 	if (status == B_OK || status == B_ALREADY_RUNNING)
@@ -2555,13 +2560,14 @@ Desktop::_LaunchInputServer()
 	if (entryStatus == B_OK)
 		entryStatus = roster.Launch(&ref);
 	if (entryStatus == B_OK || entryStatus == B_ALREADY_RUNNING) {
-		syslog(LOG_ERR, "Failed to launch the input server by signature: %s!\n",
+		printf("Failed to launch the input server by signature: %s!\n",
 			strerror(status));
 		return;
 	}
 
-	syslog(LOG_ERR, "Failed to launch the input server: %s!\n",
+	printf("Failed to launch the input server: %s!\n",
 		strerror(entryStatus));
+#endif
 }
 
 
@@ -3678,8 +3684,8 @@ Desktop::_SetCurrentWorkspaceConfiguration()
 	if (status != B_OK) {
 		// The application having the direct screen lock didn't give it up in
 		// time, make it crash
-		syslog(LOG_ERR, "Team %" B_PRId32 " did not give up its direct screen "
-			"lock.\n", fDirectScreenTeam);
+		printf("Team %" B_PRId32 " did not give up its direct screen lock.\n",
+			fDirectScreenTeam);
 
 		//debug_thread(fDirectScreenTeam);
 		fDirectScreenTeam = -1;
