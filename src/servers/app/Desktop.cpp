@@ -57,7 +57,7 @@
 #include "ServerWindow.h"
 #include "SystemPalette.h"
 #include "WindowPrivate.h"
-#include "window.h"
+#include "Window2.h"
 #include "Workspace.h"
 #include "WorkspacesView.h"
 
