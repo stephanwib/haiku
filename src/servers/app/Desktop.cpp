@@ -67,7 +67,7 @@
 #endif
 
 
-//#define DEBUG_DESKTOP
+#define DEBUG_DESKTOP
 #ifdef DEBUG_DESKTOP
 #	define STRACE(a) printf a
 #else
@@ -446,6 +446,7 @@ Desktop::Desktop(uid_t userID, const char* targetScreen)
 	fFront(NULL),
 	fBack(NULL)
 {
+	STRACE("Desktop::Desktop entry\n");
 	memset(fLastWorkspaceFocus, 0, sizeof(fLastWorkspaceFocus));
 
 	char name[B_OS_NAME_LENGTH];
