@@ -23,7 +23,7 @@
 #include "ServerProtocol.h"
 
 
-//#define DEBUG_SERVER
+#define DEBUG_SERVER
 #ifdef DEBUG_SERVER
 #	include <stdio.h>
 #	define STRACE(x) printf x
@@ -120,9 +120,11 @@ AppServer::RunLooper()
 void
 AppServer::_DispatchMessage(int32 code, BPrivate::LinkReceiver& msg)
 {
+	STRACE(("AppServer::_DispatchMessage entry\n");
 	switch (code) {
 		case AS_GET_DESKTOP:
 		{
+			STRACE(("AppServer::_DispatchMessage AS_GET_DESKTOP\n");
 			Desktop* desktop = NULL;
 
 			port_id replyPort;
