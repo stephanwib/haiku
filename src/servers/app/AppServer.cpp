@@ -124,7 +124,7 @@ AppServer::_DispatchMessage(int32 code, BPrivate::LinkReceiver& msg)
 	switch (code) {
 		case AS_GET_DESKTOP:
 		{
-			STRACE(("AppServer::_DispatchMessage AS_GET_DESKTOP\n");
+			STRACE("AppServer::_DispatchMessage AS_GET_DESKTOP\n");
 			Desktop* desktop = NULL;
 
 			port_id replyPort;
