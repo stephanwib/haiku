@@ -56,6 +56,7 @@ InputServerStream::InputServerStream(BMessenger& messenger)
 	fQuitting(false),
 	fLatestMouseMoved(NULL)
 {
+	printf("InputServerStream::InputServerStream(BMessenger)\n");
 	BMessage message(IS_ACQUIRE_INPUT);
 	message.AddInt32("remote team", BPrivate::current_team());
 
@@ -82,6 +83,7 @@ InputServerStream::InputServerStream()
 	fCursorSemaphore(-1),
 	fLatestMouseMoved(NULL)
 {
+	printf("InputServerStream::InputServerStream()\n");
 	fPort = find_port(SERVER_INPUT_PORT);
 }
 #endif
