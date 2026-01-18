@@ -498,11 +498,11 @@ Desktop::Init()
 	// desktop settings, since it is used there already
 	InitializeColorMap();
 
-	const size_t areaSize = sizeof(server_read_only_memory);
+	//const size_t areaSize = sizeof(server_read_only_memory);
 	char name[B_OS_NAME_LENGTH];
 	snprintf(name, sizeof(name), "d:%d:shared read only", fUserID);
 	fSharedReadOnlyArea = create_area(name, (void **)&fServerReadOnlyMemory,
-		B_ANY_ADDRESS, areaSize, B_NO_LOCK, B_READ_AREA | B_WRITE_AREA | B_CLONEABLE_AREA);
+		B_ANY_ADDRESS, 65536, B_NO_LOCK, B_READ_AREA | B_WRITE_AREA | B_CLONEABLE_AREA);
 	if (fSharedReadOnlyArea < B_OK) {
 		debug_printf("create_area for fSharedReadOnlyArea failed, size: %d\n", areaSize);
 		return fSharedReadOnlyArea;
