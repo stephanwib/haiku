@@ -504,7 +504,7 @@ Desktop::Init()
 	fSharedReadOnlyArea = create_area(name, (void **)&fServerReadOnlyMemory,
 		B_ANY_ADDRESS, areaSize, B_NO_LOCK, B_READ_AREA | B_WRITE_AREA | B_CLONEABLE_AREA);
 	if (fSharedReadOnlyArea < B_OK) {
-		debug_printf("create_area for fSharedReadOnlyArea failed, size: %d\n", fSharedReadOnlyArea);
+		debug_printf("create_area for fSharedReadOnlyArea failed, size: %d\n", areaSize);
 		return fSharedReadOnlyArea;
 	}
 	fSettings.SetTo(new DesktopSettingsPrivate(fServerReadOnlyMemory));
