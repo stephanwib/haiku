@@ -490,7 +490,7 @@ Desktop::RegisterListener(DesktopListener* listener)
 status_t
 Desktop::Init()
 {
-	printf("XXXX Desktop Init, fMessagePort is %d\n", fMessagePort);
+	debug_printf("XXXX Desktop Init, fMessagePort is %d\n", fMessagePort);
 	if (fMessagePort < B_OK)
 		return fMessagePort;
 
@@ -503,9 +503,10 @@ Desktop::Init()
 	snprintf(name, sizeof(name), "d:%d:shared read only", fUserID);
 	fSharedReadOnlyArea = create_area(name, (void **)&fServerReadOnlyMemory,
 		B_ANY_ADDRESS, areaSize, B_NO_LOCK, B_READ_AREA | B_WRITE_AREA | B_CLONEABLE_AREA);
-	if (fSharedReadOnlyArea < B_OK)
+	if (fSharedReadOnlyArea < B_OK) {
+		debug_printf("create_area for fSharedReadOnlyArea failed, size: %d\n", fSharedReadOnlyArea);
 		return fSharedReadOnlyArea;
-
+	}
 	fSettings.SetTo(new DesktopSettingsPrivate(fServerReadOnlyMemory));
 
 	for (int32 i = 0; i < kMaxWorkspaces; i++) {
