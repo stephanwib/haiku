@@ -46,7 +46,7 @@
 #include "BitmapBuffer.h"
 #include "BBitmapBuffer.h"
 
-#define DEBUG_SDL_DRIVER
+// #define DEBUG_SDL_DRIVER
 
 #ifdef DEBUG_SDL_DRIVER
 #include <stdio.h>
