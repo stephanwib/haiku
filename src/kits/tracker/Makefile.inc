@@ -13,8 +13,11 @@ SRCS+=	AttributeStream.cpp AutoMounterSettings.cpp BackgroundImage.cpp Bitmaps.c
         SelectionWindow.cpp Settings.cpp SettingsViews.cpp Shortcuts.cpp SlowMenu.cpp StatusWindow.cpp TaskLoop.cpp \
         TemplatesMenu.cpp Tests.cpp TextWidget.cpp Thumbnails.cpp TitleView.cpp Tracker.cpp TrackerInitialState.cpp \
         TrackerScripting.cpp TrackerSettings.cpp TrackerSettingsWindow.cpp TrackerString.cpp TrashWatcher.cpp Utilities.cpp \
-        ViewState.cpp VirtualDirectoryEntryList.cpp VirtualDirectoryManager.cpp VirtualDirectoryPoseView.cpp 
+        ViewState.cpp VirtualDirectoryEntryList.cpp VirtualDirectoryManager.cpp VirtualDirectoryPoseView.cpp \
         VirtualDirectoryWindow.cpp WidgetAttributeText.cpp
+
+# infowindow
+SRCS+=  AttributesView.cpp FilePermissionsView.cpp GeneralInfoView.cpp HeaderView.cpp InfoWindow.cpp
 
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
