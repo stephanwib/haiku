@@ -3,7 +3,18 @@ OS_HEADERS= net support app storage interface
 
 .PATH: ${.CURDIR}/../../kits/tracker ${.CURDIR}/../../kits/tracker/infowindow
 
-SRCS+=	
+SRCS+=	AttributeStream.cpp AutoMounterSettings.cpp BackgroundImage.cpp Bitmaps.cpp ContainerWindow.cpp \
+        CountView.cpp DeskWindow.cpp DesktopPoseView.cpp DraggableContainerIcon.cpp DialogPane.cpp \
+        DirMenu.cpp EntryIterator.cpp FBCPadding.cpp FSClipboard.cpp FSUndoRedo.cpp FSUtils.cpp FavoritesMenu.cpp \
+        FilePanel.cpp FilePanelPriv.cpp FindPanel.cpp GroupedMenu.cpp IconCache.cpp IconMenuItem.cpp LiveMenu.cpp \
+        MimeTypeList.cpp MiniMenuField.cpp Model.cpp MountMenu.cpp Navigator.cpp NavMenu.cpp NodePreloader.cpp \
+        NodeWalker.cpp OpenWithWindow.cpp OverrideAlert.cpp PendingNodeMonitorCache.cpp Pose.cpp PoseList.cpp \
+        PoseView.cpp PoseViewScripting.cpp QueryContainerWindow.cpp QueryPoseView.cpp RecentItems.cpp RegExp.cpp \
+        SelectionWindow.cpp Settings.cpp SettingsViews.cpp Shortcuts.cpp SlowMenu.cpp StatusWindow.cpp TaskLoop.cpp \
+        TemplatesMenu.cpp Tests.cpp TextWidget.cpp Thumbnails.cpp TitleView.cpp Tracker.cpp TrackerInitialState.cpp \
+        TrackerScripting.cpp TrackerSettings.cpp TrackerSettingsWindow.cpp TrackerString.cpp TrashWatcher.cpp Utilities.cpp \
+        ViewState.cpp VirtualDirectoryEntryList.cpp VirtualDirectoryManager.cpp VirtualDirectoryPoseView.cpp 
+        VirtualDirectoryWindow.cpp WidgetAttributeText.cpp
 
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
