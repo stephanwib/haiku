@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface
+PRIVATE_HEADERS=    interface shared
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Deskcalc
