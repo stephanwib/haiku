@@ -268,6 +268,11 @@ Shell::GetActiveProcessInfo(ActiveProcessInfo& _info) const
 	if (process < 0)
 		return false;
 
+	_info.SetTo(process, "bash", "/");
+		return true;
+
+#if 0
+
 	// get more info on the process group leader
 	KMessage info;
 	status_t error = get_extended_team_info(process, B_TEAM_INFO_BASIC, info);
@@ -294,6 +299,7 @@ Shell::GetActiveProcessInfo(ActiveProcessInfo& _info) const
 	_info.SetTo(process, name, cwdPath.Path());
 
 	return true;
+#endif
 }
 
 
