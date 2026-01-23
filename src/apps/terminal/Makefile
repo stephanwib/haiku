@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface textencoding shared
+PRIVATE_HEADERS=    interface textencoding shared libroot
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Terminal
