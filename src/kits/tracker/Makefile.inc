@@ -1,5 +1,5 @@
-PRIVATE_HEADERS= app net shared storage support
-OS_HEADERS= net support app storage interface
+PRIVATE_HEADERS= interface mount shared storage support tracker
+OS_HEADERS= add-ons input_server filters
 
 .PATH: ${.CURDIR}/../../kits/tracker ${.CURDIR}/../../kits/tracker/infowindow
 
