@@ -10,7 +10,7 @@
 
 #include "BasicTerminalBuffer.h"
 
-#include <alloca.h>
+//#include <alloca.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <fcntl.h>
