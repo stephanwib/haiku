@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface
+PRIVATE_HEADERS=    interface app
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	registrar
