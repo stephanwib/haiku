@@ -1,5 +1,5 @@
 PRIVATE_HEADERS= interface mount shared storage support tracker
-OS_HEADERS= interface support app storage locale add-ons input_server filters
+OS_HEADERS= interface support app storage locale translation add-ons input_server filters
 
 .PATH: ${.CURDIR}/../../kits/tracker ${.CURDIR}/../../kits/tracker/infowindow
 
