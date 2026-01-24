@@ -53,7 +53,7 @@
 
 //#define B_HAIKU_ABI_NAME				__HAIKU_ARCH_ABI
 
-#define B_HAIKU_ABI_NAME				x86_64
+#define B_HAIKU_ABI_NAME				"x86_64"
 
 #if __GNUC__ == 2
 #	define B_HAIKU_ABI					B_HAIKU_ABI_GCC_2_HAIKU
