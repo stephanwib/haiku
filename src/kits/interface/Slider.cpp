@@ -1057,7 +1057,7 @@ BSlider::UpdateTextChanged()
 	const char* oldUpdateText = fUpdateText;
 	free(fUpdateText);
 
-	fUpdateText = strdup(UpdateText());
+	fUpdateText = (UpdateText() != NULL) ? strdup(UpdateText()) : NULL;
 	bool updateTextOnOff = (fUpdateText == NULL && oldUpdateText != NULL)
 		|| (fUpdateText != NULL && oldUpdateText == NULL);
 
