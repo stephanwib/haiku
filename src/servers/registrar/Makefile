@@ -3,12 +3,14 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	registrar
 
-SRCS+=      	AppInfoList.cpp AppInfoListMessagingTargetSet.cpp AuthenticationManager.cpp \
+SRCS+=      	AppInfoList.cpp AppInfoListMessagingTargetSet.cpp \
               ClipboardHandler.cpp Clipboard.cpp Event.cpp EventMaskWatcher.cpp EventQueue.cpp \
               MessageEvent.cpp MessageDeliverer.cpp MessageHandler.cpp MessageRunnerManager.cpp \
               MessagingService.cpp MIMEManager.cpp PackageWatchingManager.cpp RecentApps.cpp \
               RecentEntries.cpp Registrar.cpp RosterAppInfo.cpp RosterSettingsCharStream.cpp \
               ShutdownProcess.cpp TRoster.cpp Watcher.cpp WatchingService.cpp
+
+# AuthenticationManager.cpp
 
 #mime
 SRCS+=        CreateAppMetaMimeThread.cpp MimeUpdateThread.cpp RegistrarThread.cpp \
