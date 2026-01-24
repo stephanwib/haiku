@@ -1,5 +1,5 @@
 PRIVATE_HEADERS= interface mount shared storage support tracker
-OS_HEADERS= input add-ons input_server filters
+OS_HEADERS= interface add-ons input_server filters
 
 .PATH: ${.CURDIR}/../../kits/tracker ${.CURDIR}/../../kits/tracker/infowindow
 
