@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface shared app libroot storage tracker
+PRIVATE_HEADERS=    interface shared app storage tracker
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	registrar
