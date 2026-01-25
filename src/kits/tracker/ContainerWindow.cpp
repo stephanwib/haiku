@@ -179,9 +179,9 @@ AddOnMenuGenerate(const struct AddOnInfo* info, BMenu* menu, BContainerWindow* w
 		return result;
 
 	image_id addOnImage = load_add_on(path.Path());
-	if (addOnImage < 0) {
+	if (addOnImage == NULL) {
 		info->has_populate_menu = addOnImage;
-		return addOnImage;
+		return -1;
 	}
 
 	void (*populateMenu)(BMessage*, BMenu*, BHandler*);
@@ -227,7 +227,7 @@ RunAddOnMessageThread(BMessage *message, void *)
 		goto end;
 
 	addOnImage = load_add_on(path.Path());
-	if (addOnImage < 0) {
+	if (addOnImage == NULL) {
 		result = addOnImage;
 		goto end;
 	}
@@ -315,7 +315,7 @@ AddOnThread(BMessage* refsMessage, entry_ref addOnRef, entry_ref directoryRef)
 
 			unload_add_on(addOnImage);
 		} else
-			result = addOnImage;
+			result = B_ERROR;
 	}
 
 	BString buffer(B_TRANSLATE("Error %error loading Add-On %name."));
