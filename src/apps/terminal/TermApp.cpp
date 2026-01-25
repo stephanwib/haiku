@@ -91,7 +91,7 @@ TermApp::ReadyToRun()
 	// cleanup thread.
 	struct sigaction action;
 	//action.sa_handler = (__sighandler_t)_SigChildHandler;
-	action.sa_handler = _SigChildHandler;
+	// action.sa_handler = _SigChildHandler;
 	sigemptyset(&action.sa_mask);
 	action.sa_flags = 0;
 	if (sigaction(SIGCHLD, &action, NULL) < 0) {
