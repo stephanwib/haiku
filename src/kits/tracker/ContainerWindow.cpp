@@ -180,7 +180,7 @@ AddOnMenuGenerate(const struct AddOnInfo* info, BMenu* menu, BContainerWindow* w
 
 	image_id addOnImage = load_add_on(path.Path());
 	if (addOnImage == NULL) {
-		info->has_populate_menu = addOnImage;
+		info->has_populate_menu = false;
 		return -1;
 	}
 
@@ -228,7 +228,7 @@ RunAddOnMessageThread(BMessage *message, void *)
 
 	addOnImage = load_add_on(path.Path());
 	if (addOnImage == NULL) {
-		result = addOnImage;
+		result = B_ERROR;
 		goto end;
 	}
 	void (*messageReceived)(BMessage*);
