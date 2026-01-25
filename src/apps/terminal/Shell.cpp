@@ -361,7 +361,7 @@ initialize_termios(struct termios &tio)
 
 	/* output: cr->cr, nl in not retrun, no delays, ln->cr/ln */
 //	tio.c_oflag &= ~(OCRNL|ONLRET|NLDLY|CRDLY|TABDLY|BSDLY|VTDLY|FFDLY);
-	tio.c_oflag &= ~(OCRNL|ONLRET|VTDLY);
+	tio.c_oflag &= ~(OCRNL|ONLRET);
 	tio.c_oflag |= ONLCR;
 	tio.c_oflag |= OPOST;
 
