@@ -253,7 +253,7 @@ BDeskWindow::Init(const BMessage*)
 
 	ResizeTo(fOldFrame.Width(), fOldFrame.Height());
 
-	InitKeyIndices();
+	//InitKeyIndices();
 	InitAddOnsList(false);
 	ApplyShortcutPreferences(false);
 
@@ -394,7 +394,8 @@ BDeskWindow::ApplyShortcutPreferences(bool update)
 		BEntry entry(command);
 		if (entry.InitCheck() != B_OK)
 			continue;
-
+		
+#if 0
 		const char* shortcut = GetKeyName(key);
 		if (strlen(shortcut) != 1)
 			continue;
@@ -422,6 +423,7 @@ BDeskWindow::ApplyShortcutPreferences(bool update)
 			item->modifiers = modifiers;
 			AddOneShortcut(&model, item->key, item->modifiers, this);
 		}
+#endif
 	}
 
 	message = BMessage(kRebuildAddOnMenus);
