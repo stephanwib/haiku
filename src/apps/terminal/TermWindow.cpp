@@ -22,6 +22,7 @@
 #include <stdlib.h>
 #include <strings.h>
 #include <time.h>
+#include <unistd.h>
 
 #include <Alert.h>
 #include <Application.h>
