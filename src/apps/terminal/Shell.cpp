@@ -351,7 +351,7 @@ initialize_termios(struct termios &tio)
 	 * Set Terminal interface.
 	 */
 
-	tio.c_line = 0;
+//	tio.c_line = 0;
 	tio.c_lflag |= ECHOE;
 
 	/* input: nl->nl, cr->nl */
@@ -360,12 +360,13 @@ initialize_termios(struct termios &tio)
 	tio.c_iflag &= ~ISTRIP;
 
 	/* output: cr->cr, nl in not retrun, no delays, ln->cr/ln */
-	tio.c_oflag &= ~(OCRNL|ONLRET|NLDLY|CRDLY|TABDLY|BSDLY|VTDLY|FFDLY);
+//	tio.c_oflag &= ~(OCRNL|ONLRET|NLDLY|CRDLY|TABDLY|BSDLY|VTDLY|FFDLY);
+	tio.c_oflag &= ~(OCRNL|ONLRET|VTDLY);
 	tio.c_oflag |= ONLCR;
 	tio.c_oflag |= OPOST;
 
 	/* baud rate is 19200 (equal beterm) */
-	tio.c_cflag &= ~(CBAUD);
+//	tio.c_cflag &= ~(CBAUD);
 	tio.c_cflag |= B19200;
 
 	tio.c_cflag &= ~CSIZE;
@@ -391,7 +392,7 @@ initialize_termios(struct termios &tio)
 	tio.c_cc[VMIN]   = 4;
 	tio.c_cc[VTIME]  = 0;
 	tio.c_cc[VEOL2]  = CEOL;		/* '^@' */
-	tio.c_cc[VSWTCH] = CSWTCH;		/* '^@' */
+//	tio.c_cc[VSWTCH] = CSWTCH;		/* '^@' */
 	tio.c_cc[VSTART] = CSTART;		/* '^S' */
 	tio.c_cc[VSTOP]  = CSTOP;		/* '^Q' */
 	tio.c_cc[VSUSP]  = CSUSP;		/* '^Z' */
