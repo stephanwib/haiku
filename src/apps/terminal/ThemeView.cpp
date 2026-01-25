@@ -7,6 +7,7 @@
 #include "ThemeView.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #include <Alert.h>
 #include <Catalog.h>
