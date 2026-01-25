@@ -25,6 +25,7 @@
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
+#include <sys/ioctl.h>
 #include <sys/param.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
@@ -71,6 +72,8 @@
 #ifndef CSWTCH
 #define CSWTCH 0
 #endif
+
+extern char **environ;
 
 // TODO: should extract from /etc/passwd instead???
 const char *kDefaultShell = "/bin/sh";
