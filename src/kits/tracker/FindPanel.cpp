@@ -641,7 +641,7 @@ FindWindow::SaveQueryAsAttributes(BNode* file, BEntry* entry, bool queryTemplate
 				continue;
 			BMessage* message = item->Message();
 			dev_t device;
-			if (message->FindInt32("device", &device) != B_OK)
+			if (message->FindInt32("device", (int32*)&device) != B_OK)
 				continue;
 			if (device == ref->device)
 				item->SetMarked(true);
