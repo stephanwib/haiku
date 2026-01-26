@@ -654,7 +654,7 @@ FindWindow::SaveQueryAsAttributes(BNode* file, BEntry* entry, bool queryTemplate
 		BMenuItem* volumeMenuItem = volMenu->ItemAt(firstVolumeItem + i);
 		BMessage* messageOfVolumeMenuItem = volumeMenuItem->Message();
 		dev_t device;
-		if (messageOfVolumeMenuItem->FindInt32("device", &device) != B_OK)
+		if (messageOfVolumeMenuItem->FindInt32("device", (int32*)&device) != B_OK)
 			continue;
 
 		if (volumeMenuItem->IsMarked() || addAllVolumes) {
@@ -1613,7 +1613,7 @@ FindPanel::MessageReceived(BMessage* message)
 			if (message->FindPointer("source", (void**)&invokedItem) != B_OK)
 				return;
 
-			if (message->FindInt32("device", &dev) != B_OK)
+			if (message->FindInt32("device", (int32*)&dev) != B_OK)
 				break;
 
 			BMenu* menu = invokedItem->Menu();
