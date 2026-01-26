@@ -1,4 +1,4 @@
-PRIVATE_HEADERS= interface mount shared storage support tracker libroot
+PRIVATE_HEADERS= interface mount shared storage support tracker
 OS_HEADERS= interface support app storage locale translation add-ons input_server filters add-ons/graphics
 
 .PATH: ${.CURDIR}/../../kits/tracker ${.CURDIR}/../../kits/tracker/infowindow
@@ -20,7 +20,8 @@ SRCS+=	AttributeStream.cpp AutoMounterSettings.cpp BackgroundImage.cpp Bitmaps.c
 SRCS+=  AttributesView.cpp FilePermissionsView.cpp GeneralInfoView.cpp HeaderView.cpp InfoWindow.cpp
 
 
-CPPFLAGS+= -I${.CURDIR}/../../kits/tracker -I${.CURDIR}/../../../headers -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../kits/tracker -I${.CURDIR}/../../../headers -I${.CURDIR}/../../../headers/os \
+           -I${.CURDIR}/../../../headers/private
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
