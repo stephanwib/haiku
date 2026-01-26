@@ -1,6 +1,5 @@
-PRIVATE_HEADERS= interface mount shared storage support tracker
-OS_HEADERS= interface support app storage locale translation add-ons input_server filters add-ons/graphics \
-            add-ons/input_server/filters/shortcut_catcher
+PRIVATE_HEADERS= interface mount shared storage support tracker libroot
+OS_HEADERS= interface support app storage locale translation add-ons input_server filters add-ons/graphics
 
 .PATH: ${.CURDIR}/../../kits/tracker ${.CURDIR}/../../kits/tracker/infowindow
 
