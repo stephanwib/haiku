@@ -19,9 +19,8 @@ SRCS+=	AttributeStream.cpp AutoMounterSettings.cpp BackgroundImage.cpp Bitmaps.c
 # infowindow
 SRCS+=  AttributesView.cpp FilePermissionsView.cpp GeneralInfoView.cpp HeaderView.cpp InfoWindow.cpp
 
-
-CPPFLAGS+= -I${.CURDIR}/../../kits/tracker -I${.CURDIR}/../../../headers -I${.CURDIR}/../../../headers/os \
-           -I${.CURDIR}/../../../headers/private
+CPPFLAGS+= -I${.CURDIR}/../../kits/tracker -I${.CURDIR}/../../kits/tracker/infowindow -I${.CURDIR}/../../../headers \
+           -I${.CURDIR}/../../../headers/os -I${.CURDIR}/../../../headers/private
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
