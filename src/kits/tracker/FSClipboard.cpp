@@ -855,8 +855,8 @@ BClipboardRefsWatcher::MessageReceived(BMessage* message)
 			ino_t fromDir;
 			node_ref node;
 			const char* name = NULL;
-			message->FindInt64("from directory", &fromDir);
-			message->FindInt64("to directory", &toDir);
+			message->FindInt64("from directory", (int64*)&fromDir);
+			message->FindInt64("to directory", (int64*)&toDir);
 			message->FindInt64("node", (int64*)&node.node);
 			message->FindInt32("device", (int32*)&node.device);
 			message->FindString("name", &name);
