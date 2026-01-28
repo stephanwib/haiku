@@ -47,7 +47,7 @@ All rights reserved.
 #include <Roster.h>
 #include <String.h>
 
-#include <kernel/fs_attr.h>
+#include <fs_attr.h>
 
 #include "Attributes.h"
 #include "Commands.h"
