@@ -2967,9 +2967,11 @@ BPoseView::ReadPoseInfo(Model* model, PoseInfo* poseInfo)
 			if (ViewMode() == kListMode)
 				break;
 
+			/*
 			const StatStruct* stat = model->StatBuf();
 			if (stat->st_crtime < now - 5 || stat->st_crtime > now)
 				break;
+			*/
 
 			//PRINT(("retrying to read pose info for %s, %d\n",
 			//	model->Name(), count));
