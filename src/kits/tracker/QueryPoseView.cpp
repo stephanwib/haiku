@@ -712,11 +712,13 @@ QueryEntryListCollection::GetNextDirents(struct dirent* buffer, size_t length,
 			if (result <= 0)
 				break;
 			if (!fQueryListRep->fPathFilters.IsEmpty()) {
+				/*
 				entry_ref ref(buffer->d_pdev, buffer->d_pino, buffer->d_name);
 				if (!PathFilter(&ref)) {
 					result = 0;
 					continue;
 				}
+				*/
 			}
 			return result;
 		}
