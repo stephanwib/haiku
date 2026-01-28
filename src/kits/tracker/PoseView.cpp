@@ -254,7 +254,7 @@ BPoseView::BPoseView(Model* model, uint32 viewMode)
 	fLastFilterStringLength(0),
 	fStartFrame(0, 0, 0, 0),
 	fLastKeyTime(0),
-	fLastDeskbarFrameCheckTime(LONGLONG_MIN),
+	fLastDeskbarFrameCheckTime(LLONG_MIN),
 	fDeskbarFrame(0, 0, -1, -1),
 	fTextWidgetToCheck(NULL),
 	fActiveTextWidget(NULL),
@@ -1459,12 +1459,12 @@ BPoseView::AddPosesTask(void* castToParams)
 					|| (hideDotFiles && eptr->d_name[0] == '.')) {
 					continue;
 				}
-
+				/*
 				dirNode.device = eptr->d_pdev;
 				dirNode.node = eptr->d_pino;
 				itemNode.device = eptr->d_dev;
 				itemNode.node = eptr->d_ino;
-
+				*/
 				BPoseView::WatchNewNode(&itemNode, watchMask, lock.Target());
 					// have to node monitor ahead of time because Model will
 					// cache up the file type and preferred app
@@ -5337,7 +5337,7 @@ BPoseView::FSNotification(const BMessage* message)
 		{
 			ASSERT(targetModel != NULL);
 
-			message->FindInt32("device", &itemNode.device);
+			message->FindInt32("device", (int32*)&itemNode.device);
 			node_ref dirNode;
 			dirNode.device = itemNode.device;
 			message->FindInt64("directory", (int64*)&dirNode.node);
@@ -5409,7 +5409,7 @@ BPoseView::FSNotification(const BMessage* message)
 			break;
 
 		case B_ENTRY_REMOVED:
-			message->FindInt32("device", &itemNode.device);
+			message->FindInt32("device", (int32*)&itemNode.device);
 			message->FindInt64("node", (int64*)&itemNode.node);
 
 			// our window itself may be deleted
@@ -5594,7 +5594,7 @@ BPoseView::EntryMoved(const BMessage* message)
 	node_ref dirNode;
 	node_ref itemNode;
 
-	message->FindInt32("device", &dirNode.device);
+	message->FindInt32("device", (int32*)&dirNode.device);
 	itemNode.device = dirNode.device;
 	message->FindInt64("to directory", (int64*)&dirNode.node);
 	message->FindInt64("node", (int64*)&itemNode.node);
@@ -5780,7 +5780,7 @@ bool
 BPoseView::AttributeChanged(const BMessage* message)
 {
 	node_ref itemNode;
-	message->FindInt32("device", &itemNode.device);
+	message->FindInt32("device", (int32*)&itemNode.device);
 	message->FindInt64("node", (int64*)&itemNode.node);
 
 	const char* attrName;
