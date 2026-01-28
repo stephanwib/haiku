@@ -2357,8 +2357,8 @@ BPoseView::MessageReceived(BMessage* message)
 		case kFSClipboardChanges:
 		{
 			node_ref node;
-			message->FindInt32("device", &node.device);
-			message->FindInt64("directory", &node.node);
+			message->FindInt32("device", (int32*)&node.device);
+			message->FindInt64("directory", (int64*)&node.node);
 
 			Model* targetModel = TargetModel();
 			if (targetModel != NULL && *targetModel->NodeRef() == node)
@@ -3266,8 +3266,8 @@ BPoseView::UpdatePosesClipboardModeFromClipboard(BMessage* clipboardReport)
 	bool fullInvalidateNeeded = false;
 
 	node_ref node;
-	clipboardReport->FindInt32("device", &node.device);
-	clipboardReport->FindInt64("directory", &node.node);
+	clipboardReport->FindInt32("device", (int32*)&node.device);
+	clipboardReport->FindInt64("directory", (int64*)&node.node);
 
 	bool clearClipboard = clipboardReport->GetBool("clearClipboard", false);
 	if (clearClipboard && fHasPosesInClipboard) {
@@ -5457,7 +5457,7 @@ BPoseView::FSNotification(const BMessage* message)
 
 		case B_DEVICE_MOUNTED:
 		{
-			if (message->FindInt32("new device", &device) != B_OK)
+			if (message->FindInt32("new device", (int32*)&device) != B_OK)
 				break;
 
 			if (targetModel != NULL && targetModel->IsRoot()) {
@@ -5490,7 +5490,7 @@ BPoseView::FSNotification(const BMessage* message)
 		}
 
 		case B_DEVICE_UNMOUNTED:
-			if (message->FindInt32("device", &device) == B_OK) {
+			if (message->FindInt32("device", (int32*)&device) == B_OK) {
 				if (targetModel != NULL
 					&& targetModel->NodeRef()->device == device) {
 					// close the window from a volume that is gone
