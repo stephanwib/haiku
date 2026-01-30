@@ -217,7 +217,7 @@ VirtualDirectoryPoseView::_EntryCreated(const BMessage* message)
 			if (strcmp(entry->d_name, ".") != 0
 				&& strcmp(entry->d_name, "..") != 0) {
 				_DispatchEntryCreatedOrRemovedMessage(B_ENTRY_CREATED,
-					node_ref(entry->d_dev, entry->d_ino),
+					node_ref(0, entry->d_ino),
 					NotOwningEntryRef(0, entry->d_ino,
 						entry->d_name),
 					NULL, false);
