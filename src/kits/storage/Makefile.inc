@@ -4,6 +4,7 @@ OS_HEADERS= add-ons/registrar
 
 .PATH: ${.CURDIR}/../../kits/storage \
        ${.CURDIR}/../../kits/storage/disk_device \
+${.CURDIR}/../../kits/storage/disk_device/jobs \
        ${.CURDIR}/../../kits/storage/mime \
        ${.CURDIR}/../../kits/storage/sniffer
 
@@ -29,8 +30,13 @@ SRCS+=    AppMetaMimeCreator.cpp AssociatedTypes.cpp Database.cpp DatabaseDirect
 
 # disk_device
 SRCS+=  DiskDevice.cpp DiskDeviceJob.cpp DiskDeviceJobGenerator.cpp DiskDeviceJobQueue.cpp DiskDeviceList.cpp \
-	 DiskDevicePrivate.cpp DiskDeviceRoster.cpp DiskDeviceVisitor.cpp DiskSystemAddOn.cpp DiskSystemAddOnManager.cpp \
-	 DiskSystem.cpp MutablePartition.cpp Partition.cpp PartitionDelegate.cpp PartitionReference.cpp
+	    DiskDevicePrivate.cpp DiskDeviceRoster.cpp DiskDeviceVisitor.cpp DiskSystemAddOn.cpp DiskSystemAddOnManager.cpp \
+	    DiskSystem.cpp MutablePartition.cpp Partition.cpp PartitionDelegate.cpp PartitionReference.cpp
+
+# disk_device/jobs
+SRCS+=  CreateChildJob.cpp DefragmentJob.cpp DeleteChildJob.cpp InitializeJob.cpp MoveJob.cpp RepairJob.cpp \
+	    ResizeJob.cpp SetStringJob.cpp UninitializeJob.cpp
+
 
 # Issues:
 
