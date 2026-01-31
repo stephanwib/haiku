@@ -17,7 +17,7 @@ SRCS+=    kernel_interface.POSIX.cpp AddOnImage.cpp AddOnMonitor.cpp AddOnMonito
 
 # Issues: 
 
-# disk_device
+# sniffer
 SRCS+=    CharStream.cpp DisjList.cpp Err.cpp Parser.cpp Pattern.cpp PatternList.cpp RPattern.cpp \
           RPatternList.cpp Range.cpp Rule.cpp
 
@@ -27,8 +27,10 @@ SRCS+=    AppMetaMimeCreator.cpp AssociatedTypes.cpp Database.cpp DatabaseDirect
           MimeSnifferAddonManager.cpp SnifferRules.cpp Supertype.cpp SupportingApps.cpp TextSnifferAddon.cpp \
           TextSnifferAddon.cpp database_support.cpp
 
-# sniffer
-SRCS+=  
+# disk_device
+SRCS+=  DiskDevice.cpp DiskDeviceJob.cpp DiskDeviceJobGenerator.cpp DiskDeviceJobQueue.cpp DiskDeviceList.cpp \
+	 DiskDevicePrivate.cpp DiskDeviceRoster.cpp DiskDeviceVisitor.cpp DiskSystemAddOn.cpp DiskSystemAddOnManager.cpp \
+	 DiskSystem.cpp MutablePartition.cpp Partition.cpp PartitionDelegate.cpp PartitionReference.cpp
 
 # Issues:
 
