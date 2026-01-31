@@ -41,7 +41,8 @@ SRCS+=  CreateChildJob.cpp DefragmentJob.cpp DeleteChildJob.cpp InitializeJob.cp
 # Issues:
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/posix
-CPPFLAGS+= -I${.CURDIR}/../../kits/storage
+CPPFLAGS+= -I${.CURDIR}/../../kits/storage -I${.CURDIR}/../../kits/storage/disk_device \
+           -I${.CURDIR}/../../kits/storage/disk_device/jobs
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= -I${.CURDIR}/../../../headers/private/${HEADER}
