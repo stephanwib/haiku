@@ -233,8 +233,8 @@ WidgetAttributeText::NewWidgetText(const Model* model,
 	if (strcmp(attrName, kAttrStatModified) == 0)
 		return new ModificationTimeAttributeText(model, column);
 
-	if (strcmp(attrName, kAttrStatCreated) == 0)
-		return new CreationTimeAttributeText(model, column);
+//	if (strcmp(attrName, kAttrStatCreated) == 0)
+//		return new CreationTimeAttributeText(model, column);
 
 #ifdef OWNER_GROUP_ATTRIBUTES
 	if (strcmp(attrName, kAttrStatOwner) == 0)
@@ -1084,13 +1084,14 @@ TimeAttributeText::CheckSettingsChanged(void)
 
 //	#pragma mark - CreationTimeAttributeText
 
-
+/*
 CreationTimeAttributeText::CreationTimeAttributeText(const Model* model,
 	const BColumn* column)
 	:
 	TimeAttributeText(model, column)
 {
 }
+*/
 
 /*
 int64
