@@ -40,7 +40,7 @@ find_directory(directory_which which, BPath &path, bool createIt, dev_t device)
 	switch (which) {
 	/* Per volume directories */
 		case B_DESKTOP_DIRECTORY:
-			error = path.SetTo("~/Desktop");
+			error = path.SetTo("/root/Desktop");
 			break;
 
 		case B_TRASH_DIRECTORY:
@@ -168,118 +168,118 @@ find_directory(directory_which which, BPath &path, bool createIt, dev_t device)
 	   of the user making the find_directory call. */
 		case B_USER_DIRECTORY:
 		case B_USER_NONPACKAGED_DIRECTORY:
-			error = path.SetTo("~");
+			error = path.SetTo("/root");
 			break;
 
 		case B_USER_CONFIG_DIRECTORY:
-			error = path.SetTo("~/cosmoe");
+			error = path.SetTo("/root/cosmoe");
 			break;
 
 		case B_USER_ADDONS_DIRECTORY:
 		case B_USER_NONPACKAGED_ADDONS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/addons");
+			error = path.SetTo("/root/cosmoe/addons");
 			break;
 
 		case B_USER_BOOT_DIRECTORY:
-			error = path.SetTo("~/cosmoe");
+			error = path.SetTo("/root/cosmoe");
 			break;
 
 		case B_USER_FONTS_DIRECTORY:
 		case B_USER_NONPACKAGED_FONTS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/fonts");
+			error = path.SetTo("/root/cosmoe/fonts");
 			break;
 
 		case B_USER_LIB_DIRECTORY:
 		case B_USER_NONPACKAGED_LIB_DIRECTORY:
-			error = path.SetTo("~/cosmoe/lib");
+			error = path.SetTo("/root/cosmoe/lib");
 			break;
 
 		case B_USER_SETTINGS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/settings");
+			error = path.SetTo("/root/cosmoe/settings");
 			break;
 
 		case B_USER_DESKBAR_DIRECTORY:
-			error = path.SetTo("~/cosmoe/deskbar");
+			error = path.SetTo("/root/cosmoe/deskbar");
 			break;
 
 		case B_USER_PRINTERS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/printers");
+			error = path.SetTo("/root/cosmoe/printers");
 			break;
 
 		case B_USER_TRANSLATORS_DIRECTORY:
 		case B_USER_NONPACKAGED_TRANSLATORS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/translators");
+			error = path.SetTo("/root/cosmoe/translators");
 			break;
 
 		case B_USER_MEDIA_NODES_DIRECTORY:
 		case B_USER_NONPACKAGED_MEDIA_NODES_DIRECTORY:
-			error = path.SetTo("~/cosmoe/media");
+			error = path.SetTo("/root/cosmoe/media");
 			break;
 
 		case B_USER_SOUNDS_DIRECTORY:
 		case B_USER_NONPACKAGED_SOUNDS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/sounds");
+			error = path.SetTo("/root/cosmoe/sounds");
 			break;
 
 		case B_USER_DATA_DIRECTORY:
 		case B_USER_NONPACKAGED_DATA_DIRECTORY:
-			error = path.SetTo("~/cosmoe/data");
+			error = path.SetTo("/root/cosmoe/data");
 			break;
 
 		case B_USER_CACHE_DIRECTORY:
-			error = path.SetTo("~/cosmoe/cache");
+			error = path.SetTo("/root/cosmoe/cache");
 			break;
 
 		case B_USER_PACKAGES_DIRECTORY:
-			error = path.SetTo("~/cosmoe/packages");
+			error = path.SetTo("/root/cosmoe/packages");
 			break;
 
 		case B_USER_HEADERS_DIRECTORY:
 		case B_USER_NONPACKAGED_HEADERS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/headers");
+			error = path.SetTo("/root/cosmoe/headers");
 			break;
 	
 		case B_USER_DEVELOP_DIRECTORY:
 		case B_USER_NONPACKAGED_DEVELOP_DIRECTORY:
-			error = path.SetTo("~/cosmoe/develop");
+			error = path.SetTo("/root/cosmoe/develop");
 			break;
 
 		case B_USER_DOCUMENTATION_DIRECTORY:
 		case B_USER_NONPACKAGED_DOCUMENTATION_DIRECTORY:
-			error = path.SetTo("~/cosmoe/doc");
+			error = path.SetTo("/root/cosmoe/doc");
 			break;
 
 		case B_USER_SERVERS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/servers");
+			error = path.SetTo("/root/cosmoe/servers");
 			break;
 		
 		case B_USER_APPS_DIRECTORY:
-			error = path.SetTo("~/cosmoe/apps");
+			error = path.SetTo("/root/cosmoe/apps");
 			break;
 
 		case B_USER_BIN_DIRECTORY:
 		case B_USER_NONPACKAGED_BIN_DIRECTORY:
-			error = path.SetTo("~/cosmoe/bin");
+			error = path.SetTo("/root/cosmoe/bin");
 			break;
 
 		case B_USER_PREFERENCES_DIRECTORY:
-			error = path.SetTo("~/cosmoe/prefs");
+			error = path.SetTo("/root/cosmoe/prefs");
 			break;
 
 		case B_USER_ETC_DIRECTORY:
-			error = path.SetTo("~/cosmoe/etc");
+			error = path.SetTo("/root/cosmoe/etc");
 			break;
 
 		case B_USER_LOG_DIRECTORY:
-			error = path.SetTo("~/cosmoe/log");
+			error = path.SetTo("/root/cosmoe/log");
 			break;
 
 		case B_USER_SPOOL_DIRECTORY:
-			error = path.SetTo("~/cosmoe/spool");
+			error = path.SetTo("/root/cosmoe/spool");
 			break;
 
 		case B_USER_VAR_DIRECTORY:
-			error = path.SetTo("~/cosmoe/var");
+			error = path.SetTo("/root/cosmoe/var");
 			break;
 	}
 #if 0
