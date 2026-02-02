@@ -559,7 +559,7 @@ TermWindow::_SetupMenu()
 	AddShortcut('C', B_COMMAND_KEY | B_CONTROL_KEY,
 		new BMessage(SHORTCUT_DEBUG_CAPTURE));
 #endif
-
+#if 0
 	BKeymap keymap;
 	keymap.SetToCurrent();
 	BStringList unmodified(3);
@@ -576,6 +576,7 @@ TermWindow::_SetupMenu()
 		}
 	}
 	unmodified.MakeEmpty();
+#endif
 }
 
 
