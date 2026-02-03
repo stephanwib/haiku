@@ -9,8 +9,10 @@ SRCS+=      compile.cpp decompile.cpp rc.cpp rdef.cpp
 SRCS+=      lexer.cpp parser.cpp
 
 parser.cpp : parser.y
+	flex -o parser.cpp parser.y
 
 lexer.cpp : lexer.l
+	bison lexer.l --defines=lexer.hpp --output=lexer.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
