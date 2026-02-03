@@ -1,7 +1,7 @@
-PRIVATE_HEADERS=    interface
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics
+PRIVATE_HEADERS=    app interface locale shared tracker
+OS_HEADERS=         interface support app storage translation locale
 
-PROG=	      Deskbar
+PROG=       Deskbar
 
 SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp DeskbarMenu.cpp \
             DeskbarUtils.cpp ExpandoMenuBar.cpp InlineScrollView.cpp PreferencesWindow.cpp \
