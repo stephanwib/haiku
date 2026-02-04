@@ -3,12 +3,12 @@ OS_HEADERS=      storage support app os interface
 
 PROG=	rc
 
-SRCS+=      compile.cpp decompile.cpp rc.cpp rdef.cpp
-
 # generated
 SRCS+=      lexer.cpp parser.cpp
 
-parser.cpp : parser.y
+SRCS+=      compile.cpp decompile.cpp rc.cpp rdef.cpp
+
+parser.cpp parser.hpp : parser.y
 	flex -o parser.cpp parser.y
 
 lexer.cpp lexer.hpp : lexer.l
