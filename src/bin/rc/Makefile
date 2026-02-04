@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    
-OS_HEADERS=      storage support app
+OS_HEADERS=      storage support app os
 
 PROG=	rc
 
