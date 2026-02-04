@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    
-OS_HEADERS=         
+OS_HEADERS=      storage   
 
 PROG=	rc
 
