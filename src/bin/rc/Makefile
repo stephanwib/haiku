@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    
-OS_HEADERS=      storage   
+OS_HEADERS=      storage support
 
 PROG=	rc
 
