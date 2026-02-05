@@ -1,14 +1,14 @@
 PROGS = listsem listport listarea ps
-CPPPROGS = xres
+CPPPROGS = xres listres
 
 CC   ?= cc
 CXX  ?= c++
 
 CFLAGS   ?= -Wall -Wextra -O2
-CXXFLAGS ?= -Wall -Wextra -O2
-CXXFLAGS += -I${.CURDIR}/../headers
+CXXFLAGS ?= -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -I${.CURDIR}/../headers/os/storage
 
 LDLIBS += -lroot
+LDXXLIBS += -lroot -lbe -L${.CURDIR}/../libs/libbe
 
 # program specific
 #CFLAGS.ps   += -I/usr/local/include
@@ -34,7 +34,7 @@ ${p}: ${p}.cpp
 	${CXX} ${CXXFLAGS} ${CXXFLAGS.${p}} \
 	       ${LDFLAGS} \
 	       -o ${p} ${p}.cpp \
-	       ${LDLIBS} ${LDLIBS.${p}}
+	       ${LDXXLIBS} ${LDLIBS.${p}}
 .endfor
 
 clean:
