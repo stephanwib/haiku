@@ -5,7 +5,8 @@ CC   ?= cc
 CXX  ?= c++
 
 CFLAGS   ?= -Wall -Wextra -O2
-CXXFLAGS ?= -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -I${.CURDIR}/../headers/os/storage
+CXXFLAGS ?= -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -I${.CURDIR}/../headers/os/storage \
+            -I${.CURDIR}/../headers/os/support
 
 LDLIBS += -lroot
 LDXXLIBS += -lroot -lbe -L${.CURDIR}/../libs/libbe
