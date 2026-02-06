@@ -911,8 +911,9 @@ BContainerWindow::RestoreStateCommon()
 	if (fUsesLayout)
 		InitLayout();
 
-	if (BootedInSafeMode())
+	//if (BootedInSafeMode())
 		// don't pick up backgrounds in safe mode
+	if (1)
 		return;
 
 	bool isDesktop = PoseView()->IsDesktopView();
