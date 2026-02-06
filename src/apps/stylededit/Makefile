@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface shared textencoding
+PRIVATE_HEADERS=    interface shared textencoding tracker
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Styleedit
