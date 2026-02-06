@@ -37,7 +37,7 @@ ${p}: ${p}.cpp
 	${CXX} ${CXXFLAGS} ${CXXFLAGS.${p}} \
 	       ${LDFLAGS} \
 	       -o ${p} ${p}.cpp \
-	       ${LDXXLIBS} ${LDLIBS.${p}}
+	       ${LDXXLIBS} ${LDXXLIBS.${p}}
 .endfor
 
 clean:
