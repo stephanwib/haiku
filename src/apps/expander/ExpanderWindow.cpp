@@ -34,6 +34,7 @@
 #include "ExpanderPreferences.h"
 #include "PasswordAlert.h"
 
+extern char **environ;
 
 const uint32 MSG_SOURCE			= 'mSOU';
 const uint32 MSG_DEST			= 'mDES';
