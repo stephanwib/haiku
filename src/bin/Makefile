@@ -4,8 +4,8 @@ CPPPROGS = xres listres
 CC   ?= cc
 CXX  ?= c++
 
-CFLAGS   ?= -Wall -Wextra -O2
-CXXFLAGS ?= -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -I${.CURDIR}/../headers/os/storage \
+CFLAGS   += -Wall -Wextra -O2
+CXXFLAGS += -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -I${.CURDIR}/../headers/os/storage \
             -I${.CURDIR}/../headers/os/support
 
 LDLIBS += -lroot
