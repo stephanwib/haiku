@@ -17,7 +17,7 @@ LDXXLIBS += -lroot -lbe -L${.CURDIR}/../libs/libbe
 #LDFLAGS= -L/usr/pkg/lib
 #CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 
-all: ${PROGS}
+all: ${PROGS} ${CPPPROGS}
 
 # C
 .for p in ${PROGS}
@@ -38,6 +38,6 @@ ${p}: ${p}.cpp
 .endfor
 
 clean:
-	rm -f ${PROGS}
+	rm -f ${PROGS} ${CPPPROGS}
 
 .PHONY: all clean
