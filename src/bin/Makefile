@@ -12,8 +12,8 @@ CXXFLAGS += -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -I${.CURDIR}/..
 LDLIBS += -lroot
 LDXXLIBS += -lroot -lbe -L${.CURDIR}/../libs/libbe
 
-LDXXLIBS.xres += -licon -L${.CURDIR}/../libs/icon
-LDXXLIBS.xres += -lagg -L${.CURDIR}/../libs/agg
+LDXXLIBS += -licon -L${.CURDIR}/../libs/icon
+LDXXLIBS += -lagg -L${.CURDIR}/../libs/agg
 
 # program specific
 #CFLAGS.ps   += -I/usr/local/include
