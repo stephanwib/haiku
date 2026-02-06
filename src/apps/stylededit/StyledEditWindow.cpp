@@ -53,6 +53,7 @@
 #include <UTF8.h>
 #include <Volume.h>
 
+#include <unistd.h>
 
 using namespace BPrivate;
 
