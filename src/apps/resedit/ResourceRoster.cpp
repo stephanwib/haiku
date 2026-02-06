@@ -34,7 +34,7 @@ public:
 								create_editor *allocator);
 					~EditorInfo(void);
 	
-	status_t		ID(void) const { return fID; }
+	status_t		ID(void) const { return fID == NULL ? B_ERROR : B_OK; }
 	const char *	Name(void) const { return fName.String(); }
 	Editor *		Instantiate(void);
 
