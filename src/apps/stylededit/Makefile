@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface shared textencoding tracker
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics be_apps/tracker
+OS_HEADERS=         interface support app storage translation locale add-ons/graphics be_apps/Tracker
 
 PROG=	Styleedit
 
