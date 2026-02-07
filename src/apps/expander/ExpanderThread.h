@@ -19,6 +19,7 @@
 
 
 extern const char* ExpanderThreadName;
+extern char **environ;
 
 
 class ExpanderThread : public GenericThread {
