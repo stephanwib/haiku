@@ -377,6 +377,7 @@ ResourceFile::WriteResources(ResourcesContainer& container)
 void
 ResourceFile::_InitFile(BFile& file, bool clobber)
 {
+	printf("ResourceFile::_InitFile entry\n");
 	status_t error = B_OK;
 	fFile.Unset();
 	// get the file size first
@@ -387,6 +388,7 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 		throw Exception(error, "Failed to get the file size.");
 	  
 	}
+	printf("ResourceFile::_InitFile get size ok\n");
 	// read the first four bytes, and check, if they identify a resource file
 	char magic[4];
 	if (fileSize >= 4)
@@ -440,7 +442,9 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 		fFile.SetTo(&file, kX86ResourcesOffset);
 		fEmptyResources = true;
 	} else {
+		printf("ResourceFile::_InitFile else\n");
 		if (clobber) {
+			printf("ResourceFile::_InitFile is clobber\n");
 			// make it an x86 resource file
 			fHostEndianess = true;
 			fFileType = FILE_TYPE_EMPTY;
@@ -461,6 +465,7 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 		ResourcesContainer container;
 		WriteResources(container);
 	}
+	printf("ResourceFile::_InitFile finish\n");
 }
 
 
