@@ -382,14 +382,19 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 	// get the file size first
 	off_t fileSize = 0;
 	error = file.GetSize(&fileSize);
-	if (error != B_OK)
+	if (error != B_OK) {
+	  printf("Failed to get the file size.");
 		throw Exception(error, "Failed to get the file size.");
+	  
+	}
 	// read the first four bytes, and check, if they identify a resource file
 	char magic[4];
 	if (fileSize >= 4)
 		read_exactly(file, 0, magic, 4, "Failed to read magic number.");
-	else if (fileSize > 0 && !clobber)
+	else if (fileSize > 0 && !clobber) {
+		printf("File is not a resource file.");
 		throw Exception(B_IO_ERROR, "File is not a resource file.");
+	}
 	if (fileSize == 0) {
 		// empty file
 		fHostEndianess = true;
@@ -416,8 +421,10 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 			// PEF file
 			fFileType = FILE_TYPE_PEF;
 			_InitPEFFile(file, pefHeader);
-		} else
-			throw Exception(B_IO_ERROR, "File is not a resource file.");
+		} else {
+			printf("File is not a resource file. 2");
+			throw Exception(B_IO_ERROR, "File is not a resource file. 2");
+		}
 	} else if (!memcmp(magic, kELFFileMagic, 4)) {
 		// ELF file
 		fFileType = FILE_TYPE_ELF;
@@ -438,12 +445,16 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 			fHostEndianess = true;
 			fFileType = FILE_TYPE_EMPTY;
 			fFile.SetTo(&file, 0);
-		} else
-			throw Exception(B_IO_ERROR, "File is not a resource file.");
+		} else {
+			printf("File is not a resource file. 3");
+			throw Exception(B_IO_ERROR, "File is not a resource file. 3");
+		}
 	}
 	error = fFile.InitCheck();
-	if (error != B_OK)
+	if (error != B_OK) {
+		printf("Failed to initialize resource file.");
 		throw Exception(error, "Failed to initialize resource file.");
+	}
 	// clobber, if desired
 	if (clobber) {
 		// just write an empty resources container
