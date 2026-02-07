@@ -11,6 +11,7 @@
 #include <signal.h>
 #include <termios.h>
 #include <unistd.h>
+ #include <sys/ioctl.h>
 
 #include <Messenger.h>
 #include <Path.h>
