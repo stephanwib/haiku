@@ -9,7 +9,7 @@ SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp
             TimeView.cpp TruncatableMenuItem.cpp WindowMenu.cpp WindowMenuItem.cpp ResourceSet.cpp \
             Switcher.cpp
 
-CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -DDB_ADDONS
 
 LDADD+=	-lbe -licon -lagg -ltracker
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
