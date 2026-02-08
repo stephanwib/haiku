@@ -71,11 +71,11 @@ find_directory(directory_which which, BPath &path, bool createIt, dev_t device)
 
 		case B_SYSTEM_LIB_DIRECTORY:
 		case B_SYSTEM_NONPACKAGED_LIB_DIRECTORY:
-			error = path.SetTo("/usr/local/lib");
+			error = path.SetTo("/usr/lib");
 			break;
 		
 		case B_SYSTEM_SERVERS_DIRECTORY:
-			error = path.SetTo("/usr/local/bin");
+			error = path.SetTo("/usr/bin");
 			break;
 		
 		case B_SYSTEM_APPS_DIRECTORY:
@@ -312,7 +312,7 @@ find_directory(directory_which which, BPath &path, bool createIt, dev_t device)
 			error = path.SetTo("/usr/share/fonts/ttf/cosmoe");
 			break;
 		case B_BEOS_LIB_DIRECTORY:
-			error = path.SetTo("/usr/local/lib");
+			error = path.SetTo("/usr/lib");
 			break;
  		case B_BEOS_SERVERS_DIRECTORY:
 			error = path.SetTo("/usr/local/bin");
