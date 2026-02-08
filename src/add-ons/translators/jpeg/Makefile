@@ -22,6 +22,7 @@ LDFLAGS+= -Wl,-e,main  # Library can also be used as an executable
 
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../../headers
+CPPFLAGS+= -I${.CURDIR}/../raw
 CPPFLAGS+= -I/usr/pkg/include
 
 .for HEADER in ${PRIVATE_HEADERS}
