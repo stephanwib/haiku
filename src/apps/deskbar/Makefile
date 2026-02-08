@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    app interface locale shared tracker
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics
+OS_HEADERS=         interface support app storage translation locale kernel add-ons/graphics
 
 PROG=       Deskbar
 
