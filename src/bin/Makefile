@@ -1,5 +1,5 @@
 PROGS = listsem listport listarea ps
-CPPPROGS = xres listres VolumeRoster df
+CPPPROGS = xres listres VolumeRoster df hey
 
 CC   ?= cc
 CXX  ?= c++
