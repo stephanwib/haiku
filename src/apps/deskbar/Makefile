@@ -3,7 +3,7 @@ OS_HEADERS=         interface support app storage translation locale kernel add-
 
 PROG=       Deskbar
 
-SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp DeskbarMenu.cpp \
+SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp CalendarMenuWindow.cpp DeskbarMenu.cpp \
             DeskbarUtils.cpp ExpandoMenuBar.cpp InlineScrollView.cpp PreferencesWindow.cpp \
             ShowHideMenuItem.cpp StatusView.cpp StatusViewShelf.cpp TeamMenu.cpp TeamMenuItem.cpp \
             TimeView.cpp TruncatableMenuItem.cpp WindowMenu.cpp WindowMenuItem.cpp ResourceSet.cpp \
