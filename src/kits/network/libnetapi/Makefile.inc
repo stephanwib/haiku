@@ -5,10 +5,12 @@ OS_HEADERS= net support app storage interface
 .PATH: ${.CURDIR}/../../kits/network/libnetapi
 
 SRCS+=	DynamicBuffer.cpp NetEndpoint.cpp NetAddress.cpp NetBuffer.cpp NetDebug.cpp Certificate.cpp \
-        NetworkAddress.cpp NetworkAddressResolver.cpp NetworkDevice.cpp NetworkInterface.cpp \
-        NetworkRoster.cpp NetworkRoute.cpp NetworkSettings.cpp AbstractSocket.cpp DatagramSocket.cpp \
+        NetworkAddress.cpp NetworkAddressResolver.cpp   \
+          AbstractSocket.cpp DatagramSocket.cpp \
 			  ProxySecureSocket.cpp SecureSocket.cpp Socket.cpp SocketMessenger.cpp notifications.cpp
 
+# These files require porting to NetBSD interfaces
+# NetworkDevice.cpp NetworkInterface.cpp NetworkRoster.cpp NetworkRoute.cpp NetworkSettings.cpp notifications.cpp
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
