@@ -397,6 +397,10 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 		printf("File is not a resource file.");
 		throw Exception(B_IO_ERROR, "File is not a resource file.");
 	}
+
+printf("magic = %02x %02x %02x %02x\n",
+    magic[3], magic[2], magic[1], magic[0]);
+	
 	if (fileSize == 0) {
 		// empty file
 		fHostEndianess = true;
