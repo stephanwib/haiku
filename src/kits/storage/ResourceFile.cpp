@@ -458,6 +458,9 @@ printf("magic = %02x %02x %02x %02x\n",
 			throw Exception(B_IO_ERROR, "File is not a resource file. 3");
 		}
 	}
+
+
+	printf("ResourceFile::_InitFile phase 2\n");
 	error = fFile.InitCheck();
 	if (error != B_OK) {
 		printf("Failed to initialize resource file.");
@@ -476,6 +479,7 @@ printf("magic = %02x %02x %02x %02x\n",
 void
 ResourceFile::_InitELFFile(BFile& file)
 {
+	printf("ResourceFile::_InitELFFile entry\n");
 	status_t error = B_OK;
 
 	// get the file size
@@ -517,6 +521,8 @@ ResourceFile::_InitELFFile(BFile& file)
 		default:
 			throw Exception(B_UNSUPPORTED, "Unsupported ELF class.");
 	}
+
+	printf("ResourceFile::_InitELFFile ok\n");
 }
 
 
