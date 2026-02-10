@@ -246,7 +246,7 @@ ResourceFile::SetTo(BFile* file, bool clobber)
 			_InitFile(*file, clobber);
 		} catch (Exception& exception) {
 			Unset();
-			printf("ResourceFile::SetTo Exception: %s\n", exception.What());
+			printf("ResourceFile::SetTo Exception: %s\n", exception.Description());
 			if (exception.Error() != B_OK)
 				error = exception.Error();
 			else
