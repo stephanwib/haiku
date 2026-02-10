@@ -488,15 +488,21 @@ ResourceFile::_InitELFFile(BFile& file)
 	if (error != B_OK)
 		throw Exception(error, "Failed to get the file size.");
 
+printf("1 ResourceFile::_InitELFFile file size ok\n");
+	
 	// read the ELF headers e_ident field
 	unsigned char identification[EI_NIDENT];
 	read_exactly(file, 0, identification, EI_NIDENT,
 		"Failed to read ELF identification.");
 
+printf("2 ResourceFile::_InitELFFile ELF ID ok\n");
+	
 	// check version
 	if (identification[EI_VERSION] != EV_CURRENT)
 		throw Exception(B_UNSUPPORTED, "Unsupported ELF version.");
 
+printf("3 ResourceFile::_InitELFFile ELF version ok\n");
+	
 	// check data encoding (endianess)
 	switch (identification[EI_DATA]) {
 		case ELFDATA2LSB:
@@ -510,6 +516,8 @@ ResourceFile::_InitELFFile(BFile& file)
 			throw Exception(B_UNSUPPORTED, "Unsupported ELF data encoding.");
 	}
 
+printf("4 ResourceFile::_InitELFFile endianess ok\n");
+	
 	// check class (32/64 bit) and call the respective method handling it
 	switch (identification[EI_CLASS]) {
 		case ELFCLASS32:
@@ -521,6 +529,7 @@ ResourceFile::_InitELFFile(BFile& file)
 		default:
 			throw Exception(B_UNSUPPORTED, "Unsupported ELF class.");
 	}
+	printf("5 ResourceFile::_InitELFFile ELF class ok\n");
 
 	printf("ResourceFile::_InitELFFile ok\n");
 }
