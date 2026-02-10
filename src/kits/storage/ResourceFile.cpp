@@ -521,12 +521,15 @@ printf("4 ResourceFile::_InitELFFile endianess ok\n");
 	// check class (32/64 bit) and call the respective method handling it
 	switch (identification[EI_CLASS]) {
 		case ELFCLASS32:
+			printf("ResourceFile::_InitELFFile ELF class 32\n");
 			_InitELFXFile<Elf32_Ehdr, Elf32_Phdr, Elf32_Shdr>(file, fileSize);
 			break;
 		case ELFCLASS64:
+			printf("ResourceFile::_InitELFFile ELF class 64\n");
 			_InitELFXFile<Elf64_Ehdr, Elf64_Phdr, Elf64_Shdr>(file, fileSize);
 			break;
 		default:
+		    printf("ResourceFile::_InitELFFile ELF class unknown\n");
 			throw Exception(B_UNSUPPORTED, "Unsupported ELF class.");
 	}
 	printf("5 ResourceFile::_InitELFFile ELF class ok\n");
