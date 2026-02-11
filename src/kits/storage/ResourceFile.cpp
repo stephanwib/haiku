@@ -560,6 +560,41 @@ ResourceFile::_InitELFXFile(BFile& file, uint64 fileSize)
 	bool hasProgramHeaderTable = (programHeaderTableOffset != 0);
 	bool hasSectionHeaderTable = (sectionHeaderTableOffset != 0);
 
+
+	printf("\n-- CONVERTED VALUES (_GetInt) --\n");
+
+printf("headerSize             = %u (0x%x)\n",
+    headerSize, headerSize);
+
+printf("programHeaderTableOffset = %llu (0x%llx)\n",
+    (unsigned long long)programHeaderTableOffset,
+    (unsigned long long)programHeaderTableOffset);
+
+printf("programHeaderSize      = %u (0x%x)\n",
+    programHeaderSize, programHeaderSize);
+
+printf("programHeaderCount     = %u (0x%x)\n",
+    programHeaderCount, programHeaderCount);
+
+printf("sectionHeaderTableOffset = %llu (0x%llx)\n",
+    (unsigned long long)sectionHeaderTableOffset,
+    (unsigned long long)sectionHeaderTableOffset);
+
+printf("sectionHeaderSize      = %u (0x%x)\n",
+    sectionHeaderSize, sectionHeaderSize);
+
+printf("sectionHeaderCount     = %u (0x%x)\n",
+    sectionHeaderCount, sectionHeaderCount);
+
+printf("hasProgramHeaderTable  = %s\n",
+    hasProgramHeaderTable ? "true" : "false");
+
+printf("hasSectionHeaderTable  = %s\n",
+    hasSectionHeaderTable ? "true" : "false");
+
+printf("==== ELF HEADER DEBUG END ====\n\n");
+
+	
 	// check the sanity of the header values
 	// ELF header size
 	if (headerSize < sizeof(ElfHeader) || headerSize > kMaxELFHeaderSize) {
