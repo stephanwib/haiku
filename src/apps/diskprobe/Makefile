@@ -3,7 +3,8 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Diskprobe
 
-SRCS+=      	
+SRCS+=    DiskProbe.cpp DataEditor.cpp DataView.cpp ProbeWindow.cpp FileWindow.cpp \
+          AttributeWindow.cpp TypeEditors.cpp ProbeView.cpp OpenWindow.cpp FindWindow.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
