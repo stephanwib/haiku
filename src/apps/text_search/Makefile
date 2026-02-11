@@ -3,7 +3,8 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Textsearch
 
-SRCS+=    
+SRCS+=    ChangesIterator.cpp FileIterator.cpp InitialIterator.cpp GrepApp.cpp GrepListView.cpp \
+          Grepper.cpp GrepWindow.cpp Model.cpp TextSearch.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
