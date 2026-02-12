@@ -19,6 +19,7 @@
 #include <unistd.h>
 #include <ctype.h>
 #include <errno.h>
+#include <sys/ioctl.h>
 
 
 #ifdef TRACE
