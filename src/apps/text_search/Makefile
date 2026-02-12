@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface shared storage
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics
+OS_HEADERS=         interface support app storage translation locale add-ons/graphics add-ons/tracker
 
 PROG=	Textsearch
 
