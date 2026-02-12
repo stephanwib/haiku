@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface shared
+PRIVATE_HEADERS=    interface shared storage
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Textsearch
