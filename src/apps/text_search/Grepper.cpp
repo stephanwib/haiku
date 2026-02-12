@@ -35,6 +35,7 @@
 #undef B_TRANSLATION_CONTEXT
 #define B_TRANSLATION_CONTEXT "Grepper"
 
+extern char **environ;
 
 const char* kEOFTag = "//EOF";
 
