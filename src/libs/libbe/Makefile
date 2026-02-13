@@ -8,7 +8,8 @@ LIB=	be
 #  Compiler suggests -std=gnu99 due to alloca usage
 #  Needs zstd, icu and mapm (Math library) from pkgsrc
 
-CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
+
 
 # XXX Compiler suggests -std=gnu99 due to alloca usage
 
@@ -30,4 +31,5 @@ WARNS=		5
 .include "${.CURDIR}/../../kits/storage/Makefile.inc"
 
 .include <bsd.lib.mk>
+
 
