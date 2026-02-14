@@ -666,6 +666,7 @@ instantiate_object(BMessage* archive, image_id* _id)
 	// if find_instantiation_func() can't locate Class::Instantiate()
 	// and a signature was specified
 	if (!instantiationFunc && hasSignature) {
+	#if 0
 		// use BRoster::FindApp() to locate an app or add-on with the symbol
 		BRoster Roster;
 		entry_ref ref;
@@ -721,6 +722,7 @@ instantiate_object(BMessage* archive, image_id* _id)
 			*status = B_NAME_NOT_FOUND;
 			return NULL;
 		}
+	#endif
 	} else if (instantiationFunc == NULL) {
 		syslog(LOG_ERR, "instantiate_object failed: No signature specified "
 			"in archive, looking for class \"%s\".", className);
