@@ -288,6 +288,8 @@ MessagingService::Init()
 	if (fCommandProcessor < 0)
 		return fCommandProcessor;
 
+#if 0
+
 	// register with the kernel
 	area_id areaID = _kern_register_messaging_service(fLockSem, fCounterSem);
 	if (areaID < 0)
@@ -301,6 +303,8 @@ MessagingService::Init()
 		return error;
 	}
 
+#endif
+	
 	// resume the command processor
 	resume_thread(fCommandProcessor);
 
