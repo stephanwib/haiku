@@ -53,7 +53,7 @@ CatalogAddOnInfo::CatalogAddOnInfo(const BString& name, const BString& path,
 	fLanguagesFunc(NULL),
 	fName(name),
 	fPath(path),
-	fAddOnImage(B_NO_INIT),
+	fAddOnImage(NULL),
 	fPriority(priority),
 	fIsEmbedded(path.Length()==0)
 {
@@ -76,12 +76,12 @@ CatalogAddOnInfo::~CatalogAddOnInfo()
 bool
 CatalogAddOnInfo::MakeSureItsLoaded()
 {
-	if (!fIsEmbedded && fAddOnImage < B_OK) {
+	if (!fIsEmbedded && fAddOnImage == NULL) {
 		// add-on has not been loaded yet, so we try to load it:
 		BString fullAddOnPath(fPath);
 		fullAddOnPath << "/" << fName;
 		fAddOnImage = load_add_on(fullAddOnPath.String());
-		if (fAddOnImage >= B_OK) {
+		if (fAddOnImage != NULL) {
 			get_image_symbol(fAddOnImage, "instantiate_catalog",
 				B_SYMBOL_TYPE_TEXT, (void**)&fInstantiateFunc);
 			get_image_symbol(fAddOnImage, "create_catalog",
@@ -103,7 +103,7 @@ CatalogAddOnInfo::UnloadIfPossible()
 {
 	if (!fIsEmbedded && fLoadedCatalogs.IsEmpty()) {
 		unload_add_on(fAddOnImage);
-		fAddOnImage = B_NO_INIT;
+		fAddOnImage = NULL;
 		fInstantiateFunc = NULL;
 		fCreateFunc = NULL;
 		fLanguagesFunc = NULL;
@@ -389,7 +389,7 @@ LocaleRosterData::_InitializeCatalogAddOns()
 						BString fullAddOnPath(addOnFolderName);
 						fullAddOnPath << "/" << dent->d_name;
 						image_id image = load_add_on(fullAddOnPath.String());
-						if (image >= B_OK) {
+						if (image != NULL) {
 							uint8* prioPtr;
 							if (get_image_symbol(image, "gCatalogAddOnPriority",
 								B_SYMBOL_TYPE_DATA,
