@@ -8,7 +8,7 @@ ${.CURDIR}/../../kits/storage/disk_device/jobs \
        ${.CURDIR}/../../kits/storage/mime \
        ${.CURDIR}/../../kits/storage/sniffer
 
-SRCS+=    kernel_interface.POSIX.cpp AddOnImage.cpp AddOnMonitor.cpp AddOnMonitorHandler.cpp AppFileInfo.cpp \
+SRCS+=    kernel_interface.POSIX.cpp  AddOnMonitor.cpp AddOnMonitorHandler.cpp AppFileInfo.cpp \
           CopyEngine.cpp Directory.cpp DriverSettings.cpp Entry.cpp EntryList.cpp EntryOperationEngineBase.cpp \
           FdIO.cpp File.cpp FileDescriptorIO.cpp FileIO.cpp FindDirectory.cpp MergedDirectory.cpp Mime.cpp \
           MimeType.cpp Node.cpp NodeInfo.cpp NodeMonitor.cpp NodeMonitorHandler.cpp OffsetFile.cpp Path.cpp \
@@ -16,7 +16,7 @@ SRCS+=    kernel_interface.POSIX.cpp AddOnImage.cpp AddOnMonitor.cpp AddOnMonito
           ResourceItem.cpp ResourceStrings.cpp Resources.cpp ResourcesContainer.cpp Statable.cpp SymLink.cpp \
           Volume.cpp VolumeRoster.cpp storage_support.cpp
 
-# Issues: 
+# Issues: AddOnImage.cpp
 
 # sniffer
 SRCS+=    CharStream.cpp DisjList.cpp Err.cpp Parser.cpp Pattern.cpp PatternList.cpp RPattern.cpp \
