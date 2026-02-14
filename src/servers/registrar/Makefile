@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface shared app storage tracker kernel
+PRIVATE_HEADERS=    interface shared app storage tracker kernel system
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics add-ons/registrar
 
 PROG=	registrar
