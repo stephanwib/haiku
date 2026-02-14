@@ -586,8 +586,8 @@ BTranslatorRoster::Private::CreateTranslators(const entry_ref& ref,
 
 	BPath path(&ref);
 	image_id image = load_add_on(path.Path());
-	if (image < B_OK)
-		return image;
+	if (image == NULL)
+		return B_ERROR;
 
 	// Function pointer used to create post R4.5 style translators
 	BTranslator *(*makeNthTranslator)(int32 n, image_id you, uint32 flags, ...);
@@ -1338,8 +1338,8 @@ BTranslatorRoster::IsTranslator(entry_ref* ref)
 
 	BPath path(ref);
 	image_id image = load_add_on(path.Path());
-	if (image < B_OK)
-		return false;
+	if (image == NULL)
+		return B_ERROR;
 
 	// Function pointer used to create post R4.5 style translators
 	BTranslator* (*makeNthTranslator)(int32 n, image_id you, uint32 flags, ...);
