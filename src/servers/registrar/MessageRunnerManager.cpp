@@ -72,7 +72,7 @@ static bigtime_t
 add_time(bigtime_t a, bigtime_t b)
 {
 	// avoid a bigtime_t overflow
-	if (LONGLONG_MAX - b < a)
+	if (LLONG_MAX - b < a)
 		return LONGLONG_MAX;
 	else
 		return a + b;
