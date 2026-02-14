@@ -1,9 +1,11 @@
 PRIVATE_HEADERS=    interface shared app storage tracker kernel system
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics add-ons/registrar
 
+.PATH: ${.CURDIR}/mime
+
 PROG=	registrar
 
-SRCS+=      	AppInfoList.cpp AppInfoListMessagingTargetSet.cpp \
+SRCS+=      	AuthenticationManager.cpp AppInfoList.cpp AppInfoListMessagingTargetSet.cpp \
               ClipboardHandler.cpp Clipboard.cpp Event.cpp EventMaskWatcher.cpp EventQueue.cpp \
               MessageEvent.cpp MessageDeliverer.cpp MessageHandler.cpp MessageRunnerManager.cpp \
               MessagingService.cpp MIMEManager.cpp PackageWatchingManager.cpp RecentApps.cpp \
