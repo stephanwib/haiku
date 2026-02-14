@@ -17,6 +17,8 @@
 #include <OS.h>
 #include <RegistrarDefs.h>
 
+#include <limits.h>
+
 #include "Debug.h"
 #include "Event.h"
 #include "EventQueue.h"
