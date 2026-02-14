@@ -41,6 +41,9 @@
 #include "RosterAppInfo.h"
 #include "RosterSettingsCharStream.h"
 
+extern char **environ;
+
+
 using std::nothrow;
 using namespace BPrivate;
 
