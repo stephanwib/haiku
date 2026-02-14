@@ -63,7 +63,7 @@ Registrar::Registrar(status_t* _error)
 	fEventQueue(NULL),
 	fMessageRunnerManager(NULL),
 	fShutdownProcess(NULL),
-	fAuthenticationManager(NULL),
+	//fAuthenticationManager(NULL),
 	fPackageWatchingManager(NULL)
 {
 	FUNCTION_START();
@@ -82,7 +82,7 @@ Registrar::~Registrar()
 	FUNCTION_START();
 	Lock();
 	fEventQueue->Die();
-	delete fAuthenticationManager;
+	//delete fAuthenticationManager;
 	delete fPackageWatchingManager;
 	delete fMessageRunnerManager;
 	delete fEventQueue;
@@ -138,8 +138,8 @@ Registrar::ReadyToRun()
 	fEventQueue = new EventQueue(kEventQueueName);
 
 	// create authentication manager
-	fAuthenticationManager = new AuthenticationManager;
-	fAuthenticationManager->Init();
+	//fAuthenticationManager = new AuthenticationManager;
+	//fAuthenticationManager->Init();
 
 	// create roster
 	fRoster = new TRoster;
