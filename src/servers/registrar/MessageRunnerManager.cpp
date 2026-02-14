@@ -75,7 +75,7 @@ add_time(bigtime_t a, bigtime_t b)
 {
 	// avoid a bigtime_t overflow
 	if (LLONG_MAX - b < a)
-		return LONGLONG_MAX;
+		return LLONG_MAX;
 	else
 		return a + b;
 }
