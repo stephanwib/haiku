@@ -169,6 +169,7 @@ Registrar::ReadyToRun()
 	// create the package watching manager
 	fPackageWatchingManager = new PackageWatchingManager;
 
+#if 0
 	// Sanity check roster after team deletion
 	BMessenger target(this);
 	BMessenger::Private messengerPrivate(target);
@@ -178,7 +179,7 @@ Registrar::ReadyToRun()
 	__start_watching_system(-1, B_WATCH_SYSTEM_TEAM_DELETION, port, token);
 	fRoster->CheckSanity();
 		// Clean up any teams that exited before we started watching
-
+#endif
 	FUNCTION_END();
 }
 
