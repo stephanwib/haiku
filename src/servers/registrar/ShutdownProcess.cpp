@@ -1197,7 +1197,7 @@ status_t
 ShutdownProcess::_ShutDown()
 {
 	PRINT("Invoking _kern_shutdown(%d)\n", fReboot);
-	RETURN_ERROR(_kern_shutdown(fReboot));
+	// RETURN_ERROR(_kern_shutdown(fReboot));
 }
 
 
@@ -1422,15 +1422,19 @@ ShutdownProcess::_WorkerDoShutdown()
 				break;
 		} while (event != REBOOT_SYSTEM_EVENT);
 
-		_kern_shutdown(true);
+		// _kern_shutdown(true);
 	}
 
 	// either there's no GUI or reboot failed: we enter the kernel debugger
 	// instead
+	
+	#if 0
 	while (true) {
 		_kern_kernel_debugger("The system is shut down. It's now safe to turn "
 			"off the computer.");
 	}
+	#endif
+	
 }
 
 
