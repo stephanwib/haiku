@@ -1,7 +1,7 @@
 PRIVATE_HEADERS=    interface
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
-RC= {.CURDIR}/../../bin/rc/rc 
+RC= ${.CURDIR}/../../bin/rc/rc 
 
 PROG=	Clock
 
