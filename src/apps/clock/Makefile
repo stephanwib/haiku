@@ -9,6 +9,8 @@ postbuild: ${PROG}
 	${RC} Clock.rdef -o ${PROG}
 
 
+build: postbuild
+
 SRCS+=      	cl_view.cpp cl_wind.cpp clock.cpp
 
 
