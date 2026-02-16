@@ -1,5 +1,5 @@
 PROGS = listsem listport listarea ps
-CPPPROGS = xres listres listattr listfont system_time VolumeRoster df hey
+CPPPROGS = xres listres listattr listfont system_time VolumeRoster df hey alert filepanel
 
 CC   ?= cc
 CXX  ?= c++
@@ -14,6 +14,8 @@ LDXXLIBS += -lroot -lbe -L${.CURDIR}/../libs/libbe
 
 LDXXLIBS += -licon -L${.CURDIR}/../libs/icon
 LDXXLIBS += -lagg -L${.CURDIR}/../libs/agg
+
+LDXXLIBS.filepanel   += -ltracker -L${.CURDIR}/../libs/libtracker
 
 # program specific
 #CFLAGS.ps   += -I/usr/local/include
