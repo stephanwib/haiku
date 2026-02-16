@@ -11,7 +11,7 @@ postbuild: ${PROG}
 	${XRES} -o ${PROG} Clock.rsrc
 
 
-build: postbuild
+realall: postbuild
 
 SRCS+=      	cl_view.cpp cl_wind.cpp clock.cpp
 
