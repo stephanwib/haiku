@@ -2,11 +2,13 @@ PRIVATE_HEADERS=    interface
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 RC= ${.CURDIR}/../../bin/rc/rc 
+XRES= ${.CURDIR}/../../bin/xres
 
 PROG=	Clock
 
 postbuild: ${PROG}
 	${RC} Clock.rdef -o ${PROG}
+	${XRES} -o ${PROG} Clock.rsrc
 
 
 build: postbuild
