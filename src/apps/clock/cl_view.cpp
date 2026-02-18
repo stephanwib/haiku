@@ -17,7 +17,7 @@
 #include <Resources.h>
 #include <Roster.h>
 
-
+#include <stdio.h>
 #include <time.h>
 #include <math.h>
 
@@ -45,7 +45,9 @@ TOffscreenView::TOffscreenView(BRect frame, const char *name, short mRadius,
 
 	status_t error;
 	BResources rsrcs;
+	printf("loading resources...\n");
 	error = rsrcs.SetToImage(&&dummy_label);
+	printf("loading resources done, status: %d..\n", error);
 dummy_label:
 	if (error == B_OK) {
 		size_t len;
