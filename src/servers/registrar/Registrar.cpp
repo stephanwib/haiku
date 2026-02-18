@@ -68,7 +68,7 @@ Registrar::Registrar(status_t* _error)
 {
 	FUNCTION_START();
 
-	set_thread_priority(find_thread(NULL), B_NORMAL_PRIORITY + 1);
+	//set_thread_priority(find_thread(NULL), B_NORMAL_PRIORITY + 1);
 }
 
 
