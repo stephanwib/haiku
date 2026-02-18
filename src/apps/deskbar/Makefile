@@ -1,6 +1,18 @@
 PRIVATE_HEADERS=    app interface locale shared tracker
 OS_HEADERS=         interface support app storage translation locale kernel add-ons/graphics
 
+RC= ${.CURDIR}/../../bin/rc/rc 
+XRES= ${.CURDIR}/../../bin/xres
+
+postbuild: ${PROG}
+	${RC} Deskbar.rdef -o Deskbar.rsrc
+	${RC} icons.rdef -o icons.rsrc -I .
+	${XRES} -o ${PROG} Deskbar.rsrc icons.rsrc
+
+
+realall: postbuild
+
+
 PROG=       Deskbar
 
 SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp CalendarMenuWindow.cpp DeskbarMenu.cpp \
