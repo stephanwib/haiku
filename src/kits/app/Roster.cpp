@@ -63,6 +63,7 @@ using namespace BPrivate;
 #	define OUT printf
 #endif
 
+#define HAIKU_TARGET_PLATFORM_LIBBE_TEST 1
 
 const BRoster* be_roster;
 
@@ -2707,6 +2708,7 @@ BRoster::_InitMessenger()
 	}
 	*/
 #else
+	DBG(OUT("  looking up roster port\n"));
 	port_id rosterPort = find_port(B_REGISTRAR_PORT_NAME);
 	port_info info;
 	if (rosterPort >= 0 && get_port_info(rosterPort, &info) == B_OK) {
