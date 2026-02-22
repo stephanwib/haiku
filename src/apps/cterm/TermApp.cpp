@@ -112,7 +112,7 @@ int GetPTY()
 	char            tty_name[] = "/dev/tty??";
 
 	// PTYS_ARE_GETPT
-	if( (fd = posix_openpt()) >= 0 )
+	if( (fd = posix_openpt(O_RDWR | O_NOCTTY)) >= 0 )
 	{
 		if( grantpt( fd ) == 0 && unlockpt( fd ) == 0 )
 		{
