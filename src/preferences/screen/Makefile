@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface textencoding shared libroot system preferences graphics/common
+PRIVATE_HEADERS=    interface textencoding shared libroot system preferences graphics/common graphics/radeon
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Screen
