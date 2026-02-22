@@ -47,7 +47,7 @@
 #include "TermWindow.h"
 #include "TermApp.h"
 
-#include "IPoint.h"
+#include <IPoint.h>
 
 
 
