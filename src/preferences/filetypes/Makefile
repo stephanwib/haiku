@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface textencoding shared libroot system
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics
+OS_HEADERS=         interface support app storage translation locale add-ons/graphics package
 
 PROG=	Filetypes
 
