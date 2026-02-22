@@ -4,6 +4,7 @@
 #include <ScrollBar.h>
 #include <Screen.h>
 
+#include <unistd.h>
 
 #include "TermWindow.h";
 #include "TermConst.h"
