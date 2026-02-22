@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface textencoding shared libroot system
+PRIVATE_HEADERS=    interface textencoding shared libroot system locale
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Locale
