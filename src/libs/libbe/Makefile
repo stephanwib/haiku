@@ -2,6 +2,23 @@
 
 .include <bsd.own.mk>
 
+
+RC= ${.CURDIR}/../../bin/rc/rc 
+XRES= ${.CURDIR}/../../bin/xres
+
+RESOURCES=      libbe_version Icons CountryFlags LanguageFlags
+
+RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
+CLEANFILES+=    ${RSRCFILES}
+
+.SUFFIXES: .rdef .rsrc
+.rdef.rsrc:
+	${RC} ${.IMPSRC} -o ${.TARGET} -I .
+
+${PROG}: ${RSRCFILES}
+	${XRES} -o ${.TARGET} ${RSRCFILES}
+
+
 LIB=	be
 
 # Notes:
@@ -31,5 +48,6 @@ WARNS=		5
 .include "${.CURDIR}/../../kits/storage/Makefile.inc"
 
 .include <bsd.lib.mk>
+
 
 
