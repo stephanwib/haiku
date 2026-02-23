@@ -399,7 +399,7 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 		throw Exception(B_IO_ERROR, "File is not a resource file.");
 	}
 
-printf("magic = %02x %02x %02x %02x\n",
+//printf("magic = %02x %02x %02x %02x\n",
     magic[3], magic[2], magic[1], magic[0]);
 	
 	if (fileSize == 0) {
@@ -480,7 +480,7 @@ printf("magic = %02x %02x %02x %02x\n",
 void
 ResourceFile::_InitELFFile(BFile& file)
 {
-	printf("ResourceFile::_InitELFFile entry\n");
+	//printf("ResourceFile::_InitELFFile entry\n");
 	status_t error = B_OK;
 
 	// get the file size
@@ -489,20 +489,20 @@ ResourceFile::_InitELFFile(BFile& file)
 	if (error != B_OK)
 		throw Exception(error, "Failed to get the file size.");
 
-printf("1 ResourceFile::_InitELFFile file size ok\n");
+//printf("1 ResourceFile::_InitELFFile file size ok\n");
 	
 	// read the ELF headers e_ident field
 	unsigned char identification[EI_NIDENT];
 	read_exactly(file, 0, identification, EI_NIDENT,
 		"Failed to read ELF identification.");
 
-printf("2 ResourceFile::_InitELFFile ELF ID ok\n");
+//printf("2 ResourceFile::_InitELFFile ELF ID ok\n");
 	
 	// check version
 	if (identification[EI_VERSION] != EV_CURRENT)
 		throw Exception(B_UNSUPPORTED, "Unsupported ELF version.");
 
-printf("3 ResourceFile::_InitELFFile ELF version ok\n");
+//printf("3 ResourceFile::_InitELFFile ELF version ok\n");
 	
 	// check data encoding (endianess)
 	switch (identification[EI_DATA]) {
@@ -517,7 +517,7 @@ printf("3 ResourceFile::_InitELFFile ELF version ok\n");
 			throw Exception(B_UNSUPPORTED, "Unsupported ELF data encoding.");
 	}
 
-printf("4 ResourceFile::_InitELFFile endianess ok\n");
+//printf("4 ResourceFile::_InitELFFile endianess ok\n");
 	
 	// check class (32/64 bit) and call the respective method handling it
 	switch (identification[EI_CLASS]) {
@@ -533,9 +533,9 @@ printf("4 ResourceFile::_InitELFFile endianess ok\n");
 		    printf("ResourceFile::_InitELFFile ELF class unknown\n");
 			throw Exception(B_UNSUPPORTED, "Unsupported ELF class.");
 	}
-	printf("5 ResourceFile::_InitELFFile ELF class ok\n");
+	//printf("5 ResourceFile::_InitELFFile ELF class ok\n");
 
-	printf("ResourceFile::_InitELFFile ok\n");
+	//printf("ResourceFile::_InitELFFile ok\n");
 }
 
 
@@ -560,7 +560,7 @@ ResourceFile::_InitELFXFile(BFile& file, uint64 fileSize)
 	bool hasProgramHeaderTable = (programHeaderTableOffset != 0);
 	bool hasSectionHeaderTable = (sectionHeaderTableOffset != 0);
 
-
+/*
 	printf("\n-- CONVERTED VALUES (_GetInt) --\n");
 
 printf("headerSize             = %u (0x%x)\n",
@@ -593,8 +593,9 @@ printf("hasSectionHeaderTable  = %s\n",
     hasSectionHeaderTable ? "true" : "false");
 
 printf("==== ELF HEADER DEBUG END ====\n\n");
+*/
 
-	
+
 	// check the sanity of the header values
 	// ELF header size
 	if (headerSize < sizeof(ElfHeader) || headerSize > kMaxELFHeaderSize) {
