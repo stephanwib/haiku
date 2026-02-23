@@ -620,10 +620,13 @@ BIconUtils::GetCMAP8Icon(BNode* node, const char* smallIconAttrName,
 status_t
 BIconUtils::GetSystemIcon(const char* iconName, BBitmap* icon)
 {
+
+printf("BIconUtils::GetSystemIcon entry, name %s\n", iconName);
 	static BResources resources;
 	static bool resourcesAreLoaded = false;
 
 	if (!resourcesAreLoaded) {
+		printf("BIconUtils::GetSystemIcon need to init resourcec\n");
 		BPath path;
 		status_t status = find_directory(B_SYSTEM_LIB_DIRECTORY, &path);
 		if (status != B_OK) {
@@ -634,14 +637,16 @@ BIconUtils::GetSystemIcon(const char* iconName, BBitmap* icon)
 		BFile file;
 		status = file.SetTo(path.Path(), B_READ_ONLY);
 		if (status != B_OK) {
+			printf("BIconUtils::GetSystemIcon failed to open libbe.so\n");
 			return status;
 		}
 
 		status = resources.SetTo(&file);
 		if (status != B_OK) {
+			printf("BIconUtils::GetSystemIcon failed to init resource\n");
 			return status;
 		}
-
+printf("BIconUtils::GetSystemIcon loading resources ok\n");
 		resourcesAreLoaded = true;
 	}
 
@@ -675,7 +680,7 @@ BIconUtils::GetSystemIcon(const char* iconName, BBitmap* icon)
 		BIconUtils::ConvertFromCMAP8(rawIcon, B_LARGE_ICON, B_LARGE_ICON,
 			B_LARGE_ICON, icon);
 	}
-
+printf("BIconUtils::GetSystemIcon ok\n");
 	return B_OK;
 }
 
