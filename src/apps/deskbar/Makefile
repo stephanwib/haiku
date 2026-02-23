@@ -14,8 +14,8 @@ CLEANFILES+=    ${RSRCFILES}
 .rdef.rsrc:
 	${RC} ${.IMPSRC} -o ${.TARGET} -I .
 
-postbuild: ${PROG}
-	${XRES} -o ${.TARGET} ${RSRCFILES}
+postbuild: ${PROG} ${RSRCFILES}
+	${XRES} -o ${PROG} ${RSRCFILES}
 
 #postbuild: ${PROG}
 #	${RC} Deskbar.rdef -o Deskbar.rsrc
