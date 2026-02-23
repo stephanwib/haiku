@@ -15,7 +15,7 @@ CLEANFILES+=    ${RSRCFILES}
 .rdef.rsrc:
 	${RC} ${.IMPSRC} -o ${.TARGET} -I .
 
-${PROG}: ${RSRCFILES}
+${SHLIB_NAME}: ${RSRCFILES}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
 
 
@@ -48,6 +48,7 @@ WARNS=		5
 .include "${.CURDIR}/../../kits/storage/Makefile.inc"
 
 .include <bsd.lib.mk>
+
 
 
 
