@@ -4,6 +4,19 @@ OS_HEADERS=         interface support app storage translation locale kernel add-
 RC= ${.CURDIR}/../../bin/rc/rc 
 XRES= ${.CURDIR}/../../bin/xres
 
+PROG=       Deskbar
+RESOURCES=      Deskbar icons
+
+RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
+CLEANFILES+=    ${RSRCFILES}
+
+.SUFFIXES: .rdef .rsrc
+.rdef.rsrc:
+	${RC} ${.IMPSRC} -o ${.TARGET} -I .
+
+${PROG}: ${RSRCFILES}
+	${XRES} -o ${.TARGET} ${RSRCFILES}
+
 postbuild: ${PROG}
 	${RC} Deskbar.rdef -o Deskbar.rsrc
 	${RC} icons.rdef -o icons.rsrc -I .
@@ -12,8 +25,6 @@ postbuild: ${PROG}
 
 realall: postbuild
 
-
-PROG=       Deskbar
 
 SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp CalendarMenuWindow.cpp DeskbarMenu.cpp \
             DeskbarUtils.cpp ExpandoMenuBar.cpp InlineScrollView.cpp PreferencesWindow.cpp \
