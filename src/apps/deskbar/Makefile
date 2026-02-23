@@ -14,7 +14,7 @@ CLEANFILES+=    ${RSRCFILES}
 .rdef.rsrc:
 	${RC} ${.IMPSRC} -o ${.TARGET} -I .
 
-${PROG}: ${RSRCFILES}
+postbuild: ${RSRCFILES}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
 
 #postbuild: ${PROG}
@@ -22,7 +22,7 @@ ${PROG}: ${RSRCFILES}
 #	${RC} icons.rdef -o icons.rsrc -I .
 #	${XRES} -o ${PROG} Deskbar.rsrc icons.rsrc
 
-#realall: postbuild
+realall: postbuild
 
 
 SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp CalendarMenuWindow.cpp DeskbarMenu.cpp \
