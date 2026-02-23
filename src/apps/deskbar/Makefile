@@ -17,13 +17,12 @@ CLEANFILES+=    ${RSRCFILES}
 ${PROG}: ${RSRCFILES}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
 
-postbuild: ${PROG}
-	${RC} Deskbar.rdef -o Deskbar.rsrc
-	${RC} icons.rdef -o icons.rsrc -I .
-	${XRES} -o ${PROG} Deskbar.rsrc icons.rsrc
+#postbuild: ${PROG}
+#	${RC} Deskbar.rdef -o Deskbar.rsrc
+#	${RC} icons.rdef -o icons.rsrc -I .
+#	${XRES} -o ${PROG} Deskbar.rsrc icons.rsrc
 
-
-realall: postbuild
+#realall: postbuild
 
 
 SRCS+=      BarApp.cpp BarMenuBar.cpp BarMenuTitle.cpp BarView.cpp BarWindow.cpp CalendarMenuWindow.cpp DeskbarMenu.cpp \
