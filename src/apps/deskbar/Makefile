@@ -14,7 +14,7 @@ CLEANFILES+=    ${RSRCFILES}
 .rdef.rsrc:
 	${RC} ${.IMPSRC} -o ${.TARGET} -I .
 
-postbuild: ${RSRCFILES}
+postbuild: ${PROG}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
 
 #postbuild: ${PROG}
