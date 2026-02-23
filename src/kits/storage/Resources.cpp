@@ -242,6 +242,7 @@ BResources::SetTo(const char* path, bool clobber)
 status_t
 BResources::SetTo(const entry_ref* ref, bool clobber)
 {
+	printf("BResources::SetToImage called with entry ref\n");
 	if (!ref)
 		return B_BAD_VALUE;
 
@@ -274,7 +275,7 @@ status_t
 BResources::SetToImage(image_id image, bool clobber)
 {
 
-printf("BResources::SetToImage called, image %p\n", image);
+printf("BResources::SetToImage called with image id, image %p\n", image);
 	// get an image info
 	image_info info;
 	status_t error = get_image_info(image, &info);
