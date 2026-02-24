@@ -670,8 +670,8 @@ printf("5 BIconUtils::GetSystemIcon vector icon data at adress: %p\n", (void*)ra
 		&& BIconUtils::GetVectorIcon(rawIcon, size, icon) == B_OK) {
 		return B_OK;
 	}
-
-printf("6 BIconUtils::GetSystemIcon fallback to bitmap icon: %p\n");
+printf("6 BIconUtils::GetSystemIcon error from GetVectorIcon: %d\n", BIconUtils::GetVectorIcon(rawIcon, size, icon) );
+printf("6 BIconUtils::GetSystemIcon fallback to bitmap icon\n");
 	// Fall back to bitmap icon
 	rawIcon = (const uint8*)resources.LoadResource(B_LARGE_ICON_TYPE,
 		iconName, &size);
