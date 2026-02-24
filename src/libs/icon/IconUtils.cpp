@@ -649,27 +649,34 @@ printf("BIconUtils::GetSystemIcon entry, name %s\n", iconName);
 printf("BIconUtils::GetSystemIcon loading resources ok\n");
 		resourcesAreLoaded = true;
 	}
-
+printf("2 BIconUtils::GetSystemIcon check icon bitmap\n");
 	// Check the icon bitmap
 	if (icon == NULL || icon->InitCheck() < B_OK) {
 		return B_BAD_DATA;
 	}
-
+printf("3 BIconUtils::GetSystemIcon check icon bitmap\n");
 	// Load the raw icon data
 	size_t size = 0;
 	const uint8* rawIcon;
-
+	
+printf("4 BIconUtils::GetSystemIcon load vector icon\n");
 	// Try to load vector icon
 	rawIcon = (const uint8*)resources.LoadResource(B_VECTOR_ICON_TYPE,
 		iconName, &size);
+
+printf("5 BIconUtils::GetSystemIcon vector icon data at adress: %p\n", (void*)rawIcon);
+	
 	if (rawIcon != NULL
 		&& BIconUtils::GetVectorIcon(rawIcon, size, icon) == B_OK) {
 		return B_OK;
 	}
 
+printf("6 BIconUtils::GetSystemIcon fallback to bitmap icon: %p\n");
 	// Fall back to bitmap icon
 	rawIcon = (const uint8*)resources.LoadResource(B_LARGE_ICON_TYPE,
 		iconName, &size);
+
+printf("7 BIconUtils::GetSystemIcon bitmap icon data at adress: %p\n", (void*)rawIcon);
 	if (rawIcon == NULL) {
 		delete icon;
 		return B_ENTRY_NOT_FOUND;
