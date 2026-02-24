@@ -400,7 +400,7 @@ ResourceFile::_InitFile(BFile& file, bool clobber)
 	}
 
 //printf("magic = %02x %02x %02x %02x\n",
-    magic[3], magic[2], magic[1], magic[0]);
+//    magic[3], magic[2], magic[1], magic[0]);
 	
 	if (fileSize == 0) {
 		// empty file
