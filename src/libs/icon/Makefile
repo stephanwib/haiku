@@ -35,7 +35,7 @@ SRCS+=     AffineTransformer.cpp CompoundStyleTransformer.cpp ContourTransformer
            PerspectiveTransformer.cpp StrokeTransformer.cpp StyleTransformer.cpp TransformerFactory.cpp
 
 
-CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 CPPFLAGS+= -I${.CURDIR}
 CPPFLAGS+= -I${.CURDIR}/generic
 CPPFLAGS+= -I${.CURDIR}/flat_icon
