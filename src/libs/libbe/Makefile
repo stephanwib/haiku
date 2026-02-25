@@ -7,16 +7,14 @@ RC= ${.CURDIR}/../../bin/rc/rc
 XRES= ${.CURDIR}/../../bin/xres
 
 RESOURCES=      libbe_version Icons CountryFlags LanguageFlags
+RESPATH=        ${.CURDIR}/../../kits
 
 RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
 CLEANFILES+=    ${RSRCFILES}
 
 .SUFFIXES: .rdef .rsrc
 .rdef.rsrc:
-	${RC} ${.IMPSRC} -o ${.TARGET} -I .
-
-libbe.so: ${RSRCFILES}
-	${XRES} -o ${.TARGET} ${RSRCFILES}
+	${RC} ${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
 
 
 LIB=	be
@@ -49,6 +47,10 @@ WARNS=		5
 
 .include <bsd.lib.mk>
 
+# append resources
+
+${_LIB.so.full}.res : ${_LIB.so.full}
+	${XRES} -o ${.TARGET} ${RSRCFILES}
 
 
 
