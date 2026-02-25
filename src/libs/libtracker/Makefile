@@ -1,6 +1,19 @@
-
-
 .include <bsd.own.mk>
+
+
+RC= ${.CURDIR}/../../bin/rc/rc 
+XRES= ${.CURDIR}/../../bin/xres
+
+RESOURCES=      libtracker TrackerIcons
+RESPATH=        ${.CURDIR}/../../kits/tracker
+
+RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
+CLEANFILES+=    ${RSRCFILES}
+
+.SUFFIXES: .rdef .rsrc
+.rdef.rsrc:
+	${RC} ${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
+
 
 LIB=	tracker
 
@@ -23,3 +36,6 @@ WARNS=		5
 .include <bsd.lib.mk>
 
 
+
+${_LIB.so.full}.res : ${_LIB.so.full}
+	${XRES} -o ${.TARGET} ${RSRCFILES}
