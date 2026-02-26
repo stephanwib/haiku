@@ -36,6 +36,7 @@ All rights reserved.
 #include "FilePanelPriv.h"
 
 #include <string.h>
+#include <stdio.h>
 
 #include <Alert.h>
 #include <Application.h>
@@ -186,6 +187,9 @@ TFilePanel::TFilePanel(file_panel_mode mode, BMessenger* target, const BEntry* s
 	fIsTrackingMenu(false),
 	fDefaultStateRestored(false)
 {
+
+printf("TFilePanel::TFilePanel entry...\n");
+
 	InitIconPreloader();
 
 	fIsSavePanel = (mode == B_SAVE_PANEL);
@@ -222,14 +226,17 @@ TFilePanel::TFilePanel(file_panel_mode mode, BMessenger* target, const BEntry* s
 
 	if (startDir) {
 		if (model->SetTo(startDir) == B_OK && model->IsDirectory())
+			printf("TFilePanel::TFilePanel startdir true, useroot false\n");
 			useRoot = false;
 		else {
+			printf("TFilePanel::TFilePanel startdir false, useroot true\n");
 			delete model;
 			model = new Model();
 		}
 	}
 
 	if (useRoot) {
+		printf("TFilePanel::TFilePanel useroot 1 entry\n");
 		BPath path;
 		if (find_directory(B_USER_DIRECTORY, &path) == B_OK) {
 			BEntry entry(path.Path(), true);
@@ -239,6 +246,7 @@ TFilePanel::TFilePanel(file_panel_mode mode, BMessenger* target, const BEntry* s
 	}
 
 	if (useRoot) {
+		printf("TFilePanel::TFilePanel useroot 2 entry\n");
 		BVolume volume;
 		BDirectory root;
 		BVolumeRoster volumeRoster;
