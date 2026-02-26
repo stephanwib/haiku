@@ -252,6 +252,7 @@ Filter::GetDestImage()
 int32
 Filter::NumberOfActiveCPUs() const
 {
+	/*
 	int count;
 	system_info info;
 	get_system_info(&info);
@@ -265,6 +266,9 @@ Filter::NumberOfActiveCPUs() const
 		cpuCount = 1;
 
 	return cpuCount;
+	*/
+
+	return 1;
 }
 
 
