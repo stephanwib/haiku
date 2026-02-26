@@ -702,6 +702,7 @@ TFilePanel::NewPoseView(Model* model, uint32)
 void
 TFilePanel::Init(const BMessage*)
 {
+	printf("TFilePanel::Init entry\n");
 	BRect windRect(Bounds());
 	fBackView = new BView(Bounds(), "View", B_FOLLOW_ALL, 0);
 	fBackView->SetViewUIColor(B_PANEL_BACKGROUND_COLOR);
