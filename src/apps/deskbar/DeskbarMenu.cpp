@@ -44,6 +44,7 @@ All rights reserved.
 #include <Menu.h>
 #include <MenuItem.h>
 #include <Roster.h>
+#include <stdio.h>
 
 #include "BarApp.h"
 #include "BarView.h"
@@ -240,6 +241,10 @@ TDeskbarMenu::AddStandardDeskbarMenuItems()
 
 	BMenuItem* item;
 
+
+
+printf("TDeskbarMenu::AddStandardDeskbarMenuItems entry\n");
+	
 // One of them is used if HAIKU_DISTRO_COMPATIBILITY_OFFICIAL, and the other if
 // not. However, we want both of them to end up in the catalog, so we have to
 // make them visible to collectcatkeys in either case.
