@@ -739,10 +739,15 @@ TFilePanel::Init(const BMessage*)
 	fDirMenu = new BDirMenu(fDirMenuField->MenuBar(), this, kSwitchDirectory, "refs");
 
 	BEntry entry(TargetModel()->EntryRef());
-	if (entry.InitCheck() == B_OK)
+	if (entry.InitCheck() == B_OK) {
+
+		printf("TFilePanel::Init BEntry InitCheck ok\n");
 		fDirMenu->Populate(&entry, 0, true, true, false, true);
-	else
+	}
+	else {
+		printf("TFilePanel::Init BEntry InitCheck failed\n");
 		fDirMenu->Populate(0, 0, true, true, false, true);
+	}
 
 	fBackView->AddChild(fDirMenuField);
 
