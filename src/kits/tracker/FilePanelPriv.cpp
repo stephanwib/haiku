@@ -225,7 +225,7 @@ printf("TFilePanel::TFilePanel entry...\n");
 	bool useRoot = true;
 
 	if (startDir) {
-		if (model->SetTo(startDir) == B_OK && model->IsDirectory())
+		if (model->SetTo(startDir) == B_OK && model->IsDirectory()) {
 			printf("TFilePanel::TFilePanel startdir true, useroot false\n");
 			useRoot = false;
 	    }
