@@ -43,6 +43,7 @@ All rights reserved.
 #include <Looper.h>
 #include <Screen.h>
 #include <Window.h>
+#include <stdio.h>
 
 #include "AutoLock.h"
 #include "Commands.h"
@@ -71,6 +72,16 @@ BFilePanel::BFilePanel(file_panel_mode mode, BMessenger* target,
 	setrlimit(RLIMIT_NOFILE, &rl);
 
 	BEntry startDir(ref);
+
+if (ref) {
+    printf("ref name: %s\n", ref->name);
+} else {
+    printf("ref is NULL\n");
+}
+
+printf("startDir InitCheck: %ld\n", startDir.InitCheck());
+
+	
 	fWindow = new TFilePanel(mode, target, &startDir, nodeFlavors,
 		multipleSelection, message, filter, 0, B_DOCUMENT_WINDOW_LOOK,
 		(modal ? B_MODAL_APP_WINDOW_FEEL : B_NORMAL_WINDOW_FEEL),
