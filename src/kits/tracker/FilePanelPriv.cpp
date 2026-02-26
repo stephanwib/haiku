@@ -228,6 +228,7 @@ printf("TFilePanel::TFilePanel entry...\n");
 		if (model->SetTo(startDir) == B_OK && model->IsDirectory())
 			printf("TFilePanel::TFilePanel startdir true, useroot false\n");
 			useRoot = false;
+	    }
 		else {
 			printf("TFilePanel::TFilePanel startdir false, useroot true\n");
 			delete model;
