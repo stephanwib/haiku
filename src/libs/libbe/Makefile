@@ -49,8 +49,9 @@ WARNS=		5
 
 # append resources
 
-${_LIB.so.full}.res : ${_LIB.so.full}
+${_LIB.so.full}.res : ${_LIB.so.full} ${RSRCFILES}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
+
 
 
 
