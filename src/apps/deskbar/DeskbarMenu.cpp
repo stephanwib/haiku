@@ -155,6 +155,7 @@ TDeskbarMenu::DoneBuildingItemList()
 bool
 TDeskbarMenu::AddNextItem()
 {
+	printf("TDeskbarMenu::AddNextItem entry\n");
 	if (fAddState == kStart)
 		return AddStandardDeskbarMenuItems();
 
