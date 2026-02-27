@@ -229,6 +229,15 @@ Model::SetTo(const BEntry* entry, bool open, bool writable)
 	fBaseType = kUnknownNode;
 	fMimeType = "";
 
+	char statbuf[512];
+	status_t err;
+
+	err = entry.getName(&statbuf);
+	if (err == B_OK)
+		printf("getName ok: %s\n", statbuf);
+	else
+		printf("getName failed...\n");
+
 printf("Model::SetTo entry...\n");
 	
 	fStatus = entry->GetRef(&fEntryRef);
