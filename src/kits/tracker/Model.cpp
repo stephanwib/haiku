@@ -464,7 +464,7 @@ Model::OpenNodeCommon(bool writable)
 
 		default:
 #if DEBUG
-			PrintToStream();
+			PrintToStream(1, 1);
 #endif
 			TRESPASS();
 				// this can only happen if GetStat failed before,
