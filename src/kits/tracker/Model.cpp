@@ -232,7 +232,7 @@ Model::SetTo(const BEntry* entry, bool open, bool writable)
 	char statbuf[512];
 	status_t err;
 
-	err = entry->GetName(&statbuf);
+	err = entry->GetName(statbuf);
 	if (err == B_OK)
 		printf("getName ok: %s\n", statbuf);
 	else
