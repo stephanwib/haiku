@@ -71,13 +71,14 @@ BFilePanel::BFilePanel(file_panel_mode mode, BMessenger* target,
 	rl.rlim_max = RLIM_SAVED_MAX;
 	setrlimit(RLIMIT_NOFILE, &rl);
 
-	BEntry startDir(ref);
-
-if (ref) {
+	if (ref) {
     printf("ref name: %s\n", ref->name);
 } else {
     printf("ref is NULL\n");
 }
+	
+	BEntry startDir("/root", 0);
+
 
 printf("startDir InitCheck: %ld\n", startDir.InitCheck());
 
