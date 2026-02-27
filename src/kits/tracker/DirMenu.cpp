@@ -94,9 +94,14 @@ BDirMenu::Populate(const BEntry* startEntry, BWindow* originatingWindow,
 		if (!startEntry)
 			throw (status_t)B_ERROR;
 
+printf("BDirMenu::Populate startEntry ok...\n");
+		
 		Model model(startEntry);
 		ThrowOnInitCheckError(&model);
 
+
+printf("BDirMenu::Populate Model init check ok...\n");
+		
 		ModelMenuItem* menu = NULL;
 
 		if (fMenuBar) {
