@@ -43,6 +43,7 @@ All rights reserved.
 
 #include <stdlib.h>
 #include <strings.h>
+#include <stdio.h>
 
 #include <fs_info.h>
 #include <fs_attr.h>
@@ -228,18 +229,24 @@ Model::SetTo(const BEntry* entry, bool open, bool writable)
 	fBaseType = kUnknownNode;
 	fMimeType = "";
 
+printf("Model::SetTo entry...\n");
+	
 	fStatus = entry->GetRef(&fEntryRef);
 	if (fStatus != B_OK)
 		return fStatus;
-
+printf("Model::SetTo GetRef ok...\n");
+	
 	fStatus = entry->GetStat(&fStatBuf);
 	if (fStatus != B_OK)
 		return fStatus;
-
+printf("Model::SetTo GetStat ok...\n");
+	
 	fStatus = OpenNode(writable);
 	if (!open)
 		CloseNode();
 
+printf("Model::SetTo OpenNode ok...\n");
+	
 	return fStatus;
 }
 
