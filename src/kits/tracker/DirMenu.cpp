@@ -44,6 +44,8 @@ All rights reserved.
 #include <Path.h>
 #include <Volume.h>
 #include <VolumeRoster.h>
+#include <stdio.h>
+#include <string.h>
 
 #include "Attributes.h"
 #include "ContainerWindow.h"
@@ -87,6 +89,7 @@ BDirMenu::Populate(const BEntry* startEntry, BWindow* originatingWindow,
 	bool includeStartEntry, bool select, bool reverse, bool addShortcuts,
 	bool navMenuEntries)
 {
+	printf("BDirMenu::Populate entry...\n");
 	try {
 		if (!startEntry)
 			throw (status_t)B_ERROR;
@@ -125,6 +128,8 @@ BDirMenu::Populate(const BEntry* startEntry, BWindow* originatingWindow,
 				FSGetParentVirtualDirectoryAware(entry, entry);
 		}
 
+printf("BDirMenu::Populate phase 2\n");
+		
 		BDirectory desktopDir;
 		FSGetDeskDir(&desktopDir);
 		BEntry desktopEntry;
@@ -196,7 +201,7 @@ BDirMenu::Populate(const BEntry* startEntry, BWindow* originatingWindow,
 			}
 		}
 	} catch (status_t err) {
-		PRINT(("BDirMenu::Populate: caught error %s\n", strerror(err)));
+		printf(("BDirMenu::Populate: caught error %s\n", strerror(err)));
 		if (!CountItems()) {
 			BString error;
 			error << "Error [" << strerror(err) << "] populating menu";
