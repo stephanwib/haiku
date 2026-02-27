@@ -97,7 +97,7 @@ BDirMenu::Populate(const BEntry* startEntry, BWindow* originatingWindow,
 printf("BDirMenu::Populate startEntry ok...\n");
 		
 		Model model(startEntry);
-		printf("Model InitCheck: %ld\n", model.InitCheck());
+		printf("Model InitCheck: %d\n", model.InitCheck());
 
 		
 		ThrowOnInitCheckError(&model);
