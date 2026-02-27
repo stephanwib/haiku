@@ -237,12 +237,15 @@ printf("TFilePanel::TFilePanel entry...\n");
 	}
 
 	if (useRoot) {
-		printf("TFilePanel::TFilePanel useroot 1 entry\n");
+		printf("TFilePanel::TFilePanel useroot 1 entry, testing B_USER_DIRECTORY\n");
 		BPath path;
 		if (find_directory(B_USER_DIRECTORY, &path) == B_OK) {
+			printf("TFilePanel::TFilePanel useroot 1 , getting B_USER_DIRECTORY ok\n");
 			BEntry entry(path.Path(), true);
 			if (entry.InitCheck() == B_OK && model->SetTo(&entry) == B_OK)
 				useRoot = false;
+			else
+				printf("TFilePanel::TFilePanel useroot 1 error, BEntry InitCheck %d\n", entry.InitCheck());
 		}
 	}
 
