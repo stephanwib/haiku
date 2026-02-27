@@ -83,6 +83,8 @@ BObjectList<Model>* writableOpenModelList = NULL;
 BObjectList<Model>* readOnlyOpenModelList = NULL;
 #endif
 
+#define DEBUG 1
+#define xDEBUG 1
 
 //	#pragma mark - Model()
 
