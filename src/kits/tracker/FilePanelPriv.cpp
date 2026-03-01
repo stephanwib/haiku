@@ -263,7 +263,7 @@ printf("TFilePanel::TFilePanel entry...\n");
 		char statbuf[512];
 	   status_t err;
 
-	err = rentry->GetName(statbuf);
+	err = rentry.GetName(statbuf);
 	if (err == B_OK)
 		printf("getName root ok: %s\n", statbuf);
 	else
