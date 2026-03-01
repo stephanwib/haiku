@@ -231,14 +231,21 @@ Model::SetTo(const BEntry* entry, bool open, bool writable)
 
 	char statbuf[512];
 	status_t err;
-
+	
+printf("Model::SetTo entry...\n");
+	
 	err = entry->GetName(statbuf);
 	if (err == B_OK)
 		printf("getName ok: %s\n", statbuf);
 	else
 		printf("getName failed...\n");
 
-printf("Model::SetTo entry...\n");
+    err = entry->GetPath(statbuf);
+	if (err == B_OK)
+		printf("getPath ok: %s\n", statbuf);
+	else
+		printf("getPath failed...\n");
+
 	
 	fStatus = entry->GetRef(&fEntryRef);
 	if (fStatus != B_OK)
