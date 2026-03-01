@@ -231,6 +231,7 @@ Model::SetTo(const BEntry* entry, bool open, bool writable)
 
 	char statbuf[512];
 	status_t err;
+	BPath Path;
 	
 printf("Model::SetTo entry...\n");
 	
@@ -240,9 +241,9 @@ printf("Model::SetTo entry...\n");
 	else
 		printf("getName failed...\n");
 
-    err = entry->GetPath(statbuf);
+    err = entry->GetPath(&Path);
 	if (err == B_OK)
-		printf("getPath ok: %s\n", statbuf);
+		printf("getPath ok: %s\n", Path.Path());
 	else
 		printf("getPath failed...\n");
 
