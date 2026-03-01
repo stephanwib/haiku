@@ -245,7 +245,7 @@ printf("Model::SetTo entry...\n");
 	if (err == B_OK)
 		printf("getPath ok: %s\n", Path.Path());
 	else
-		printf("getPath failed...\n");
+		printf("getPath failed..., status: %d\n", err);
 
 	
 	fStatus = entry->GetRef(&fEntryRef);
