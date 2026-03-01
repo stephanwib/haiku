@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface shared tracker
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics kernel game
+OS_HEADERS=         interface support app storage translation locale add-ons/graphics kernel game be_apps/Tracker
 
 PROG=	Showimage
 
