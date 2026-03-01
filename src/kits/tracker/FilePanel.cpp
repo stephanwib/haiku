@@ -77,7 +77,7 @@ BFilePanel::BFilePanel(file_panel_mode mode, BMessenger* target,
     printf("ref is NULL\n");
 }
 	
-	BEntry startDir("/root", 0);
+	BEntry startDir("/root/cosmoe", 0);
 
 
 printf("startDir InitCheck: %ld\n", startDir.InitCheck());
