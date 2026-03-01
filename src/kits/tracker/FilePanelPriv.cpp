@@ -257,8 +257,20 @@ printf("TFilePanel::TFilePanel entry...\n");
 		volumeRoster.GetBootVolume(&volume);
 		volume.GetRootDirectory(&root);
 
-		BEntry entry;
-		root.GetEntry(&entry);
+		BEntry rentry;
+		root.GetEntry(&rentry);
+
+		char statbuf[512];
+	   status_t err;
+
+	err = rentry->GetName(statbuf);
+	if (err == B_OK)
+		printf("getName root ok: %s\n", statbuf);
+	else
+		printf("getName failed...\n");
+
+		BEntry entry("/", 0);
+		//root.GetEntry(&entry);
 		model->SetTo(&entry);
 	}
 
