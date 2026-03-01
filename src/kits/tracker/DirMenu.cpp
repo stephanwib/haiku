@@ -116,12 +116,15 @@ printf("BDirMenu::Populate Model init check ok...\n");
 
 		bool showDesktop, showDisksIcon;
 		{
-			TrackerSettings settings;
-			showDesktop = settings.DesktopFilePanelRoot();
-			showDisksIcon = settings.ShowDisksIcon();
+			//TrackerSettings settings;
+			//showDesktop = settings.DesktopFilePanelRoot();
+			//showDisksIcon = settings.ShowDisksIcon();
+			showDesktop = false;
+			showDisksIcon = false;
 		}
 
 		// might start one level above startEntry
+		includeStartEntry = true;
 		if (!includeStartEntry) {
 			BDirectory parent;
 			BDirectory dir(&entry);
