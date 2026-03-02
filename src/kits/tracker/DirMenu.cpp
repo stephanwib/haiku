@@ -146,8 +146,19 @@ printf("BDirMenu::Populate phase 2\n");
 		BEntry desktopEntry;
 		desktopDir.GetEntry(&desktopEntry);
 
+         BPath path;
+    
+		
 		for (;;) {
-			printf("BDirMenu::Populate add loop\n");
+			printf("BDirMenu::Populate add loop, debugging entry\n");
+
+			status = entry.GetPath(&path);
+            if (status != B_OK) {
+                printf("GetPath() failed: %s\n", strerror(status));
+             }
+			else
+				printf("GetPath() ok : %s\n", path.Path());
+			
 			BNode node(&entry);
 			ThrowOnInitCheckError(&node);
 			printf("BDirMenu::Populate BNode Init check ok\n");
