@@ -147,8 +147,10 @@ printf("BDirMenu::Populate phase 2\n");
 		desktopDir.GetEntry(&desktopEntry);
 
 		for (;;) {
+			printf("BDirMenu::Populate add loop\n");
 			BNode node(&entry);
 			ThrowOnInitCheckError(&node);
+			printf("BDirMenu::Populate BNode Init check ok\n");
 
 			PoseInfo info;
 			ReadAttrResult result = ReadAttr(&node, kAttrPoseInfo,
