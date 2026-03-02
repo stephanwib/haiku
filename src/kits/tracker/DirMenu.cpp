@@ -161,6 +161,8 @@ printf("BDirMenu::Populate phase 2\n");
 				printf("GetPath() ok : %s\n", path.Path());
 			
 			BNode node(&entry);
+             printf("BNode status: %d\n", node.InitCheck());
+			
 			ThrowOnInitCheckError(&node);
 			printf("BDirMenu::Populate BNode Init check ok\n");
 
