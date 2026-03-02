@@ -509,6 +509,7 @@ BEntry::GetRef(entry_ref* ref) const
 }
 
 
+/*
 status_t
 BEntry::GetPath(BPath* path) const
 {
@@ -528,6 +529,32 @@ BEntry::GetPath(BPath* path) const
 
 	return B_ENTRY_NOT_FOUND;
 }
+*/
+
+
+status_t
+BEntry::GetPath(BPath* path) const
+{
+	if (fCStatus != B_OK)
+		return B_NO_INIT;
+
+	if (path == NULL || fDirFd < 0)
+		return B_BAD_VALUE;
+
+	char output[B_PATH_NAME_LENGTH];
+
+	if (BPrivate::Storage::dir_to_path(fDirFd, output, sizeof(output)-1) == B_OK) {
+		if (strcmp(output, "/") != 0)
+			strlcat(output, "/", B_PATH_NAME_LENGTH);
+
+		strlcat(output, fName, B_PATH_NAME_LENGTH);
+		return path->SetTo(output);
+	}
+
+	return B_ENTRY_NOT_FOUND;
+}
+
+
 
 /*! \brief Gets the parent of the BEntry as another BEntry.
 
