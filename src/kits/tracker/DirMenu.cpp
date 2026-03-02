@@ -146,6 +146,7 @@ printf("BDirMenu::Populate phase 2\n");
 		BEntry desktopEntry;
 		desktopDir.GetEntry(&desktopEntry);
 
+		 int status;
          BPath path;
     
 		
