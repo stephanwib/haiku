@@ -483,6 +483,36 @@ BEntry::Unset()
 	- "error code" - Failure
 
  */
+
+
+status_t
+BEntry::GetRef(entry_ref* ref) const
+{
+	if (fCStatus != B_OK)
+		return B_NO_INIT;
+
+	if (ref == NULL)
+		return B_BAD_VALUE;
+
+	struct stat st;
+	status_t error = BPrivate::Storage::get_stat(fDirFd, &st);
+	if (error == B_OK) {
+		char output[B_PATH_NAME_LENGTH];
+		error = BPrivate::Storage::dir_to_path(fDirFd, output, sizeof(output)-1);
+		if (error == B_OK) {
+			if (strcmp(output, "/") != 0)
+				strlcat(output, "/", B_PATH_NAME_LENGTH);
+			strlcat(output, fName, B_PATH_NAME_LENGTH);
+			ref->device = st.st_dev;
+			ref->directory = st.st_ino;
+			error = ref->set_name(output);
+		}
+	}
+	return error;
+}
+
+
+/*
 status_t
 BEntry::GetRef(entry_ref* ref) const
 {
@@ -507,7 +537,7 @@ BEntry::GetRef(entry_ref* ref) const
 	}
 	return error;
 }
-
+*/
 
 /*
 status_t
