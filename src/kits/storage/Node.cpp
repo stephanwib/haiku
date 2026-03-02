@@ -555,10 +555,17 @@ BNode::_SetTo(int fd, const char* path, bool traverse)
 
 	status_t error = (fd >= 0 || path ? B_OK : B_BAD_VALUE);
 	if (error == B_OK) {
-//FIXME
+		int traverseFlag = (traverse ? 0 : O_NOTRAVERSE);
+		fFd = openat(fd, path, O_RDWR | O_CLOEXEC | traverseFlag, 0);
+		if (fFd < B_OK && fFd != B_ENTRY_NOT_FOUND) {
+			// opening read-write failed, re-try read-only
+			fFd = openat(fd, path, O_RDONLY | O_CLOEXEC | traverseFlag, 0);
+		}
+		if (fFd < 0)
+			error = fFd;
 	}
 
-	return error;
+	return fCStatus = error;
 }
 
 
@@ -580,13 +587,7 @@ BNode::_SetTo(int fd, const char* path, bool traverse)
 status_t
 BNode::_SetTo(const entry_ref* ref, bool traverse)
 {
-	Unset();
-
-	status_t result = (ref ? B_OK : B_BAD_VALUE);
-	if (result == B_OK) {
-		//FIXME
-	}
-	return result;
+	return _SetTo(-1, ref->name, traverse);
 }
 
 
