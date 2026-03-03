@@ -21,7 +21,7 @@ LIB=	tracker
 #  Compiler suggests -std=gnu99 due to alloca usage
 #  Needs zstd, icu and mapm (Math library) from pkgsrc
 
-CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
+CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -D_SUPPORTS_RESOURCES
 
 # XXX Compiler suggests -std=gnu99 due to alloca usage
 
@@ -39,4 +39,5 @@ WARNS=		5
 
 ${_LIB.so.full}.res : ${_LIB.so.full}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
+
 
