@@ -7,14 +7,14 @@ RC= ${.CURDIR}/../../bin/rc/rc
 XRES= ${.CURDIR}/../../bin/xres
 
 RESOURCES=      libbe_version Icons CountryFlags LanguageFlags
-RESPATH=        ${.CURDIR}/../../kits
+RESPATH=        ${.CURDIR}/../../kits/
 
 RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
 CLEANFILES+=    ${RSRCFILES}
 
 .SUFFIXES: .rdef .rsrc
 .rdef.rsrc:
-	${RC} ${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
+	${RC} ${RESPATH}${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
 
 
 LIB=	be
@@ -51,6 +51,7 @@ WARNS=		5
 
 ${_LIB.so.full}.res : ${_LIB.so.full} ${RSRCFILES}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
+
 
 
 
