@@ -48,6 +48,28 @@ All rights reserved.
 //	#pragma mark - BImageResources
 
 
+
+BImageResources::BImageResources(void* memAddr)
+{
+	status_t status;
+	BPath path;
+	
+	status = find_directory(B_SYSTEM_LIB_DIRECTORY, &path);
+	if (status == B_OK) {
+		path.Append("libtracker.so");
+	}
+
+	if (status == B_OK) {
+		status = fFile.SetTo(path.Path(), B_READ_ONLY);
+		if (status == B_OK) {
+			// Pass clobber=true to prevent using embedded resources from the process
+			status = fResources.SetTo(&fFile, true);
+		}
+	}
+}
+
+
+/*
 BImageResources::BImageResources(void* memAddr)
 {
 	image_id image = find_image(memAddr);
@@ -64,7 +86,7 @@ BImageResources::BImageResources(void* memAddr)
 			fResources.SetTo(&file);
 	}
 }
-
+*/
 
 BImageResources::~BImageResources()
 {
