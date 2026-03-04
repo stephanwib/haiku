@@ -1,0 +1,31 @@
+.include <bsd.own.mk>
+
+OS_HEADERS= app interface support storage
+PRIVATE_HEADERS= shared
+
+LIB=	betest
+
+
+SRCS+=     BTestCase.cpp BTestSuite.cpp SemaphoreSyncObject.cpp TestApp.cpp TestListener.cpp TestShell.cpp \
+           TestUtils.cpp ThreadedTestCase.cpp BetestInit.cpp
+
+
+CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
+
+CPPFLAGS+= -I${.CURDIR}
+CPPFLAGS+= -I${.CURDIR}/../../../headers
+CPPFLAGS+= -I${.CURDIR}/../../../headers/os
+
+LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -lbe
+
+.for HEADER in ${OS_HEADERS}
+CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
+.endfor
+
+.for HEADER in ${PRIVATE_HEADERS}
+CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
+.endfor
+
+WARNS=		5
+
+.include <bsd.lib.mk>
