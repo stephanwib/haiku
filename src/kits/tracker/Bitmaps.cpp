@@ -43,6 +43,7 @@ All rights reserved.
 #include <IconUtils.h>
 #include <String.h>
 #include <SupportDefs.h>
+#include <FindDirectory.h>
 
 
 //	#pragma mark - BImageResources
