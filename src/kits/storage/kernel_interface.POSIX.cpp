@@ -18,6 +18,7 @@
 #include <fs_query.h>	//  BeOS's C-based query functions
 #include <Entry.h>		// entry_ref
 #include <dirent.h>
+#include <fcntl.h>
 
 #include <fsproto.h>
 
@@ -992,6 +993,11 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 	if (dir < 0 || result == NULL)
 		return B_BAD_VALUE;
 
+   if (fcntl(dir, F_GETPATH, result) == 0) {
+		return B_OK;
+	}
+
+	/*
 	char path[1024];
 	size_t bufsize = sizeof(path) - 1;
 
@@ -1002,6 +1008,7 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 		result[bytes] = '\0';
 		return B_OK;
 	}
+	*/
 
 	return B_ERROR;
 }
