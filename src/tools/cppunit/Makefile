@@ -16,7 +16,7 @@ CPPFLAGS+= -I${.CURDIR}
 CPPFLAGS+= -I${.CURDIR}/../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 
-LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -lbe
+LDFLAGS= -L/usr/pkg/lib -L${.CURDIR}/../../libs/libbe -rpath=/usr/pkg/lib -lroot -lbe
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
