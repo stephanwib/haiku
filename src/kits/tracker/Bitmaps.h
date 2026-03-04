@@ -87,7 +87,7 @@ public:
 
 private:
 	image_id find_image(void* memAddr) const;
-
+    BFile fFile;
 	mutable BLocker fLock;
 	BResources fResources;
 };
