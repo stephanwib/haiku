@@ -1043,7 +1043,8 @@ BContainerWindow::UpdateTitle()
 void
 BContainerWindow::UpdateBackgroundImage()
 {
-	if (BootedInSafeMode())
+	//if (BootedInSafeMode())
+	if (1)
 		return;
 
 	WindowStateNodeOpener opener(this, false);
