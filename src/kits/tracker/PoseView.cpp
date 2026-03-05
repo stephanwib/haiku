@@ -1283,6 +1283,8 @@ BPoseView::IsValidAddPosesThread(thread_id currentThread) const
 void
 BPoseView::AddPoses(Model* model)
 {
+	printf("BPoseView::AddPoses entry...\n");
+	
 	// if model is zero, PoseView has other means of iterating through all
 	// the entries that it adds
 	if (model != NULL) {
@@ -1400,6 +1402,8 @@ BPoseView::AddPosesTask(void* castToParams)
 {
 	// AddPosesTask reads a bunch of models and passes them off to
 	// the pose placing and drawing routine.
+
+	printf("BPoseView::AddPosesTask entry...\n");
 
 	AddPosesParams* params = (AddPosesParams*)castToParams;
 	BMessenger target(params->target);
