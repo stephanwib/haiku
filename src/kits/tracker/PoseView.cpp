@@ -285,6 +285,7 @@ BPoseView::BPoseView(Model* model, uint32 viewMode)
 	fTransparentSelection(TrackerSettings().TransparentSelection()),
 	fWaitingForRefs(false)
 {
+	printf("BPoseView::BPoseView new instance...\n");
 	fViewState->SetViewMode(viewMode);
 	fFilterStrings.AddItem(new BString());
 }
@@ -328,6 +329,10 @@ BPoseView::Init(const BMessage &message)
 void
 BPoseView::InitCommon()
 {
+
+	printf("BPoseView::InitCommon() entry...\n");
+
+	
 	// Create the TitleView and CountView
 	fTitleView = new BTitleView(this);
 	if (ViewMode() != kListMode)
@@ -8312,6 +8317,7 @@ BPoseView::ClearPoses()
 void
 BPoseView::SwitchDir(const entry_ref* newDirRef, AttributeStreamNode* node)
 {
+	printf("BPoseView::SwitchDir entry...\n");
 	ASSERT(TargetModel() != NULL);
 	if (*newDirRef == *TargetModel()->EntryRef())
 		// no change
@@ -8319,6 +8325,7 @@ BPoseView::SwitchDir(const entry_ref* newDirRef, AttributeStreamNode* node)
 
 	Model* model = new Model(newDirRef, true);
 	if (model->InitCheck() != B_OK || !model->IsDirectory()) {
+		printf("BPoseView::SwitchDir failed to init new model...\n");
 		delete model;
 		return;
 	}
