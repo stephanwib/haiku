@@ -1196,6 +1196,7 @@ BPoseView::CommitActivePose(bool saveChanges)
 EntryListBase*
 BPoseView::InitDirentIterator(const entry_ref* ref)
 {
+	printf("BPoseView::InitDirentIterator entry...\n");
 	// set up a directory iteration
 	Model sourceModel(ref, false, true);
 	if (sourceModel.InitCheck() != B_OK)
@@ -1423,12 +1424,14 @@ BPoseView::AddPosesTask(void* castToParams)
 	BWindow* window = dynamic_cast<BWindow*>(lock.Looper());
 	ThrowOnAssert(window != NULL);
 
+	printf("BPoseView::AddPosesTask calling InitDirentIterator...\n");
 	// allocate the iterator we will use for adding poses; this
 	// can be a directory or any other collection of entry_refs, such
 	// as results of a query; subclasses override this to provide
 	// other than standard directory iterations
 	EntryListBase* container = view->InitDirentIterator(&ref);
 	if (container == NULL) {
+		printf("BPoseView::AddPosesTask: InitDirentIterator failed...\n");
 		view->HideBarberPole();
 		return B_ERROR;
 	}
