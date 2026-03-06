@@ -1444,9 +1444,11 @@ BPoseView::AddPosesTask(void* castToParams)
 	for (int32 index = 0; index < kMaxAddPosesChunk; index++)
 		posesResult->fModels[index] = (Model*)0xdeadbeef;
 #endif
-
+	
+  printf("BPoseView::AddPosesTask phase 2...\n");
 	try {
 		for (;;) {
+			printf("BPoseView::Add loop entry...\n");
 			lock.Unlock();
 
 			status_t result = B_OK;
@@ -1457,6 +1459,7 @@ BPoseView::AddPosesTask(void* castToParams)
 			node_ref itemNode;
 
 			int32 count = container->GetNextDirents(eptr, 1024, 1);
+			printf("BPoseView::Add loop, count from GetNextDirents: %d\n", count);
 			if (count <= 0 && modelChunkIndex == -1)
 				break;
 
@@ -1573,7 +1576,7 @@ BPoseView::AddPosesTask(void* castToParams)
 		// we are here because the window got closed or otherwise failed to
 		// lock
 
-		PRINT(("add_poses cleanup \n"));
+		printf(("Failed to lock, add_poses cleanup \n"));
 		// failed to lock window, bail
 		delete posesResult;
 		delete container;
