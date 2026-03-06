@@ -14,6 +14,11 @@
 #include <fcntl.h>
 #include <string.h>
 
+#include <compat/sys/stat.h>
+#ifdef _WIN32
+#include <posix/compat/sys/stat.h>
+#endif
+
 #include <Directory.h>
 #include <Entry.h>
 #include <File.h>
@@ -21,19 +26,27 @@
 #include <Path.h>
 #include <SymLink.h>
 
-#include <syscalls.h>
+#include "kernel_interface.h"
+
+#ifdef _WIN32
+// Windows defines CreateDirectory and CreateFile as macros, undefine them
+#undef CreateDirectory
+#undef CreateFile
+#endif
 
 
 BDirectory::BDirectory()
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 }
 
 
 BDirectory::BDirectory(const BDirectory& dir)
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 	*this = dir;
 }
@@ -41,7 +54,8 @@ BDirectory::BDirectory(const BDirectory& dir)
 
 BDirectory::BDirectory(const entry_ref* ref)
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 	SetTo(ref);
 }
@@ -49,7 +63,8 @@ BDirectory::BDirectory(const entry_ref* ref)
 
 BDirectory::BDirectory(const node_ref* nref)
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 	SetTo(nref);
 }
@@ -57,7 +72,8 @@ BDirectory::BDirectory(const node_ref* nref)
 
 BDirectory::BDirectory(const BEntry* entry)
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 	SetTo(entry);
 }
@@ -65,15 +81,23 @@ BDirectory::BDirectory(const BEntry* entry)
 
 BDirectory::BDirectory(const char* path)
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 	SetTo(path);
 }
 
 
-BDirectory::BDirectory(const BDirectory* dir, const char* path)
+/*! \brief Creates a BDirectory and initializes it to the directory referred
+	to by the supplied path name relative to the specified BDirectory.
+	\param dir the BDirectory, relative to which the directory's path name is
+		   given
+	\param path the directory's path name relative to \a dir
+*/
+BDirectory::BDirectory(const BDirectory *dir, const char *path)
 	:
-	fDirFd(-1)
+	fDirFd(-1),
+	fDir(NULL)
 {
 	SetTo(dir, path);
 }
@@ -86,6 +110,11 @@ BDirectory::~BDirectory()
 	// Depending on the compiler implementation an object may be degraded to
 	// an object of the base class after the destructor of the derived class
 	// has been executed.
+
+	// Cosmoe
+	if (fDir)
+		::closedir(fDir);
+
 	close_fd();
 }
 
@@ -93,22 +122,17 @@ BDirectory::~BDirectory()
 status_t
 BDirectory::SetTo(const entry_ref* ref)
 {
-	// open node
-	status_t error = _SetTo(ref, true);
-	if (error != B_OK)
-		return error;
-
-	// open dir
-	error = set_dir_fd(_kern_open_dir_entry_ref(ref->device, ref->directory, ref->name));
-	if (error < 0) {
-		Unset();
-		return (fCStatus = error);
+	Unset();	
+	char path[B_PATH_NAME_LENGTH];
+	status_t error = (ref ? B_OK : B_BAD_VALUE);
+	if (error == B_OK) {
+		error = BPrivate::Storage::entry_ref_to_path(ref, path,
+													 B_PATH_NAME_LENGTH);
 	}
-
-	// set close on exec flag on dir FD
-	fcntl(fDirFd, F_SETFD, FD_CLOEXEC);
-
-	return B_OK;
+	if (error == B_OK)
+		error = SetTo(path);
+	set_status(error);
+	return error;
 }
 
 
@@ -135,43 +159,64 @@ BDirectory::SetTo(const BEntry* entry)
 	}
 
 	// open node
-	status_t error = _SetTo(entry->fDirFd, entry->fName, true);
-	if (error != B_OK)
-		return error;
-
-	// open dir
-	error = set_dir_fd(_kern_open_dir(entry->fDirFd, entry->fName));
-	if (error < 0) {
-		Unset();
-		return (fCStatus = error);
-	}
-
-	// set close on exec flag on dir FD
-	fcntl(fDirFd, F_SETFD, FD_CLOEXEC);
-
-	return B_OK;
+	entry_ref ref;
+	status_t error = (entry ? B_OK : B_BAD_VALUE);
+	if (error == B_OK && entry->InitCheck() != B_OK)
+		error = B_BAD_VALUE;
+	if (error == B_OK)
+		error = entry->GetRef(&ref);
+	if (error == B_OK)
+		error = SetTo(&ref);
+	set_status(error);
+	return error;
 }
 
 
 status_t
 BDirectory::SetTo(const char* path)
 {
-	// open node
-	status_t error = _SetTo(-1, path, true);
-	if (error != B_OK)
-		return error;
+	Unset();
 
-	// open dir
-	error = set_dir_fd(_kern_open_dir(-1, path));
-	if (error < 0) {
-		Unset();
-		return (fCStatus = error);
-	}
+	if (!path)
+		return (fCStatus = B_BAD_VALUE);
 
-	// set close on exec flag on dir FD
-	fcntl(fDirFd, F_SETFD, FD_CLOEXEC);
+	if (path && strlen(path) > 256)
+		return (fCStatus = B_NAME_TOO_LONG);
 
-	return B_OK;
+	struct stat path_stat;
+	int exists = (stat(path, &path_stat) == 0);
+	if (!exists)
+		return (fCStatus = B_ENTRY_NOT_FOUND);
+
+	if (!S_ISDIR(path_stat.st_mode))
+		return (fCStatus = B_NOT_A_DIRECTORY);
+	
+	int newDirFd = -1;
+	status_t result = BPrivate::Storage::open_dir(path, newDirFd, &fDir);
+	if (result == B_OK) {
+		// // We have to take care that BNode doesn't stick to a symbolic link.
+		// // open_dir() does always traverse those. Therefore we open the FD for
+		// // BNode (without the O_NOTRAVERSE flag).
+		// int fd = -1;
+		// result = BPrivate::Storage::open(path, O_RDWR, fd, true);
+		// if (result == B_OK) {
+		// 	result = set_fd(fd);
+		// 	printf("set_fd result is %d\n", result);
+		// 	if (result != B_OK)
+		// 		BPrivate::Storage::close(fd);
+		// }
+		// 	else
+		// {
+		// 	printf("open result is %d\n", result);
+		// }
+		// if (result == B_OK)
+		fDirFd = newDirFd;
+		// else
+		// 	BPrivate::Storage::close_dir(newDirFd);
+	} 
+	// finally set the BNode status
+	set_status(result);
+	return result;
 }
 
 
@@ -183,44 +228,43 @@ BDirectory::SetTo(const BDirectory* dir, const char* path)
 		return (fCStatus = B_BAD_VALUE);
 	}
 
-	int dirFD = dir->fDirFd;
-	if (dir == this) {
-		// prevent that our file descriptor goes away in _SetTo()
-		fDirFd = -1;
-	}
+	if (strlen(path) == 0)
+		return (fCStatus = B_ENTRY_NOT_FOUND);
 
-	// open node
-	status_t error = _SetTo(dirFD, path, true);
-	if (error != B_OK)
-		return error;
-
-	// open dir
-	error = set_dir_fd(_kern_open_dir(dir->fDirFd, path));
-	if (error < 0) {
-		Unset();
-		return (fCStatus = error);
-	}
-
-	if (dir == this) {
-		// cleanup after _SetTo()
-		_kern_close(dirFD);
-	}
-
-	// set close on exec flag on dir FD
-	fcntl(fDirFd, F_SETFD, FD_CLOEXEC);
-
-	return B_OK;
+	status_t error = (dir && path ? B_OK : B_BAD_VALUE);
+	if (error == B_OK && BPrivate::Storage::is_absolute_path(path))
+		error = B_BAD_VALUE;
+	BEntry entry;
+	if (error == B_OK)
+		error = entry.SetTo(dir, path);
+	if (error == B_OK)
+		error = SetTo(&entry);
+	set_status(error);
+	return error;
 }
 
 
 status_t
 BDirectory::GetEntry(BEntry* entry) const
 {
-	if (!entry)
-		return B_BAD_VALUE;
-	if (InitCheck() != B_OK)
-		return B_NO_INIT;
-	return entry->SetTo(this, ".", false);
+	char output[B_PATH_NAME_LENGTH];
+	if (BPrivate::Storage::dir_to_path(fDirFd, output, sizeof(output)-1) == B_OK) {
+		return entry->SetTo(output);
+	}
+
+	return B_ERROR;
+}
+
+
+bool
+BDirectory::IsRootDirectory() const
+{
+	char output[B_PATH_NAME_LENGTH];
+	if (BPrivate::Storage::dir_to_path(fDirFd, output, sizeof(output)-1) == B_OK) {
+		return (strcmp(output, "/") == 0);
+	}
+
+	return false;
 }
 
 
@@ -308,22 +352,63 @@ BDirectory::Contains(const BEntry* entry, int32 nodeFlags) const
 }
 
 
+/*!	\brief Returns the BDirectory's next entry as a BEntry.
+	Unlike GetNextDirents() this method ignores the entries "." and "..".
+	\param entry a pointer to a BEntry to be initialized to the found entry
+	\param traverse specifies whether to follow it, if the found entry
+		   is a symbolic link.
+	\note The iterator used by this method is the same one used by
+		  GetNextRef(), GetNextDirents(), Rewind() and CountEntries().
+	\return
+	- \c B_OK: Everything went fine.
+	- \c B_BAD_VALUE: \c NULL \a entry.
+	- \c B_ENTRY_NOT_FOUND: No more entries found.
+	- \c B_PERMISSION_DENIED: Directory permissions didn't allow operation.
+	- \c B_NO_MEMORY: Insufficient memory for operation.
+	- \c B_LINK_LIMIT: Indicates a cyclic loop within the file system.
+	- \c B_BUSY: A node was busy.
+	- \c B_FILE_ERROR: A general file error.
+	- \c B_NO_MORE_FDS: The application has run out of file descriptors.
+*/
 status_t
 BDirectory::GetNextEntry(BEntry* entry, bool traverse)
 {
-	if (entry == NULL)
-		return B_BAD_VALUE;
+	if (InitCheck() != B_OK)
+		return B_FILE_ERROR;
 
-	entry_ref ref;
-	status_t status = GetNextRef(&ref);
-	if (status != B_OK) {
-		entry->Unset();
-		return status;
+	size_t bufSize = sizeof(dirent) + B_FILE_NAME_LENGTH;
+	char buffer[bufSize];
+	dirent *ents = (dirent *)buffer;
+
+	while (GetNextDirents(ents, bufSize, 1) == 1) {
+		if ((strcmp(ents->d_name, ".") == 0) || (strcmp(ents->d_name, "..") == 0))
+			continue;
+		
+		return entry->SetTo(this, ents->d_name, false);
 	}
-	return entry->SetTo(&ref, traverse);
+
+	return B_ENTRY_NOT_FOUND;
 }
 
-
+/*!	\brief Returns the BDirectory's next entry as an entry_ref.
+	Unlike GetNextDirents() this method ignores the entries "." and "..".
+	\param ref a pointer to an entry_ref to be filled in with the data of the
+		   found entry
+	\param traverse specifies whether to follow it, if the found entry
+		   is a symbolic link.
+	\note The iterator used be this method is the same one used by
+		  GetNextEntry(), GetNextDirents(), Rewind() and CountEntries().
+	\return
+	- \c B_OK: Everything went fine.
+	- \c B_BAD_VALUE: \c NULL \a ref.
+	- \c B_ENTRY_NOT_FOUND: No more entries found.
+	- \c B_PERMISSION_DENIED: Directory permissions didn't allow operation.
+	- \c B_NO_MEMORY: Insufficient memory for operation.
+	- \c B_LINK_LIMIT: Indicates a cyclic loop within the file system.
+	- \c B_BUSY: A node was busy.
+	- \c B_FILE_ERROR: A general file error.
+	- \c B_NO_MORE_FDS: The application has run out of file descriptors.
+*/
 status_t
 BDirectory::GetNextRef(entry_ref* ref)
 {
@@ -331,6 +416,10 @@ BDirectory::GetNextRef(entry_ref* ref)
 		return B_BAD_VALUE;
 	if (InitCheck() != B_OK)
 		return B_FILE_ERROR;
+
+	// Cosmoe needs the full path in the entry_ref
+	char dirPath[B_FILE_NAME_LENGTH];
+	BPrivate::Storage::dir_to_path(fDirFd, dirPath, B_FILE_NAME_LENGTH);
 
 	BPrivate::Storage::LongDirEntry longEntry;
 	struct dirent* entry = longEntry.dirent();
@@ -343,12 +432,34 @@ BDirectory::GetNextRef(entry_ref* ref)
 			|| !strcmp(entry->d_name, ".."));
 	}
 
-	ref->device = fDirNodeRef.device;
-	ref->directory = fDirNodeRef.node;
-	return ref->set_name(entry->d_name);
+	strlcat(dirPath, "/", B_FILE_NAME_LENGTH);
+	strlcat(dirPath, entry->d_name, B_FILE_NAME_LENGTH);
+
+	ref->device = 0;
+	ref->directory = entry->d_ino;
+	return ref->set_name(dirPath);
 }
 
-
+/*!	\brief Returns the BDirectory's next entries as dirent structures.
+	Unlike GetNextEntry() and GetNextRef(), this method returns also
+	the entries "." and "..".
+	\param buf a pointer to a buffer to be filled with dirent structures of
+		   the found entries
+	\param count the maximal number of entries to be returned.
+	\note The iterator used by this method is the same one used by
+		  GetNextEntry(), GetNextRef(), Rewind() and CountEntries().
+	\return
+	- The number of dirent structures stored in the buffer, 0 when there are
+	  no more entries to be returned.
+	- \c B_BAD_VALUE: \c NULL \a buf.
+	- \c B_PERMISSION_DENIED: Directory permissions didn't allow operation.
+	- \c B_NO_MEMORY: Insufficient memory for operation.
+	- \c B_NAME_TOO_LONG: The entry's name is too long for the buffer.
+	- \c B_LINK_LIMIT: Indicates a cyclic loop within the file system.
+	- \c B_BUSY: A node was busy.
+	- \c B_FILE_ERROR: A general file error.
+	- \c B_NO_MORE_FDS: The application has run out of file descriptors.
+*/
 int32
 BDirectory::GetNextDirents(dirent* buf, size_t bufSize, int32 count)
 {
@@ -356,7 +467,7 @@ BDirectory::GetNextDirents(dirent* buf, size_t bufSize, int32 count)
 		return B_BAD_VALUE;
 	if (InitCheck() != B_OK)
 		return B_FILE_ERROR;
-	return _kern_read_dir(fDirFd, buf, bufSize, count);
+	return BPrivate::Storage::read_dir(fDirFd, &fDir, buf, bufSize, count);
 }
 
 
@@ -365,7 +476,7 @@ BDirectory::Rewind()
 {
 	if (InitCheck() != B_OK)
 		return B_FILE_ERROR;
-	return _kern_rewind_dir(fDirFd);
+	return BPrivate::Storage::rewind_dir(fDir);
 }
 
 
@@ -395,20 +506,22 @@ BDirectory::CreateDirectory(const char* path, BDirectory* dir)
 	if (!path)
 		return B_BAD_VALUE;
 
-	// create the dir
-	status_t error = _kern_create_dir(fDirFd, path,
-		(S_IRWXU | S_IRWXG | S_IRWXO));
-	if (error != B_OK)
-		return error;
+	// get the actual (absolute) path using BEntry's help
+	BEntry entry;
+	if (InitCheck() == B_OK && !BPrivate::Storage::is_absolute_path(path))
+		entry.SetTo(this, path);
+	else
+		entry.SetTo(path);
+	status_t error = entry.InitCheck();
+	BPath realPath;
+	if (error == B_OK)
+		error = entry.GetPath(&realPath);
+	if (error == B_OK)
+		error = BPrivate::Storage::create_dir(realPath.Path());
+	if (error == B_OK && dir)
+		error = dir->SetTo(realPath.Path());
 
-	if (dir == NULL)
-		return B_OK;
-
-	// init the supplied BDirectory
-	if (InitCheck() != B_OK || BPrivate::Storage::is_absolute_path(path))
-		return dir->SetTo(path);
-
-	return dir->SetTo(this, path);
+	return error;
 }
 
 
@@ -441,20 +554,22 @@ BDirectory::CreateSymLink(const char* path, const char* linkToPath,
 	if (!path || !linkToPath)
 		return B_BAD_VALUE;
 
-	// create the symlink
-	status_t error = _kern_create_symlink(fDirFd, path, linkToPath,
-		(S_IRWXU | S_IRWXG | S_IRWXO));
-	if (error != B_OK)
-		return error;
+	// get the actual (absolute) path using BEntry's help
+	BEntry entry;
+	if (InitCheck() == B_OK && !BPrivate::Storage::is_absolute_path(path))
+		entry.SetTo(this, path);
+	else
+		entry.SetTo(path);
+	status_t error = entry.InitCheck();
+	BPath realPath;
+	if (error == B_OK)
+		error = entry.GetPath(&realPath);
+	if (error == B_OK)
+		error = BPrivate::Storage::create_link(realPath.Path(), linkToPath);
+	if (error == B_OK && link)
+		error = link->SetTo(realPath.Path());
 
-	if (link == NULL)
-		return B_OK;
-
-	// init the supplied BSymLink
-	if (InitCheck() != B_OK || BPrivate::Storage::is_absolute_path(path))
-		return link->SetTo(path);
-
-	return link->SetTo(this, path);
+	return error;
 }
 
 
@@ -463,8 +578,28 @@ BDirectory::operator=(const BDirectory& dir)
 {
 	if (&dir != this) {	// no need to assign us to ourselves
 		Unset();
-		if (dir.InitCheck() == B_OK)
-			SetTo(&dir, ".");
+		if (dir.InitCheck() == B_OK) {
+			*((BNode*)this) = dir;
+			if (InitCheck() == B_OK) {
+				// duplicate the file descriptor
+				status_t status = BPrivate::Storage::dup_dir(dir.fDirFd, fDirFd);
+				if (status == B_OK) {
+					// Cosmoe: Create new DIR* from duplicated fd using fdopendir
+#if !defined(_WIN32)
+					fDir = fdopendir(fDirFd);
+#else
+					fDir = BPrivate::Storage::fdopendir(fDirFd);
+#endif
+					if (fDir == NULL) {
+						status = B_ENTRY_NOT_FOUND;
+						Unset();
+					}
+				}
+				if (status != B_OK)
+					Unset();
+				set_status(status);
+			}
+		}
 	}
 	return *this;
 }
@@ -473,17 +608,43 @@ BDirectory::operator=(const BDirectory& dir)
 status_t
 BDirectory::GetStatFor(const char* path, struct stat* st) const
 {
+	return _GetStatFor(path, st);
+}
+
+
+status_t
+BDirectory::_GetStatFor(const char* path, struct stat* st) const
+{
 	if (!st)
 		return B_BAD_VALUE;
 	if (InitCheck() != B_OK)
 		return B_NO_INIT;
-
+	status_t error = B_OK;
 	if (path != NULL) {
 		if (path[0] == '\0')
 			return B_ENTRY_NOT_FOUND;
-		return _kern_read_stat(fDirFd, path, false, st, sizeof(struct stat));
-	}
-	return GetStat(st);
+		else {
+			BEntry entry(this, path);
+			error = entry.InitCheck();
+			if (error == B_OK)
+				error = entry.GetStat(st);
+		}
+	} else
+		error = GetStat(st);
+	return error;
+}
+
+
+status_t
+BDirectory::_GetStatFor(const char* path, struct stat_beos* st) const
+{
+	struct stat newStat;
+	status_t error = _GetStatFor(path, &newStat);
+	if (error != B_OK)
+		return error;
+
+	convert_to_stat_beos(&newStat, st);
+	return B_OK;
 }
 
 
@@ -501,7 +662,7 @@ void
 BDirectory::close_fd()
 {
 	if (fDirFd >= 0) {
-		_kern_close(fDirFd);
+		BPrivate::Storage::close_dir(fDirFd);
 		fDirFd = -1;
 	}
 	BNode::close_fd();
@@ -512,22 +673,6 @@ int
 BDirectory::get_fd() const
 {
 	return fDirFd;
-}
-
-
-status_t
-BDirectory::set_dir_fd(int fd)
-{
-	if (fd < 0)
-		return fd;
-
-	fDirFd = fd;
-
-	status_t error = GetNodeRef(&fDirNodeRef);
-	if (error != B_OK)
-		close_fd();
-
-	return error;
 }
 
 
@@ -580,10 +725,15 @@ create_directory(const char* path, mode_t mode)
 				return B_NOT_A_DIRECTORY;
 		} else {
 			// it doesn't exist -- create it
-			error = _kern_create_dir(-1, dirPath.Path(), mode);
+			error = BPrivate::Storage::create_dir(dirPath.Path(), mode);
 			if (error != B_OK)
 				return error;
 		}
 	} while (nextComponent != 0);
 	return B_OK;
 }
+
+
+// #pragma mark - symbol versions
+
+
