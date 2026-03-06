@@ -28,8 +28,9 @@ LDADD+=	-lbe
 #          -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
 
 CPPFLAGS+= -I${.CURDIR}
-CPPFLAGS+= -I${.CURDIR}/../../../headers/os
-CPPFLAGS+= -I${.CURDIR}/../../../headers
+CPPFLAGS+= -I${.CURDIR}/../../headers/tools/cppunit
+CPPFLAGS+= -I${.CURDIR}/../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../headers
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
