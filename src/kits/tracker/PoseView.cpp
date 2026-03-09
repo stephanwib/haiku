@@ -1220,8 +1220,10 @@ BPoseView::InitDirentIterator(const entry_ref* ref)
 	}
 printf("BPoseView::InitDirentIterator obtaining EntryList...\n");
 	EntryListBase* entryList = new CachedDirectoryEntryList(*directory);
-	if (entryList->Rewind() != B_OK) {
-		printf("BPoseView::InitDirentIterator EntryList init failed...\n");
+	status_t error;
+	error = entryList->Rewind();
+	if (error != B_OK) {
+		printf("BPoseView::InitDirentIterator EntryList init failed..., status: %d\n", error);
 		delete entryList;
 		HideBarberPole();
 		return NULL;
