@@ -367,6 +367,7 @@ CachedDirectoryEntryList::CachedDirectoryEntryList(const BDirectory& directory)
 	fDirectory(directory)
 {
 	fStatus = fDirectory.InitCheck();
+	printf("CachedDirectoryEntryList::CachedDirectoryEntryList new instance, dir init: %d...\n", fStatus);
 	SetTo(&fDirectory);
 }
 
