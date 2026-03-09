@@ -33,11 +33,11 @@ CPPFLAGS+= -I${.CURDIR}/../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../headers
 
 .for HEADER in ${PRIVATE_HEADERS}
-CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
+CPPFLAGS+= "-I${.CURDIR}/../../headers/private/${HEADER}"
 .endfor
 
 .for HEADER in ${OS_HEADERS}
-CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
+CPPFLAGS+= "-I${.CURDIR}/../../headers/os/${HEADER}"
 .endfor
 
 .include <bsd.prog.mk>
