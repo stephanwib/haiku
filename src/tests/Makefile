@@ -1,5 +1,5 @@
 #PRIVATE_HEADERS=    app interface locale shared tracker
-#OS_HEADERS=         interface support app storage translation locale kernel add-ons/graphics
+OS_HEADERS=          storage #interface support app translation locale kernel add-ons/graphics
 
 RC= ${.CURDIR}/../../bin/rc/rc 
 XRES= ${.CURDIR}/../../bin/xres
