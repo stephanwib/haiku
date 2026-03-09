@@ -1211,6 +1211,25 @@ BPoseView::InitDirentIterator(const entry_ref* ref)
 	printf("BPoseView::InitDirentIterator obtaining BDirectory...\n");
 	BDirectory* directory = dynamic_cast<BDirectory*>(sourceModel.Node());
 
+BEntry entry;
+status_t err = directory->GetNextEntry(&entry);
+
+printf("GetNextEntry returned: %d\n", err);
+
+if (err == B_OK) {
+    char name[B_FILE_NAME_LENGTH];
+    entry.GetName(name);
+    printf("First entry: %s\n", name);
+}
+
+printf("Testing BDirectory iteration...\n");
+
+while (directory->GetNextEntry(&entry) == B_OK) {
+    char name[B_FILE_NAME_LENGTH];
+    entry.GetName(name);
+    printf("entry: %s\n", name);
+}
+	
 	ASSERT(directory != NULL);
 
 	if (directory == NULL) {
