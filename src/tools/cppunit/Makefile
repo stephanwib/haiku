@@ -6,7 +6,7 @@ PRIVATE_HEADERS= shared
 LIB=	betest
 
 SRCS+=     BTestCase.cpp BTestSuite.cpp SemaphoreSyncObject.cpp TestApp.cpp TestListener.cpp TestShell.cpp \
-           TestUtils.cpp ThreadedTestCase.cpp BetestInit.cpp
+           TestUtils.cpp ThreadedTestCase.cpp #BetestInit.cpp
 
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
