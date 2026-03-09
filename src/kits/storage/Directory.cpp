@@ -566,7 +566,7 @@ BDirectory::CreateSymLink(const char* path, const char* linkToPath,
 	return error;
 }
 
-
+/*
 BDirectory&
 BDirectory::operator=(const BDirectory& dir)
 {
@@ -597,9 +597,9 @@ BDirectory::operator=(const BDirectory& dir)
 	}
 	return *this;
 }
+*/
 
 
-/*
 BDirectory&
 BDirectory::operator=(const BDirectory& dir)
 {
@@ -618,7 +618,7 @@ BDirectory::operator=(const BDirectory& dir)
 	}
 	return *this;
 }
-*/
+
 
 
 
