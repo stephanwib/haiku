@@ -1199,24 +1199,29 @@ BPoseView::InitDirentIterator(const entry_ref* ref)
 	printf("BPoseView::InitDirentIterator entry...\n");
 	// set up a directory iteration
 	Model sourceModel(ref, false, true);
-	if (sourceModel.InitCheck() != B_OK)
+	if (sourceModel.InitCheck() != B_OK) {
+		printf("BPoseView::InitDirentIterator source Model Init ok...\n");
 		return NULL;
+	}
 
 	ASSERT(!sourceModel.IsQuery());
 	ASSERT(!sourceModel.IsVirtualDirectory());
 	ASSERT(sourceModel.Node() != NULL);
 
+	printf("BPoseView::InitDirentIterator obtaining BDirectory...\n");
 	BDirectory* directory = dynamic_cast<BDirectory*>(sourceModel.Node());
 
 	ASSERT(directory != NULL);
 
 	if (directory == NULL) {
+		printf("BPoseView::InitDirentIterator BDirectory is NULL...\n");
 		HideBarberPole();
 		return NULL;
 	}
-
+printf("BPoseView::InitDirentIterator obtaining EntryList...\n");
 	EntryListBase* entryList = new CachedDirectoryEntryList(*directory);
 	if (entryList->Rewind() != B_OK) {
+		printf("BPoseView::InitDirentIterator EntryList init failed...\n");
 		delete entryList;
 		HideBarberPole();
 		return NULL;
@@ -1225,6 +1230,7 @@ BPoseView::InitDirentIterator(const entry_ref* ref)
 	TTracker::WatchNode(sourceModel.NodeRef(), B_WATCH_DIRECTORY | B_WATCH_CHILDREN
 		| B_WATCH_NAME | B_WATCH_STAT | B_WATCH_INTERIM_STAT | B_WATCH_ATTR, this);
 
+	printf("BPoseView::InitDirentIterator success...\n");
 	return entryList;
 }
 
