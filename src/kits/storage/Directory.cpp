@@ -13,7 +13,6 @@
 
 #include <fcntl.h>
 #include <string.h>
-#include <dirent.h>
 
 #include <compat/sys/stat.h>
 
@@ -566,39 +565,6 @@ BDirectory::CreateSymLink(const char* path, const char* linkToPath,
 	return error;
 }
 
-/*
-BDirectory&
-BDirectory::operator=(const BDirectory& dir)
-{
-	if (&dir != this) {	// no need to assign us to ourselves
-		Unset();
-		if (dir.InitCheck() == B_OK) {
-			*((BNode*)this) = dir;
-			if (InitCheck() == B_OK) {
-				// duplicate the file descriptor
-				status_t status = BPrivate::Storage::dup_dir(dir.fDirFd, fDirFd);
-				if (status == B_OK) {
-					// Cosmoe: Create new DIR* from duplicated fd using fdopendir
-//#if !defined(_WIN32)
-					fDir = fdopendir(fDirFd);
-//#else
-//					fDir = BPrivate::Storage::fdopendir(fDirFd);
-//#endif
-					if (fDir == NULL) {
-						status = B_ENTRY_NOT_FOUND;
-						Unset();
-					}
-				}
-				if (status != B_OK)
-					Unset();
-				set_status(status);
-			}
-		}
-	}
-	return *this;
-}
-*/
-
 
 BDirectory&
 BDirectory::operator=(const BDirectory& dir)
@@ -618,8 +584,6 @@ BDirectory::operator=(const BDirectory& dir)
 	}
 	return *this;
 }
-
-
 
 
 status_t
