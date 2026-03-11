@@ -989,6 +989,8 @@ BPrivate::Storage::dir_to_self_entry_ref(int dir, entry_ref *result)
 status_t
 BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 {
+    printf("BPrivate::Storage::dir_to_path entry..., fd: %d\n", dir);
+	
 	if (dir < 0 || result == NULL)
 		return B_BAD_VALUE;
 
@@ -997,11 +999,14 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 
 	snprintf(path, bufsize, "/proc/self/fd/%d", dir);
 	ssize_t bytes = readlink(path, result, size);
-
+	
 	if (bytes > 0) {
 		result[bytes] = '\0';
+		printf("BPrivate::Storage::dir_to_path readlink ok, path: %s\n", result);
 		return B_OK;
 	}
+	else
+		printf("BPrivate::Storage::dir_to_path readlink failed\n");
 
 	return B_ERROR;
 }
