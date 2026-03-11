@@ -18,6 +18,7 @@
 #include <fs_query.h>	//  BeOS's C-based query functions
 #include <Entry.h>		// entry_ref
 #include <dirent.h>
+#include <fcntl.h>
 
 #include <fsproto.h>
 
@@ -997,6 +998,20 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 	char path[1024];
 	size_t bufsize = sizeof(path) - 1;
 
+
+
+
+	
+	   printf("BPrivate::Storage::dir_to_path testing F_GETPATH\n");
+   if (fcntl(dir, F_GETPATH, path) == 0) {
+		printf("BPrivate::Storage::dir_to_path F_GETPATH ok, result: %s\n", path);
+	}
+	else
+	   printf("BPrivate::Storage::dir_to_path F_GETPATH failed\n");
+
+
+	
+
 	snprintf(path, bufsize, "/proc/self/fd/%d", dir);
 	ssize_t bytes = readlink(path, result, size);
 	
@@ -1008,6 +1023,8 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 	else
 		printf("BPrivate::Storage::dir_to_path readlink failed\n");
 
+
+	
 	return B_ERROR;
 }
 
