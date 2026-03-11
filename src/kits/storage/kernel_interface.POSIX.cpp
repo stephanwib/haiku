@@ -688,7 +688,7 @@ status_t
 BPrivate::Storage::open_dir( const char *path, int &result, DIR** dir )
 {
 	result = -1;
-	//printf("open_dir: opening directory %s\n", path);
+	printf("open_dir: opening directory %s\n", path);
 	if (dir) {
 		if (*dir = ::opendir(path)) {
 			result = dirfd(*dir);
@@ -701,7 +701,7 @@ BPrivate::Storage::open_dir( const char *path, int &result, DIR** dir )
 		}
 	}
 	
-	//printf("open_dir: result is %d\n", result);
+	printf("open_dir: result is %d\n", result);
 	return (result < 0) ? B_ENTRY_NOT_FOUND : B_OK;
 }
 
