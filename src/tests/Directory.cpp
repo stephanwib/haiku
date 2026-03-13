@@ -24,9 +24,9 @@ int main(int argc, char** argv)
         return 1;
     }
 
-    BDirectory dir2(&dir1);
+    BDirectory dir2(dir1);
     if (dir2.InitCheck() != B_OK) {
-        printf("Failed to create second BDirectory\n");
+        printf("Failed to create second BDirectory, status: %d\n", dir2.InitCheck());
         return 1;
     }
 
