@@ -208,7 +208,7 @@ BDirectory::SetTo(const char* path)
 	} 
 	// finally set the BNode status
 	set_status(result);
-	//printf("bdirectory result 2 is %d\n", result);
+	printf("bdirectory::SetTo result 2 is %d, dirfd: %d\n", result, fDirFd);
 	return result;
 }
 
