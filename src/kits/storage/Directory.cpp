@@ -570,15 +570,18 @@ BDirectory::CreateSymLink(const char* path, const char* linkToPath,
 BDirectory&
 BDirectory::operator=(const BDirectory& dir)
 {
-	printf("\nBDirectory::operator= entry...");
+	printf("\nBDirectory::operator= entry...\n");
 	if (&dir != this) {	// no need to assign us to ourselves
 		Unset();
 		if (dir.InitCheck() == B_OK) {
+			printf("\nBDirectory::operator= InitCheck 1 ok...\n");
 			*((BNode*)this) = dir;
 			if (InitCheck() == B_OK) {
+				printf("\nBDirectory::operator= InitCheck 2 ok...\n");
 				// duplicate the file descriptor
 				status_t status = BPrivate::Storage::dup_dir(dir.fDirFd, fDirFd);
 				if (status == B_OK) {
+					printf("\nBDirectory::operator= dup ok...\n");
 					// Cosmoe: Create new DIR* from duplicated fd using fdopendir
 //#if !defined(_WIN32)
 					fDir = fdopendir(fDirFd);
@@ -586,6 +589,7 @@ BDirectory::operator=(const BDirectory& dir)
 //					fDir = BPrivate::Storage::fdopendir(fDirFd);
 //#endif
 					if (fDir == NULL) {
+						printf("\nBDirectory::operator= error fDir is NULL\n");
 						status = B_ENTRY_NOT_FOUND;
 						Unset();
 					}
@@ -596,6 +600,7 @@ BDirectory::operator=(const BDirectory& dir)
 			}
 		}
 	}
+	printf("\nBDirectory::operator= success...\n");
 	return *this;
 }
 
