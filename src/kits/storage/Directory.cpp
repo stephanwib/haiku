@@ -570,6 +570,7 @@ BDirectory::CreateSymLink(const char* path, const char* linkToPath,
 BDirectory&
 BDirectory::operator=(const BDirectory& dir)
 {
+	printf("\nBDirectory::operator= entry...");
 	if (&dir != this) {	// no need to assign us to ourselves
 		Unset();
 		if (dir.InitCheck() == B_OK) {
