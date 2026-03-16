@@ -204,13 +204,13 @@ BDirectory::SetTo(const char* path)
 		// if (result == B_OK)
 		fDirFd = newDirFd;
 		result = set_fd(newDirFd);
-		printf("BDirectory::SetTo BNode set_fd result: %d\n", result);
+		//printf("BDirectory::SetTo BNode set_fd result: %d\n", result);
 		// else
 		// 	BPrivate::Storage::close_dir(newDirFd);
 	} 
 	// finally set the BNode status
 	set_status(result);
-	printf("bdirectory::SetTo result 2 is %d, dirfd: %d\n", result, fDirFd);
+	//printf("bdirectory::SetTo result 2 is %d, dirfd: %d\n", result, fDirFd);
 	return result;
 }
 
@@ -572,14 +572,14 @@ BDirectory::CreateSymLink(const char* path, const char* linkToPath,
 BDirectory&
 BDirectory::operator=(const BDirectory& dir)
 {
-	printf("\nBDirectory::operator= entry...\n");
+	//printf("\nBDirectory::operator= entry...\n");
 	if (&dir != this) {	// no need to assign us to ourselves
 		Unset();
 		if (dir.InitCheck() == B_OK) {
-			printf("\nBDirectory::operator= InitCheck 1 ok...\n");
+			//printf("\nBDirectory::operator= InitCheck 1 ok...\n");
 			*((BNode*)this) = dir;
 			if (InitCheck() == B_OK) {
-				printf("\nBDirectory::operator= InitCheck 2 ok...\n");
+				//printf("\nBDirectory::operator= InitCheck 2 ok...\n");
 				// duplicate the file descriptor
 				status_t status = BPrivate::Storage::dup_dir(dir.fDirFd, fDirFd);
 				if (status == B_OK) {
@@ -591,7 +591,7 @@ BDirectory::operator=(const BDirectory& dir)
 //					fDir = BPrivate::Storage::fdopendir(fDirFd);
 //#endif
 					if (fDir == NULL) {
-						printf("\nBDirectory::operator= error fDir is NULL\n");
+						//printf("\nBDirectory::operator= error fDir is NULL\n");
 						status = B_ENTRY_NOT_FOUND;
 						Unset();
 					}
@@ -602,7 +602,7 @@ BDirectory::operator=(const BDirectory& dir)
 			}
 		}
 	}
-	printf("\nBDirectory::operator= success...\n");
+	//printf("\nBDirectory::operator= success...\n");
 	return *this;
 }
 
