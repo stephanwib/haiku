@@ -10,10 +10,10 @@ RESPATH=        ${.CURDIR}/../../kits/tracker
 RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
 CLEANFILES+=    ${RSRCFILES}
 
+.PATH.rdef: ${RESPATH}
 .SUFFIXES: .rdef .rsrc
 .rdef.rsrc:
 	${RC} ${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
-
 
 LIB=	tracker
 
@@ -34,8 +34,6 @@ WARNS=		5
 .include "${.CURDIR}/../../kits/tracker/Makefile.inc"
 
 .include <bsd.lib.mk>
-
-
 
 ${_LIB.so.full}.res : ${_LIB.so.full}
 	${XRES} -o ${.TARGET} ${RSRCFILES}
