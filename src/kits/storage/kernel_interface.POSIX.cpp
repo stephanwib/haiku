@@ -689,7 +689,7 @@ status_t
 BPrivate::Storage::open_dir( const char *path, int &result, DIR** dir )
 {
 	result = -1;
-	printf("open_dir: opening directory %s\n", path);
+	//printf("open_dir: opening directory %s\n", path);
 	if (dir) {
 		if (*dir = ::opendir(path)) {
 			result = dirfd(*dir);
@@ -702,7 +702,7 @@ BPrivate::Storage::open_dir( const char *path, int &result, DIR** dir )
 		}
 	}
 	
-	printf("open_dir: result is %d\n", result);
+	//printf("open_dir: result is %d\n", result);
 	return (result < 0) ? B_ENTRY_NOT_FOUND : B_OK;
 }
 
@@ -990,7 +990,7 @@ BPrivate::Storage::dir_to_self_entry_ref(int dir, entry_ref *result)
 status_t
 BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 {
-    printf("BPrivate::Storage::dir_to_path entry..., fd: %d\n", dir);
+    //printf("BPrivate::Storage::dir_to_path entry..., fd: %d\n", dir);
 	
 	if (dir < 0 || result == NULL)
 		return B_BAD_VALUE;
@@ -1001,14 +1001,14 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 
 
 
-	
+	/*
 	   printf("BPrivate::Storage::dir_to_path testing F_GETPATH\n");
    if (fcntl(dir, F_GETPATH, path) == 0) {
 		printf("BPrivate::Storage::dir_to_path F_GETPATH ok, result: %s\n", path);
 	}
 	else
 	   printf("BPrivate::Storage::dir_to_path F_GETPATH failed\n");
-
+    */
 
 	
 
@@ -1017,11 +1017,11 @@ BPrivate::Storage::dir_to_path(int dir, char *result, size_t size)
 	
 	if (bytes > 0) {
 		result[bytes] = '\0';
-		printf("BPrivate::Storage::dir_to_path readlink ok, path: %s\n", result);
+		//printf("BPrivate::Storage::dir_to_path readlink ok, path: %s\n", result);
 		return B_OK;
 	}
 	else
-		printf("BPrivate::Storage::dir_to_path readlink failed\n");
+		//printf("BPrivate::Storage::dir_to_path readlink failed\n");
 
 
 	
