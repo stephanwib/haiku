@@ -12,10 +12,10 @@ RESPATH=        ${.CURDIR}/../../kits/
 RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
 CLEANFILES+=    ${RSRCFILES}
 
+.PATH.rdef: ${RESPATH}
 .SUFFIXES: .rdef .rsrc
 .rdef.rsrc:
-	${RC} ${RESPATH}${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
-
+	${RC} ${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
 
 LIB=	be
 
