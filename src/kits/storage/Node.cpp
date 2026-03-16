@@ -400,6 +400,7 @@ BNode::ReadAttrString(const char* name, BString* result) const
 BNode&
 BNode::operator=(const BNode& node)
 {
+	printf("BNode::operator= entry...\n");
 	// No need to do any assignment if already equal
 	if (*this == node)
 		return *this;
@@ -410,6 +411,8 @@ BNode::operator=(const BNode& node)
 	// is not declared to be const (which IMO is retarded).
 	fFd = BPrivate::Storage::dup(node.fFd);
 	fCStatus = (fFd < 0) ? B_NO_INIT : B_OK ;
+
+	printf("BNode::operator= status: %d\n", fCStatus);
 
 	return *this;
 }
