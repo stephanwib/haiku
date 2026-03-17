@@ -1,6 +1,7 @@
 RC?=        ${.CURDIR}/../../bin/rc/rc
 XRES?=      ${.CURDIR}/../../bin/xres
 
+RESPATH?= ${.CURDIR}
 .PATH.rdef: ${RESPATH}
 
 RSRCFILES=  ${RESOURCES:S/$/.rsrc/}
