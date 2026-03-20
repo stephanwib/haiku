@@ -203,7 +203,7 @@ BDirectory::SetTo(const char* path)
 		// }
 		// if (result == B_OK)
 		fDirFd = newDirFd;
-		result = set_fd(newDirFd);
+		//result = set_fd(newDirFd);
 		//printf("BDirectory::SetTo BNode set_fd result: %d\n", result);
 		// else
 		// 	BPrivate::Storage::close_dir(newDirFd);
