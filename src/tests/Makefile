@@ -27,6 +27,7 @@ LDADD+=	-lbe
 #LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
 #          -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
 
+CPPFLAGS+= -I/usr/pkg/include
 CPPFLAGS+= -I${.CURDIR}
 CPPFLAGS+= -I${.CURDIR}/../../headers/tools/cppunit
 CPPFLAGS+= -I${.CURDIR}/../../headers/os
