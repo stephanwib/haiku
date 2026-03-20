@@ -24,5 +24,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
-.include ${.CURDIR}/../../resources.mk
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
