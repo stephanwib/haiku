@@ -2,7 +2,6 @@ RC?=        ${.CURDIR}/../../bin/rc/rc
 XRES?=      ${.CURDIR}/../../bin/xres
 
 RESPATH?= ${.CURDIR}
-.PATH.rdef: ${RESPATH}
 
 LOCAL_RESOURCES!= ls *.rdef
 RESOURCES?= ${LOCAL_RESOURCES}
@@ -20,6 +19,7 @@ CLEANFILES+= ${RSRCFILES}
 .rdef.rsrc:
 	${RC} ${.IMPSRC} -o ${.TARGET} -I ${RESPATH}
 
+.PATH.rdef: ${RESPATH}
 
 .if defined(PROG) && !empty(RSRCFILES)
 ${PROG}: ${RSRCFILES}
