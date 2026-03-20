@@ -2,6 +2,7 @@ PRIVATE_HEADERS=    interface
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 PROG=	Expander
+RESOURCES= Expander
 
 SRCS+=      ExpanderApp.cpp ExpanderWindow.cpp ExpanderThread.cpp GenericThread.cpp ExpanderSettings.cpp \
             ExpanderPreferences.cpp DirectoryFilePanel.cpp ExpanderRules.cpp PasswordAlert.cpp
