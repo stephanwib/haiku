@@ -1,7 +1,7 @@
 #
 # Options
 #
-WITH_REGISTRAR?=      N
+WITH_REGISTRAR?=      Y
 
 .if ${WITH_REGISTRAR} != "Y"
 CPPFLAGS+= -DRUN_WITHOUT_REGISTRAR
