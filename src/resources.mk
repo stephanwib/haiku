@@ -4,7 +4,7 @@ XRES?=      ${.CURDIR}/../../bin/xres
 RESPATH?= ${.CURDIR}
 
 LOCAL_RESOURCES!= ls *.rdef
-RESOURCES?= ${LOCAL_RESOURCES}
+RESOURCES?= ${LOCAL_RESOURCES:R}
 
 RSRCFILES=  ${RESOURCES:S/$/.rsrc/}
 
