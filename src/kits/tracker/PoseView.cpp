@@ -1444,6 +1444,7 @@ BPoseView::AddPosesTask(void* castToParams)
 		return B_ERROR;
 
 	thread_id threadID = find_thread(NULL);
+	printf("BPoseView::AddPosesTask thread id: %d\n", threadID);
 
 	BPoseView* view = dynamic_cast<BPoseView*>(lock.Handler());
 	ThrowOnAssert(view != NULL);
@@ -1489,12 +1490,14 @@ BPoseView::AddPosesTask(void* castToParams)
 			node_ref itemNode;
 
 			int32 count = container->GetNextDirents(eptr, 1024, 1);
-			printf("BPoseView::Add loop, count from GetNextDirents: %d\n", count);
+			//printf("BPoseView::Add loop, count from GetNextDirents: %d\n", count);
 			if (count <= 0 && modelChunkIndex == -1)
 				break;
 
 			if (count > 0) {
 				ASSERT(count == 1);
+
+				printf("BPoseView::Add loop, eptr name: %s\n", eptr->d_name);
 
 				if ((!hideDotFiles && (!strcmp(eptr->d_name, ".")
 					|| !strcmp(eptr->d_name, "..")))
@@ -1515,6 +1518,7 @@ BPoseView::AddPosesTask(void* castToParams)
 
 				model = new Model(&dirNode, &itemNode, eptr->d_name, false);
 				result = model->InitCheck();
+				printf("BPoseView::Add loop, new Model result: %d\n", model->InitCheck());
 				modelChunkIndex++;
 				posesResult->fModels[modelChunkIndex] = model;
 			}
