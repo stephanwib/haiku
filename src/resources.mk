@@ -21,11 +21,17 @@ CLEANFILES+= ${RSRCFILES}
 
 .PATH.rdef: ${RESPATH}
 
-.if defined(PROG) && !empty(RSRCFILES)
-${PROG}: ${RSRCFILES}
-	${XRES} -o ${.TARGET} ${RSRCFILES}
-.endif
 
+.if defined(PROG) && !empty(RSRCFILES)
+
+${PROG}: ${RSRCFILES}
+
+_xres_prog: ${PROG} ${RSRCFILES}
+	${XRES} -o ${PROG} ${RSRCFILES}
+
+realall: _xres_prog
+
+.endif
 
 .if defined(LIB) && defined(SHLIB_MAJOR) && !empty(RSRCFILES)
 
