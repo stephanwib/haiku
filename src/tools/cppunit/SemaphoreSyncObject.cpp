@@ -1,5 +1,6 @@
 #include <SemaphoreSyncObject.h>
 #include <cppunit/Exception.h>
+#include <BeBuild.h>
 
 _EXPORT
 SemaphoreSyncObject::SemaphoreSyncObject()
