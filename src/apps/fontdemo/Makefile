@@ -3,6 +3,12 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Fontdemo
 
+
+postbuild: ${PROG}
+
+realall: postbuild
+
+
 SRCS+=      	ControlView.cpp FontDemo.cpp FontDemoView.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
