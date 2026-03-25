@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Diskusage
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      App.cpp ControlsView.cpp DiskUsage.cpp InfoWindow.cpp MainWindow.cpp PieView.cpp \
             Scanner.cpp Snapshot.cpp StatusView.cpp VolumeView.cpp
 
@@ -23,4 +27,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
