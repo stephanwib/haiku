@@ -7,9 +7,6 @@ XRES= ${.CURDIR}/../../bin/xres
 PROG=	Clock
 
 postbuild: ${PROG}
-	${RC} Clock.rdef -o ${PROG}
-	${XRES} -o ${PROG} Clock.rsrc
-
 
 realall: postbuild
 
@@ -32,4 +29,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
