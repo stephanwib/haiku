@@ -3,6 +3,11 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Deskcalc
 
+postbuild: ${PROG}
+
+realall: postbuild
+
+
 SRCS+=      	CalcApplication.cpp CalcOptions.cpp CalcView.cpp CalcWindow.cpp \
               DeskCalc.cpp ExpressionTextView.cpp InputTextView.cpp
 
@@ -22,4 +27,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
