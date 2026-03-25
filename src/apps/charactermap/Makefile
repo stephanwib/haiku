@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Charactermap
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      CharacterMap.cpp CharacterView.cpp CharacterWindow.cpp UnicodeBlocks.cpp UnicodeBlockView.cpp	
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
