@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Sudoku
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      ProgressWindow.cpp Sudoku.cpp SudokuField.cpp SudokuGenerator.cpp SudokuSolver.cpp \
             SudokuView.cpp SudokuWindow.cpp	
 
@@ -23,4 +27,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
