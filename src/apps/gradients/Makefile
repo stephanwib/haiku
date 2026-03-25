@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Gradients
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      GradientsApp.cpp GradientsWindow.cpp GradientsView.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
