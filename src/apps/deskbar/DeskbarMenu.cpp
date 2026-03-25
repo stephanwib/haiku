@@ -87,6 +87,7 @@ TDeskbarMenu::TDeskbarMenu(TBarView* barView)
 	fAddState(kStart),
 	fBarView(barView)
 {
+	printf("TDeskbarMenu:: Constructor called\n");
 }
 
 
