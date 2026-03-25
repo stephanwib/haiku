@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Resedit
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      App.cpp BitmapView.cpp ImageEditor.cpp InlineEditor.cpp MiscEditors.cpp NumberEditors.cpp \
             PreviewColumn.cpp ResFields.cpp ResListView.cpp ResourceData.cpp ResourceRoster.cpp \
             ResView.cpp ResWindow.cpp	
@@ -24,4 +28,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
