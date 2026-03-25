@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Pairs
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      	Pairs.cpp PairsButton.cpp PairsView.cpp PairsWindow.cpp
 
 
@@ -22,4 +26,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
