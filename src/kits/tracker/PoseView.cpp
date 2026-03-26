@@ -1489,8 +1489,23 @@ BPoseView::AddPosesTask(void* castToParams)
 			node_ref dirNode;
 			node_ref itemNode;
 
+			BEntry entry;
+			status_t err;
+			char name[B_FILE_NAME_LENGTH];
+			
 			int32 count = container->GetNextDirents(eptr, 1024, 1);
 			//printf("BPoseView::Add loop, count from GetNextDirents: %d\n", count);
+
+			status_t err = container->GetNextEntry(&entry);
+			printf("BPoseView::Add loop, DEBUG GetNextEntry status: %d\n", err);
+			if (err == B_OK) {
+				
+				entry.GetName(name);
+				printf("PoseView entry: %s\n", name);
+			}
+				
+
+			
 			if (count <= 0 && modelChunkIndex == -1)
 				break;
 
