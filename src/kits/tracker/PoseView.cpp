@@ -1506,20 +1506,23 @@ BPoseView::AddPosesTask(void* castToParams)
 				
 
 			
-			if (count <= 0 && modelChunkIndex == -1)
-				break;
+			//if (count <= 0 && modelChunkIndex == -1)
+			//	break;
 
-			if (count > 0) {
-				ASSERT(count == 1);
+			//if (count > 0) {
+			//	ASSERT(count == 1);
 
-				printf("BPoseView::Add loop, eptr name: %s\n", eptr->d_name);
+			if (err == B_OK)
+				//printf("BPoseView::Add loop, eptr name: %s\n", eptr->d_name);
+printf("BPoseView::Add loop...\n");
 
+			/*
 				if ((!hideDotFiles && (!strcmp(eptr->d_name, ".")
 					|| !strcmp(eptr->d_name, "..")))
 					|| (hideDotFiles && eptr->d_name[0] == '.')) {
 					continue;
 				}
-				/*
+				
 				dirNode.device = eptr->d_pdev;
 				dirNode.node = eptr->d_pino;
 				itemNode.device = eptr->d_dev;
@@ -1531,7 +1534,8 @@ BPoseView::AddPosesTask(void* castToParams)
 					// OK to call when poseView is not locked
 				*/
 
-				model = new Model(&dirNode, &itemNode, eptr->d_name, false);
+				//model = new Model(&dirNode, &itemNode, eptr->d_name, false);
+		     	model = new Model(&entry, false, true);
 				result = model->InitCheck();
 				printf("BPoseView::Add loop, new Model result: %d\n", model->InitCheck());
 				modelChunkIndex++;
