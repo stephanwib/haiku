@@ -1492,8 +1492,10 @@ BPoseView::AddPosesTask(void* castToParams)
 			BEntry entry;
 			status_t err;
 			char name[B_FILE_NAME_LENGTH];
+
+			int32 count;
 			
-			int32 count = container->GetNextDirents(eptr, 1024, 1);
+			//int32 count = container->GetNextDirents(eptr, 1024, 1);
 			//printf("BPoseView::Add loop, count from GetNextDirents: %d\n", count);
 
 			err = container->GetNextEntry(&entry);
@@ -1502,17 +1504,19 @@ BPoseView::AddPosesTask(void* castToParams)
 				
 				entry.GetName(name);
 				printf("PoseView entry: %s\n", name);
+				count = 1;
 			}
+			else
+				count = 0;
 				
 
 			
-			//if (count <= 0 && modelChunkIndex == -1)
-			//	break;
+			if (count <= 0 && modelChunkIndex == -1)
+				break;
 
-			//if (count > 0) {
-			//	ASSERT(count == 1);
+			if (count > 0) {
+				ASSERT(count == 1);
 
-			if (err == B_OK)
 				//printf("BPoseView::Add loop, eptr name: %s\n", eptr->d_name);
 printf("BPoseView::Add loop...\n");
 
