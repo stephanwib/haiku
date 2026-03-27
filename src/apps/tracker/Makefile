@@ -3,6 +3,10 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Tracker
 
+postbuild: ${PROG}
+
+realall: postbuild
+
 SRCS+=      	main.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
@@ -23,4 +27,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
