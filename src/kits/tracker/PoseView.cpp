@@ -1496,7 +1496,7 @@ BPoseView::AddPosesTask(void* castToParams)
 			int32 count = container->GetNextDirents(eptr, 1024, 1);
 			//printf("BPoseView::Add loop, count from GetNextDirents: %d\n", count);
 
-			status_t err = container->GetNextEntry(&entry);
+			err = container->GetNextEntry(&entry);
 			printf("BPoseView::Add loop, DEBUG GetNextEntry status: %d\n", err);
 			if (err == B_OK) {
 				
