@@ -1492,6 +1492,7 @@ BPoseView::AddPosesTask(void* castToParams)
 			BEntry entry;
 			status_t err;
 			char name[B_FILE_NAME_LENGTH];
+			char path[1024];
 
 			int32 count;
 			
@@ -1504,6 +1505,8 @@ BPoseView::AddPosesTask(void* castToParams)
 				
 				entry.GetName(name);
 				printf("PoseView entry: %s\n", name);
+				entry.GetPath(path);
+				printf("PoseView path: %s\n", path);
 				count = 1;
 			}
 			else
