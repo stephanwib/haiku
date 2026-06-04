@@ -11,7 +11,7 @@ SRCS+=    Asserter.cpp SynchronizedObject.cpp TestResultCollector.cpp TextTestPr
           RepeatedTest.cpp TestFailure.cpp TestSuite.cpp SourceLine.cpp TestResult.cpp TextOutputter.cpp
 
 
-CPPFLAGS+= -I${.CURDIR}/../../../headers/tools
+CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit
 
 
 #CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -D_SUPPORTS_RESOURCES
