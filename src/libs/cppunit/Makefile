@@ -13,8 +13,9 @@ SRCS+=    Asserter.cpp SynchronizedObject.cpp TestResultCollector.cpp TextTestPr
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit
 
+CXXFLAGS= -g -fPIC
 
-#CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -D_SUPPORTS_RESOURCES
+#-std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -D_SUPPORTS_RESOURCES
 
 # XXX Compiler suggests -std=gnu99 due to alloca usage
 
