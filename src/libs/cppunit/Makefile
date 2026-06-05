@@ -11,7 +11,7 @@ SRCS+=    Asserter.cpp SynchronizedObject.cpp TestResultCollector.cpp TextTestPr
           RepeatedTest.cpp TestFailure.cpp TestSuite.cpp SourceLine.cpp TestResult.cpp TextOutputter.cpp
 
 
-CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit -I${.CURDIR}/../../../headers -I${.CURDIR}/../../../headers/os
 
 CXXFLAGS= -g -fPIC -std=c++11 -DBUILDING_CPPUNIT
 
