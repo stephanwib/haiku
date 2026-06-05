@@ -13,7 +13,7 @@ SRCS+=    Asserter.cpp SynchronizedObject.cpp TestResultCollector.cpp TextTestPr
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit
 
-CXXFLAGS= -g -fPIC -std=c++03 -DBUILDING_CPPUNIT
+CXXFLAGS= -g -fPIC -std=c++11 -DBUILDING_CPPUNIT
 
 #-std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -D_SUPPORTS_RESOURCES
 
