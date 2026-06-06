@@ -1,5 +1,5 @@
 PROGS = listsem listport listarea ps
-CPPPROGS = xres listres listattr listfont system_time VolumeRoster df hey alert filepanel RosterShell UnitTester
+CPPPROGS = xres listres listattr listfont system_time VolumeRoster df hey alert filepanel RosterShell
 
 .PATH: ${.CURDIR}/../tests
 
