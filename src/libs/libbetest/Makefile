@@ -5,6 +5,8 @@ PRIVATE_HEADERS= shared
 
 LIB=	betest
 
+.PATH: ${.CURDIR}/../../tools/cppunit
+
 SRCS+=     BTestCase.cpp BTestSuite.cpp SemaphoreSyncObject.cpp TestApp.cpp TestListener.cpp TestShell.cpp \
            TestUtils.cpp ThreadedTestCase.cpp #BetestInit.cpp
 
@@ -12,7 +14,7 @@ SRCS+=     BTestCase.cpp BTestSuite.cpp SemaphoreSyncObject.cpp TestApp.cpp Test
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
 CPPFLAGS+= -I/usr/pkg/include
-CPPFLAGS+= -I${.CURDIR}
+CPPFLAGS+= -I${.CURDIR}/../../tools/cppunit
 CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
