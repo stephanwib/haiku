@@ -19,7 +19,7 @@ CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers
 
-LDFLAGS= -L/usr/pkg/lib -L${.CURDIR}/../../libs/libbe -rpath=/usr/pkg/lib -lroot -lbe
+LDFLAGS= -L/usr/pkg/lib -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/cppunit -rpath=/usr/pkg/lib -lroot -lbe
 
 LIBDPLIBS+= cppunit ${.CURDIR}/../cppunit
 LIBDO.cppunit = _external
