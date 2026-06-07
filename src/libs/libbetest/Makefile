@@ -22,7 +22,7 @@ CPPFLAGS+= -I${.CURDIR}/../../../headers
 LDFLAGS= -L/usr/pkg/lib -L${.CURDIR}/../../libs/libbe -rpath=/usr/pkg/lib -lroot -lbe
 
 LIBDPLIBS+= cppunit ${.CURDIR}/../cppunit
-LIBDO.cppuunit = _external
+LIBDO.cppunit = _external
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
