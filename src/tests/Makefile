@@ -23,11 +23,11 @@ SRCS+=      UnitTester.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDADD+=	-lbe -lbetest -licon -lagg
-LDFLAGS+= -L${.CURDIR}/../libs/libbe -L${.CURDIR}/../libs/libbetest -L${.CURDIR}/../libs/icon -L${.CURDIR}/../libs/agg
+LDADD+=	-lbe -lbetest -licon -lagg -lcppunit
+LDFLAGS+= -L${.CURDIR}/../libs/libbe -L${.CURDIR}/../libs/libbetest -L${.CURDIR}/../libs/icon -L${.CURDIR}/../libs/agg -L${.CURDIR}/../libs/cppunit
 
-LIBDPLIBS+= cppunit ${.CURDIR}/../libs/cppunit
-LIBDO.cppunit = _external
+#LIBDPLIBS+= cppunit ${.CURDIR}/../libs/cppunit
+#LIBDO.cppunit = _external
 
 #LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
 #          -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
