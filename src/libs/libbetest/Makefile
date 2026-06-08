@@ -11,7 +11,7 @@ SRCS+=     BTestCase.cpp BTestSuite.cpp SemaphoreSyncObject.cpp TestApp.cpp Test
            TestUtils.cpp ThreadedTestCase.cpp
 
 
-CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -DNO_ELF_SYMBOL_PATCHING
 
 CPPFLAGS+= -I/usr/pkg/include
 CPPFLAGS+= -I${.CURDIR}/../../tools/cppunit
