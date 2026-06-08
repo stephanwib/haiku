@@ -10,7 +10,7 @@
 #include <image.h>
 #include <Locker.h>
 #include <Path.h>
-#include <TLS.h>
+//#include <TLS.h>
 
 #include <cppunit/Exception.h>
 #include <cppunit/Test.h>
@@ -44,7 +44,7 @@ BTestShell::BTestShell(const string &description, SyncObject *syncObject)
 	, fOldUnloadAddOnHook(NULL)
 #endif // ! NO_ELF_SYMBOL_PATCHING
 {
-	fTLSDebuggerCall = tls_allocate();
+	//fTLSDebuggerCall = tls_allocate();
 }
 
 _EXPORT
@@ -239,10 +239,10 @@ _EXPORT
 void
 BTestShell::ExpectDebuggerCall()
 {
-	void *var = tls_get(fTLSDebuggerCall);
-	::CppUnit::Asserter::failIf(var, "ExpectDebuggerCall(): Already expecting "
-		"a debugger() call.");
-	tls_set(fTLSDebuggerCall, (void*)1);
+	//void *var = tls_get(fTLSDebuggerCall);
+	//::CppUnit::Asserter::failIf(var, "ExpectDebuggerCall(): Already expecting "
+	//	"a debugger() call.");
+	//tls_set(fTLSDebuggerCall, (void*)1);
 }
 
 // WasDebuggerCalled
@@ -572,11 +572,11 @@ BTestShell::_Debugger(const char *message)
 		return;
 	}
 	cout << "debugger() called: " << message << endl;
-	void *var = tls_get(fTLSDebuggerCall);
-	if (var)
-		tls_set(fTLSDebuggerCall, (void*)((addr_t)var + 1));
-	else
-		(*fOldDebuggerHook)(message);
+	//void *var = tls_get(fTLSDebuggerCall);
+	//if (var)
+	//	tls_set(fTLSDebuggerCall, (void*)((addr_t)var + 1));
+	//else
+	//	(*fOldDebuggerHook)(message);
 }
 
 // _LoadAddOn
