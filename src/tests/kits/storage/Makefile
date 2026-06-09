@@ -1,6 +1,6 @@
 .include <bsd.own.mk>
 
-OS_HEADERS= support storage app
+OS_HEADERS= support storage app interface
 #PRIVATE_HEADERS= shared
 
 LIB=	storagetest
