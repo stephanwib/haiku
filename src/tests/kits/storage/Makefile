@@ -14,6 +14,7 @@ CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../../headers/tools/cppunit
 
 
 .for HEADER in ${OS_HEADERS}
