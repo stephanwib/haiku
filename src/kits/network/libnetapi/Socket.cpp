@@ -7,6 +7,7 @@
 
 #include <Socket.h>
 
+#include <unistd.h>
 #include <errno.h>
 
 
