@@ -7,7 +7,7 @@ LIB=	storagetest
 
 # .PATH: ${.CURDIR}
 
-SRCS+=     BasicTest.cpp DataIOTest.cpp
+SRCS+=     BasicTest.cpp DataIOTest.cpp DirectoryTest.cpp
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 #CPPFLAGS+= -I${.CURDIR}
