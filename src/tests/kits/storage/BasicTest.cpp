@@ -81,8 +81,8 @@ BasicTest::dumpStat(struct stat &st)
 	printf("  st_blksize: %ld\n", st.st_blksize);
 	printf("  st_atime  : %lx\n", st.st_atime);
 	printf("  st_mtime  : %lx\n", st.st_mtime);
-	printf("  st_ctime  : %lx\n", st.st_ctime);
-	printf("  st_crtime : %lx\n", st.st_crtime);
+	//printf("  st_ctime  : %lx\n", st.st_ctime);
+	//printf("  st_crtime : %lx\n", st.st_crtime);
 }
 
 // createVolume
