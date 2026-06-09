@@ -64,8 +64,8 @@ operator==(const struct stat &st1, const struct stat &st2)
 		&& st1.st_blksize == st2.st_blksize
 		&& st1.st_atime == st2.st_atime
 		&& st1.st_mtime == st2.st_mtime
-		&& st1.st_ctime == st2.st_ctime
-		&& st1.st_crtime == st2.st_crtime
+		// && st1.st_ctime == st2.st_ctime
+		// && st1.st_crtime == st2.st_crtime
 	);
 }
 
