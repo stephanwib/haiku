@@ -75,7 +75,7 @@ public:
 			int32				Media() const;
 			uint32				Metric() const;
 			uint32				Type() const;
-			status_t			GetStats(ifreq_stats& stats);
+			//status_t			GetStats(ifreq_stats& stats);
 			bool				HasLink() const;
 
 			status_t			SetFlags(uint32 flags);
