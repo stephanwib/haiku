@@ -1,6 +1,7 @@
 // DataIOTest.cpp
 
 #include <string.h>
+#include <sys/stat.h>
 #include <BufferedDataIO.h>
 
 #include <TestShell.h>
