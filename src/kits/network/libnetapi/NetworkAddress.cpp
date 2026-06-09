@@ -604,12 +604,14 @@ BNetworkAddress::SetLinkLevelType(uint8 type)
 }
 
 
+/*
 void
 BNetworkAddress::SetLinkLevelFrameType(uint16 frameType)
 {
 	sockaddr_dl& link = (sockaddr_dl&)fAddress;
 	link.sdl_e_type = htons(frameType);
 }
+*/
 
 
 int
