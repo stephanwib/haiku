@@ -830,7 +830,7 @@ BNetworkAddress::IsSiteLocal() const
 	}
 }
 
-
+/*
 bool
 BNetworkAddress::IsLocal() const
 {
@@ -853,7 +853,7 @@ BNetworkAddress::IsLocal() const
 
 	return false;
 }
-
+*/
 
 ssize_t
 BNetworkAddress::PrefixLength() const
@@ -917,13 +917,13 @@ BNetworkAddress::LinkLevelType() const
 	return ((sockaddr_dl&)fAddress).sdl_type;
 }
 
-
+/*
 uint16
 BNetworkAddress::LinkLevelFrameType() const
 {
 	return ntohs(((sockaddr_dl&)fAddress).sdl_e_type);
 }
-
+*/
 
 uint8*
 BNetworkAddress::LinkLevelAddress() const
@@ -947,6 +947,7 @@ BNetworkAddress::ResolveForDestination(const BNetworkAddress& destination)
 	if (destination.fAddress.ss_family != fAddress.ss_family)
 		return B_BAD_VALUE;
 
+	/*
 	char buffer[2048];
 	memset(buffer, 0, sizeof(buffer));
 
@@ -968,6 +969,9 @@ BNetworkAddress::ResolveForDestination(const BNetworkAddress& destination)
 
 	close(socket);
 	return B_OK;
+	*/
+
+	return B_NOT_SUPPORTED;
 }
 
 
