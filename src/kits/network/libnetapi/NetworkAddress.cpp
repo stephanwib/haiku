@@ -928,7 +928,7 @@ BNetworkAddress::LinkLevelFrameType() const
 uint8*
 BNetworkAddress::LinkLevelAddress() const
 {
-	return LLADDR(&(sockaddr_dl&)fAddress);
+	return (uint8*)LLADDR(&(sockaddr_dl&)fAddress);
 }
 
 
