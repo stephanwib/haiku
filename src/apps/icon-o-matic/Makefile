@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface
+PRIVATE_HEADERS=    interface rwlocker
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 .PATH: ${.CURDIR}/document ${.CURDIR}/document/savers ${.CURDIR}/generic ${.CURDIR}/generic/listener \
