@@ -36,8 +36,8 @@ CPPFLAGS+= -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.CURDIR}/gener
        -I${.CURDIR}/generic/gui/panel -I${.CURDIR}/generic/gui/panel/color_picker -I${.CURDIR}/generic/gui/scrollview \
        -I${.CURDIR}/generic/gui/stateview -I${.CURDIR}/generic/property -I${.CURDIR}/generic/property/specific_properties \
        -I${.CURDIR}/generic/property/view -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/ ${.CURDIR}/generic/selection \
-       -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/transformable ${.CURDIR}/gui \
-       -I${.CURDIR}/import_export ${.CURDIR}/import_export/bitmap -I${.CURDIR}/import_export/flat_icon \
+       -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/transformable -I${.CURDIR}/gui \
+       -I${.CURDIR}/import_export -I${.CURDIR}/import_export/bitmap -I${.CURDIR}/import_export/flat_icon \
        -I${.CURDIR}/import_export/message ${.CURDIR}/ -I${.CURDIR}/import_export/styled_text -I${.CURDIR}/import_export/svg \
        -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
        -I${.CURDIR}/../../../headers/libs/agg
