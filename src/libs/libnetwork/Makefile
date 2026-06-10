@@ -2,7 +2,7 @@
 
 LIB=	netapi
 
-CXXFLAGS= -g -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -g -std=c++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
 # -std=c++17 
 
 LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot
