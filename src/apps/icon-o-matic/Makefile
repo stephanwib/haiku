@@ -40,7 +40,7 @@ CPPFLAGS+= -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.CURDIR}/gener
        -I${.CURDIR}/import_export -I${.CURDIR}/import_export/bitmap -I${.CURDIR}/import_export/flat_icon \
        -I${.CURDIR}/import_export/message ${.CURDIR}/ -I${.CURDIR}/import_export/styled_text -I${.CURDIR}/import_export/svg \
        -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
-       -I${.CURDIR}/../../../headers/libs/agg
+       -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../../headers/libs/agg
 
 
 .for HEADER in ${PRIVATE_HEADERS}
