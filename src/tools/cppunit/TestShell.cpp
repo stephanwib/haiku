@@ -474,6 +474,9 @@ BTestShell::LoadDynamicSuites() {
 _EXPORT
 void
 BTestShell::UpdateTestDir(char *argv[]) {
+
+	cout << "BTestShell::UpdateTestDir() argv[0]: " << (argv[0] ? argv[0] : "<null>") << endl;
+	
 	BPath path(argv[0]);
 	if (path.InitCheck() == B_OK) {
 		delete fTestDir;
