@@ -5,7 +5,11 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
        ${.CURDIR}/generic ${.CURDIR}/generic/support ${.CURDIR}/generic/command/ ${.CURDIR}/generic/gui \
        ${.CURDIR}/generic/gui/panel ${.CURDIR}/generic/gui/panel/color_picker ${.CURDIR}/generic/gui/scrollview \
        ${.CURDIR}/generic/gui/stateview ${.CURDIR}/generic/property ${.CURDIR}/generic/property/specific_properties \
-       ${.CURDIR}/generic/property/view ${.CURDIR}/generic/property/view/specific_properties
+       ${.CURDIR}/generic/property/view ${.CURDIR}/generic/property/view/specific_properties ${.CURDIR}/ ${.CURDIR}/generic/selection \
+       ${.CURDIR}/generic/property/view/specific_properties ${.CURDIR}/transformable ${.CURDIR}/gui \
+       ${.CURDIR}/import_export ${.CURDIR}/import_export/bitmap ${.CURDIR}/import_export/flat_icon \
+       ${.CURDIR}/import_export/message ${.CURDIR}/ ${.CURDIR}/import_export/styled_text ${.CURDIR}/import_export/svg \
+       ${.CURDIR}/shape ${.CURDIR}/shape/commands ${.CURDIR}/style
 
 PROG=	Icon-O-Matic
 
@@ -15,11 +19,11 @@ postbuild: ${PROG}
 realall: postbuild
 
 
-SRCS+=      
+SRCS+=      main.cpp MainWindow.cpp Util.cpp IconEditorApp.cpp CanvasView.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDADD+=	-lbe -licon -lagg -ltracker
+LDADD+=	-lbe -licon -lagg #-ltracker
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
           -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
 
