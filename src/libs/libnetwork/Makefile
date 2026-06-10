@@ -11,8 +11,8 @@ WARNS=		5
 
 
 .include "${.CURDIR}/../../kits/network/libnetapi/Makefile.inc"
-#.include "${.CURDIR}/../../kits/network/libnetservices/Makefile.inc"
-#.include "${.CURDIR}/../../kits/network/libnetservices2/Makefile.inc"
+.include "${.CURDIR}/../../kits/network/libnetservices/Makefile.inc"
+.include "${.CURDIR}/../../kits/network/libnetservices2/Makefile.inc"
 
 .include <bsd.lib.mk>
 
