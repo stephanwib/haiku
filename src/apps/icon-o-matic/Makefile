@@ -1,6 +1,12 @@
 PRIVATE_HEADERS=    interface
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
+.PATH: ${.CURDIR}/document ${.CURDIR}/document/savers ${.CURDIR}/generic ${.CURDIR}/generic/listener \
+       ${.CURDIR}/generic ${.CURDIR}/generic/support ${.CURDIR}/generic/command/ ${.CURDIR}/generic/gui \
+       ${.CURDIR}/generic/gui/panel ${.CURDIR}/generic/gui/panel/color_picker ${.CURDIR}/generic/gui/scrollview \
+       ${.CURDIR}/generic/gui/stateview ${.CURDIR}/generic/property ${.CURDIR}/generic/property/specific_properties \
+       ${.CURDIR}/generic/property/view ${.CURDIR}/generic/property/view/specific_properties
+
 PROG=	Icon-O-Matic
 
 
