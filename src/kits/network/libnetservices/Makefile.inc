@@ -11,6 +11,7 @@ SRCS+=	DataRequest.cpp HttpAuthentication.cpp HttpHeaders.cpp HttpForm.cpp HttpR
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
+CPPFLAGS+= "${.CURDIR}/../../kits/network/libnetservices"
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
