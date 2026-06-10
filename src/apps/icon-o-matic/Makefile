@@ -21,7 +21,7 @@ realall: postbuild
 
 SRCS+=      main.cpp MainWindow.cpp Util.cpp IconEditorApp.cpp CanvasView.cpp
 
-CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -D__HAIKU__
 
 LDADD+=	-lbe -licon -lagg #-ltracker
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
