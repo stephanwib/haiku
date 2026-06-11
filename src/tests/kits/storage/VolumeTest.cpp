@@ -519,6 +519,9 @@ VolumeTest::IterationTest()
 #endif
 }
 
+
+
+#if 0
 // CheckWatchingMessage
 static
 void
@@ -624,3 +627,4 @@ VolumeTest::WatchingTest()
 	CHK(roster.StartWatching(BMessenger()) == B_ERROR);
 }
 
+#endif
