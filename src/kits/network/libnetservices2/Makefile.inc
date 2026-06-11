@@ -7,6 +7,7 @@ SRCS+=	ErrorsExt.cpp HttpBuffer.cpp HttpFields.cpp HttpParser.cpp HttpRequest.cp
 			HttpSerializer.cpp HttpSession.cpp HttpTime.cpp NetServicesMisc.cpp
 
 
+CPPFLAGS+= "-I${.CURDIR}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
 
