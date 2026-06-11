@@ -1,6 +1,7 @@
 // PathTest.cpp
 #include "PathTest.h"
 
+#include <sys/stat.h>
 #include <cppunit/Test.h>
 #include <cppunit/TestCaller.h>
 #include <cppunit/TestSuite.h>
@@ -11,7 +12,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <unistd.h>
-#include <sys/stat.h>
+
 
 #include <string>
 using std::string;
