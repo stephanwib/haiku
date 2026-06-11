@@ -7,6 +7,7 @@
 #include <TestCase.h>
 #include <TestShell.h>
 #include <stdio.h>
+#include <sys/stat.h>
 
 #include <set>
 using std::set;
