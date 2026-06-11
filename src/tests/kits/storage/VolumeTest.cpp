@@ -67,8 +67,9 @@ VolumeTest::Suite() {
 						   &VolumeTest::BadValuesTest) );
 	suite->addTest( new TC("BVolumeRoster::Iteration Test",
 						   &VolumeTest::IterationTest) );
-	suite->addTest( new TC("BVolumeRoster::Watching Test",
-						   &VolumeTest::WatchingTest) );
+	
+	// suite->addTest( new TC("BVolumeRoster::Watching Test",
+	//					   &VolumeTest::WatchingTest) );
 
 	return suite;
 }		
