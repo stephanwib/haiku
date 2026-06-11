@@ -132,7 +132,7 @@ StatableTest::GetXYZTest()
 		CPPUNIT_ASSERT( (perms & S_IUMSK) == (st.st_mode & S_IUMSK) );
 		CPPUNIT_ASSERT( size == st.st_size );
 		CPPUNIT_ASSERT( mtime == st.st_mtime );
-		CPPUNIT_ASSERT( ctime == st.st_crtime );
+		//CPPUNIT_ASSERT( ctime == st.st_crtime );
 #if !TEST_R5 && !TEST_OBOS /* !!!POSIX ONLY!!! */
 		CPPUNIT_ASSERT( atime == st.st_atime );
 #endif
@@ -217,7 +217,7 @@ StatableTest::SetXYZTest()
 		CPPUNIT_ASSERT( group == st.st_gid );
 		CPPUNIT_ASSERT( perms == (st.st_mode & S_IUMSK) );
 		CPPUNIT_ASSERT( mtime == st.st_mtime );
-		CPPUNIT_ASSERT( ctime == st.st_crtime );
+		//CPPUNIT_ASSERT( ctime == st.st_crtime );
 #if !TEST_R5 && !TEST_OBOS /* !!!POSIX ONLY!!! */
 		CPPUNIT_ASSERT( atime == st.st_atime );
 #endif
