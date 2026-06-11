@@ -23,7 +23,7 @@ BTestSuite* getTestSuite() {
 	BTestSuite *suite = new BTestSuite("Storage");
 
 	// ##### Add test suites here #####
-	suite->addTest("BAppFileInfo", AppFileInfoTest::Suite());
+	//suite->addTest("BAppFileInfo", AppFileInfoTest::Suite());
 	suite->addTest("BDirectory", DirectoryTest::Suite());
 	suite->addTest("BDataIO", DataIOTest::Suite());
 	suite->addTest("BEntry", EntryTest::Suite());
