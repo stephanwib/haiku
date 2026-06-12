@@ -18,7 +18,7 @@ CPPFLAGS+= -I${.CURDIR}/../../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/tools/cppunit
 
-LDFLAGS= -lroot -lbe -L${.CURDIR}/../../../libs/libbe
+LDFLAGS= -lroot -lbe -lcppunit -L${.CURDIR}/../../../libs/libbe -L${.CURDIR}/../../../libs/cppunit
 
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
 
