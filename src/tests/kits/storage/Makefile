@@ -10,7 +10,7 @@ LIB=	storagetest
 SRCS+=     BasicTest.cpp DataIOTest.cpp DirectoryTest.cpp EntryTest.cpp FileTest.cpp FindDirectoryTest.cpp \
            NodeInfoTest.cpp NodeTest.cpp PathTest.cpp ResourcesTest.cpp ResourceStringsTest.cpp StatableTest.cpp \
            StorageKitTestAddon.cpp SymLinkTest.cpp TestApp.cpp VolumeTest.cpp \
-           MimeUpdateTest.cpp MimeSnifferTest.cpp
+           MimeSnifferTest.cpp
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 #CPPFLAGS+= -I${.CURDIR}
