@@ -18,6 +18,8 @@ CPPFLAGS+= -I${.CURDIR}/../../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/tools/cppunit
 
+LDFLAGS= -lroot -lbe
+
 #LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot -licudata -licui18n -licuio -licuuc -lz -lzstd
 
 .for HEADER in ${OS_HEADERS}
