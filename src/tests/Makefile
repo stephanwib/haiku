@@ -1,7 +1,22 @@
 #PRIVATE_HEADERS=    app interface locale shared tracker
 OS_HEADERS=          storage support #interface  app translation locale kernel add-ons/graphics
 
-postbuild: ${PROG}
+
+RC= ${.CURDIR}/../bin/rc/rc 
+XRES= ${.CURDIR}/../bin/xres
+
+RESOURCES=      UnitTester.rdef
+
+RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
+CLEANFILES+=    ${RSRCFILES}
+
+.SUFFIXES: .rdef .rsrc
+.rdef.rsrc:
+	${RC} ${.IMPSRC} -o ${.TARGET} -I .
+
+postbuild: ${PROG} ${RSRCFILES}
+	${XRES} -o ${PROG} ${RSRCFILES}
+
 realall: postbuild
 
 PROG=       UnitTester
