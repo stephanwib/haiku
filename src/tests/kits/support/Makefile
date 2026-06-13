@@ -8,7 +8,7 @@ LIB=	supporttest
 .PATH: ${.CURDIR}/barchivable ${.CURDIR}/bautolock ${.CURDIR}/bblockcache ${.CURDIR}/blocker ${.CURDIR}/bmemoryio \
        ${.CURDIR}/bstring ${.CURDIR}/pointerlist
 
-SRCS+=     ArchivingManagers.cpp Base64.cpp Beep.cpp BlockCache.cpp BufferedDataIO.cpp
+SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp AutolockTest.cpp DateTimeTest.cpp
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 #CPPFLAGS+= -I${.CURDIR}
