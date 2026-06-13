@@ -8,7 +8,13 @@ LIB=	supporttest
 .PATH: ${.CURDIR}/barchivable ${.CURDIR}/bautolock ${.CURDIR}/bblockcache ${.CURDIR}/blocker ${.CURDIR}/bmemoryio \
        ${.CURDIR}/bstring ${.CURDIR}/pointerlist
 
-SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp AutolockTest.cpp DateTimeTest.cpp
+SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp AutolockTest.cpp DateTimeTest.cpp \
+           LockerConstructionTest.cpp MemoryIOTest.cpp MallocIOTest.cpp StopWatchTest.cpp StringAccessTest.cpp \
+           StringAppendTest.cpp StringAssignTest.cpp StringCaseTest.cpp StringCompareTest.cpp StringConstructionTest.cpp \
+           StringEscapeTest.cpp StringFormatAppendTest.cpp StringInsertTest.cpp StringPrependTest.cpp StringRemoveTest.cpp \
+           StringReplaceTest.cpp StringSearchTest.cpp StringSplitTest.cpp StringSubCopyTest.cpp StringUTF8Test.cpp \
+           BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp PointerListTest.cpp
+
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 #CPPFLAGS+= -I${.CURDIR}
