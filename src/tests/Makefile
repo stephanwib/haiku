@@ -5,7 +5,7 @@ OS_HEADERS=          storage support #interface  app translation locale kernel a
 RC= ${.CURDIR}/../bin/rc/rc 
 XRES= ${.CURDIR}/../bin/xres
 
-RESOURCES=      UnitTester.rdef
+RESOURCES=      UnitTester
 
 RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
 CLEANFILES+=    ${RSRCFILES}
