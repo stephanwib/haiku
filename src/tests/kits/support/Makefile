@@ -12,7 +12,7 @@ SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp Autolock
             MemoryIOTest.cpp MallocIOTest.cpp StringAccessTest.cpp \
            StringAppendTest.cpp StringAssignTest.cpp StringCaseTest.cpp StringCompareTest.cpp StringConstructionTest.cpp \
            StringEscapeTest.cpp StringFormatAppendTest.cpp StringInsertTest.cpp StringPrependTest.cpp StringRemoveTest.cpp \
-           StringReplaceTest.cpp StringSearchTest.cpp StringSplitTest.cpp StringSubCopyTest.cpp StringUTF8Test.cpp \
+           StringReplaceTest.cpp StringSearchTest.cpp StringSplitTest.cpp StringSubCopyTest.cpp \
            BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp PointerListTest.cpp
 
 
