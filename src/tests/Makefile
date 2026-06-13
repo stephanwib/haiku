@@ -1,23 +1,10 @@
 #PRIVATE_HEADERS=    app interface locale shared tracker
 OS_HEADERS=          storage support #interface  app translation locale kernel add-ons/graphics
 
-RC= ${.CURDIR}/../../bin/rc/rc 
-XRES= ${.CURDIR}/../../bin/xres
+postbuild: ${PROG}
+realall: postbuild
 
 PROG=       UnitTester
-#RESOURCES=      
-
-RSRCFILES=      ${RESOURCES:S/$/.rsrc/}
-CLEANFILES+=    ${RSRCFILES}
-
-.SUFFIXES: .rdef .rsrc
-.rdef.rsrc:
-	${RC} ${.IMPSRC} -o ${.TARGET} -I .
-
-postbuild: ${PROG} ${RSRCFILES}
-	${XRES} -o ${PROG} ${RSRCFILES}
-
-realall: postbuild
 
 SRCS+=      UnitTester.cpp
 
@@ -46,4 +33,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../resources.mk"
 .include <bsd.prog.mk>
