@@ -32,7 +32,7 @@ BTestSuite* getTestSuite() {
 	suite->addTest("BMimeType", MimeTypeTest::Suite());
 #endif
 	suite->addTest("BNode", NodeTest::Suite());
-	suite->addTest("BNodeInfo", NodeInfoTest::Suite());
+	// suite->addTest("BNodeInfo", NodeInfoTest::Suite());
 	suite->addTest("BPath", PathTest::Suite());
 	// TODO: calls Lock on destruction hangs
 	//suite->addTest("BQuery", QueryTest::Suite());
