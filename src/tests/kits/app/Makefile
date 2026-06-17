@@ -13,7 +13,7 @@ SRCS+=     ApplicationTest.cpp AppQuitRequestedTester.cpp AppQuitTester.cpp AppR
 
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
-#CPPFLAGS+= -I${.CURDIR}
+CPPFLAGS+= -I${.CURDIR}
 
 CPPFLAGS+= -I${.CURDIR}/../../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/os
