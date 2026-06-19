@@ -41,6 +41,19 @@ SRCS+=     MessengerTest.cpp BMessengerTester.cpp LockTargetTester.cpp LockTarge
            MessengerComparissonTester.cpp SendMessageTester.cpp SMInvoker.cpp SMLooper.cpp SMReplyTarget.cpp SMTarget.cpp \
            TargetTester.cpp
 
+# BPropertyInfo
+SRCS+=     PropertyTestcase.cpp PropertyConstructionTest.cpp PropertyFindMatchTest.cpp PropertyFlattenTest.cpp \
+           PropertyInfoTest.cpp
+
+# BRoster
+SRCS+=     RosterTest.cpp FindAppTester.cpp GetAppInfoTester.cpp GetAppListTester.cpp GetRecentTester.cpp IsRunningTester.cpp \
+           LaunchTester.cpp LaunchTesterHelper.cpp RecentAppsTestApp.cpp RosterWatchingTester.cpp TeamForTester.cpp
+
+# RegistrarThreadManager
+SRCS+=     RegistrarThread.cpp RegistrarThreadManager.cpp RegistrarThreadManagerTest.cpp
+
+# common
+SRCS+=     AppRunner.cpp PipedAppRunner.cpp
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 CPPFLAGS+= -I${.CURDIR}/common
