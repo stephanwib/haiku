@@ -27,6 +27,20 @@ SRCS+=     LooperTest.cpp AddHandlerTest.cpp CountHandlersTest.cpp HandlerAtTest
            RemoveHandlerTest.cpp PerformTest.cpp RunTest.cpp LooperForThreadTest.cpp AddCommonFilterTest.cpp RemoveCommonFilterTest.cpp \
            LooperSizeTest.cpp SetCommonFilterListTest.cpp QuitTest.cpp
 
+# BMessageQueue
+SRCS+=     MessageQueueTest.cpp AddMessageTest1.cpp AddMessageTest2.cpp ConcurrencyTest1.cpp ConcurrencyTest2.cpp \
+           FindMessageTest1.cpp MessageQueueTestCase.cpp
+
+
+# BMessageRunner
+SRCS+=     MessageRunnerTest.cpp BMessageRunnerTester.cpp BroadcastTester.cpp GetInfoTester.cpp MessageRunnerTestHelpers.cpp \
+           SetCountTester.cpp SetIntervalTester.cpp
+
+# BMessenger
+SRCS+=     MessengerTest.cpp BMessengerTester.cpp LockTargetTester.cpp LockTargetWithTimeoutTester.cpp MessengerAssignmentTester.cpp \
+           MessengerComparissonTester.cpp SendMessageTester.cpp SMInvoker.cpp SMLooper.cpp SMReplyTarget.cpp SMTarget.cpp \
+           TargetTester.cpp
+
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 CPPFLAGS+= -I${.CURDIR}/common
