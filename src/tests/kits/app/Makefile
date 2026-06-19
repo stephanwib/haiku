@@ -11,6 +11,22 @@ LIB=	appkittest
 
 SRCS+=     ApplicationTest.cpp AppQuitRequestedTester.cpp AppQuitTester.cpp AppRunTester.cpp BApplicationTester.cpp
 
+# BClipboard
+SRCS+=     BClipboardTester.cpp ClipboardTest.cpp CountTester.cpp LockTester.cpp ReadWriteTester.cpp
+
+# BCursor
+SRCS+=     BCursorTester.cpp CursorTest.cpp
+
+# BHandler 
+SRCS+=     HandlerTest.cpp AddFilterTest.cpp BHandlerTester.cpp IsWatchedTest.cpp LockLooperTest.cpp LockLooperTestCommon.cpp \
+           LockLooperWithTimeoutTest.cpp HandlerLooperTest.cpp NextHandlerTest.cpp RemoveFilterTest.cpp SetFilterListTest.cpp \
+           SetNextHandlerTest.cpp UnlockLooperTest.cpp
+
+# BLooper
+SRCS+=     LooperTest.cpp AddHandlerTest.cpp CountHandlersTest.cpp HandlerAtTest.cpp IndexOfTest.cpp IsMessageWaitingTest.cpp \
+           RemoveHandlerTest.cpp PerformTest.cpp RunTest.cpp LooperForThreadTest.cpp AddCommonFilterTest.cpp RemoveCommonFilterTest.cpp \
+           LooperSizeTest.cpp SetCommonFilterListTest.cpp QuitTest.cpp
+
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 CPPFLAGS+= -I${.CURDIR}/common
