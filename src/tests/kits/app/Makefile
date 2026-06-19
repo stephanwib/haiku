@@ -50,7 +50,9 @@ SRCS+=     RosterTest.cpp FindAppTester.cpp GetAppInfoTester.cpp GetAppListTeste
            LaunchTester.cpp LaunchTesterHelper.cpp RecentAppsTestApp.cpp RosterWatchingTester.cpp TeamForTester.cpp
 
 # RegistrarThreadManager
-SRCS+=     RegistrarThread.cpp RegistrarThreadManager.cpp RegistrarThreadManagerTest.cpp
+SRCS+=     RegistrarThreadManager.cpp RegistrarThreadManagerTest.cpp
+#RegistrarThread.cpp 
+
 
 # common
 SRCS+=     AppRunner.cpp PipedAppRunner.cpp
