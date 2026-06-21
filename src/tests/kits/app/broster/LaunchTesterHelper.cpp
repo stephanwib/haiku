@@ -359,7 +359,7 @@ LaunchContext::AppMessengerFor(team_id team) const
 		fake.fTeam = team;
 		// find app looper port
 		bool found = false;
-		int32 cookie = 0;
+		uint32 cookie = 0;
 		port_info info;
 		while (error == B_OK && !found) {
 			error = get_next_port_info(fake.fTeam, &cookie, &info);
