@@ -1,7 +1,7 @@
 .include <bsd.own.mk>
 
 OS_HEADERS= support storage app interface
-PRIVATE_HEADERS= support
+PRIVATE_HEADERS= support app
 
 LIB=	appkittest
 
