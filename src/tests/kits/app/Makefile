@@ -7,7 +7,8 @@ LIB=	appkittest
 
 .PATH: ${.CURDIR}/bapplication ${.CURDIR}/bclipboard ${.CURDIR}/bcursor ${.CURDIR}/bhandler ${.CURDIR}/blooper  \
        ${.CURDIR}/bmessage ${.CURDIR}/bmessagequeue ${.CURDIR}/bmessagerunner ${.CURDIR}/bmessenger ${.CURDIR}/bpropertyinfo \
-       ${.CURDIR}/broster ${.CURDIR}/broster/testapps ${.CURDIR}/common ${.CURDIR}/messaging
+       ${.CURDIR}/broster ${.CURDIR}/broster/testapps ${.CURDIR}/common ${.CURDIR}/messaging \
+       ${.CURDIR}/../../../servers/registrar/mime
 
 SRCS+=     ApplicationTest.cpp AppQuitRequestedTester.cpp AppQuitTester.cpp AppRunTester.cpp BApplicationTester.cpp
 
