@@ -57,7 +57,7 @@ SRCS+=      RegistrarThreadManagerTest.cpp
 # common
 SRCS+=     AppRunner.cpp PipedAppRunner.cpp
 
-CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
+CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -DTEST_OBOS
 CPPFLAGS+= -I${.CURDIR}/common
 
 CPPFLAGS+= -I${.CURDIR}/../../../../headers
