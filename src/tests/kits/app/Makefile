@@ -51,15 +51,15 @@ SRCS+=     RosterTest.cpp FindAppTester.cpp GetAppInfoTester.cpp GetAppListTeste
            LaunchTester.cpp LaunchTesterHelper.cpp RecentAppsTestApp.cpp RosterWatchingTester.cpp TeamForTester.cpp
 
 # RegistrarThreadManager
-SRCS+=      RegistrarThreadManagerTest.cpp
-#RegistrarThread.cpp RegistrarThreadManager.cpp
+SRCS+=      RegistrarThreadManagerTest.cpp RegistrarThread.cpp RegistrarThreadManager.cpp
+
 
 
 # common
 SRCS+=     AppRunner.cpp PipedAppRunner.cpp
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE -DTEST_OBOS
-CPPFLAGS+= -I${.CURDIR}/common
+CPPFLAGS+= -I${.CURDIR}/common -I${.CURDIR}/../../../servers/registrar/mime
 
 CPPFLAGS+= -I${.CURDIR}/../../../../headers
 CPPFLAGS+= -I${.CURDIR}/../../../../headers/os
