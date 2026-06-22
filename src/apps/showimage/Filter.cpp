@@ -32,8 +32,8 @@ FilterThread::FilterThread(Filter* filter, int32 i, int32 n,
 		Run();
 	else {
 		thread_id tid;
-		tid = spawn_thread(worker_thread, "filter",
-			suggest_thread_priority(B_STATUS_RENDERING), this);
+		tid = spawn_thread(worker_thread, "filter", B_NORMAL_PRIORITY, this);
+		// 	suggest_thread_priority(B_STATUS_RENDERING)
 		if (tid >= 0)
 			resume_thread(tid);
 		else
