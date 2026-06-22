@@ -10,6 +10,9 @@ LIB=	appkittest
        ${.CURDIR}/broster ${.CURDIR}/broster/testapps ${.CURDIR}/common ${.CURDIR}/messaging \
        ${.CURDIR}/../../../servers/registrar/mime
 
+SRCS+=     AppKitTestAddon.cpp AppKitTestStub.cpp
+
+# BApplication
 SRCS+=     ApplicationTest.cpp AppQuitRequestedTester.cpp AppQuitTester.cpp AppRunTester.cpp BApplicationTester.cpp
 
 # BClipboard
