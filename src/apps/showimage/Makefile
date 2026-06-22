@@ -3,6 +3,9 @@ OS_HEADERS=         interface support app storage translation locale add-ons/gra
 
 PROG=	Showimage
 
+postbuild: ${PROG}
+realall: postbuild
+
 SRCS+=      	Filter.cpp ImageCache.cpp ImageFileNavigator.cpp PrintOptionsWindow.cpp \
               ShowImageApp.cpp ShowImageSettings.cpp ShowImageStatusView.cpp ShowImageView.cpp \
               ShowImageWindow.cpp SupportingAppsMenu.cpp ToolBarIcons.cpp ProgressWindow.cpp \
@@ -26,4 +29,5 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
+.include "${.CURDIR}/../../resources.mk"
 .include <bsd.prog.mk>
