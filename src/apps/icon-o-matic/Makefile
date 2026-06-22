@@ -28,10 +28,9 @@ LDADD+=	-lbe -licon -lagg #-ltracker
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
           -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
 
-CPPFLAGS+= -I${.CURDIR}/generic/support -I${.CURDIR}/generic/selection
-CPPFLAGS+= -I${.CURDIR}/../../../headers/os
-CPPFLAGS+= -I${.CURDIR}/../../../headers/posix
-CPPFLAGS+= -I${.CURDIR}/../../../headers
+#CPPFLAGS+= -I${.CURDIR}/generic/support -I${.CURDIR}/generic/selection
+
+
 
 CPPFLAGS+= -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.CURDIR}/generic -I${.CURDIR}/generic/listener \
        -I${.CURDIR}/generic -I${.CURDIR}/generic/support -I${.CURDIR}/generic/command/ -I${.CURDIR}/generic/gui \
@@ -46,6 +45,9 @@ CPPFLAGS+= -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.CURDIR}/gener
        -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape \
        -I${.CURDIR}/../../../headers/libs/agg
 
+CPPFLAGS+= -I${.CURDIR}/../../../headers/os
+CPPFLAGS+= -I${.CURDIR}/../../../headers/posix
+CPPFLAGS+= -I${.CURDIR}/../../../headers
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
