@@ -582,7 +582,7 @@ BWindowScreen::_InitData(uint32 space, uint32 attributes)
 
 	fWorkspaceIndex = fDebugWorkspace = current_workspace();
 	fLockState = 0;
-	fAddonImage = -1;
+	fAddonImage = NULL;
 	fWindowState = 0;
 	fOriginalDisplayMode = NULL;
 	fDisplayMode = NULL;
@@ -645,7 +645,7 @@ BWindowScreen::_DisposeData()
 	Disconnect();
 	if (fAddonImage >= 0) {
 		unload_add_on(fAddonImage);
-		fAddonImage = -1;
+		fAddonImage = NULL;
 	}
 
 	delete_sem(fDebugSem);
@@ -976,9 +976,9 @@ BWindowScreen::_InitClone()
 	link.ReadString(driverPath);
 
 	fAddonImage = load_add_on(accelerantPath.String());
-	if (fAddonImage < B_OK) {
+	if (fAddonImage == NULL) {
 		fprintf(stderr, "InitClone: cannot load accelerant image\n");
-		return fAddonImage;
+		return -1;
 	}
 
 	status = get_image_symbol(fAddonImage, B_ACCELERANT_ENTRY_POINT,
@@ -986,7 +986,7 @@ BWindowScreen::_InitClone()
 	if (status < B_OK) {
 		fprintf(stderr, "InitClone: cannot get accelerant entry point\n");
 		unload_add_on(fAddonImage);
-		fAddonImage = -1;
+		fAddonImage = NULL;
 		return B_NOT_SUPPORTED;
 	}
 
@@ -995,7 +995,7 @@ BWindowScreen::_InitClone()
 	if (cloneHook == NULL) {
 		fprintf(stderr, "InitClone: cannot get clone hook\n");
 		unload_add_on(fAddonImage);
-		fAddonImage = -1;
+		fAddonImage = NULL;
 		return B_NOT_SUPPORTED;
 	}
 
@@ -1003,7 +1003,7 @@ BWindowScreen::_InitClone()
 	if (status < B_OK) {
 		fprintf(stderr, "InitClone: cannot clone accelerant\n");
 		unload_add_on(fAddonImage);
-		fAddonImage = -1;
+		fAddonImage = NULL;
 	}
 
 	return status;
