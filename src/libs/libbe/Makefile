@@ -46,6 +46,7 @@ WARNS=		5
 .include "${.CURDIR}/../../kits/translation/Makefile.inc"
 .include "${.CURDIR}/../../kits/shared/Makefile.inc"
 .include "${.CURDIR}/../../kits/storage/Makefile.inc"
+.include "${.CURDIR}/../../kits/game/Makefile.inc"
 
 .include <bsd.lib.mk>
 
