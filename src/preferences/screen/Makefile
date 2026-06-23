@@ -1,10 +1,13 @@
 PRIVATE_HEADERS=    interface textencoding shared libroot system preferences graphics/common graphics/radeon
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
+.PATH: ${.CURDIR}/../../add-ons/accelerants/common
+
 PROG=	Screen
 
 SRCS+=      	AlertWindow.cpp RefreshSlider.cpp ScreenApplication.cpp ScreenSettings.cpp Utility.cpp \
-              MonitorView.cpp RefreshWindow.cpp ScreenMode.cpp ScreenWindow.cpp multimon.cpp
+              MonitorView.cpp RefreshWindow.cpp ScreenMode.cpp ScreenWindow.cpp multimon.cpp \
+              compute_display_timing.cpp
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
