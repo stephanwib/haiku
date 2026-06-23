@@ -9,6 +9,7 @@ SRCS+=	DataRequest.cpp HttpAuthentication.cpp HttpHeaders.cpp HttpForm.cpp HttpR
 		UrlProtocolRoster.cpp UrlRequest.cpp UrlResult.cpp UrlSynchronousRequest.cpp
 
 
+CPPFLAGS+= "-I${.CURDIR}"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
 CPPFLAGS+= "${.CURDIR}/../../kits/network/libnetservices"
