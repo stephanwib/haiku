@@ -7,7 +7,7 @@ SRCS+=	ErrorsExt.cpp HttpBuffer.cpp HttpFields.cpp HttpParser.cpp HttpRequest.cp
 			HttpSerializer.cpp HttpSession.cpp HttpTime.cpp NetServicesMisc.cpp
 
 
-CPPFLAGS.HttpParser.o+=  "-I${.CURDIR}/../../../headers/private/libnetservices2"
+CPPFLAGS.HttpParser.o+=  "-I${.CURDIR}/../../../headers/private/netservices2"
 
 CPPFLAGS+= "-I${.CURDIR}/../../../headers"
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os"
