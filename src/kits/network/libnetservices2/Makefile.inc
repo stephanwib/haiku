@@ -1,5 +1,5 @@
-PRIVATE_HEADERS= app net shared storage support
-OS_HEADERS= net support app storage interface
+#PRIVATE_HEADERS= app net shared storage support
+#OS_HEADERS= net support app storage interface
 
 .PATH: ${.CURDIR}/../../kits/network/libnetservices2
 
