@@ -3,6 +3,8 @@
 
 .PATH: ${.CURDIR}/../../kits/network/libnetservices2
 
+CPPFLAGS.ErrorsExt.cpp+=   "-I${.CURDIR}/../../../headers/private/netservices2"
+
 SRCS+=	ErrorsExt.cpp HttpBuffer.cpp HttpFields.cpp HttpParser.cpp HttpRequest.cpp HttpResult.cpp \
 			HttpSerializer.cpp HttpSession.cpp HttpTime.cpp NetServicesMisc.cpp
 
