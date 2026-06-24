@@ -5,6 +5,7 @@ OS_HEADERS= net support app storage interface mail locale
 
 CPPFLAGS.DataRequest.cpp+=   "-I${.CURDIR}/../../../headers/private/netservices"
 CPPFLAGS.FileRequest.cpp+=   "-I${.CURDIR}/../../../headers/private/netservices"
+CPPFLAGS.Geolocation.cpp+=   "-I${.CURDIR}/../../../headers/private/netservices"
 
 SRCS+=	DataRequest.cpp HttpAuthentication.cpp HttpHeaders.cpp HttpForm.cpp HttpRequest.cpp HttpResult.cpp FileRequest.cpp \
         GopherRequest.cpp Geolocation.cpp HttpTime.cpp NetworkCookie.cpp NetworkCookieJar.cpp NetworkRequest.cpp \
