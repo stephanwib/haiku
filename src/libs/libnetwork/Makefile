@@ -9,7 +9,6 @@ LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot
 
 WARNS=		5
 
-CPPFLAGS+= -I.
 
 .include "${.CURDIR}/../../kits/network/libnetapi/Makefile.inc"
 .include "${.CURDIR}/../../kits/network/libnetservices/Makefile.inc"
