@@ -1,4 +1,4 @@
-PRIVATE_HEADERS= app net shared storage support netservices netservices2
+PRIVATE_HEADERS= app net shared storage support
 OS_HEADERS= net support app storage interface mail locale
 
 .PATH: ${.CURDIR}/../../kits/network/libnetservices
