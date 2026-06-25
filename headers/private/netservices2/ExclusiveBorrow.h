@@ -7,6 +7,7 @@
 #define _B_EXCLUSIVE_BORROW_H
 
 #include <atomic>
+#include <cstddef>
 #include <memory>
 
 #include <ErrorsExt.h>
