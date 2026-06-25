@@ -136,7 +136,7 @@ while ((device = next_dev(&cookie)) >= 0) {
         printf("Total blocks: %" B_PRIdOFF "\n", info.total_blocks);
         printf("Free blocks: %" B_PRIdOFF "\n", info.free_blocks);
     } else {
-        printf("fs_stat_dev() error: %" B_PRId32, exiting"\n", result);
+        printf("fs_stat_dev() error: %" B_PRId32 "\n", result);
 		return 0;
     }
 
