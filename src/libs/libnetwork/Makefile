@@ -2,7 +2,7 @@
 
 LIB=	netapi
 
-CXXFLAGS= -g -std=gnu++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS= -g -std=gnu++17 -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 # -std=c++17 
 
 LDFLAGS= -L/usr/pkg/lib -rpath=/usr/pkg/lib -lroot
