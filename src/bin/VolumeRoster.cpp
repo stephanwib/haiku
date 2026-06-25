@@ -113,18 +113,21 @@ printf("Testing next_dev()\n");
 printf("==================================================\n");
 
 int32 cookie = 0;
+dev_t device;
 
 while ((device = next_dev(&cookie)) >= 0) {
     printf("Device ID: %" B_PRIdDEV "\n", device);
 
+#ifdef major
     printf("Major: %u\n", (unsigned)major(device));
     printf("Minor: %u\n", (unsigned)minor(device));
+#endif
 
     printf("Device ID (hex): 0x%llx\n",
         (unsigned long long)device);
 
-
-    result = fs_stat_dev(device, &info);
+    fs_info info;
+    status_t result = fs_stat_dev(device, &info);
 
     if (result == B_OK) {
         printf("[fs_stat_dev]\n");
@@ -139,7 +142,6 @@ while ((device = next_dev(&cookie)) >= 0) {
 
     printf("--------------------------------------------------\n");
 }
-	
 
 	return 0;
 }
