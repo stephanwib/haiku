@@ -118,10 +118,9 @@ dev_t device;
 while ((device = next_dev(&cookie)) >= 0) {
     printf("Device ID: %" B_PRIdDEV "\n", device);
 
-#ifdef major
+
     printf("Major: %u\n", (unsigned)major(device));
     printf("Minor: %u\n", (unsigned)minor(device));
-#endif
 
     printf("Device ID (hex): 0x%llx\n",
         (unsigned long long)device);
@@ -137,7 +136,8 @@ while ((device = next_dev(&cookie)) >= 0) {
         printf("Total blocks: %" B_PRIdOFF "\n", info.total_blocks);
         printf("Free blocks: %" B_PRIdOFF "\n", info.free_blocks);
     } else {
-        printf("fs_stat_dev(): %" B_PRId32 "\n", result);
+        printf("fs_stat_dev() error: %" B_PRId32, exiting"\n", result);
+		return 0;
     }
 
     printf("--------------------------------------------------\n");
