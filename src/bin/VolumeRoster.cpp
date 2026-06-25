@@ -106,5 +106,40 @@ main()
 			status);
 	}
 
-	return status == B_ENTRY_NOT_FOUND ? 0 : 1;
+
+
+printf("\n==================================================\n");
+printf("Testing next_dev()\n");
+printf("==================================================\n");
+
+int32 cookie = 0;
+
+while ((device = next_dev(&cookie)) >= 0) {
+    printf("Device ID: %" B_PRIdDEV "\n", device);
+
+    printf("Major: %u\n", (unsigned)major(device));
+    printf("Minor: %u\n", (unsigned)minor(device));
+
+    printf("Device ID (hex): 0x%llx\n",
+        (unsigned long long)device);
+
+
+    result = fs_stat_dev(device, &info);
+
+    if (result == B_OK) {
+        printf("[fs_stat_dev]\n");
+        printf("Filesystem: %s\n", info.fsh_name);
+        printf("Flags: 0x%08" B_PRIx32 "\n", info.flags);
+        printf("Block size: %" B_PRIdOFF "\n", info.block_size);
+        printf("Total blocks: %" B_PRIdOFF "\n", info.total_blocks);
+        printf("Free blocks: %" B_PRIdOFF "\n", info.free_blocks);
+    } else {
+        printf("fs_stat_dev(): %" B_PRId32 "\n", result);
+    }
+
+    printf("--------------------------------------------------\n");
+}
+	
+
+	return 0;
 }
