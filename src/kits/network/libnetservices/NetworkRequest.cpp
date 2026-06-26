@@ -84,7 +84,8 @@ BNetworkRequest::_ProtocolSetup()
 	// socket, and remove this.
 	struct sigaction action;
 	action.sa_handler = empty;
-	action.sa_mask = 0;
+	// action.sa_mask = 0;
+	sigemptyset(&action.sa_mask);
 	action.sa_flags = 0;
 	sigaction(SIGUSR1, &action, NULL);
 }
