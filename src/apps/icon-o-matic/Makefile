@@ -29,6 +29,10 @@ LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR
           -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
 
 
+CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
+            -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../libs/icon/message -I${.CURDIR}/../../libs/icon/transformer \
+            -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
+
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 .endfor
@@ -46,9 +50,7 @@ CPPFLAGS+= -I${.CURDIR}/ -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${
        -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/transformable -I${.CURDIR}/gui \
        -I${.CURDIR}/import_export -I${.CURDIR}/import_export/bitmap -I${.CURDIR}/import_export/flat_icon \
        -I${.CURDIR}/import_export/message ${.CURDIR}/ -I${.CURDIR}/import_export/styled_text -I${.CURDIR}/import_export/svg \
-       -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
-       -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../libs/icon/message -I${.CURDIR}/../../libs/icon/transformer \
-       -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape \
+       -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style \
        -I${.CURDIR}/../../../headers/libs/agg
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
