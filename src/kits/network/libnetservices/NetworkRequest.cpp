@@ -13,6 +13,8 @@
 
 #include <AbstractSocket.h>
 
+#include <signal.h>
+
 using namespace BPrivate::Network;
 
 
