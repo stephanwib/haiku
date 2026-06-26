@@ -51,7 +51,7 @@ static const char* kDateFormats[] = {
 };
 
 
-static locale_t posix = newlocale(LC_ALL_MASK, "POSIX", (locale_t)0);
+// static locale_t posix = newlocale(LC_ALL_MASK, "POSIX", (locale_t)0);
 
 
 BHttpTime::BHttpTime()
@@ -111,7 +111,7 @@ BHttpTime::Parse()
 
 	// Save the current locale, switch to POSIX for strptime to match strings
 	// in English, switch back when we're done.
-	locale_t current = uselocale(posix);
+	// locale_t current = uselocale(posix);
 
 	fDateFormat = B_HTTP_TIME_FORMAT_PARSED;
 	unsigned int i;
@@ -129,7 +129,7 @@ BHttpTime::Parse()
 		}
 	}
 
-	uselocale(current);
+	// uselocale(current);
 
 	// Did we identify some valid format?
 	if (fDateFormat == B_HTTP_TIME_FORMAT_PARSED)
