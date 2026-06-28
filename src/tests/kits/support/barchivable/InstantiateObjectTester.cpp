@@ -478,7 +478,7 @@ void TInstantiateObjectTester::LoadAddon()
 	//RES(fAddonId);
 	if (fAddonId <= 0)
 	{
-		FORMAT_AND_THROW(" failed to load addon: ");
+		FORMAT_AND_THROW(" failed to load addon: ", 0);
 	}
 }
 //------------------------------------------------------------------------------
