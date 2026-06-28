@@ -56,7 +56,7 @@ void FormatAndThrow(int line, const char* file, const char* msg, int err);
 
 //------------------------------------------------------------------------------
 TInstantiateObjectTester::TInstantiateObjectTester(string name)
-	:	BTestCase(name), fAddonId(B_ERROR)
+	:	BTestCase(name), fAddonId(NULL)
 {
 	;
 }
@@ -76,7 +76,7 @@ void TInstantiateObjectTester::Case1()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(NULL, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_BAD_VALUE);
 }
 //------------------------------------------------------------------------------
@@ -96,7 +96,7 @@ void TInstantiateObjectTester::Case2()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_OK);
 }
 //------------------------------------------------------------------------------
@@ -122,7 +122,7 @@ void TInstantiateObjectTester::Case3()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_BAD_VALUE);
 }
 //------------------------------------------------------------------------------
@@ -146,7 +146,7 @@ void TInstantiateObjectTester::Case4()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_LAUNCH_FAILED_APP_NOT_FOUND);
 }
 //------------------------------------------------------------------------------
@@ -213,7 +213,7 @@ void TInstantiateObjectTester::Case6()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test != NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_OK);
 }
 //------------------------------------------------------------------------------
@@ -241,7 +241,7 @@ void TInstantiateObjectTester::Case7()
 	TRemoteTestObject* Test = (TRemoteTestObject*)instantiate_object(&Archive,
 																	 &id);
 	CPPUNIT_ASSERT(Test != NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_OK);
 
 	UnloadAddon();
@@ -267,7 +267,7 @@ void TInstantiateObjectTester::Case8()
 	TRemoteTestObject* Test = (TRemoteTestObject*)instantiate_object(&Archive,
 																	 &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_BAD_VALUE);
 }
 //------------------------------------------------------------------------------
@@ -292,7 +292,7 @@ void TInstantiateObjectTester::Case9()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_LAUNCH_FAILED_APP_NOT_FOUND);
 }
 //------------------------------------------------------------------------------
@@ -320,7 +320,7 @@ void TInstantiateObjectTester::Case10()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_LAUNCH_FAILED_APP_NOT_FOUND);
 
 	UnloadAddon();
@@ -347,7 +347,7 @@ void TInstantiateObjectTester::Case11()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test == NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_LAUNCH_FAILED_APP_NOT_FOUND);
 }
 //------------------------------------------------------------------------------
@@ -377,7 +377,7 @@ void TInstantiateObjectTester::Case12()
 	image_id id = B_OK;
 	TIOTest* Test = (TIOTest*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test != NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_OK);
 }
 //------------------------------------------------------------------------------
@@ -405,7 +405,7 @@ void TInstantiateObjectTester::Case13()
 	image_id id = B_OK;
 	TRemoteTestObject* Test = (TRemoteTestObject*)instantiate_object(&Archive, &id);
 	CPPUNIT_ASSERT(Test != NULL);
-	CPPUNIT_ASSERT(id == B_BAD_VALUE);
+	CPPUNIT_ASSERT(id == NULL);
 	CPPUNIT_ASSERT(errno == B_OK);
 
 	UnloadAddon();
