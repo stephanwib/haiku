@@ -475,10 +475,10 @@ void TInstantiateObjectTester::LoadAddon()
 	cout << "dir == '" << libPath << "'" << endl;
 	fAddonId = load_add_on(libPath.c_str());
 
-	RES(fAddonId);
+	//RES(fAddonId);
 	if (fAddonId <= 0)
 	{
-		FORMAT_AND_THROW(" failed to load addon: ", fAddonId);
+		FORMAT_AND_THROW(" failed to load addon: ");
 	}
 }
 //------------------------------------------------------------------------------
@@ -487,7 +487,7 @@ void TInstantiateObjectTester::UnloadAddon()
 	if (fAddonId > 0)
 	{
 		status_t err = unload_add_on(fAddonId);
-		fAddonId = B_ERROR;
+		fAddonId == NULL;
 		if (err)
 		{
 			FORMAT_AND_THROW(" failed to unload addon: ", err);
