@@ -40,6 +40,8 @@ static const uint8 padding[7] = { 0, 0, 0, 0, 0, 0, 0 };
 
 extern bool gVerbose;
 
+extern char **environ;
+
 enum {
 	P_DATA = 0,
 	P_ATTRIBUTE
