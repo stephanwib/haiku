@@ -15,7 +15,7 @@ SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp Autolock
            StringReplaceTest.cpp StringSearchTest.cpp StringSplitTest.cpp StringSubCopyTest.cpp \
            BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp # PointerListTest.cpp
 
-SRCS+=     BArchivableTester.cpp FindInstantiationFuncTester.cpp InstantiateObjectTester.cpp LocalTestObject.cpp ValidateInstantiationTester.cpp
+SRCS+=     BArchivableTester.cpp FindInstantiationFuncTester.cpp InstantiateObjectTester.cpp LocalTestObject.cpp ValidateInstantiationTester.cpp main.cpp
 
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 #CPPFLAGS+= -I${.CURDIR}
