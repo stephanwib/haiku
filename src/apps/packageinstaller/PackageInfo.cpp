@@ -15,7 +15,7 @@
 #include <FindDirectory.h>
 #include <Locale.h>
 #include <Path.h>
-#include <kernel/OS.h>
+#include <OS.h>
 
 
 #undef B_TRANSLATION_CONTEXT
