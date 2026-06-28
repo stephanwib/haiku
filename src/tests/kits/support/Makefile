@@ -13,7 +13,7 @@ SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp Autolock
            StringAppendTest.cpp StringAssignTest.cpp StringCaseTest.cpp StringCompareTest.cpp StringConstructionTest.cpp \
            StringEscapeTest.cpp StringFormatAppendTest.cpp StringInsertTest.cpp StringPrependTest.cpp StringRemoveTest.cpp \
            StringReplaceTest.cpp StringSearchTest.cpp StringSplitTest.cpp StringSubCopyTest.cpp \
-           BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp AutolockLockerTest.cpp AutolockLooperTest.cpp AutolockTestAddon.cpp # PointerListTest.cpp
+           BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp AutolockLockerTest.cpp AutolockLooperTest.cpp # AutolockTestAddon.cpp  PointerListTest.cpp
 
 SRCS+=     BArchivableTester.cpp FindInstantiationFuncTester.cpp InstantiateObjectTester.cpp LocalTestObject.cpp ValidateInstantiationTester.cpp #main.cpp
 
