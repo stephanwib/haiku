@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 
 #include <Alert.h>
 #include <Box.h>
@@ -150,8 +151,8 @@ UninstallView::MessageReceived(BMessage* msg)
 				BString filename, name, version;
 				node_ref ref;
 				if (msg->FindString("name", &filename) != B_OK
-					|| msg->FindInt32("device", &ref.device) != B_OK
-					|| msg->FindInt64("node", &ref.node) != B_OK)
+					|| msg->FindInt32("device", (int32*)&ref.device) != B_OK
+					|| msg->FindInt64("node", (int64*)&ref.node) != B_OK)
 					break;
 
 				// TODO: This obviously is a hack
@@ -173,8 +174,8 @@ UninstallView::MessageReceived(BMessage* msg)
 				}
 			} else if (opcode == B_ENTRY_REMOVED) {
 				node_ref ref;
-				if (msg->FindInt32("device", &ref.device) != B_OK
-					|| msg->FindInt64("node", &ref.node) != B_OK)
+				if (msg->FindInt32("device", (int32*)&ref.device) != B_OK
+					|| msg->FindInt64("node", (int64*)&ref.node) != B_OK)
 					break;
 
 				int32 i, count = fAppList->CountItems();
@@ -190,8 +191,8 @@ UninstallView::MessageReceived(BMessage* msg)
 				}
 			} else if (opcode == B_ENTRY_MOVED) {
 				ino_t from, to;
-				if (msg->FindInt64("from directory", &from) != B_OK
-					|| msg->FindInt64("to directory", &to) != B_OK)
+				if (msg->FindInt64("from directory", (int64*)&from) != B_OK
+					|| msg->FindInt64("to directory", (int64*)&to) != B_OK)
 					break;
 
 				BDirectory packagesDir(fToPackages.Path());
