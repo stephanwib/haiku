@@ -17,6 +17,64 @@ SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp Autolock
 
 SRCS+=     BArchivableTester.cpp FindInstantiationFuncTester.cpp InstantiateObjectTester.cpp LocalTestObject.cpp ValidateInstantiationTester.cpp #main.cpp
 
+
+SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp
+
+# BArchivable
+SRCS+=     ArchivableTest.cpp BArchivableTester.cpp FindInstantiationFuncTester.cpp InstantiateObjectTester.cpp LocalTestObject.cpp \
+           ValidateInstantiationTester.cpp
+		
+# BAutolock
+SRCS+=     AutolockTest.cpp AutolockLockerTest.cpp AutolockLooperTest.cpp
+
+# BDateTime
+SRCS+=     DateTimeTest.cpp
+
+# BLocker
+SRCS+=     LockerTest.cpp BenaphoreLockCountTest1.cpp ConcurrencyTest1.cpp ConcurrencyTest2.cpp ConstructionTest1.cpp \
+           DestructionTest1.cpp DestructionTest2.cpp LockerTestCase.cpp SemaphoreLockCountTest1.cpp
+
+		# BMemoryIO
+		MemoryIOTest.cpp
+		ConstTest.cpp
+		SeekTest.cpp
+		WriteTest.cpp
+		ReadTest.cpp
+		SetSizeTest.cpp
+
+		# BMallocIO
+		MallocIOTest.cpp
+		MallocSeekTest.cpp
+		MallocWriteTest.cpp
+		MallocBufferLengthTest.cpp
+
+		#BString
+		StringTest.cpp
+		StringConstructionTest.cpp
+		StringAccessTest.cpp
+		StringAssignTest.cpp
+		StringAppendTest.cpp
+		StringSubCopyTest.cpp
+		StringPrependTest.cpp
+		StringCaseTest.cpp
+		StringInsertTest.cpp
+		StringEscapeTest.cpp
+		StringRemoveTest.cpp
+		StringCompareTest.cpp
+		StringFormatAppendTest.cpp
+		StringCharAccessTest.cpp
+		StringSearchTest.cpp
+		StringReplaceTest.cpp
+		StringSplitTest.cpp
+
+		#BBlockCache
+		BlockCacheTest.cpp
+		BlockCacheExerciseTest.cpp
+		BlockCacheConcurrencyTest.cpp
+
+
+
+
 CXXFLAGS= -Wno-multichar -Wno-old-style-cast -Wno-shadow -D_NETBSD_SOURCE
 #CPPFLAGS+= -I${.CURDIR}
 
