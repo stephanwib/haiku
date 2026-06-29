@@ -8,15 +8,6 @@ LIB=	supporttest
 .PATH: ${.CURDIR}/barchivable ${.CURDIR}/bautolock ${.CURDIR}/bblockcache ${.CURDIR}/blocker ${.CURDIR}/bmemoryio \
        ${.CURDIR}/bstring ${.CURDIR}/pointerlist
 
-SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp ArchivableTest.cpp AutolockTest.cpp DateTimeTest.cpp \
-            MemoryIOTest.cpp MallocIOTest.cpp StringAccessTest.cpp \
-           StringAppendTest.cpp StringAssignTest.cpp StringCaseTest.cpp StringCompareTest.cpp StringConstructionTest.cpp \
-           StringEscapeTest.cpp StringFormatAppendTest.cpp StringInsertTest.cpp StringPrependTest.cpp StringRemoveTest.cpp \
-           StringReplaceTest.cpp StringSearchTest.cpp StringSplitTest.cpp StringSubCopyTest.cpp \
-           BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp AutolockLockerTest.cpp AutolockLooperTest.cpp # AutolockTestAddon.cpp  PointerListTest.cpp
-
-SRCS+=     BArchivableTester.cpp FindInstantiationFuncTester.cpp InstantiateObjectTester.cpp LocalTestObject.cpp ValidateInstantiationTester.cpp #main.cpp
-
 
 SRCS+=     SupportKitTestAddon.cpp ByteOrderTest.cpp
 
@@ -34,44 +25,21 @@ SRCS+=     DateTimeTest.cpp
 SRCS+=     LockerTest.cpp BenaphoreLockCountTest1.cpp ConcurrencyTest1.cpp ConcurrencyTest2.cpp ConstructionTest1.cpp \
            DestructionTest1.cpp DestructionTest2.cpp LockerTestCase.cpp SemaphoreLockCountTest1.cpp
 
-		# BMemoryIO
-		MemoryIOTest.cpp
-		ConstTest.cpp
-		SeekTest.cpp
-		WriteTest.cpp
-		ReadTest.cpp
-		SetSizeTest.cpp
+# BMemoryIO
+SRCS+=     MemoryIOTest.cpp ConstTest.cpp SeekTest.cpp WriteTest.cpp ReadTest.cpp SetSizeTest.cpp
 
-		# BMallocIO
-		MallocIOTest.cpp
-		MallocSeekTest.cpp
-		MallocWriteTest.cpp
-		MallocBufferLengthTest.cpp
+# BMallocIO
+SRCS+=     MallocIOTest.cpp MallocSeekTest.cpp MallocWriteTest.cpp MallocBufferLengthTest.cpp
 
-		#BString
-		StringTest.cpp
-		StringConstructionTest.cpp
-		StringAccessTest.cpp
-		StringAssignTest.cpp
-		StringAppendTest.cpp
-		StringSubCopyTest.cpp
-		StringPrependTest.cpp
-		StringCaseTest.cpp
-		StringInsertTest.cpp
-		StringEscapeTest.cpp
-		StringRemoveTest.cpp
-		StringCompareTest.cpp
-		StringFormatAppendTest.cpp
-		StringCharAccessTest.cpp
-		StringSearchTest.cpp
-		StringReplaceTest.cpp
-		StringSplitTest.cpp
+#BString
+SRCS+=     StringTest.cpp StringConstructionTest.cpp StringAccessTest.cpp StringAssignTest.cpp \
+           StringAppendTest.cpp StringSubCopyTest.cpp StringPrependTest.cpp StringCaseTest.cpp \
+           StringInsertTest.cpp StringEscapeTest.cpp StringRemoveTest.cpp StringCompareTest.cpp \
+           StringFormatAppendTest.cpp StringCharAccessTest.cpp StringSearchTest.cpp StringReplaceTest.cpp \
+           StringSplitTest.cpp
 
-		#BBlockCache
-		BlockCacheTest.cpp
-		BlockCacheExerciseTest.cpp
-		BlockCacheConcurrencyTest.cpp
-
+#BBlockCache
+SRCS+=     BlockCacheTest.cpp BlockCacheExerciseTest.cpp BlockCacheConcurrencyTest.cpp
 
 
 
