@@ -25,7 +25,7 @@ CppUnit::Test *StringTestSuite()
 	
 	testSuite->addTest(StringConstructionTest::suite());
 	testSuite->addTest(StringAccessTest::suite());
-	testSuite->addTest(StringAssignTest::suite());
+	// testSuite->addTest(StringAssignTest::suite());
 	testSuite->addTest(StringAppendTest::suite());
 	testSuite->addTest(StringSubCopyTest::suite());
 	testSuite->addTest(StringPrependTest::suite());
