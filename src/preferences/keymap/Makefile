@@ -10,7 +10,7 @@ SRCS+=      	KeyboardLayout.cpp KeyboardLayoutView.cpp Keymap.cpp KeymapApplicat
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
 
-LDADD+=	-lbe -licon -lagg #-ltracker
+LDADD+=	-lbe -licon -lagg -ltracker
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/libtracker -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg  -L/usr/pkg/lib
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
