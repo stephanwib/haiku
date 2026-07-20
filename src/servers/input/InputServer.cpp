@@ -12,7 +12,7 @@
 #include <driver_settings.h>
 #include <keyboard_mouse_driver.h>
 #include <safemode_defs.h>
-#include <syscalls.h>
+// #include <syscalls.h>
 
 #include <AppServerLink.h>
 #include <MessagePrivate.h>
