@@ -6,7 +6,7 @@ OS_HEADERS=         interface support app storage translation locale add-ons/inp
 PROG=	input_server
 
 SRCS+=      	InputServer.cpp InputServerDevice.cpp InputServerFilter.cpp InputServerMethod.cpp AddOnManager.cpp \
-              MouseSettings.cpp KeyboardSettings.cpp MethodReplicant.cpp MethodMenuItem.cpp BottomlineWindow.cpp \ 
+              MouseSettings.cpp KeyboardSettings.cpp MethodReplicant.cpp MethodMenuItem.cpp BottomlineWindow.cpp \
               PathList.cpp AddOnMonitor.cpp AddOnMonitorHandler.cpp NodeMonitorHandler.cpp
 
 
