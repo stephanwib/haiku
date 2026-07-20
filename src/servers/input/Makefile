@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface shared app storage kernel system libroot
+PRIVATE_HEADERS=    interface shared app storage kernel system libroot input
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics add-ons/input_server
 
 # .PATH: ${.CURDIR}/mime
