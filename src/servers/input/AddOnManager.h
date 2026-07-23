@@ -100,7 +100,7 @@ private:
 	template<typename T> struct add_on_info {
 		add_on_info()
 			:
-			image(-1), add_on(NULL)
+			image(NULL), add_on(NULL)
 		{
 		}
 
