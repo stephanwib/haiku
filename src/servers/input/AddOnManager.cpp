@@ -329,9 +329,9 @@ AddOnManager::_RegisterAddOn(BEntry& entry)
 		path.Path());
 
 	image_id image = load_add_on(path.Path());
-	if (image < B_OK) {
+	if (image == NULL) {
 		ERROR("load addon %s failed\n", path.Path());
-		return image;
+		return -1;
 	}
 
 	status = B_ERROR;
