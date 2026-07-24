@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface textencoding shared libroot system preferences
+PRIVATE_HEADERS=    interface textencoding shared libroot system preferences input
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics add-ons/input_server
 
 # .PATH: ${.CURDIR}/../../add-ons/accelerants/common
