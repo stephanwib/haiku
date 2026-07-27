@@ -46,7 +46,7 @@
 #include "BitmapBuffer.h"
 #include "BBitmapBuffer.h"
 
-// #define DEBUG_SDL_DRIVER
+#define DEBUG_SDL_DRIVER
 
 #ifdef DEBUG_SDL_DRIVER
 #include <stdio.h>
@@ -272,6 +272,7 @@ void SDLEventTranslator(void *arg)
 				/* Keyboard event */
 				case SDL_TEXTINPUT:
 				{
+					STRACE("SDL TEXTINPUT\n");
 					mod = GetModifiers(event);
 
 					if (mod != oldModifiers)
