@@ -148,6 +148,8 @@ void SendKeyEvent(port_id port, uint32 what, char key, uint32 modifiers, uint32 
 	size_t length = msg.FlattenedSize();
 	char stream[length];
 
+    STRACE( "SendKeyEvent Key: 0x%08x, Mod: 0x%08x, Byte: %c\n", key, modifiers,  (int8)string[0]);
+	
 	if (msg.Flatten(stream, length) == B_OK)
 		write_port(port, 0, stream, length);
 }
