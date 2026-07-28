@@ -278,12 +278,14 @@ void SDLEventTranslator(void *arg)
 				/* Keyboard event */
 				case SDL_TEXTINPUT:
 				{
-					STRACE("SDL TEXTINPUT\n");
+					STRACE("SDL TEXTINPUT ");
 					mod = GetModifiers(event);
 
 					if (mod != oldModifiers)
 						SendModifiersEvent(fInputPort, mod, oldModifiers);
 
+					STRACE("char: 0x%02x, mod: 0x%08x\n", event.text.text[0], mod);
+					
 					if (((mod & B_SHIFT_KEY) != 0) || ((mod & B_CAPS_LOCK) != 0))
 						SendKeyEvent(fInputPort, B_KEY_DOWN, event.text.text[0], mod, lastKey);
 					break;
