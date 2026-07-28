@@ -50,7 +50,7 @@
 
 #ifdef DEBUG_SDL_DRIVER
 #include <stdio.h>
-	#define STRACE(a) fprintf(stderr, a)
+	#define STRACE(...) fprintf(stderr, __VA_ARGS__)
 #else
 	#define STRACE(x) ;
 #endif
