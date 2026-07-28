@@ -166,6 +166,8 @@ void SendModifiersEvent(port_id port, uint32 modifiers, uint32 oldModifiers)
 	size_t length = message.FlattenedSize();
 	char stream[length];
 
+	STRACE( "SendModifiersEvent Old: 0x%08x, New: 0x%08x\n", oldModifiers, modifiers);
+
 	if (message.Flatten(stream, length) == B_OK)
 		write_port(port, 0, stream, length);
 }
@@ -245,7 +247,7 @@ void SDLEventTranslator(void *arg)
 
 				case SDL_MOUSEBUTTONDOWN:
 				case SDL_MOUSEBUTTONUP:{
-					STRACE(event.type == SDL_MOUSEBUTTONDOWN ? "MouseDown\n" : "MouseUp\n");
+					STRACE(event.type == SDL_MOUSEBUTTONDOWN ? "MouseDown\n" : "MouseUp ");
 					uint32 buttons = 0;
 					uint32 clicks = event.button.clicks;
 					mod = 0;
@@ -264,6 +266,8 @@ void SDLEventTranslator(void *arg)
 					
 					size_t length = mc.FlattenedSize();
 					char stream[length];
+
+					STRACE( "Click event, which: %s, Mod: 0x%08x\n", (event.button.button == SDL_BUTTON_LEFT) ? "B_PRIMARY_MOUSE_BUTTON" : "B_SECONDARY_MOUSE_BUTTON", mod);
 
 					if (mc.Flatten(stream, length) == B_OK)
 						write_port(fInputPort, 0, stream, length);
