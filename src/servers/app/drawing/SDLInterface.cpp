@@ -308,6 +308,8 @@ void SDLEventTranslator(void *arg)
 						SendModifiersEvent(fInputPort, mod, oldModifiers);
 
 					int32 code = event.key.keysym.sym;
+
+					/*
 					if (event.key.keysym.sym == SDLK_LEFT)
 						code = B_LEFT_ARROW;
 					else if (event.key.keysym.sym == SDLK_UP)
@@ -316,6 +318,22 @@ void SDLEventTranslator(void *arg)
 						code = B_RIGHT_ARROW;
 					else if (event.key.keysym.sym == SDLK_DOWN)
 						code = B_DOWN_ARROW;
+					*/
+					
+					switch (code) {
+						case SDLK_LEFT:
+							code = B_LEFT_ARROW;
+							break;
+						case SDLK_RIGHT:
+							code = B_RIGHT_ARROW;
+							break;
+						case SDLK_UP:
+							code = B_UP_ARROW;
+							break;
+						case SDLK_DOWN:
+							code = B_DOWN_ARROW;
+							break;
+					}
 
 					//char foo[100];
 					//SDL_itoa(code, foo, 10);
