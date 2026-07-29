@@ -333,6 +333,18 @@ void SDLEventTranslator(void *arg)
 						case SDLK_DOWN:
 							code = B_DOWN_ARROW;
 							break;
+						case SDLK_PAGEUP:
+							code = B_PAGE_UP;
+							break;
+						case SDLK_PAGEDOWN:
+							code = B_PAGE_DOWN;
+							break;
+						case SDLK_ESCAPE:
+							code = B_ESCAPE;
+							break;
+						case SDLK_RETURN:
+							code = B_RETURN;
+							break;
 					}
 
 					//char foo[100];
@@ -345,10 +357,6 @@ void SDLEventTranslator(void *arg)
 					lastKey = event.key.keysym.sym;
 					oldModifiers = mod;
 
-					/* the Escape key forces Cosmoe to quit */
-					if(event.key.keysym.sym == SDLK_ESCAPE) {
-						quit = 1;
-					}
 					break;
 				}
 
