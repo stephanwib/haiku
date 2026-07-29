@@ -505,7 +505,7 @@ SDLInterface::FillRegion(/*const*/ BRegion& region, const rgb_color& col, bool a
 status_t
 SDLInterface::Invalidate(const BRect& frame)
 {
-	STRACE("SDLInterface::Invalidate()\n");
+	// STRACE("SDLInterface::Invalidate()\n");
 	SDL_Rect aRect;
 	RectToSDLRect(frame, aRect);
 	SDL_UpdateWindowSurfaceRects(mWindow, &aRect, 1);
