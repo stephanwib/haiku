@@ -320,19 +320,7 @@ void SDLEventTranslator(void *arg)
 					if (isKeyDown && (mod != oldModifiers))
 						SendModifiersEvent(fInputPort, mod, oldModifiers);
 
-					int32 code = event.key.keysym.sym;
-
-					/*
-					if (event.key.keysym.sym == SDLK_LEFT)
-						code = B_LEFT_ARROW;
-					else if (event.key.keysym.sym == SDLK_UP)
-						code = B_UP_ARROW;
-					else if (event.key.keysym.sym == SDLK_RIGHT)
-						code = B_RIGHT_ARROW;
-					else if (event.key.keysym.sym == SDLK_DOWN)
-						code = B_DOWN_ARROW;
-					*/
-					
+					int32 code = event.key.keysym.sym;				
 					switch (code) {
 						case SDLK_LEFT:
 							code = B_LEFT_ARROW;
@@ -358,14 +346,19 @@ void SDLEventTranslator(void *arg)
 						case SDLK_RETURN:
 							code = B_RETURN;
 							break;
+						default:
+						    /*
+							 * Do not send any SDL key codes to the appserver.
+							 */
+							goto out;
 					}
 
-					//char foo[100];
-					//SDL_itoa(code, foo, 10);
-					//STRACE(foo);
 
-					if (((mod & B_SHIFT_KEY) == 0) && ((mod & B_CAPS_LOCK) == 0))
-						SendKeyEvent(fInputPort, event.type == SDL_KEYDOWN ? B_KEY_DOWN : B_KEY_UP, code, mod, repeatCount);
+					// if (((mod & B_SHIFT_KEY) == 0) && ((mod & B_CAPS_LOCK) == 0))
+					
+					SendKeyEvent(fInputPort, event.type == SDL_KEYDOWN ? B_KEY_DOWN : B_KEY_UP, code, mod, repeatCount);
+
+				out:
 
 					lastKey = event.key.keysym.sym;
 					oldModifiers = mod;
