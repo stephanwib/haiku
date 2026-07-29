@@ -148,7 +148,7 @@ void SendKeyEvent(port_id port, uint32 what, char key, uint32 modifiers, uint32 
 	size_t length = msg.FlattenedSize();
 	char stream[length];
 
-    STRACE( "SendKeyEvent Key: 0x%08x, Mod: 0x%08x, Byte: %c\n", key, modifiers,  (int8)string[0]);
+    STRACE( "SendKeyEvent Key: 0x%02x, Mod: 0x%08x, Char: %c (0x%02x)\n", key, modifiers,  (int8)string[0], (int8)string[0]);
 	
 	if (msg.Flatten(stream, length) == B_OK)
 		write_port(port, 0, stream, length);
@@ -247,7 +247,7 @@ void SDLEventTranslator(void *arg)
 
 				case SDL_MOUSEBUTTONDOWN:
 				case SDL_MOUSEBUTTONUP:{
-					STRACE(event.type == SDL_MOUSEBUTTONDOWN ? "MouseDown\n" : "MouseUp ");
+					STRACE(event.type == SDL_MOUSEBUTTONDOWN ? "MouseDown " : "MouseUp ");
 					uint32 buttons = 0;
 					uint32 clicks = event.button.clicks;
 					mod = 0;
@@ -267,7 +267,7 @@ void SDLEventTranslator(void *arg)
 					size_t length = mc.FlattenedSize();
 					char stream[length];
 
-					STRACE( "Click event, which: %s, Mod: 0x%08x\n", (event.button.button == SDL_BUTTON_LEFT) ? "B_PRIMARY_MOUSE_BUTTON" : "B_SECONDARY_MOUSE_BUTTON", mod);
+					STRACE("Click event, which: %s, Mod: 0x%08x\n", (event.button.button == SDL_BUTTON_LEFT) ? "B_PRIMARY_MOUSE_BUTTON" : "B_SECONDARY_MOUSE_BUTTON", mod);
 
 					if (mc.Flatten(stream, length) == B_OK)
 						write_port(fInputPort, 0, stream, length);
