@@ -299,8 +299,10 @@ void SDLEventTranslator(void *arg)
 
 					STRACE("char: 0x%02x, mod: 0x%08x\n", event.text.text[0], mod);
 					
-					if (((mod & B_SHIFT_KEY) != 0) || ((mod & B_CAPS_LOCK) != 0))
-						SendKeyEvent(fInputPort, B_KEY_DOWN, event.text.text[0], mod, lastKey);
+					// if (((mod & B_SHIFT_KEY) != 0) || ((mod & B_CAPS_LOCK) != 0))
+					
+					SendKeyEvent(fInputPort, B_KEY_DOWN, event.text.text[0], mod, lastKey);
+					
 					break;
 				}
 
