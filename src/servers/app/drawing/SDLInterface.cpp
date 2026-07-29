@@ -254,9 +254,22 @@ void SDLEventTranslator(void *arg)
 					x=(float)event.motion.x;
 					y=(float)event.motion.y;
 
-					if (event.type == SDL_MOUSEBUTTONDOWN)
-						buttons = (event.button.button == SDL_BUTTON_LEFT) ? B_PRIMARY_MOUSE_BUTTON : B_SECONDARY_MOUSE_BUTTON;
+					if (event.type == SDL_MOUSEBUTTONDOWN) {
+						// buttons = (event.button.button == SDL_BUTTON_LEFT) ? B_PRIMARY_MOUSE_BUTTON : B_SECONDARY_MOUSE_BUTTON;
 
+						switch (event.button.button) {
+    						case SDL_BUTTON_LEFT:
+								buttons |= B_PRIMARY_MOUSE_BUTTON;
+        						break;
+							case SDL_BUTTON_MIDDLE:
+								buttons |= B_TERTIARY_MOUSE_BUTTON;
+								break;
+							case SDL_BUTTON_RIGHT:
+    							buttons |= B_SECONDARY_MOUSE_BUTTON;
+								break;
+						}
+					}
+					
 					BMessage mc(event.type == SDL_MOUSEBUTTONDOWN ? B_MOUSE_DOWN : B_MOUSE_UP);
 					mc.AddInt64("when", real_time_clock());
 					mc.AddInt32("buttons", buttons);
@@ -267,7 +280,7 @@ void SDLEventTranslator(void *arg)
 					size_t length = mc.FlattenedSize();
 					char stream[length];
 
-					STRACE("Click event, which: %s, Mod: 0x%08x\n", (event.button.button == SDL_BUTTON_LEFT) ? "B_PRIMARY_MOUSE_BUTTON" : "B_SECONDARY_MOUSE_BUTTON", mod);
+					STRACE("Click event, which: 0x%08x, Mod: 0x%08x\n", buttons, mod);
 
 					if (mc.Flatten(stream, length) == B_OK)
 						write_port(fInputPort, 0, stream, length);
