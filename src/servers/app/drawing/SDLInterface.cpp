@@ -368,8 +368,9 @@ void SDLEventTranslator(void *arg)
 
 
 					// if (((mod & B_SHIFT_KEY) == 0) && ((mod & B_CAPS_LOCK) == 0))
-					
-					SendKeyEvent(fInputPort, event.type == SDL_KEYDOWN ? B_KEY_DOWN : B_KEY_UP, code, mod, repeatCount);
+
+					if (event.type == SDL_KEYDOWN)
+						SendKeyEvent(fInputPort, event.type == SDL_KEYDOWN ? B_KEY_DOWN : B_KEY_UP, code, mod, repeatCount);
 
 				out:
 
