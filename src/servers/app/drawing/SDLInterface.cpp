@@ -196,7 +196,7 @@ void SDLEventTranslator(void *arg)
 	if (fInputPort < 0)
 		printf("Could not find SERVER_INPUT_PORT");
 
-	SDL_StartTextInput();
+	// SDL_StartTextInput();
 
 	/* Loop until an SDL_QUIT event is found */
 	while(!quit)
@@ -288,7 +288,7 @@ void SDLEventTranslator(void *arg)
 					break;
 				}
 
-				/* Keyboard event */
+				/* Keyboard event 
 				case SDL_TEXTINPUT:
 				{
 					STRACE("SDL TEXTINPUT ");
@@ -305,6 +305,7 @@ void SDLEventTranslator(void *arg)
 					
 					break;
 				}
+				*/
 
 				case SDL_KEYDOWN:
 				case SDL_KEYUP:
@@ -319,11 +320,26 @@ void SDLEventTranslator(void *arg)
 					else
 						repeatCount = 1;
 
-					if (isKeyDown && (mod != oldModifiers))
+					// if (isKeyDown && (mod != oldModifiers))
+					if (mod != oldModifiers)
 						SendModifiersEvent(fInputPort, mod, oldModifiers);
 
 					int32 code = event.key.keysym.sym;				
 					switch (code) {
+						case SDLK_RSHIFT:
+						case SDLK_LSHIFT:
+						case SDLK_RCTRL:
+						case SDLK_LCTRL:
+						case SDLK_RALT:
+						case SDLK_LALT:
+
+							/*
+							 *   Send modifier keys only as modifier event.
+							 */
+
+							goto out;
+							break;
+						
 						case SDLK_LEFT:
 							code = B_LEFT_ARROW;
 							break;
@@ -348,11 +364,6 @@ void SDLEventTranslator(void *arg)
 						case SDLK_RETURN:
 							code = B_RETURN;
 							break;
-						default:
-						    /*
-							 * Do not send any SDL key codes to the appserver.
-							 */
-							goto out;
 					}
 
 
