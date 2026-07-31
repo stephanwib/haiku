@@ -288,7 +288,11 @@ void SDLEventTranslator(void *arg)
 					break;
 				}
 
-				/* Keyboard event 
+				
+				/* Keyboard textinput event
+				 *
+				 * NOTE: Handles characters with the Shift key being pressed
+				 */
 				case SDL_TEXTINPUT:
 				{
 					STRACE("SDL TEXTINPUT ");
@@ -299,14 +303,17 @@ void SDLEventTranslator(void *arg)
 
 					STRACE("char: 0x%02x, mod: 0x%08x\n", event.text.text[0], mod);
 					
-					// if (((mod & B_SHIFT_KEY) != 0) || ((mod & B_CAPS_LOCK) != 0))
-					
-					SendKeyEvent(fInputPort, B_KEY_DOWN, event.text.text[0], mod, lastKey);
+					if (((mod & B_SHIFT_KEY) != 0) || ((mod & B_CAPS_LOCK) != 0))  // Shift active
+					  SendKeyEvent(fInputPort, B_KEY_DOWN, event.text.text[0], mod, lastKey);
 					
 					break;
 				}
-				*/
 
+				
+				/* Key event
+				 *
+				 * NOTE: Handles control characters and non-shift characters
+				 */
 				case SDL_KEYDOWN:
 				case SDL_KEYUP:
 				{
@@ -367,10 +374,9 @@ void SDLEventTranslator(void *arg)
 					}
 
 
-					// if (((mod & B_SHIFT_KEY) == 0) && ((mod & B_CAPS_LOCK) == 0))
-
-					if (event.type == SDL_KEYDOWN)
-						SendKeyEvent(fInputPort, event.type == SDL_KEYDOWN ? B_KEY_DOWN : B_KEY_UP, code, mod, repeatCount);
+					if ((((mod & B_SHIFT_KEY) == 0) && ((mod & B_CAPS_LOCK) == 0)) // Shift not active
+						&& event.type == SDL_KEYDOWN)
+							SendKeyEvent(fInputPort, event.type == SDL_KEYDOWN ? B_KEY_DOWN : B_KEY_UP, code, mod, repeatCount);
 
 				out:
 
