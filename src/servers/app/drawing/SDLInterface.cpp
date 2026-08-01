@@ -389,10 +389,12 @@ void SDLEventTranslator(void *arg)
 				/* Window event XXX: Receives notification after window was hidden? */
 				case SDL_WINDOWEVENT:
 				{
-					STRACE("SDL_WINDOWEVENT...\n");
+					// STRACE("SDL_WINDOWEVENT...\n");
     				if (event.window.event == SDL_WINDOWEVENT_EXPOSED)
     				{
         				STRACE("  -->SDL_WINDOWEVENT_EXPOSED\n");
+
+						SDL_UpdateWindowSurface(mWindow);
     				}
 
     				break;
