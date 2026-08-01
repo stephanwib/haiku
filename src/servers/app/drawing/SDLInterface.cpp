@@ -181,6 +181,8 @@ void SDLEventTranslator(void *arg)
 {
 	//SDLInterface *driver= (SDLInterface*)arg;
 
+	SDLInterface* driver = static_cast<SDLInterface*>(arg);
+
     STRACE( "SDLEventTranslator starting...\n" );
 	
 	SDL_Event event;
@@ -394,7 +396,7 @@ void SDLEventTranslator(void *arg)
     				{
         				STRACE("  -->SDL_WINDOWEVENT_EXPOSED\n");
 
-						SDL_UpdateWindowSurface(mWindow);
+						SDL_UpdateWindowSurface(driver->mWindow);
     				}
 
     				break;
