@@ -51,6 +51,8 @@ class SDLInterface : public BitmapHWInterface {
 
 			status_t			_UpdateModeList();
 
+			friend void			SDLEventTranslator(void* arg);
+
 	sem_id						drawsem;
 
 	int							fModeCount;
