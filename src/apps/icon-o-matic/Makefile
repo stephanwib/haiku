@@ -29,7 +29,7 @@ LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR
           -L${.CURDIR}/../../libs/libtracker -L/usr/pkg/lib
 
 
-CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
+CPPFLAGS+=  -I${.CURDIR} -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
             -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../libs/icon/message -I${.CURDIR}/../../libs/icon/transformer \
             -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
 
