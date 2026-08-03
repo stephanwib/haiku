@@ -34,7 +34,7 @@ CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
             -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
 
 
-
+CPPFLAGS+=  -I${.CURDIR}/generic/gui/scrollview
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
@@ -51,7 +51,7 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
 
 CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.CURDIR}/generic -I${.CURDIR}/generic/listener \
        -I${.CURDIR}/generic -I${.CURDIR}/generic/support -I${.CURDIR}/generic/command/ -I${.CURDIR}/generic/gui \
-       -I${.CURDIR}/generic/gui/panel -I${.CURDIR}/generic/gui/panel/color_picker -I${.CURDIR}/generic/gui/scrollview \
+       -I${.CURDIR}/generic/gui/panel -I${.CURDIR}/generic/gui/panel/color_picker \
        -I${.CURDIR}/generic/gui/stateview -I${.CURDIR}/generic/property -I${.CURDIR}/generic/property/specific_properties \
        -I${.CURDIR}/generic/property/view -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/generic/selection \
        -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/transformable -I${.CURDIR}/gui \
