@@ -1,4 +1,4 @@
-PRIVATE_HEADERS=    interface #shared
+PRIVATE_HEADERS=    interface shared
 OS_HEADERS=         interface support app storage translation locale add-ons/graphics
 
 .PATH: ${.CURDIR}/document ${.CURDIR}/document/savers ${.CURDIR}/generic ${.CURDIR}/generic/listener \
@@ -33,7 +33,7 @@ CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
             -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../libs/icon/message -I${.CURDIR}/../../libs/icon/transformer \
             -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
 
-
+CPPFLAGS+=  -I${.CURDIR}/gui
 
 .for HEADER in ${PRIVATE_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/private/${HEADER}"
