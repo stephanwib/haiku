@@ -40,6 +40,11 @@ CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
 .endfor
 
 
+CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
+            -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../libs/icon/message -I${.CURDIR}/../../libs/icon/transformer \
+            -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
+
+
 CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.CURDIR}/generic -I${.CURDIR}/generic/listener \
        -I${.CURDIR}/generic -I${.CURDIR}/generic/support -I${.CURDIR}/generic/command/ -I${.CURDIR}/generic/gui \
        -I${.CURDIR}/generic/gui/panel -I${.CURDIR}/generic/gui/panel/color_picker -I${.CURDIR}/generic/gui/scrollview \
@@ -51,9 +56,6 @@ CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.
        -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style \
        -I${.CURDIR}/../../../headers/libs/agg
 
-CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
-            -I${.CURDIR}/../../libs/icon/flat_icon -I${.CURDIR}/../../libs/icon/message -I${.CURDIR}/../../libs/icon/transformer \
-            -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
 
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers/posix
