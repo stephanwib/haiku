@@ -62,7 +62,7 @@
 #include "PerspectiveBox.h"
 #include "PerspectiveTransformer.h"
 #include "RDefExporter.h"
-#include "generic/gui/scrollview/SScrollView.h"
+#include "generic/gui/scrollview/ScrollView.h"
 #include "SimpleFileSaver.h"
 #include "ShapeListView.h"
 #include "SourceExporter.h"
