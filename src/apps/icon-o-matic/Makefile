@@ -60,7 +60,7 @@ CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.
        -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style \
        -I${.CURDIR}/../../../headers/libs/agg
 
-
+CPPFLAGS+= -I${.CURDIR}/../../../headers/libs/icon
 CPPFLAGS+= -I${.CURDIR}/../../../headers/os
 CPPFLAGS+= -I${.CURDIR}/../../../headers/posix
 CPPFLAGS+= -I${.CURDIR}/../../../headers
