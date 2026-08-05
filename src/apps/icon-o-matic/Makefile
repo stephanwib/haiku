@@ -21,6 +21,14 @@ realall: postbuild
 
 SRCS+=      main.cpp MainWindow.cpp Util.cpp IconEditorApp.cpp CanvasView.cpp
 
+SRCS+=      Document.cpp IconObject.cpp SetPropertiesCommand.cpp
+
+# document/savers
+SRCS+=      AttributeSaver.cpp BitmapSetSaver.cpp DocumentSaver.cpp FileSaver.cpp MessengerSaver.cpp NativeSaver.cpp \
+            SimpleFileSaver.cpp
+
+
+
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -D__HAIKU__ -DICON_O_MATIC=1
 
 
