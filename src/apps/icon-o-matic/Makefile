@@ -27,6 +27,12 @@ SRCS+=      Document.cpp IconObject.cpp SetPropertiesCommand.cpp
 SRCS+=      AttributeSaver.cpp BitmapSetSaver.cpp DocumentSaver.cpp FileSaver.cpp MessengerSaver.cpp NativeSaver.cpp \
             SimpleFileSaver.cpp
 
+# generic/command
+SRCS+=      Command.cpp CommandStack.cpp CompoundCommand.cpp
+
+# generic/gui
+SRCS+=      Group.cpp InputTextView.cpp NummericalTextView.cpp StringTextView.cpp ListViews.cpp SwatchView.cpp
+
 
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -D__HAIKU__ -DICON_O_MATIC=1
