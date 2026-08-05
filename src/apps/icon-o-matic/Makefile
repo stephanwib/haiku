@@ -34,7 +34,7 @@ CPPFLAGS+=  -I${.CURDIR}/../../libs/icon -I${.CURDIR}/../../libs/icon/generic \
             -I${.CURDIR}/../../libs/icon/transformable -I${.CURDIR}/../../libs/icon/style -I${.CURDIR}/../../libs/icon/shape
 
 
-CPPFLAGS+=  -I${.CURDIR}/generic/gui/scrollview
+CPPFLAGS+=  
 
 .for HEADER in ${OS_HEADERS}
 CPPFLAGS+= "-I${.CURDIR}/../../../headers/os/${HEADER}"
@@ -54,7 +54,7 @@ CPPFLAGS+= -I${.CURDIR} -I${.CURDIR}/document -I${.CURDIR}/document/savers -I${.
        -I${.CURDIR}/generic/gui/panel -I${.CURDIR}/generic/gui/panel/color_picker \
        -I${.CURDIR}/generic/gui/stateview -I${.CURDIR}/generic/property -I${.CURDIR}/generic/property/specific_properties \
        -I${.CURDIR}/generic/property/view -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/generic/selection \
-       -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/transformable -I${.CURDIR}/gui \
+       -I${.CURDIR}/generic/property/view/specific_properties -I${.CURDIR}/transformable -I${.CURDIR}/gui -I${.CURDIR}/generic/gui/scrollview \
        -I${.CURDIR}/import_export -I${.CURDIR}/import_export/bitmap -I${.CURDIR}/import_export/flat_icon \
        -I${.CURDIR}/import_export/message ${.CURDIR}/ -I${.CURDIR}/import_export/styled_text -I${.CURDIR}/import_export/svg \
        -I${.CURDIR}/shape -I${.CURDIR}/shape/commands -I${.CURDIR}/style \
