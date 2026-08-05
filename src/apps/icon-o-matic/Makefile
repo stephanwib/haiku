@@ -34,6 +34,24 @@ SRCS+=      Command.cpp CommandStack.cpp CompoundCommand.cpp
 SRCS+=      Group.cpp InputTextView.cpp NummericalTextView.cpp StringTextView.cpp ListViews.cpp SwatchView.cpp
 
 
+# generic/gui/panel
+SRCS+=      Panel.cpp
+
+# generic/gui/panel/color_picker
+SRCS+=      AlphaSlider.cpp ColorField.cpp ColorPickerPanel.cpp ColorPickerView.cpp ColorPreview.cpp ColorSlider.cpp
+
+
+# generic/gui/popup_control
+
+# generic/gui/scrollview
+SRCS+=      Scrollable.cpp Scroller.cpp ScrollView.cpp
+
+# generic/gui/stateview
+SRCS+=      Manipulator.cpp MultipleManipulatorState.cpp StateView.cpp ViewState.cpp
+
+# generic/listener
+SRCS+=      Observable.cpp Observer.cpp
+
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -D__HAIKU__ -DICON_O_MATIC=1
 
