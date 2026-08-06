@@ -1,5 +1,5 @@
 PRIVATE_HEADERS=    interface shared
-OS_HEADERS=         interface support app storage translation locale add-ons/graphics
+OS_HEADERS=         interface support app storage translation locale add-ons/graphics kernel
 
 .PATH: ${.CURDIR}/document ${.CURDIR}/document/savers ${.CURDIR}/generic ${.CURDIR}/generic/listener \
        ${.CURDIR}/generic ${.CURDIR}/generic/support ${.CURDIR}/generic/command/ ${.CURDIR}/generic/gui \
