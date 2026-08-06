@@ -52,6 +52,80 @@ SRCS+=      Manipulator.cpp MultipleManipulatorState.cpp StateView.cpp ViewState
 # generic/listener
 SRCS+=      Observable.cpp Observer.cpp
 
+# generic/property
+SRCS+=      CommonPropertyIDs.cpp Property.cpp PropertyObject.cpp
+
+# generic/property/specific_properties
+SRCS+=      ColorProperty.cpp IconProperty.cpp Int64Property.cpp OptionProperty.cpp
+
+# generic/property/view
+SRCS+=      PropertyEditorFactory.cpp PropertyEditorView.cpp PropertyItemView.cpp \
+            PropertyListView.cpp
+
+# generic/property/view/specific_properties
+SRCS+=      BoolValueView.cpp ColorValueView.cpp FloatValueView.cpp IconValueView.cpp \
+            Int64ValueView.cpp IntValueView.cpp OptionValueView.cpp \
+            StringValueView.cpp SwatchValueView.cpp TextInputValueView.cpp
+
+# generic/selection
+SRCS+=      Selectable.cpp Selection.cpp
+
+# generic/support
+SRCS+=      support.cpp support_ui.cpp support_settings.cpp
+
+# gui
+SRCS+=      GradientControl.cpp IconObjectListView.cpp PathListView.cpp \
+            SavePanel.cpp ShapeListView.cpp StyleListView.cpp StyleView.cpp \
+            SwatchGroup.cpp TransformerListView.cpp
+
+# import_export
+SRCS+=      Exporter.cpp Importer.cpp
+
+# import_export/bitmap
+SRCS+=      BitmapExporter.cpp
+
+# import_export/flat_icon
+SRCS+=      FlatIconExporter.cpp RDefExporter.cpp SourceExporter.cpp
+
+# import_export/message
+SRCS+=      MessageExporter.cpp
+
+# import_export/styled_text
+SRCS+=      StyledTextImporter.cpp
+
+# import_export/svg
+SRCS+=      DocumentBuilder.cpp SVGExporter.cpp SVGImporter.cpp
+
+# shape
+SRCS+=      PathManipulator.cpp
+
+# shape/commands
+SRCS+=      AddPathsCommand.cpp AddPointCommand.cpp AddShapesCommand.cpp \
+            AddTransformersCommand.cpp ChangePointCommand.cpp \
+            CleanUpPathCommand.cpp FlipPointsCommand.cpp \
+            FreezeTransformationCommand.cpp InsertPointCommand.cpp \
+            MoveShapesCommand.cpp MovePathsCommand.cpp \
+            MoveTransformersCommand.cpp NudgePointsCommand.cpp \
+            PathCommand.cpp RemovePathsCommand.cpp RemovePointsCommand.cpp \
+            RemoveShapesCommand.cpp RemoveTransformersCommand.cpp \
+            ReversePathCommand.cpp RotatePathIndicesCommand.cpp \
+            SplitPointsCommand.cpp TransformPointsCommand.cpp \
+            UnassignPathCommand.cpp
+
+# style
+SRCS+=      AddStylesCommand.cpp AssignStyleCommand.cpp CurrentColor.cpp \
+            MoveStylesCommand.cpp RemoveStylesCommand.cpp \
+            SetColorCommand.cpp SetGradientCommand.cpp
+
+# transformable
+SRCS+=      CanvasTransformBox.cpp ChannelTransform.cpp PerspectiveBox.cpp \
+            PerspectiveBoxStates.cpp PerspectiveCommand.cpp \
+            ResetTransformationCommand.cpp TransformBox.cpp \
+            TransformBoxStates.cpp TransformCommand.cpp \
+            TransformGradientBox.cpp TransformGradientCommand.cpp \
+            TransformObjectsCommand.cpp TransformPointsBox.cpp \
+            TransformShapesBox.cpp
+
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -D__HAIKU__ -DICON_O_MATIC=1
 
