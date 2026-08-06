@@ -29,9 +29,9 @@
 
 #include "Defines.h"
 #include "Icon.h"
-#include "PathSourceShape.h"
+#include "shape/PathSourceShape.h"
 #include "Style.h"
-#include "VectorPath.h"
+#include "shape/VectorPath.h"
 
 
 #undef B_TRANSLATION_CONTEXT
