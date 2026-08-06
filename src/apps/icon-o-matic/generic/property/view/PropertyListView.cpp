@@ -29,7 +29,7 @@
 #include "PropertyObject.h"
 #include "Scrollable.h"
 #include "Scroller.h"
-#include "ScrollView.h"
+#include "generic/gui/scrollview/ScrollView.h"
 
 
 #undef B_TRANSLATION_CONTEXT
