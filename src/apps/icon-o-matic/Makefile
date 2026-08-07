@@ -127,6 +127,39 @@ SRCS+=      CanvasTransformBox.cpp ChannelTransform.cpp PerspectiveBox.cpp \
             TransformShapesBox.cpp
 
 
+
+# ====== libicon files ========
+# These are built with ICON_O_MATIC=1 defined, making them different to those in libicon
+# =============================
+
+# icon/flat_icon
+SRCS+=      FlatIconFormat.cpp FlatIconImporter.cpp \
+            LittleEndianBuffer.cpp PathCommandQueue.cpp
+
+# icon/message
+SRCS+=      Defines.cpp MessageImporter.cpp
+
+# icon/shape
+SRCS+=      PathSourceShape.cpp ReferenceImage.cpp Shape.cpp \
+            VectorPath.cpp
+
+# icon/style
+SRCS+=      GradientTransformable.cpp Style.cpp
+
+# icon/transformable
+SRCS+=      Transformable.cpp
+
+# icon/transformer
+SRCS+=      AffineTransformer.cpp CompoundStyleTransformer.cpp \
+            ContourTransformer.cpp PathSource.cpp \
+            PerspectiveTransformer.cpp StrokeTransformer.cpp \
+            StyleTransformer.cpp TransformerFactory.cpp
+
+# icon
+SRCS+=      Icon.cpp IconRenderer.cpp
+
+
+
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -D__HAIKU__ -DICON_O_MATIC=1
 
 
