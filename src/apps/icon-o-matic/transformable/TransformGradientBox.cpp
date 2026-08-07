@@ -14,7 +14,7 @@
 
 #include "CanvasView.h"
 #include "GradientTransformable.h"
-#include "Shape.h"
+#include "shape/Shape.h"
 #include "StateView.h"
 #include "TransformGradientCommand.h"
 
