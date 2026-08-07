@@ -13,7 +13,7 @@
 #include <Locale.h>
 #include <StringFormat.h>
 
-#include "Shape.h"
+#include "shape/Shape.h"
 
 
 #undef B_TRANSLATION_CONTEXT
