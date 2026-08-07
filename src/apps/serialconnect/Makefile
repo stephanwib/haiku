@@ -8,7 +8,7 @@ postbuild: ${PROG}
 
 realall: postbuild
 
-.PATH: ${.CURDIR}/libvterm
+.PATH: ${.CURDIR}/libvterm/src
 
 SRCS+=      CustomRateWindow.cpp FileSender.cpp SerialApp.cpp SerialWindow.cpp TermView.cpp XModem.cpp \
             encoding.c input.c parser.c pen.c screen.c state.c unicode.c vterm.c
