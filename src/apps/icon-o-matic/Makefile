@@ -132,6 +132,10 @@ SRCS+=      CanvasTransformBox.cpp ChannelTransform.cpp PerspectiveBox.cpp \
 # These are built with ICON_O_MATIC=1 defined, making them different to those in libicon
 # =============================
 
+.PATH:      ${.CURDIR}/../../libs/icon ${.CURDIR}/../../libs/icon/generic \
+            ${.CURDIR}/../../libs/icon/flat_icon ${.CURDIR}/../../libs/icon/message ${.CURDIR}/../../libs/icon/transformer \
+            ${.CURDIR}/../../libs/icon/transformable ${.CURDIR}/../../libs/icon/style ${.CURDIR}/../../libs/icon/shape
+
 # icon/flat_icon
 SRCS+=      FlatIconFormat.cpp FlatIconImporter.cpp \
             LittleEndianBuffer.cpp PathCommandQueue.cpp
