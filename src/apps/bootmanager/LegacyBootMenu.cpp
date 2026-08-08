@@ -321,7 +321,7 @@ LegacyBootMenu::CanBeInstalled(const BootDrive& drive)
 	device.VisitEachDescendant(&visitor);
 
 	if (!visitor.HasPartitions()
-			|| strcmp(device.ContentType(), kPartitionTypeIntel) != 0)
+			|| strcmp(device.ContentType(), "kPartitionTypeIntel") != 0)
 		return B_ENTRY_NOT_FOUND;
 
 	// Enough space to write boot menu to drive?
