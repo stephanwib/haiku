@@ -25,7 +25,7 @@
 #include "CompoundStyleTransformer.h"
 #include "GradientTransformable.h"
 #include "Icon.h"
-#include "Shape.h"
+#include "shape/Shape.h"
 #include "Style.h"
 #include "StyleTransformer.h"
 #include "VectorPath.h"
