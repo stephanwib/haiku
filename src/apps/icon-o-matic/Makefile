@@ -19,7 +19,7 @@ postbuild: ${PROG}
 realall: postbuild
 
 
-SRCS+=      main.cpp MainWindow.cpp Util.cpp IconEditorApp.cpp CanvasView.cpp
+SRCS+=      main.cpp MainWindow.cpp Util.cpp IconView.cpp IconEditorApp.cpp CanvasView.cpp
 
 SRCS+=      Document.cpp IconObject.cpp SetPropertiesCommand.cpp
 
