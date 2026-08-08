@@ -17,7 +17,7 @@
 #include <agg_bounding_rect.h>
 #include <Message.h>
 
-#include "Shape.h"
+#include "shape/Shape.h"
 
 
 _USING_ICON_NAMESPACE
