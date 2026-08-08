@@ -181,7 +181,7 @@ LittleEndianMallocIO::Fill(int16 size, int8 fillByte)
 
 PartitionVisitor::PartitionVisitor()
 	:
-	fFirstOffset(LONGLONG_MAX)
+	fFirstOffset(LLONG_MAX)
 {
 }
 
@@ -206,7 +206,7 @@ PartitionVisitor::Visit(BPartition* partition, int32 level)
 bool
 PartitionVisitor::HasPartitions() const
 {
-	return fFirstOffset != LONGLONG_MAX;
+	return fFirstOffset != LLONG_MAX;
 }
 
 
