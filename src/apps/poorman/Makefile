@@ -17,6 +17,7 @@ SRCS+=      libhttpd.c match.c tdate_parse.c
 
 
 CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CFLAGS+=    -Wno-multichar #-Wno-old-style-cast -Wno-shadow
 
 LDADD+=	-lbe -licon -lagg -ltracker
 LDFLAGS+= -L${.CURDIR}/../../libs/libbe -L${.CURDIR}/../../libs/icon -L${.CURDIR}/../../libs/agg \
