@@ -6,6 +6,7 @@ PROG=	Poorman
 postbuild: ${PROG}
 realall: postbuild
 
+.PATH:      ${.CURDIR}/libhttpd
 
 SRCS+=      PoorManWindow.cpp PoorManView.cpp PoorManAdvancedView.cpp StatusSlider.cpp \
             PoorManServer.cpp PoorManSiteView.cpp PoorManLogger.cpp PoorManLoggingView.cpp \
