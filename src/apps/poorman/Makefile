@@ -8,6 +8,29 @@ realall: postbuild
 
 .PATH:      ${.CURDIR}/libhttpd
 
+# build special headers
+mime_encodings.h: mime_encodings.txt
+	rm -f ${.TARGET}
+	sed < ${.ALLSRC} > ${.TARGET} \
+		-e 's/#.*//' \
+		-e 's/[ 	]*$$//' \
+		-e '/^$$/d' \
+		-e 's/[ 	][ 	]*/", 0, "/' \
+		-e 's/^/{ "/' \
+		-e 's/$$/", 0 },/'
+
+mime_types.h: mime_types.txt
+	rm -f ${.TARGET}
+	sed < ${.ALLSRC} > ${.TARGET} \
+		-e 's/#.*//' \
+		-e 's/[ 	]*$$//' \
+		-e '/^$$/d' \
+		-e 's/[ 	][ 	]*/", 0, "/' \
+		-e 's/^/{ "/' \
+		-e 's/$$/", 0 },/'
+
+
+
 SRCS+=      PoorManWindow.cpp PoorManView.cpp PoorManAdvancedView.cpp StatusSlider.cpp \
             PoorManServer.cpp PoorManSiteView.cpp PoorManLogger.cpp PoorManLoggingView.cpp \
             PoorManPreferencesWindow.cpp PoorManApplication.cpp constants.cpp
