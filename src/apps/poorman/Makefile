@@ -30,6 +30,7 @@ mime_types.h: mime_types.txt
 		-e 's/$$/", 0 },/'
 
 
+libhttpd.c : mime_encodings.h mime_types.h
 
 SRCS+=      PoorManWindow.cpp PoorManView.cpp PoorManAdvancedView.cpp StatusSlider.cpp \
             PoorManServer.cpp PoorManSiteView.cpp PoorManLogger.cpp PoorManLoggingView.cpp \
