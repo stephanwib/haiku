@@ -32,7 +32,7 @@ mime_types.h: mime_types.txt
 
 libhttpd.c : mime_encodings.h mime_types.h
 
-SRCS+=      PoorManWindow.cpp PoorManView.cpp PoorManAdvancedView.cpp StatusSlider.cpp \
+SRCS+=      PoorMan.cpp PoorManWindow.cpp PoorManView.cpp PoorManAdvancedView.cpp StatusSlider.cpp \
             PoorManServer.cpp PoorManSiteView.cpp PoorManLogger.cpp PoorManLoggingView.cpp \
             PoorManPreferencesWindow.cpp PoorManApplication.cpp constants.cpp
 
