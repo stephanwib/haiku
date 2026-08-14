@@ -2531,11 +2531,11 @@ struct mime_entry {
     size_t val_len;
     };
 static struct mime_entry enc_tab[] = {
-#include "mime_encodings.h"
+#include "../mime_encodings.h"
     };
 static const int n_enc_tab = sizeof(enc_tab) / sizeof(*enc_tab);
 static struct mime_entry typ_tab[] = {
-#include "mime_types.h"
+#include "../mime_types.h"
     };
 static const int n_typ_tab = sizeof(typ_tab) / sizeof(*typ_tab);
 
