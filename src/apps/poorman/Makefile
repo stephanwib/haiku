@@ -40,7 +40,7 @@ SRCS+=      PoorManWindow.cpp PoorManView.cpp PoorManAdvancedView.cpp StatusSlid
 SRCS+=      libhttpd.c match.c tdate_parse.c
 
 
-CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow
+CXXFLAGS=   -fPIE -Wno-multichar -Wno-old-style-cast -Wno-shadow -Wno-stringop-overflow
 CFLAGS+=    -Wno-multichar #-Wno-old-style-cast -Wno-shadow
 CPPFLAGS+=  -DHAVE_INT64T -DHAVE_SOCKLENT -DHAVE_ATOLL -DHAVE__PROGNAME -DHAVE_FCNTL -DHAVE_POLL_H \
             -DHAVE_SYS_POLL_H -DHAVE_DIRENT_H -DHAVE_STRERROR -DHAVE_WAITPID -DHAVE_VSNPRINTF -DHAVE_SETSID \
